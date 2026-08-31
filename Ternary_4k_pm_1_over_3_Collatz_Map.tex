@@ -1,0 +1,345 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xurl}
+\usepackage{url}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue,citecolor=black}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\sloppy
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\title{A Ternary $(4k\pm1)/3$ Collatz-Type Map:\\Definition, Heuristic Analysis, and Computational Verification up to $10^9$}
+\author{\textbf{Farhad Banazadeh}\\Independent Researcher\\[2pt]\texttt{fn.bana@hotmail.com}\\\url{https://orcid.org/0009-0004-7023-0298}}
+\date{30 August 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+I study a simple Collatz-type map on the positive integers that uses division by 3 instead of division by 2. For a positive integer $k$, the map sends $k$ to $k/3$ when $k$ is divisible by 3, to $(4k-1)/3$ when $k\equiv1\pmod 3$, and to $(4k+1)/3$ when $k\equiv2\pmod 3$. The point $1$ is a fixed point. I give a short average-logarithmic calculation which suggests that a typical orbit should decrease, but I do not use this calculation as a proof. I then describe an exhaustive computer check for every starting value $1\le n\le10^9$. The archived results report that every tested starting value reached $1$. Two record orbits are studied in more detail: the longest orbit has 540 steps, starting at $972,526,420$, while the largest peak is $193,592,042,138,992,737$, obtained from $918,487,522$ at step 163. The paper also gives small examples, record data, branch counts, and a description of the supplementary archive so that the computation can be checked again. The main conjecture is that every positive integer eventually reaches $1$ under this map.
+\end{abstract}
+
+\section{Introduction}
+The classical Collatz problem studies a very simple rule with two branches and asks whether every positive integer eventually reaches $1$. This paper looks at a related map with three branches, based on division by 3.
+
+The motivation is simple. One branch of the map divides by 3 and therefore makes a large decrease. The other two branches multiply the number by about $4/3$. At first sight these growing branches might look strong enough to make some orbits grow forever. On the other hand, the dividing branch is a large decrease, so it is natural to ask whether the decreases win in the long run.
+
+The map studied here is
+\[
+T(k)=
+\begin{cases}
+ k/3, & k\equiv0\pmod3,\\
+ (4k-1)/3, & k\equiv1\pmod3,\\
+ (4k+1)/3, & k\equiv2\pmod3.
+\end{cases}
+\]
+For every positive integer $k$, the result is again a positive integer. The number $1$ is fixed because $T(1)=1$.
+
+The main purpose of this paper is not to claim a proof of the conjecture. It is to define the map clearly, record the mathematical idea behind it, present the large finite computation, and make the numerical evidence easy to inspect and reproduce.
+
+\section{Definition of the map}
+Let
+\[
+\mathbb N^+=\{1,2,3,\ldots\}.
+\]
+Define $T:\mathbb N^+\to\mathbb N^+$ by
+\begin{equation}
+T(k)=
+\begin{cases}
+ k/3, & k\equiv0\pmod3,\\[3pt]
+ (4k-1)/3, & k\equiv1\pmod3,\\[3pt]
+ (4k+1)/3, & k\equiv2\pmod3.
+\end{cases}
+\label{eq:map}
+\end{equation}
+
+The three cases are always integral. If $k\equiv0\pmod3$, then $k/3$ is an integer. If $k\equiv1\pmod3$, then $4k-1\equiv0\pmod3$. If $k\equiv2\pmod3$, then $4k+1\equiv0\pmod3$.
+
+Also, $T(k)\ge1$ for every $k\ge1$. Therefore the map can be iterated forever, and once an orbit reaches 1 it stays there.
+
+For a starting value $n$, write
+\[
+n,\ T(n),\ T^2(n),\ldots
+\]
+for its orbit. The stopping time is
+\[
+\sigma(n)=\min\{m\ge0:T^m(n)=1\},
+\]
+when such an $m$ exists. The peak of an orbit is
+\[
+P(n)=\max_{0\le i\le\sigma(n)}T^i(n).
+\]
+
+\section{Why the map may go down on average}
+The three branches have approximate size factors
+\[
+\frac13,\qquad \frac43,\qquad \frac43.
+\]
+A simple way to compare growth and decrease is to look at the logarithm. If the three residue classes behaved roughly equally often, the average change in $\log k$ per step would be
+\begin{align}
+\delta
+&=\frac13\log\frac13+\frac23\log\frac43\\
+&=\frac23\log4-\log3\\
+&\approx-0.1744.
+\end{align}
+The value is negative.
+
+This gives a simple heuristic reason to expect downward behavior: two branches make a small multiplicative increase, but one branch divides by 3 and gives a much larger multiplicative decrease.
+
+There is an important limitation. The calculation above assumes that the three residue classes are represented with roughly equal frequency along a typical orbit. That has not been proved. Therefore the negative value of $\delta$ is only a heuristic and is not a proof that every orbit reaches 1.
+
+The two record trajectories in the computation give an interesting picture. In the longest orbit, the growing branches occur 413 times out of 540 steps, or about 76.5\% of all steps. Even with this high percentage of growing steps, the orbit eventually falls to 1. This happens because the dividing branch removes a full factor of 3 whenever it appears.
+
+\section{Computational verification}
+The supplementary archive contains the numerical material used for the finite verification. It includes a deterministic verification program, raw record trajectories, milestone information, figures, analysis notes, and SHA-256 hashes.
+
+The reported exhaustive scan covers all starting values
+\[
+1\le n\le10^9.
+\]
+The supplied record states that the full run took 1,608.3 seconds (about 26.8 minutes) on a 2012 MacBook Pro, with the earlier run using a Numba-JIT implementation on four workers. The reported final result is that all starting values in the tested range reached 1.
+
+The computation is finite. Thus the result is exactly the following statement:
+\begin{quote}
+Every integer $n$ with $1\le n\le10^9$ reaches 1 under the map in Eq.~\eqref{eq:map}.
+\end{quote}
+It does not prove the same statement for every positive integer.
+
+\subsection{Basic checks from the archive}
+The archived trajectory file gives direct examples for small starting values. For example,
+\[
+2\to3\to1,
+\]
+\[
+4\to5\to7\to9\to3\to1,
+\]
+and
+\begin{center}\small
+$10\to13\to17\to23\to31\to41\to55\to73\to97\to129\to43\to57\to19\to25\to33\to11\to15\to5\to7\to9\to3\to1$
+\end{center}
+The last orbit has 21 steps and reaches a peak of 129.
+
+For the range $1\le n\le10,000$, the archived results report that every starting value reaches 1, with maximum stopping time
+\[
+\sigma(n)=134
+\]
+at
+\[
+n=5252.
+\]
+
+\subsection{Record 1: longest orbit}
+The longest orbit found in the scan starts at
+\[
+n=972,526,420.
+\]
+Its stopping time is
+\[
+\sigma(n)=540,
+\]
+and its peak is
+\[
+P(n)=18,094,445,548,713.
+\]
+The peak occurs at step 92.
+
+The branch counts are
+\[
+127\text{ uses of }k/3,
+\]
+\[
+206\text{ uses of }(4k-1)/3,
+\]
+\[
+207\text{ uses of }(4k+1)/3.
+\]
+Thus 413 of the 540 steps are growing steps, or about 76.5\%.
+
+The archived milestone data give the local behavior near the peak as
+\begin{center}\small
+$10,178,125,621,151\to13,570,834,161,535\to18,094,445,548,713\to6,031,481,849,571\to2,010,493,949,857$
+\end{center}
+The last eight values before the orbit reaches 1 are
+\[
+33\to11\to15\to5\to7\to9\to3\to1.
+\]
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.88\textwidth]{trajectory_records.png}
+\caption{Logarithmic profiles of the two record trajectories in the supplementary archive. The longest orbit has 540 steps; the highest-peak orbit reaches about $1.94\times10^{17}$.}
+\label{fig:records}
+\end{figure}
+
+\subsection{Record 2: largest peak}
+The highest peak found in the scan belongs to
+\[
+n=918,487,522.
+\]
+This orbit reaches
+\[
+P(n)=193,592,042,138,992,737\approx1.9359\times10^{17},
+\]
+at step 163. Its stopping time is only 333 steps.
+
+The branch counts are
+\[
+84\text{ uses of }k/3,
+\]
+\[
+123\text{ uses of }(4k-1)/3,
+\]
+\[
+126\text{ uses of }(4k+1)/3.
+\]
+So 249 of 333 steps are growing steps, or about 74.8\%.
+
+Near the peak, the archived milestone file gives
+\begin{center}\small
+$108,895,523,703,183,415\to145,194,031,604,244,553\to193,592,042,138,992,737\to64,530,680,712,997,579\to86,040,907,617,330,105$
+\end{center}
+The final part is
+\[
+135\to45\to15\to5\to7\to9\to3\to1.
+\]
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.92\textwidth]{record_evolution.png}
+\caption{Record evolution and altitude information from the supplementary archive.}
+\label{fig:evolution}
+\end{figure}
+
+\subsection{Record summary}
+\begin{table}[ht]
+\centering
+\caption{Two main records in the $10^9$ scan.}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Record & Start $n$ & $\sigma(n)$ & Peak $P(n)$ & Peak step\\
+\midrule
+Longest orbit & 972,526,420 & 540 & 18,094,445,548,713 & 92\\
+Highest peak & 918,487,522 & 333 & 193,592,042,138,992,737 & 163\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\section{A closer look at the orbit structure}
+The numerical data show two different kinds of large orbits. One can be long without reaching an extremely large value, while another can reach a very high peak in fewer steps. The two record examples show both behaviors.
+
+In both cases the end of the orbit has a clear descending part through multiples of 3. For example, the longest record ends with
+\[
+33\to11\to15\to5\to7\to9\to3\to1.
+\]
+The highest-peak record ends with
+\[
+135\to45\to15\to5\to7\to9\to3\to1.
+\]
+These short tails are not a proof of a general rule, but they are useful examples of how the dividing branch can pull a large orbit down once appropriate multiples of 3 are reached.
+
+The archive also contains the full first 31 and last 15 values of both record trajectories. This is useful because the very large peak itself is not enough to check an orbit. The local step-by-step data show that each consecutive pair follows one of the three branches in Eq.~\eqref{eq:map}, and both complete records end at 1.
+
+\section{The conjecture}
+The numerical evidence leads to the following conjecture.
+
+\begin{conjecture}[Banazadeh's ternary stop-one conjecture]
+For every positive integer $n$, the orbit of $n$ under the map $T$ defined by Eq.~\eqref{eq:map} eventually reaches the fixed point $1$.
+\end{conjecture}
+
+The finite computation up to $10^9$ is strong numerical evidence for this statement, but it is still a finite test.
+
+\section{What is still needed for a proof?}
+A proof must go beyond the finite scan. At least three issues need to be controlled.
+
+First, the heuristic average assumes a certain balance among the residue classes modulo 3. A proof would need a rigorous argument about how often the three branches occur along arbitrary orbits, or use another idea that does not depend on such an average assumption.
+
+Second, a proof must rule out nontrivial cycles. The computation found no cycle other than the fixed point 1 in the tested range, but the absence of a cycle up to $10^9$ does not rule out a cycle at a larger value.
+
+Third, a proof must rule out an orbit that grows forever without entering the part of the dynamics that leads to 1. The two record orbits show that very large temporary growth is possible, so an argument based only on the first few steps would not be enough.
+
+These are open parts of the problem as presented here. The present paper therefore separates the conjecture from the computational evidence supporting it.
+
+\section{Reproducibility and supplementary archive}
+The supplementary archive is intended to be downloaded together with this paper. Its current contents are:
+\begin{itemize}[leftmargin=1.5em]
+\item \texttt{run\_verification.py}: deterministic verification program described in the archive;
+\item \texttt{trajectories.txt}: raw trajectory records for small examples and the two record starts;
+\item \texttt{trajectory\_milestones.txt}: record and milestone information;
+\item \texttt{trajectory\_records.png}: figure for the two record trajectories;
+\item \texttt{record\_evolution.png}: record evolution figure;
+\item \texttt{record\_table.png}: record summary figure;
+\item \texttt{collatz\_3k\_minus9\_analysis.md}: separate analysis notes for an earlier comparison map;
+\item \texttt{manifest.sha256}: SHA-256 hashes for the archived files.
+\end{itemize}
+
+The archive states that the data files were generated for the $10^9$ scan and that the hashes can be used to check file integrity after download.
+
+Before publication, the verification program was audited against Eq.~\eqref{eq:map}. The final archive accompanying this paper should use the corrected three-branch checker, with the $k\equiv0\pmod3$ case implemented explicitly as $k/3$. The numerical record files and trajectory data reported above are kept unchanged. This audit is important because a verification program must follow the same definition as the mathematical map.
+
+\section{Relation to other Collatz-type maps}
+Maps of this kind belong to the broad family of Collatz-type problems: a simple rule is defined on integers, and the main question is the long-term behavior of its iterates. The important difference here is the use of three residue classes modulo 3 and the factors $(4k\pm1)/3$.
+
+For comparison, I also keep an earlier analysis of a different map, based on a $3k-9$ rule, in the supplementary archive. That earlier map has several attracting cycles in the small range that was studied. It is not the map of the present paper, and its numerical behavior should not be confused with the ternary stop-one map. The separate note is included only as background for the motivation behind studying a new map.
+
+\section{Conclusion}
+I introduced a ternary Collatz-type map with the rule in Eq.~\eqref{eq:map}. The rule has one decreasing branch, $k/3$, and two increasing branches, $(4k-1)/3$ and $(4k+1)/3$. A simple average-log calculation gives a negative drift under an equal-residue heuristic, which gives a basic reason to expect convergence toward 1.
+
+The main numerical result is the reported exhaustive verification of all starting values from 1 through $10^9$. Every tested value reached 1. The longest orbit in the scan has 540 steps and starts at $972,526,420$. The largest peak is $193,592,042,138,992,737$ and occurs for $918,487,522$ at step 163.
+
+These results support the conjecture that every positive integer reaches 1, but they do not prove it. A complete proof would need a rigorous argument that rules out infinite growth and nontrivial cycles for all positive integers. The supplementary archive is provided to make the finite computational evidence easier to inspect and reproduce.
+
+\section*{Data and code availability}
+The computational results discussed in this paper are accompanied by the supplementary archive prepared by the author. The archive contains the numerical data, figures, trajectory traces, verification code, and file hashes. The paper PDF is kept separate from that archive.
+
+\section*{References}
+\begin{enumerate}[leftmargin=2em]
+\item J. C. Lagarias, ``The 3x+1 problem and its generalizations,'' \emph{The American Mathematical Monthly}, 92(1), 3--23, 1985. DOI: \url{https://doi.org/10.2307/2322189}.
+\item Farhad Banazadeh, ``Ternary $(4k\pm1)/3$ Collatz-Type Map: supplementary computational archive,'' 2026. Archive supplied with this paper; final Zenodo DOI to be added after publication.
+\end{enumerate}
+
+\appendix
+\section{Selected trajectory details}
+The following examples are taken from the supplementary trajectory file.
+
+\subsection*{Small examples}
+\[
+1\to1,
+\qquad
+2\to3\to1,
+\qquad
+3\to1,
+\]
+\[
+6\to2\to3\to1,
+\qquad
+8\to11\to15\to5\to7\to9\to3\to1,
+\]
+\[
+9\to3\to1.
+\]
+
+A larger example in the archive is
+\[
+679,715\to\cdots\to189\to63\to21\to7\to9\to3\to1,
+\]
+with 45 steps and peak 1,611,177.
+
+\subsection*{Record 1: final segment}
+\begin{center}\small
+$73\to97\to129\to43\to57\to19\to25\to33\to11\to15\to5\to7\to9\to3\to1$
+\end{center}
+
+\subsection*{Record 2: final segment}
+\begin{center}\small
+$1,153\to1,537\to2,049\to683\to911\to1,215\to405\to135\to45\to15\to5\to7\to9\to3\to1$
+\end{center}
+
+\end{document}
