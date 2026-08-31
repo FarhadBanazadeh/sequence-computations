@@ -19,3 +19,8 @@ This repository contains computational code and supporting materials related to 
 - **ORCID:** [0009-0004-7023-0298](https://orcid.org/0009-0004-7023-0298)
 
 **Published:** August 31, 2026 
+
+## Files
+- **[Research Article (PDF)](Ternary_4k_pm_1_over_3_Collatz_Map.pdf)** — Full article in PDF format.
+- **[LaTeX Source](Ternary_4k_pm_1_over_3_Collatz_Map.tex)** — Source file of the article.
+- **[Data and Code (ZIP)](Ternary_4k_pm_1_over_3_Collatz_Map_Data_and_Code.zip)** — Computational code and supporting data.
