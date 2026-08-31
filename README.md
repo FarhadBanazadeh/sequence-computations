@@ -7,7 +7,11 @@ This repository contains code used to compute and verify integer sequences.
 - modular arithmetic experiments
 - residue calculations
 - sequence generation code
+ 
 ## Research Article
+### A Ternary (4k±1)/3 Collatz-Type Map: Computational Verification up to 10⁹
+
+This repository contains computational code and supporting materials related to the research article.
 
 **Farhad Banazadeh**
 
