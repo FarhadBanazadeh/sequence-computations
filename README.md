@@ -28,17 +28,17 @@ Zenodo: 10.5281/zenodo.22195652
 
 This is the general and unified research article. It studies the infinite family of scaled domains associated with 4^r, where r ≥ 0, and relates the dynamics of each scaled map to the base map.
 
-The article presents the exact structural relation
+The article presents the exact structural relation:
 
-[
+$$
 T_r(4^r k)=4^rT(k)
-]
+$$
 
-and consequently
+and consequently:
 
-[
+$$
 T_r^j(4^r k)=4^rT^j(k).
-]
+$$
 
 The paper also presents computational evidence and formulates a strong computational conjecture that, for every r ≥ 0 and every k ≥ 1, the orbit in the 4^r-scaled domain eventually reaches 4^r.
 
@@ -51,16 +51,19 @@ Research Chain
 The three research records are connected as follows:
 
 Base map
+
 → Zenodo 10.5281/zenodo.22195651
 
 ↓
 
 Related scaled-family work
+
 → Zenodo 10.5281/zenodo.22195652
 
 ↓
 
 General unified family
+
 → Zenodo 10.5281/zenodo.22228200
 
 The third article provides the general 4^r-scaled formulation and connects the earlier computational and structural results into one framework.
