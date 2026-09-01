@@ -22,6 +22,12 @@ This repository contains computational code and supporting materials related to 
 
 **Published:** August 31, 2026
 
+### Files
+
+- **[Research Article (PDF)](Ternary_4k_pm_1_over_3_Collatz_Map.pdf)** — Full article in PDF format.
+- **[LaTeX Source](Ternary_4k_pm_1_over_3_Collatz_Map.tex)** — Source file of the article.
+- **[Data and Code (ZIP)](Ternary_4k_pm_1_over_3_Collatz_Map_Data_and_Code.zip)** — Computational code and supporting data.
+
 ## 2. Related Scaled-Family Work
 
 This work studies the scaled form of the ternary (4k±1)/3 Collatz-type map and provides the structural basis for the general 4^r-scaled family.
@@ -49,6 +55,12 @@ The paper also presents computational evidence and formulates a strong computati
 - **Zenodo:** [10.5281/zenodo.22228200](https://doi.org/10.5281/zenodo.22228200)
 
 **Published:** September 1, 2026
+
+### Files
+
+- **[Research Article (PDF)](Banazadeh_Ternary_4k_pm_1_over_3_Scaled_Family.pdf)** — Full article in PDF format.
+- **[LaTeX Source](Banazadeh_Ternary_4k_pm_1_over_3_Scaled_Family_General.tex)** — Source file of the article.
+- **[Data and Code (ZIP)](Banazadeh_Ternary_4k_pm_1_over_3_Scaled_Family_FINAL.zip)** — Computational code and supporting data.
 
 ## Research Chain
 
@@ -79,10 +91,26 @@ The third article provides the general 4^r-scaled formulation and connects the e
 - **ORCID:** [0009-0004-7023-0298](https://orcid.org/0009-0004-7023-0298)
 - **GitHub:** [FarhadBanazadeh/sequence-computations](https://github.com/FarhadBanazadeh/sequence-computations)
 
+## Repository Structure
+
+The repository contains materials for both the original base-map study and the general scaled-family study.
+
+- **Article 1:** Base ternary (4k±1)/3 Collatz-type map
+- **Article 2:** General (4n±4^r)/3 scaled family
+- **Computational materials:** Source code and supporting data for the research
+
 ## Files
 
-The original computational materials remain available in this repository:
+The repository contains the original computational materials as well as the materials for the general scaled-family article.
 
-- **[Research Article (PDF)](Ternary_4k_pm_1_over_3_Collatz_Map.pdf)** — Full article in PDF format.
-- **[LaTeX Source](Ternary_4k_pm_1_over_3_Collatz_Map.tex)** — Source file of the article.
-- **[Data and Code (ZIP)](Ternary_4k_pm_1_over_3_Collatz_Map_Data_and_Code.zip)** — Computational code and supporting data.
+### Article 1
+
+- **[PDF](Ternary_4k_pm_1_over_3_Collatz_Map.pdf)**
+- **[LaTeX Source](Ternary_4k_pm_1_over_3_Collatz_Map.tex)**
+- **[Data and Code](Ternary_4k_pm_1_over_3_Collatz_Map_Data_and_Code.zip)**
+
+### Article 2
+
+- **[PDF](Banazadeh_Ternary_4k_pm_1_over_3_Scaled_Family.pdf)**
+- **[LaTeX Source](Banazadeh_Ternary_4k_pm_1_over_3_Scaled_Family_General.tex)**
+- **[Data and Code](Banazadeh_Ternary_4k_pm_1_over_3_Scaled_Family_FINAL.zip)**
