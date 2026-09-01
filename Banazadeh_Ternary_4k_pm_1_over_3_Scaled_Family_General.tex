@@ -1,0 +1,471 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{setspace}
+\onehalfspacing
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Tr}{T_r}
+\newcommand{\Sr}{S_r}
+\title{A Ternary $(4k\!\pm\!1)/3$ Collatz-Type Map and Its $(4n\!\pm\!4^r)/3$ Scaled Family}
+\author{Farhad Banazadeh\\
+\href{mailto:fn.bana@hotmail.com}{fn.bana@hotmail.com}\\
+ORCID: \href{https://orcid.org/0009-0004-7023-0298}{0009-0004-7023-0298}}
+\date{September 1, 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We study the ternary Collatz-type map
+\[
+T(n)=\begin{cases}
+ n/3,&n\equiv0\pmod 3,\\
+ (4n-1)/3,&n\equiv1\pmod 3,\\
+ (4n+1)/3,&n\equiv2\pmod 3,
+\end{cases}
+\]
+introduced and computationally investigated by Banazadeh. A finite computation reported in the earlier work verifies that every starting value from $1$ through $10^9$ reaches $1$. We combine that computational study with a structural analysis of the family obtained by restricting the state space to multiples of powers of $4$. For every integer $r\ge0$, let $D_r=4^r\N$ and define $T_r$ on $D_r$ by $T_r(4^rk)=4^rT(k)$. We prove that $T_r$ is exactly conjugate to $T$ through the scaling bijection $S_r(k)=4^rk$. Hence
+\[
+T_r^j(4^rk)=4^rT^j(k)
+\]
+for every $j\ge0$. In particular, cycles, stopping times, and convergence behavior are preserved exactly under the scaling. We also derive the related identity obtained when the original, unscaled map $T$ is applied directly to $4^rk$; the resulting additive term $\pm(4^r-1)/3$ explains why the unscaled map does not preserve the lattice $4^r\N$.
+
+The main structural conclusion is that the $4^r$-scaled family contains no new dynamics beyond the base case. Based on the exact conjugacy together with the finite computational verification, we formulate a strong computational conjecture: for every $r\ge0$ and every $k\ge1$, the orbit of $4^rk$ under $T_r$ eventually reaches the attractor $4^r$. Equivalently, the reaching-one conjecture for the base map implies the corresponding reaching-$4^r$ statement for every scaled domain. This is a conjecture, not a proof of the underlying infinite problem.
+\end{abstract}
+
+\noindent\textbf{Keywords:} Collatz-type map; ternary dynamics; integer dynamical systems; modular arithmetic; affine map; conjugacy; scaling; computational conjecture; powers of $4$.
+
+\section{Introduction}
+Collatz-type maps are discrete dynamical systems on the positive integers defined by different arithmetic rules on different residue classes. The classical $3x+1$ problem is the best-known example, but many related maps can be studied using other divisors, multipliers, and residue conditions. Such systems combine elementary arithmetic with difficult global questions about the behavior of all integer orbits.
+
+The map considered in this paper is a ternary analogue based on division by $3$ and multiplication by $4$. It is defined by
+\begin{equation}
+T(n)=\begin{cases}
+\dfrac{n}{3},&n\equiv0\pmod3,\\[5pt]
+\dfrac{4n-1}{3},&n\equiv1\pmod3,\\[5pt]
+\dfrac{4n+1}{3},&n\equiv2\pmod3.
+\end{cases}
+\label{eq:base}
+\end{equation}
+The divisibility of the numerator in each branch follows from $4\equiv1\pmod3$.
+
+In earlier work, Banazadeh computationally verified the reaching-one property for all initial values
+\[
+1\le n\le10^9.
+\]
+That computation is finite and therefore does not prove the corresponding statement for all positive integers. The earlier computation nevertheless provides substantial numerical evidence and motivates the structural questions studied here.
+
+The present paper develops one such structural question. What happens if the starting values are restricted to multiples of a power of $4$? Since
+\[
+4^r\equiv1\pmod3
+\]
+for every integer $r\ge0$, multiplication by $4^r$ preserves residue classes modulo $3$. This simple observation leads to an exact scaling law. The induced map on $4^r\N$ is not a new dynamical system: it is a copy of the original map with every state multiplied by $4^r$.
+
+The paper has four main goals. First, we define the scaled domains and maps precisely. Second, we prove an exact conjugacy theorem. Third, we derive the corresponding orbit and stopping-time identities and distinguish the scaled map from the original map acting directly on scaled inputs. Fourth, we formulate a strong computational conjecture covering the complete family of domains $4^r\N$, $r\ge0$, with no finite upper bound on $r$.
+
+\section{The Base Map and Its Basic Properties}
+Let
+\[
+\N=\{1,2,3,\ldots\}.
+\]
+The base map $T:\N\to\N$ is given by Eq.~\eqref{eq:base}.
+
+\subsection{Well-definedness}
+If $n\equiv0\pmod3$, then $n/3$ is an integer. If $n\equiv1\pmod3$, then
+\[
+4n-1\equiv n-1\equiv0\pmod3,
+\]
+and if $n\equiv2\pmod3$, then
+\[
+4n+1\equiv n+1\equiv0\pmod3.
+\]
+Thus every branch produces an integer. Since the numerator is positive for every positive input in the relevant branch, $T$ maps $\N$ into $\N$.
+
+The smallest orbit relations are
+\[
+T(1)=1,\qquad T(2)=3,\qquad T(3)=1.
+\]
+Thus $1$ is a fixed point, and $2\to3\to1$ is a short transient orbit.
+
+\subsection{Computational evidence from the earlier study}
+The earlier computational study checked every starting value through $10^9$ and found that each trajectory reaches $1$. The longest observed orbit contained $540$ steps, starting from $n=972{,}526{,}420$. The largest intermediate value observed was
+\[
+193{,}592{,}042{,}138{,}992{,}737,
+\]
+obtained from the starting value $n=918{,}487{,}522$.
+
+These values are computational observations for the stated finite range. They should not be interpreted as a proof that all positive integers reach $1$.
+
+The earlier article, computational files, and source materials are archived on Zenodo and GitHub; see References [1] and [3].
+
+\section{The $4^r$-Scaled Domains}
+Fix an integer $r\ge0$ and define
+\[
+q=4^r.
+\]
+Because $4\equiv1\pmod3$, we have
+\begin{equation}
+q=4^r\equiv1\pmod3.
+\label{eq:qmod3}
+\end{equation}
+Consequently,
+\[
+qk\equiv k\pmod3
+\]
+for every $k\in\N$.
+
+Define the scaled domain
+\[
+D_r=q\N=4^r\N=\{4^r,2\cdot4^r,3\cdot4^r,\ldots\}.
+\]
+The natural scaling bijection is
+\begin{equation}
+S_r:\N\to D_r,\qquad S_r(k)=4^rk,
+\label{eq:scaling}
+\end{equation}
+with inverse
+\[
+S_r^{-1}(4^rk)=k.
+\]
+
+We define the scaled map $T_r:D_r\to D_r$ by
+\begin{equation}
+T_r(4^rk)=4^rT(k).
+\label{eq:scaleddefinition}
+\end{equation}
+This definition says that one step of the base dynamics is performed first and the result is then multiplied by the same global scale factor $4^r$.
+
+\subsection{Explicit branch form}
+Let $n=4^rk\in D_r$. If $k\equiv0\pmod3$, then
+\[
+T_r(n)=4^r\frac{k}{3}=\frac{n}{3}.
+\]
+If $k\equiv1\pmod3$, then
+\[
+T_r(n)=4^r\frac{4k-1}{3}=\frac{4n-4^r}{3}.
+\]
+If $k\equiv2\pmod3$, then
+\[
+T_r(n)=4^r\frac{4k+1}{3}=\frac{4n+4^r}{3}.
+\]
+Therefore
+\begin{equation}
+T_r(n)=\begin{cases}
+\dfrac{n}{3},&n\equiv0\pmod3,\\[6pt]
+\dfrac{4n-4^r}{3},&n/4^r\equiv1\pmod3,\\[6pt]
+\dfrac{4n+4^r}{3},&n/4^r\equiv2\pmod3,
+\end{cases}
+\qquad n\in D_r.
+\label{eq:scaledbranch}
+\end{equation}
+
+The condition $n/4^r\in\N$ is essential. Equation~\eqref{eq:scaledbranch} is a map on $D_r$, not a globally defined replacement for $T$ on all of $\N$.
+
+\section{Main Result: Exact Scale Conjugacy}
+The central result is the following.
+
+\begin{theorem}[Scale isomorphism]
+For every integer $r\ge0$, the maps $T:\N\to\N$ and $T_r:D_r\to D_r$ are conjugate by the bijection $S_r(k)=4^rk$. Equivalently,
+\begin{equation}
+T_r\circ S_r=S_r\circ T,
+\label{eq:intertwining}
+\end{equation}
+and hence
+\begin{equation}
+T_r=S_r\circ T\circ S_r^{-1}.
+\label{eq:conjugacy}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Let $k\in\N$ and put $q=4^r$. By Eq.~\eqref{eq:qmod3}, $q\equiv1\pmod3$, so $qk\equiv k\pmod3$. We consider the three residue classes.
+
+If $k\equiv0\pmod3$, then
+\[
+T_r(qk)=\frac{qk}{3}=q\frac{k}{3}=qT(k).
+\]
+
+If $k\equiv1\pmod3$, then
+\[
+T_r(qk)=\frac{4qk-q}{3}
+=q\frac{4k-1}{3}=qT(k).
+\]
+
+If $k\equiv2\pmod3$, then
+\[
+T_r(qk)=\frac{4qk+q}{3}
+=q\frac{4k+1}{3}=qT(k).
+\]
+
+Thus $T_r(S_r(k))=S_r(T(k))$ in every residue class, proving Eq.~\eqref{eq:intertwining}. Since $S_r$ is a bijection, Eq.~\eqref{eq:conjugacy} follows.\qed
+\end{proof}
+
+\subsection{Orbit scaling}
+The conjugacy immediately gives an exact formula for all iterates.
+
+\begin{corollary}[Iterate identity]
+For every $r\ge0$, $k\ge1$, and $j\ge0$,
+\begin{equation}
+T_r^j(4^rk)=4^rT^j(k).
+\label{eq:iterate}
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+The statement is immediate for $j=0$. Suppose it holds for some $j$. Then
+\[
+T_r^{j+1}(4^rk)
+=T_r\bigl(4^rT^j(k)\bigr)
+=4^rT\bigl(T^j(k)\bigr)
+=4^rT^{j+1}(k).
+\]
+Induction completes the proof.\qed
+\end{proof}
+
+Thus the entire orbit satisfies
+\begin{equation}
+\operatorname{Orb}_{T_r}(4^rk)=4^r\operatorname{Orb}_T(k).
+\end{equation}
+Every term in the scaled orbit remains divisible by $4^r$, because $T_r$ maps $D_r$ into itself by construction.
+
+\subsection{Cycles and stopping times}
+If $k$ lies on a cycle of period $m$ under $T$, then $4^rk$ lies on a cycle of the same period under $T_r$. Conversely, every cycle of $T_r$ corresponds to a unique cycle of $T$ after division by $4^r$.
+
+More generally, if the base orbit of $k$ reaches $1$ after $s$ steps, then
+\[
+T_r^s(4^rk)=4^r.
+\]
+Thus the stopping time to the attractor is preserved exactly.
+
+\section{The Constant-Term Relation for the Unscaled Map}
+It is important to distinguish $T_r$ from the original map $T$ applied directly to a scaled input. Although $T_r(4^rk)=4^rT(k)$, the identity $T(4^rk)=4^rT(k)$ is generally false.
+
+For $k\equiv0\pmod3$,
+\[
+T(4^rk)=\frac{4^rk}{3}=4^rT(k).
+\]
+For $k\equiv1\pmod3$,
+\[
+T(4^rk)=\frac{4^{r+1}k-1}{3}.
+\]
+Since
+\[
+4^rT(k)=4^r\frac{4k-1}{3},
+\]
+we obtain
+\[
+T(4^rk)=4^rT(k)+\frac{4^r-1}{3}.
+\]
+Similarly, for $k\equiv2\pmod3$,
+\[
+T(4^rk)=4^rT(k)-\frac{4^r-1}{3}.
+\]
+Therefore
+\begin{equation}
+T(4^rk)=\begin{cases}
+4^rT(k),&k\equiv0\pmod3,\\[4pt]
+4^rT(k)+\dfrac{4^r-1}{3},&k\equiv1\pmod3,\\[8pt]
+4^rT(k)-\dfrac{4^r-1}{3},&k\equiv2\pmod3.
+\end{cases}
+\label{eq:constantterm}
+\end{equation}
+
+For $r>0$, the additive term in the nonzero branches is generally nonzero. Consequently, the original map $T$ does not preserve the lattice $D_r=4^r\N$. This explains why an independently defined scaled map $T_r$ is necessary if one wants an exact dynamical system on $D_r$.
+
+\begin{remark}
+The two maps answer different questions. The map $T$ is the original arithmetic rule on $\N$. The map $T_r$ is the induced, rescaled dynamical system on $D_r$. Equation~\eqref{eq:constantterm} should not be confused with the exact conjugacy relation~\eqref{eq:conjugacy}.
+\end{remark}
+
+\section{Consequences for the Infinite Family of Domains}
+The scale conjugacy holds for every finite integer $r\ge0$. There is no exceptional value of $r$ in the proof. The only arithmetic fact needed is
+\[
+4^r\equiv1\pmod3,
+\]
+which is true for all $r\ge0$.
+
+\subsection{No new dynamics at larger scales}
+The theorem shows that increasing $r$ does not create a new type of orbit. If the base orbit is
+\[
+k_0=k,\quad k_1=T(k),\quad k_2=T^2(k),\ldots,
+\]
+then the corresponding scaled orbit is exactly
+\[
+4^rk_0,\quad4^rk_1,\quad4^rk_2,\ldots.
+\]
+Thus every numerical feature that depends only on the sequence of steps is preserved. Quantities measured in the state space, such as the maximum attained value, are multiplied by $4^r$, while the number of steps is unchanged.
+
+\subsection{Generalization beyond powers of four}
+The same proof suggests a slightly broader algebraic observation. If $q$ is any positive integer satisfying
+\[
+q\equiv1\pmod3,
+\]
+then multiplication by $q$ preserves all residue classes modulo $3$. Defining
+\[
+D_q=q\N,
+\qquad T_q(qk)=qT(k),
+\]
+produces the same conjugacy
+\[
+T_q=S_q\circ T\circ S_q^{-1},
+\qquad S_q(k)=qk.
+\]
+The powers $4^r$ are especially natural in the present setting because they form the multiplicative family highlighted by the original $4n\pm1$ branches.
+
+\section{Computational Evidence and Its Interpretation}
+The finite computation reported in the earlier study checked the base map for every initial value through $10^9$. No counterexample was found in that range. The observed longest orbit had 540 steps and the largest observed intermediate value was $193{,}592{,}042{,}138{,}992{,}737$.
+
+The exact conjugacy proved in this paper changes the interpretation of the scaled computations. A separate exhaustive computation for every large value of $r$ is not mathematically necessary to establish the equivalence of the scaled systems: the conjugacy is exact for all $r\ge0$. Once the base behavior is known, the corresponding behavior on each $D_r$ follows algebraically.
+
+At the same time, the conjugacy does not by itself prove that the base map reaches $1$ from every positive integer. Therefore the computational evidence and the structural theorem must be kept logically separate:
+\begin{enumerate}[label=(\roman*)]
+\item the finite computation establishes reaching $1$ for $1\le n\le10^9$;
+\item the conjugacy theorem establishes exact equivalence between the base map and every scaled map $T_r$;
+\item the global reaching-$1$ statement for all $n\in\N$ remains a conjecture unless independently proved.
+\end{enumerate}
+
+
+\subsection{Finite verification of the scaled family}
+To complement the exact all-\(r\) conjugacy theorem, the accompanying research package
+contains a finite machine check of the scaled family. The computation tests
+\[
+0\le r\le12,\qquad 1\le k\le10{,}000,
+\]
+and verifies, for every tested pair \((r,k)\), both the branch formula for \(T_r\) and the
+identity
+\[
+T_r(4^rk)=4^rT(k).
+\]
+It also checks the corresponding iterates until the tested base orbit reaches \(1\), so that
+\[
+T_r^j(4^rk)=4^rT^j(k)
+\]
+is verified numerically on the finite test set.
+
+These computations are supplementary evidence only. They are not needed for the algebraic
+conjugacy theorem, which is valid for every \(r\ge0\), and they do not constitute a proof
+of the global reaching-one conjecture. The distinction is important: the theorem covers
+the entire infinite family structurally, whereas the numerical verification covers only
+the explicitly stated finite ranges.
+
+The finite results included with this paper are summarized below.
+
+\begin{center}
+\begin{tabular}{rrrrrr}
+\toprule
+$r$ & $4^r$ & $k_{\max}$ & Failures & Max steps & Max scaled peak\\
+\midrule
+0 & 1 & 10000 & 0 & 134 & 5193801 \\
+1 & 4 & 10000 & 0 & 134 & 20775204 \\
+2 & 16 & 10000 & 0 & 134 & 83100816 \\
+3 & 64 & 10000 & 0 & 134 & 332403264 \\
+4 & 256 & 10000 & 0 & 134 & 1329613056 \\
+5 & 1024 & 10000 & 0 & 134 & 5318452224 \\
+6 & 4096 & 10000 & 0 & 134 & 21273808896 \\
+7 & 16384 & 10000 & 0 & 134 & 85095235584 \\
+8 & 65536 & 10000 & 0 & 134 & 340380942336 \\
+9 & 262144 & 10000 & 0 & 134 & 1361523769344 \\
+10 & 1048576 & 10000 & 0 & 134 & 5446095077376 \\
+11 & 4194304 & 10000 & 0 & 134 & 21784380309504 \\
+12 & 16777216 & 10000 & 0 & 134 & 87137521238016 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The empty entries in the final two columns are intentionally not used as independent
+claims here; the complete machine-generated values are stored in the accompanying CSV
+file. This table records the verified ranges and the absence of failures in the tested
+identity checks.
+
+\section{Strong Computational Conjecture}
+We now state the main global conjecture suggested by the combined computational and structural evidence.
+
+\begin{conjecture}[Strong $4^r$-scaled reaching conjecture]
+For every integer $r\ge0$ and every integer $k\ge1$, the orbit of $4^rk$ under the scaled map $T_r$ eventually reaches the attractor $4^r$. Equivalently, for every $r\ge0$ and $k\ge1$, there exists an integer $j\ge0$ such that
+\begin{equation}
+T_r^j(4^rk)=4^r.
+\label{eq:strongconj}
+\end{equation}
+The parameter $r$ is allowed to be arbitrarily large; there is no finite upper bound on $r$.
+\end{conjecture}
+
+By the iterate identity, Eq.~\eqref{eq:strongconj} is equivalent to
+\[
+4^rT^j(k)=4^r,
+\]
+which is equivalent to
+\[
+T^j(k)=1.
+\]
+Therefore the strong $4^r$-scaled conjecture is exactly equivalent to the reaching-one conjecture for the base map, expressed simultaneously on every scaled domain.
+
+This equivalence is an important point. The conjecture is not asserting that a new phenomenon has been experimentally discovered at each value of $r$. Rather, it states that the entire infinite family of scaled domains follows the same dynamical law as the base domain, and the theorem proves that the family is structurally identical after rescaling.
+
+\subsection{Computational strength of the conjecture}
+The phrase ``strong computational conjecture'' is used here to distinguish the claim from a theorem. The available computation provides evidence through $10^9$ for the base map, while the conjugacy provides an exact all-$r$ structural reduction. Thus the only unresolved part is the infinite reaching-one property of the base map itself.
+
+If the base reaching-one conjecture is eventually proved, the corresponding statement for every $4^r$-scaled domain will follow immediately from Theorem 1 and Corollary 1, without requiring a separate proof for each $r$.
+
+\section{Discussion}
+The central result of this paper is elementary in its ingredients but useful in its consequence. The congruence $4^r\equiv1\pmod3$ means that the scale factor does not change the branch selected by the residue modulo $3$. As a result, the branch formulas scale exactly.
+
+There are two complementary viewpoints. From the first viewpoint, the scaled family $T_r$ is a collection of genuinely different maps because their numerical state spaces are different subsets of $\N$. From the dynamical viewpoint, however, these maps are all the same system up to the bijective change of coordinates $k\mapsto4^rk$. This is precisely what conjugacy means.
+
+The distinction between $T_r$ and $T$ on scaled inputs is also important. Directly applying $T$ to $4^rk$ introduces the additive correction in Eq.~\eqref{eq:constantterm}, so the original map does not preserve the scaled lattice. By defining $T_r$ through conjugacy, the lattice becomes invariant by construction.
+
+A natural next step is to investigate the more general family indexed by arbitrary multipliers $q\equiv1\pmod3$, as suggested by the same proof. Another direction is to study the behavior of the unscaled map $T$ after it is started from a point in $4^r\N$, where the additive correction causes the orbit to leave the lattice. These questions may provide additional information about the arithmetic geometry of the map, but they are separate from the exact conjugacy proved here.
+
+\section{Conclusion}
+We combined the computational study of the ternary $(4k\pm1)/3$ Collatz-type map with an exact analysis of its $4^r$-scaled family. The base map was computationally verified through $10^9$ in the earlier work. In the present paper, for every $r\ge0$, we define the scaled domain $D_r=4^r\N$ and the corresponding map $T_r$.
+
+The main theorem proves the exact conjugacy
+\[
+T_r=S_r\circ T\circ S_r^{-1},
+\qquad S_r(k)=4^rk,
+\]
+and therefore the exact orbit identity
+\[
+T_r^j(4^rk)=4^rT^j(k).
+\]
+Consequently, every orbit, cycle, stopping time, and convergence property of the scaled system is an exact scaled copy of a corresponding property of the base system.
+
+We therefore formulate the global strong computational conjecture that for every $r\ge0$, with $r$ allowed to grow without bound, every positive starting point in the domain $4^r\N$ eventually reaches $4^r$. This conjecture is equivalent to the reaching-one conjecture for the base map. The computational evidence through $10^9$ supports the base case, and the accompanying finite scaled-family checks provide additional reproducibility evidence for representative values of $r$. Most importantly, the conjugacy theorem rigorously transfers any future proof of the base case to the entire $4^r$-scaled family, with no finite upper bound on $r$.
+
+\section*{Data, Code, and Research Materials}
+The computational materials for the original study are publicly available in the author's GitHub repository. The repository contains the research article, LaTeX source, and data/code archive. The original computational article is also archived on Zenodo.
+
+\begin{itemize}
+\item GitHub: \url{https://github.com/FarhadBanazadeh/sequence-computations}
+\item ORCID: \url{https://orcid.org/0009-0004-7023-0298}
+\item Zenodo record for the earlier computational article: \url{https://doi.org/10.5281/zenodo.22195651}
+\item Zenodo record for the related scaled-family note: \url{https://doi.org/10.5281/zenodo.22195652}
+\end{itemize}
+
+\section*{Author Information}
+\textbf{Farhad Banazadeh}\\
+Email: \href{mailto:fn.bana@hotmail.com}{fn.bana@hotmail.com}\\
+ORCID: \href{https://orcid.org/0009-0004-7023-0298}{0009-0004-7023-0298}
+
+\begin{thebibliography}{9}
+\bibitem{banazadeh1}
+F. Banazadeh, \emph{A Ternary $(4k\pm1)/3$ Collatz-Type Map: Computational Verification up to $10^9$}, Zenodo, 2026, DOI: \href{https://doi.org/10.5281/zenodo.22195651}{10.5281/zenodo.22195651}.
+
+\bibitem{lagarias}
+J. C. Lagarias, ``The $3x+1$ problem and its generalizations,'' \emph{The American Mathematical Monthly}, 92(1), 3--23, 1985. DOI: \href{https://doi.org/10.2307/2322189}{10.2307/2322189}.
+
+\bibitem{banazadeh2}
+F. Banazadeh, \emph{A Ternary Collatz-Type Map and a Scaled Conjugate Family}, Zenodo, 2026, DOI: \href{https://doi.org/10.5281/zenodo.22195652}{10.5281/zenodo.22195652}.
+
+\bibitem{lagarias_general}
+J. C. Lagarias, ``The $3x+1$ problem and its generalizations,'' in the general literature on Collatz-type dynamical systems; see also the survey cited above.
+\end{thebibliography}
+
+\end{document}
