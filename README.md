@@ -1,116 +1,308 @@
-# Sequence Computations
+## Sequence Computations 
 
-This repository contains code used to compute and verify integer sequences.
+## Contents  
 
-## Contents
+1. Research Articles
+2. Research Chain
+3. Author
+4. Repository Structure
+5. Mathematical Form of the New Map
+6. Main Computational Result
+7. Reproducibility
+8. License
 
-- Python scripts
-- modular arithmetic experiments
-- residue calculations
-- sequence generation code
+## Research Articles 
 
-## Research Articles
+This repository contains research articles and computational studies on ternary Collatz-type maps, related integer sequences, and their scaled families.
 
-## 1. A Ternary (4k±1)/3 Collatz-Type Map: Computational Verification up to 10⁹
+### A Ternary (4k±1)/3 Collatz-Type Map: Computational Verification up to 10⁹  
 
-This repository contains computational code and supporting materials related to the research article.
+This article studies the ternary $(4k\pm1)/3$ Collatz-type map and presents a computational verification up to $10^9$.
 
-**Farhad Banazadeh**
+Zenodo: [10.5281/zenodo.22195651](https://doi.org/10.5281/zenodo.22195651)
 
-- **Zenodo:** [10.5281/zenodo.22195651](https://doi.org/10.5281/zenodo.22195651)
-- **ORCID:** [0009-0004-7023-0298](https://orcid.org/0009-0004-7023-0298)
+GitHub repository: [Sequence Computations](https://github.com/FarhadBanazadeh/sequence-computations)
 
-**Published:** August 31, 2026
+### Related Scaled-Family Work  
 
-### Files
+This work studies the scaled family associated with the ternary $(4k\pm1)/3$ map and the corresponding domains based on powers of $4$.
 
-- **[Research Article (PDF)](Ternary_4k_pm_1_over_3_Collatz_Map.pdf)** — Full article in PDF format.
-- **[LaTeX Source](Ternary_4k_pm_1_over_3_Collatz_Map.tex)** — Source file of the article.
-- **[Data and Code (ZIP)](Ternary_4k_pm_1_over_3_Collatz_Map_Data_and_Code.zip)** — Computational code and supporting data.
+Zenodo: [10.5281/zenodo.22195652](https://doi.org/10.5281/zenodo.22195652)
 
-## 2. Related Scaled-Family Work
+### A Ternary (4k±1)/3 Collatz-Type Map and Its (4n±4^r)/3 Scaled Family  
 
-This work studies the scaled form of the ternary (4k±1)/3 Collatz-type map and provides the structural basis for the general 4^r-scaled family.
+This work gives a general formulation of the scaled family
 
-- **Zenodo:** [10.5281/zenodo.22195652](https://doi.org/10.5281/zenodo.22195652)
+$(4n\pm4^r)/3$
 
-## 3. A Ternary (4k±1)/3 Collatz-Type Map and Its (4n±4^r)/3 Scaled Family
+for $r\geq0$.
 
-This is the general and unified research article. It studies the infinite family of scaled domains associated with 4^r, where r ≥ 0, and relates the dynamics of each scaled map to the base map.
+Zenodo: [10.5281/zenodo.22228200](https://doi.org/10.5281/zenodo.22228200)
 
-The article presents the exact structural relation:
+### Ternary (4k+1(2))/3 Collatz-Type Map  
+
+This independent article studies a different ternary Collatz-type map.
+
+For every positive integer not divisible by $3$, the transformation uses either $4k+1$ or $4k+2$ so that the result is divisible by $3$.
+
+The map can be written as
 
 $$
-T_r(4^r k)=4^rT(k)
+G(n)=\left\lfloor\frac{4n+2}{3}\right\rfloor.
 $$
 
-and consequently:
+After this step, all factors of $3$ are removed.
+
+The study includes:
+
+* theoretical analysis,
+* Haar measure and $3$-adic considerations,
+* the distribution of the $3$-adic valuation,
+* average multiplicative contraction,
+* algebraic analysis of cycles,
+* stopping-time analysis,
+* numerical examples,
+* computational verification up to $10^9$.
+
+Two cycles were found in the complete computation:
+
+$C_1=(1,2)$
+
+and
+
+$C_7=(7,10,14,19,26,35,47)$.
+
+Zenodo: [10.5281/zenodo.22279137](https://doi.org/10.5281/zenodo.22279137)
+
+GitHub repository: [Sequence Computations](https://github.com/FarhadBanazadeh/sequence-computations)
+
+## Research Chain  
+
+The research develops through several related stages:
+
+1. The original ternary $(4k\pm1)/3$ map.
+2. The scaled family associated with powers of $4$.
+3. The general $(4n\pm4^r)/3$ family.
+4. The independent ternary $(4k+1(2))/3$ map.
+
+## Author  
+
+Farhad Banazadeh
+
+ORCID: [0009-0004-7023-0298](https://orcid.org/0009-0004-7023-0298)
+
+Email: [fn.bana@hotmail.com](mailto:fn.bana@hotmail.com)
+
+## Repository Structure 
+
+The repository contains research articles, LaTeX source files, computational programs, data, and supplementary materials.
+
+### Article 1  
+
+`Ternary_4k_pm_1_over_3_Collatz_Map.pdf`
+
+`Ternary_4k_pm_1_over_3_Collatz_Map.tex`
+
+`Ternary_4k_pm_1_over_3_Collatz_Map_Data_and_Code.zip`
+
+### Article 2  
+
+The related scaled-family work is available through its Zenodo record.
+
+Zenodo: [10.5281/zenodo.22195652](https://doi.org/10.5281/zenodo.22195652)
+
+### Article 3  
+
+`Banazadeh_Ternary_4k_pm_1_over_3_Scaled_Family.pdf`
+
+`Banazadeh_Ternary_4k_pm_1_over_3_Scaled_Family_General.tex`
+
+`Banazadeh_Ternary_4k_pm_1_over_3_Scaled_Family_FINAL.zip`
+
+### Article 4  
+
+`A_Ternary_4k1_2_over_3_Collatz_Type_Map.pdf`
+
+`A_Ternary_4k1_2_over_3_Collatz_Type_Map.tex`
+
+`A_Ternary_4k1_2_over_3_Collatz_Type_Map_Supplementary.zip`
+
+The supplementary ZIP contains the computational source code, data, and supporting documentation.
+
+## Mathematical Form of the New Map  
+
+The domain is
 
 $$
-T_r^j(4^r k)=4^rT^j(k)
+D=\{n\in\mathbb{N}:3\nmid n\}.
 $$
 
-The paper also presents computational evidence and formulates a strong computational conjecture that, for every r ≥ 0 and every k ≥ 1, the orbit in the 4^r-scaled domain eventually reaches 4^r.
+For
 
-- **Zenodo:** [10.5281/zenodo.22228200](https://doi.org/10.5281/zenodo.22228200)
+$$
+n=3p+1,
+$$
 
-**Published:** September 1, 2026
+the transformation before removing factors of $3$ is
 
-### Files
+$$
+G(3p+1)=4p+2.
+$$
 
-- **[Research Article (PDF)](Banazadeh_Ternary_4k_pm_1_over_3_Scaled_Family.pdf)** — Full article in PDF format.
-- **[LaTeX Source](Banazadeh_Ternary_4k_pm_1_over_3_Scaled_Family_General.tex)** — Source file of the article.
-- **[Data and Code (ZIP)](Banazadeh_Ternary_4k_pm_1_over_3_Scaled_Family_FINAL.zip)** — Computational code and supporting data.
+For
 
-## Research Chain
+$$
+n=3p+2,
+$$
 
-The three research records are connected as follows:
+the transformation is
 
-**Base map**
+$$
+G(3p+2)=4p+3.
+$$
 
-→ [Zenodo 10.5281/zenodo.22195651](https://doi.org/10.5281/zenodo.22195651)
+Equivalently,
 
-↓
+$$
+G(n)=\left\lfloor\frac{4n+2}{3}\right\rfloor.
+$$
 
-**Related scaled-family work**
+Let
 
-→ [Zenodo 10.5281/zenodo.22195652](https://doi.org/10.5281/zenodo.22195652)
+$$
+v_3(m)=\max\{r\geq0:3^r\mid m\}.
+$$
 
-↓
+The compressed map is therefore
 
-**General unified family**
+$$
+T(n)=\frac{G(n)}{3^{v_3(G(n))}}.
+$$
 
-→ [Zenodo 10.5281/zenodo.22228200](https://doi.org/10.5281/zenodo.22228200)
+The computation uses the compressed ternary domain, with the eliminated state $3$ identified with $1$.
 
-The third article provides the general 4^r-scaled formulation and connects the earlier computational and structural results into one framework.
+## Main Computational Result  
 
-## Author
+The computation was performed for every admissible starting value satisfying
 
-**Farhad Banazadeh**
+$$
+1\leq n\leq10^9,\qquad 3\nmid n.
+$$
 
-- **ORCID:** [0009-0004-7023-0298](https://orcid.org/0009-0004-7023-0298)
-- **GitHub:** [FarhadBanazadeh/sequence-computations](https://github.com/FarhadBanazadeh/sequence-computations)
+The number of admissible starting values is
 
-## Repository Structure
+$$
+666,666,667.
+$$
 
-The repository contains materials for both the original base-map study and the general scaled-family study.
+Every tested starting value reached one of the two observed cycles.
 
-- **Article 1:** Base ternary (4k±1)/3 Collatz-type map
-- **Article 2:** General (4n±4^r)/3 scaled family
-- **Computational materials:** Source code and supporting data for the research
+### Cycle $C_1$  
 
-## Files
+The first cycle is
 
-The repository contains the original computational materials as well as the materials for the general scaled-family article.
+$$
+C_1=(1,2).
+$$
 
-### Article 1
+Number of starting values reaching $C_1$:
 
-- **[PDF](Ternary_4k_pm_1_over_3_Collatz_Map.pdf)**
-- **[LaTeX Source](Ternary_4k_pm_1_over_3_Collatz_Map.tex)**
-- **[Data and Code](Ternary_4k_pm_1_over_3_Collatz_Map_Data_and_Code.zip)**
+21,785,111
 
-### Article 2
+Percentage:
 
-- **[PDF](Banazadeh_Ternary_4k_pm_1_over_3_Scaled_Family.pdf)**
-- **[LaTeX Source](Banazadeh_Ternary_4k_pm_1_over_3_Scaled_Family_General.tex)**
-- **[Data and Code](Banazadeh_Ternary_4k_pm_1_over_3_Scaled_Family_FINAL.zip)**
+3.267766648366117%
+
+### Cycle $C_7$  
+
+The second cycle is
+
+$$
+C_7=(7,10,14,19,26,35,47).
+$$
+
+Number of starting values reaching $C_7$:
+
+644,881,556
+
+Percentage:
+
+96.732233351633880%
+
+### Unknown Or Unresolved Orbits  
+
+Unknown:
+
+0
+
+The two basin counts sum exactly to the total number of admissible starting values.
+
+### Stopping-Time Statistics  
+
+Total number of steps:
+
+42,759,887,447
+
+Mean number of steps:
+
+64.139831138430083
+
+Maximum stopping time:
+
+385
+
+Starting value producing the maximum stopping time:
+
+696,171,200
+
+### Global Peak  
+
+The largest value reached anywhere during the computation was
+
+134,701,251,885,711,310.
+
+The starting value producing this global peak was
+
+920,435,228.
+
+The global peak occurred at step
+
+115.
+
+### Factors of 3 Removed  
+
+Total number of removed factors of $3$:
+
+21,683,837,513
+
+Maximum number of factors of $3$ removed in a single step:
+
+19.
+
+## Reproducibility  
+
+The computational source code and supporting data are included in the supplementary materials.
+
+The main C program can be compiled with:
+
+`cc -O3 -std=c11 ternary_collatz.c -o ternary_collatz`
+
+and executed with:
+
+`./ternary_collatz`
+
+The supplementary ZIP contains the source code, computational data, and supporting documentation used for the study.
+
+## Publication  
+
+The official publication record for the new article is available on Zenodo:
+
+[10.5281/zenodo.22279137](https://doi.org/10.5281/zenodo.22279137)
+
+The article was published on September 3, 2026.
+
+## License  
+
+The research materials are released under the Creative Commons Attribution 4.0 International License (CC BY 4.0).
+
+The Zenodo records provide the official publication versions and persistent DOIs.
