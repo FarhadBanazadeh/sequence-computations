@@ -98,33 +98,32 @@ Email: [fn.bana@hotmail.com](mailto:fn.bana@hotmail.com)
 The repository contains research articles, LaTeX source files, computational programs, data, and supplementary materials.
 
 ### Article 1
-
-* [PDF — Ternary (4k±1)/3 Collatz-Type Map](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Ternary_4k_pm_1_over_3_Collatz_Map.pdf)
-* [LaTeX Source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Ternary_4k_pm_1_over_3_Collatz_Map.tex)
-* [Data and Code ZIP](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Ternary_4k_pm_1_over_3_Collatz_Map_Data_and_Code.zip)
-* [Zenodo DOI — 10.5281/zenodo.22195651](https://doi.org/10.5281/zenodo.22195651)
+Research Article (PDF)
+LaTeX Source
+Data and Code (ZIP)
+Zenodo — 10.5281/zenodo.22195651
 
 ### Article 2
 
 The related scaled-family work is available through its Zenodo record.
 
-* [Zenodo DOI — 10.5281/zenodo.22195652](https://doi.org/10.5281/zenodo.22195652)
+Zenodo — 10.5281/zenodo.22195652
 
 ### Article 3
-
-* [PDF — Scaled Family](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Banazadeh_Ternary_4k_pm_1_over_3_Scaled_Family.pdf)
-* [LaTeX Source — General Family](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Banazadeh_Ternary_4k_pm_1_over_3_Scaled_Family_General.tex)
-* [Final ZIP — Scaled Family](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Banazadeh_Ternary_4k_pm_1_over_3_Scaled_Family_FINAL.zip)
-* [Zenodo DOI — 10.5281/zenodo.22228200](https://doi.org/10.5281/zenodo.22228200)
+Research Article (PDF)
+LaTeX Source
+Data and Code (ZIP)
+Zenodo — 10.5281/zenodo.22228200
 
 ### Article 4
 
-* [PDF — A Ternary (4k+1(2))/3 Collatz-Type Map](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/A_Ternary_4k1_2_over_3_Collatz_Type_Map.pdf)
-* [LaTeX Source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/A_Ternary_4k1_2_over_3_Collatz_Type_Map.tex)
-* [Supplementary ZIP — Data, Code, and Supporting Materials](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/A_Ternary_4k1_2_over_3_Collatz_Type_Map_Supplementary.zip)
-* [Zenodo DOI — 10.5281/zenodo.22279137](https://doi.org/10.5281/zenodo.22279137)
+The new article is published on Zenodo.
 
-The supplementary ZIP contains the computational source code, data, and supporting documentation.
+Zenodo — 10.5281/zenodo.22279137
+
+The GitHub files for Article 4 can be added after they appear in the repository.
+
+The supplementary materials contain the computational source code, data, and supporting documentation.
 
 ## Mathematical Form of the New Map  
 
