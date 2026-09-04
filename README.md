@@ -32,9 +32,8 @@ This work studies the scaled family associated with the ternary $(4k \pm 1)/3$ m
 
 ### 3. A Ternary $(4k \pm 1)/3$ Collatz-Type Map and Its $(4n \pm 4^r)/3$ Scaled Family
 This work provides a general formulation of the scaled family:
-$$\frac{4n \C_1 = (1, 2)$$
-$$C_7 = (7, 10, 14, 19, 26, 35, 47)$$
-* **Zenodo DOI:** [10.5281/zenodo.22279137](https://doi.org/10.5281/zenodo.22279137)
+$$\frac{4n \pm 4^r}{3} \quad \text{for } r \ge 0$$
+* **Zenodo DOI:** [10.5281/zenodo.22228200](https://doi.org/10.5281/zenodo.22228200)
 
 ### 4. A Ternary $(4k+1(2))/3$ Collatz-Type Map
 An independent study on the compressed ternary map defined on integers not divisible by $3$. For every positive integer $n \not\equiv 0 \pmod 3$, the transformation selects $4n+1$ or $4n+2$ such that the result is divisible by $3$, followed by complete removal of factors of $3$.
