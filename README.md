@@ -12,6 +12,8 @@ Code and research documentation for computing integer sequences, dynamical syste
 - [Stopping-Time & Orbit Statistics](#stopping-time--orbit-statistics)
 - [Reproducibility & Source Code](#reproducibility--source-code)
 - [Author & Contact](#author--contact)
+- [Repository Structure](#repository-structure)
+- [Publication](#publication)
 - [License](#license)
 
 ---
@@ -21,7 +23,31 @@ Code and research documentation for computing integer sequences, dynamical syste
 This repository contains research articles and computational studies on ternary Collatz-type maps, related integer sequences, and their scaled families.
 
 ### 1. A Ternary $(4k \pm 1)/3$ Collatz-Type Map: Computational Verification up to $10^9$
-This article studies the ternary $(4k \pm 1)/3$ Collatz-type map and presents computational verification up to $10^9$.
+This article studies the ternary $(4k \pm 1)/3$ Collatz-type map and presents a computational verification up to $10^9$.
+* **Zenodo DOI:** sequences, dynamical systems, and ternary Collatz-type maps.
+
+---
+
+## Contents
+- [Research Articles](#research-articles)
+- [Research Chain](#research-chain)
+- [Mathematical Formulation of the Map](#mathematical-formulation-of-the-map)
+- [Main Computational Results ($10^9$)](#main-computational-results-109)
+- [Stopping-Time & Orbit Statistics](#stopping-time--orbit-statistics)
+- [Reproducibility & Source Code](#reproducibility--source-code)
+- [Author & Contact](#author--contact)
+- [Repository Structure](#repository-structure)
+- [Publication](#publication)
+- [License](#license)
+
+---
+
+## Research Articles
+
+This repository contains research articles and computational studies on ternary Collatz-type maps, related integer sequences, and their scaled families.
+
+### 1. A Ternary $(4k \pm 1)/3$ Collatz-Type Map: Computational Verification up to $10^9$
+This article studies the ternary $(4k \pm 1)/3$ Collatz-type map and presents a computational verification up to $10^9$.
 * **Zenodo DOI:** [10.5281/zenodo.22195651](https://doi.org/10.5281/zenodo.22195651)
 
 ### 2. Related Scaled-Family Work
@@ -30,18 +56,15 @@ This work studies the scaled family associated with the ternary $(4k \pm 1)/3$ m
 
 ### 3. A Ternary $(4k \pm 1)/3$ Collatz-Type Map and Its $(4n \pm 4^r)/3$ Scaled Family
 This work provides a general formulation of the scaled family:
-$$\frac{4n \pm 4^r}{3} \quad \text{for } r \ge 0$$
-* **Zenodo DOI:** [10.5281/zenodo.22228200](https://doi.org/10.5281/zenodo.22228200)
-
-### 4. A Ternary $(4k+1(2))/3$ Collatz-Type Map
-An independent study on the compressed ternary map defined on integers not divisible by $3$. For every positive integer $n \not\equiv 0 \pmod 3$, the transformation selects $4n+1$ or $4n+2$ such that the result is divisible by $3$, followed by complete removal of factors of $3$.
+$$\frac{4n \C_1 = (1, 2)$$
+$$C_7 = (7, 10, 14, 19, 26, 35, 47)$$
 * **Zenodo DOI:** [10.5281/zenodo.22279137](https://doi.org/10.5281/zenodo.22279137)
 
 ---
 
 ## Research Chain
 
-The research progresses systematically through four connected stages:
+The research develops through several related stages:
 1. The original ternary $(4k \pm 1)/3$ map.
 2. The scaled family associated with powers of $4$.
 3. The general $(4n \pm 4^r)/3$ family for $r \ge 0$.
@@ -51,70 +74,82 @@ The research progresses systematically through four connected stages:
 
 ## Mathematical Formulation of the Map
 
-Let the domain of admissible starting values be:
+The domain of admissible starting values is:
 $$\mathcal{D} = \{ n \in \mathbb{N} : 3 \nmid n \}$$
 
-The intermediate generator $G(n)$ is defined as:
-* For $n = 3k + 1$: $G(3k+1) = 4k + 2$
-* For $n = 3k + 2$: $G(3k+2) = 4k + 3$
+For $n = 3k + 1$, the transformation before removing factors of $3$ is:
+$$G(3k + 1) = 4k + 2$$
+
+For $n = 3k + 2$, the transformation is:
+$$G(3k + 2) = 4k + 3$$
 
 Equivalently:
 $$G(n) = \left\lfloor \frac{4n + 2}{3} \right\rfloor$$
 
-Let $v_3(m) = \max \{ k \ge 0 : 3^k \mid m \}$ denote the standard $3$-adic valuation. The fully compressed Collatz-type map $T: \mathcal{D} \to \mathcal{D}$ is defined by:
+Let the $3$-adic valuation be defined as:
+$$v_3(m) = \max \{ k \ge 0 : 3^k \mid m \}$$
+
+The compressed map is therefore:
 $$T(n) = \frac{G(n)}{3^{v_3(G(n))}}$$
+
+The computation uses the compressed ternary domain, with the eliminated state $3$ identified with $1$.
 
 ---
 
 ## Main Computational Results ($10^9$)
 
-Exhaustive verification was conducted for all admissible starting values $n \le 10^9$ ($3 \nmid n$), representing exactly **$666,666,667$** integers.
+The computation was performed for every admissible starting value satisfying:
+$$1 \le n \le 10^9, \quad 3 \nmid n$$
 
-Every tested starting value enters one of two distinct non-trivial limit cycles:
-* **Cycle $C_1$ (Length 2):** $(1, 2)$
-* **Cycle $C_7$ (Length 7):** $(7, 10, 14, 19, 26, 35, 47)$
+The number of admissible starting values is exactly **$666{,}666{,}667$**.
 
-### Basin Partition
+Every tested starting value reached one of the two observed cycles:
+
+### Cycle $C_1$
+* **Elements:** $C_1 = (1, 2)$
+* **Basin Count:** $21{,}785{,}111$
+* **Percentage:** $3.267766648366117\%$
+
+### Cycle $C_7$
+* **Elements:** $C_7 = (7, 10, 14, 19, 26, 35, 47)$
+* **Basin Count:** $644{,}881{,}556$
+* **Percentage:** $96.732233351633880\%$
+
+### Basin Summary Table
 | Attractor / Cycle | Basin Count | Percentage |
 | :--- | :--- | :--- |
-| **Cycle $C_1 = (1, 2)$** | $21,785,111$ | $3.26776665\%$ |
-| **Cycle $C_7 = (7, 10, 14, 19, 26, 35, 47)$** | $644,881,556$ | $96.73223335\%$ |
-| **Divergent / Unresolved Orbits** | $0$ | $0.00000000\%$ |
-| **Total Verified** | **$666,666,667$** | **$100.00000000\%$** |
+| **Cycle $C_1 = (1, 2)$** | $21{,}785{,}111$ | $3.26776665\%$ |
+| **Cycle $C_7 = (7, 10, 14, 19, 26, 35, 47)$** | $644{,}881{,}556$ | $96.73223335\%$ |
+| **Unknown / Unresolved Orbits** | $0$ | $0.00000000\%$ |
+| **Total Verified** | **$666{,}666{,}667$** | **$100.00000000\%$** |
+
+The two basin counts sum exactly to the total number of admissible starting values.
 
 ---
 
 ## Stopping-Time & Orbit Statistics
 
-* **Total Steps Computed:** $42,759,887,447$
-* **Mean Stopping Time:** $\approx 64.1398$ steps
-* **Maximum Stopping Time:** $385$ steps (produced by $n = 696,171,200$)
+* **Total Number of Steps:** $42{,}759{,}887{,}447$
+* **Mean Number of Steps:** $\approx 64.139831138430083$
+* **Maximum Stopping Time:** $385$ steps
+* **Starting Value Producing Maximum Stopping Time:** $n = 696{,}171{,}200$
 * **Global Maximum Trajectory Value (Peak):**  
-  $$134,701,251,885,711,310$$  
-  *(produced by starting value $n = 920,435,228$)*
-* **Total Factors of $3$ Removed:** $21,683,837,513$
+  $$134{,}701{,}251{,}885{,}711{,}310$$  
+  *(produced by starting value $n = 920{,}435{,}228$)*
+* **Total Factors of $3$ Removed:** $21{,}683{,}837{,}513$
 
 ---
 
 ## Reproducibility & Source Code
 
-The computational verification was carried out using standard optimized C routines.
+The computational source code and supporting data are included in the supplementary materials.
 
-### Compilation:
+The main C program can be compiled with:
 ```bash
 cc -O3 -std=c11 ternary_collatz.c -o ternary_collatz
 
 
-## Publication  
-
-The official publication record for the new article is available on Zenodo:
-
-[10.5281/zenodo.22279137](https://doi.org/10.5281/zenodo.22279137)
-
-The article was published on September 3, 2026.
-
-## License  
-
+## License
 The research materials are released under the Creative Commons Attribution 4.0 International License (CC BY 4.0).
 
 The Zenodo records provide the official publication versions and persistent DOIs.
