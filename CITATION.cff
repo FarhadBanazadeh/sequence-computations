@@ -1,0 +1,14 @@
+yaml
+
+note_add
+ویرایش با Canvas
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: "Banazadeh"
+    given-names: "Farhad"
+    orcid: "https://orcid.org/0009-0008-8373-1994"  # شناسه ارکید شما
+title: "sequence-computations"
+version: 1.0.0
+date-released: 2026-09-04
+url: "https://github.com/FarhadBanazadeh/sequence-computations"
