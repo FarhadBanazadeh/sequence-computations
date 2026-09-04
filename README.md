@@ -118,13 +118,17 @@ The two basin counts sum exactly to the total number of admissible starting valu
 
 ---
 
-## Reproducibility & Source Code
+## 📂 Repository Contents
 
-The computational source code and supporting data are included in the supplementary materials.
+This repository provides a complete bundle of research artifacts, source codes, datasets, and documentations:
 
-The main C program can be compiled with:
-```bash
-cc -O3 -std=c11 ternary_collatz.c -o ternary_collatz
+| Category | File Types | Description |
+| :--- | :--- | :--- |
+| **Code & Algorithms** | `.py` | Python scripts for sequence computation and verification |
+| **Datasets & Outputs** | `.json`, `.zip` | Raw sequence datasets and computational search outputs |
+| **Manuscripts & Papers** | `.pdf` | Full-text preprint and compiled research papers |
+| **Source Documents** | `.tex` | LaTeX source files for mathematical formulations |
+| **Archival Data** | `.zip` | Compressed artifacts and release bundles |
 
 
 ## License
