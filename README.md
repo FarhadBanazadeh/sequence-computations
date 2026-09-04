@@ -24,30 +24,6 @@ This repository contains research articles and computational studies on ternary 
 
 ### 1. A Ternary $(4k \pm 1)/3$ Collatz-Type Map: Computational Verification up to $10^9$
 This article studies the ternary $(4k \pm 1)/3$ Collatz-type map and presents a computational verification up to $10^9$.
-* **Zenodo DOI:** sequences, dynamical systems, and ternary Collatz-type maps.
-
----
-
-## Contents
-- [Research Articles](#research-articles)
-- [Research Chain](#research-chain)
-- [Mathematical Formulation of the Map](#mathematical-formulation-of-the-map)
-- [Main Computational Results ($10^9$)](#main-computational-results-109)
-- [Stopping-Time & Orbit Statistics](#stopping-time--orbit-statistics)
-- [Reproducibility & Source Code](#reproducibility--source-code)
-- [Author & Contact](#author--contact)
-- [Repository Structure](#repository-structure)
-- [Publication](#publication)
-- [License](#license)
-
----
-
-## Research Articles
-
-This repository contains research articles and computational studies on ternary Collatz-type maps, related integer sequences, and their scaled families.
-
-### 1. A Ternary $(4k \pm 1)/3$ Collatz-Type Map: Computational Verification up to $10^9$
-This article studies the ternary $(4k \pm 1)/3$ Collatz-type map and presents a computational verification up to $10^9$.
 * **Zenodo DOI:** [10.5281/zenodo.22195651](https://doi.org/10.5281/zenodo.22195651)
 
 ### 2. Related Scaled-Family Work
@@ -60,6 +36,9 @@ $$\frac{4n \C_1 = (1, 2)$$
 $$C_7 = (7, 10, 14, 19, 26, 35, 47)$$
 * **Zenodo DOI:** [10.5281/zenodo.22279137](https://doi.org/10.5281/zenodo.22279137)
 
+### 4. A Ternary $(4k+1(2))/3$ Collatz-Type Map
+An independent study on the compressed ternary map defined on integers not divisible by $3$. For every positive integer $n \not\equiv 0 \pmod 3$, the transformation selects $4n+1$ or $4n+2$ such that the result is divisible by $3$, followed by complete removal of factors of $3$.
+* **Zenodo DOI:** [10.5281/zenodo.22279137](https://doi.org/10.5281/zenodo.22279137)
 ---
 
 ## Research Chain
