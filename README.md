@@ -38,6 +38,12 @@ $$\frac{4n \pm 4^r}{3} \quad \text{for } r \ge 0$$
 ### 4. A Ternary $(4k+1(2))/3$ Collatz-Type Map
 An independent study on the compressed ternary map defined on integers not divisible by $3$. For every positive integer $n \not\equiv 0 \pmod 3$, the transformation selects $4n+1$ or $4n+2$ such that the result is divisible by $3$, followed by complete removal of factors of $3$.
 * **Zenodo DOI:** [10.5281/zenodo.22279137](https://doi.org/10.5281/zenodo.22279137)
+
+###  5. A Ternary ((4k+1)/2)/3 Collatz-Type Map and Its 4^r-Scaled Family
+This work provides the scaled family of the ternary `((4k+1)/2)/3` map: for `r ≥ 0,` the map `T_r` acts on `4^r y,` scaling the transformation. Includes an exact conjugacy verification (`verify_conjugacy.py`) über `r = 0..7,` `y ≤ 1000,` and computational consistency up to `N =  ⁹.
+
+- **Zenodo DOI:**  [10.5281/zenodo.22639385](https://doi.org/10.5281/zenodo.22639385)
+- **GitHub Release:** [v1.2.0](https://github.com/FarhadBanazadeh/sequence-computations/releases/tag/v1.2.0)
 ---
 
 ## Research Chain
@@ -47,6 +53,7 @@ The research develops through several related stages:
 2. The scaled family associated with powers of $4$.
 3. The general $(4n \pm 4^r)/3$ family for $r \ge 0$.
 4. The independent ternary $(4k+1(2))/3$ dynamical map.
+5. The scaled family of the compressed `((4k+1)/2)/3` map for powers of `4` (`4^r`), with conjugacy verification`r`.
 
 ---
 
