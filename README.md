@@ -43,7 +43,7 @@ An independent study on the compressed ternary map defined on integers not divis
 This work provides the scaled family of the ternary `((4k+1)/2)/3` map: for `r ≥ 0,` the map `T_r` acts on `4^r y,` scaling the transformation. Includes an exact conjugacy verification (`verify_conjugacy.py`) über `r = 0..7,` `y ≤ 1000,` and computational consistency up to `N =  ⁹.
 
 - **Zenodo DOI:**  [10.5281/zenodo.22639385](https://doi.org/10.5281/zenodo.22639385)
-- **GitHub Release:** [v1.2.0](https://github.com/FarhadBanazadeh/sequence-computations/releases/tag/v1.2.0)
+
 ---
 
 ## Research Chain
