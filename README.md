@@ -44,7 +44,39 @@ This work provides the scaled family of the ternary `((4k+1)/2)/3` map: for `r �
 
 - **Zenodo DOI:**  [10.5281/zenodo.22639385](https://doi.org/10.5281/zenodo.22639385)
 
----
+### ### 6. A Ternary `(4k−1(2))/3` Collatz-Type Map: Complete 3-Adic Reduction, Algebraic Cycle Analysis, and Exhaustive Computational Verification up to `10^9`
+
+This work studies the accelerated ternary Collatz-type map on positive integers not divisible by `3`, defined by
+
+\[
+M(x)=4x-r(x), \qquad r(x)=x \bmod 3 \in \{1,2\},
+\]
+
+followed by complete removal of all factors of `3`:
+
+\[
+T(x)=\frac{4x-r(x)}{3^{\nu_3(4x-r(x))}}.
+\]
+
+The paper develops the complete 3-adic reduction, exact inverse branches, algebraic cycle equations, and a finite exhaustive computational verification for every admissible starting value
+
+\[
+1 \le x \le 10^9, \qquad 3\nmid x.
+\]
+
+A total of **666,666,667** admissible starting values were tested. Every tested orbit entered one of the following three positive attractors:
+
+- Fixed point `1`
+- Fixed point `2`
+- Four-cycle `22 → 29 → 38 → 50 → 22`
+
+The exhaustive computation found no unresolved or overflowing trajectory in the tested range.
+
+This finite verification provides strong computational evidence for the positive three-attractor convergence conjecture, but it is **not a proof of global convergence for all positive integers**.
+
+- **Zenodo DOI:** [10.5281/zenodo.22662980](https://doi.org/10.5281/zenodo.22662980)
+- **Author:** Farhad Banazadeh
+- **ORCID:** 0009-0004-7023-0298---
 
 ## Research Chain
 
@@ -54,7 +86,7 @@ The research develops through several related stages:
 3. The general $(4n \pm 4^r)/3$ family for $r \ge 0$.
 4. The independent ternary $(4k+1(2))/3$ dynamical map.
 5. The scaled family of the compressed `((4k+1)/2)/3` map for powers of `4` (`4^r`), with conjugacy verification`r`.
-
+6. 6. Complete 3-adic and algebraic analysis of the ternary `(4k−1(2))/3` map, together with exhaustive computational verification through `10^9` and identification of the three observed positive attractors.
 ---
 
 ## Mathematical Formulation of the Map
