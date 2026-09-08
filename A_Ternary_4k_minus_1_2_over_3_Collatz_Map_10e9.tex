@@ -1,0 +1,566 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs,array,longtable}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage{siunitx}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{caption}
+\setlength{\parindent}{1.2em}
+\setlength{\parskip}{0.25em}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{A Ternary $(4k-1(2))/3$ Collatz-Type Map}
+\rhead{\thepage}
+\newcommand{\vthree}{\nu_3}
+\newcommand{\Sset}{\mathcal S}
+\newcommand{\Tmap}{T}
+\newcommand{\Mmap}{M}
+\newcommand{\R}{r}
+
+\title{\textbf{A Ternary $(4k-1(2))/3$ Collatz-Type Map}\\[4pt]
+\large Complete 3-Adic Reduction, Algebraic Cycle Analysis, and Exhaustive Computational Verification up to $10^9$}
+\author{\textbf{Farhad Banazadeh}\\
+\href{mailto:fn.bana@hotmail.com}{fn.bana@hotmail.com}\\
+\href{https://orcid.org/0009-0004-7023-0298}{ORCID: 0009-0004-7023-0298}}
+\date{8 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We study a ternary Collatz-type dynamical system on the positive integers not divisible by $3$.  In the compact notation of the title, $(4k-1(2))/3$ means that the affine numerator subtracts $1$ or $2$ according to the residue class of the current state modulo $3$; the actual accelerated map removes \emph{all} factors of $3$ at each step.  More precisely, for
+\[
+\Sset=\{x\in\mathbb Z_{>0}:3\nmid x\},\qquad r(x)=x\bmod 3\in\{1,2\},
+\]
+we define
+\[
+\Mmap(x)=4x-r(x),\qquad
+\Tmap(x)=\frac{\Mmap(x)}{3^{\vthree(\Mmap(x))}}.
+\]
+The map has the fixed points $1$ and $2$ and the positive four-cycle
+$22\to29\to38\to50\to22$.  We derive exact residue branches and inverse branches, obtain a closed Diophantine equation for a general cycle, and show how the known positive and negative cycles are reconstructed algebraically.  The four-cycle is governed by the near equality $4^4=256$ and $3^5=243$, giving the small cycle denominator $4^4-3^5=13$.
+
+A geometric valuation heuristic gives
+$\Pr(\vthree=k)=2/3^k$ for $k\ge1$, hence
+$\mathbb E[\vthree]=3/2$ and the average logarithmic drift
+$\log 4-\frac32\log 3\approx-0.261624$, with geometric factor about $0.7698$.  This is a probabilistic explanation for typical contraction, not a proof of global convergence.
+
+Finally, we exhaustively compute every admissible start $1\le x\le10^9$.  Exactly $666,666,667$ starts are tested, with zero reported overflow and no additional positive attractor.  The fixed point $1$ attracts $66,019,616$ starts ($9.902942\%$), the fixed point $2$ attracts $432,100,455$ ($64.815068\%$), and the four-cycle attracts $168,546,596$ ($25.281989\%$).  The longest transient contains $405$ reduced-map iterations, starting from $833,560,375$; the largest accumulated number of divisions by $3$ before cycle entry is $529$, attained from the same start.  The largest fully reduced state observed is $164,210,561,845,359,809$, reached by a trajectory beginning at $664,934,564$.  The result is an exhaustive finite verification through $10^9$, not a theorem for all positive integers.
+\end{abstract}
+
+\noindent\textbf{Keywords:} Collatz-type map; ternary dynamics; 3-adic valuation; accelerated iteration; Diophantine cycles; exhaustive computation.
+
+\section{Introduction}
+The classical Collatz problem is one of the simplest-looking and most persistent open problems in discrete mathematics.  Its difficulty comes from the interaction between an affine growth rule and residue-dependent division.  Generalized Collatz systems replace parity by other moduli, use different affine coefficients, or compress several divisions into a single dynamical step.  In these systems, arithmetic residue classes can determine both the typical drift and the possible periodic structures.
+
+The present map is a ternary accelerated system.  Every state is a positive integer not divisible by $3$.  The state is multiplied by $4$, its residue modulo $3$ is subtracted so that the result becomes divisible by $3$, and then every available factor of $3$ is removed.  The complete removal of powers of $3$ is the key structural feature: unlike an unaccelerated map that divides by only one factor of $3$, one reduced iteration may remove several factors at once.
+
+This distinction also creates several natural computational statistics.  A trajectory has a number of reduced-map iterations, a total number of individual divisions by $3$, and several possible notions of peak: the maximum fully reduced state, the maximum value after only the compulsory first division by $3$, and the maximum raw affine value $\Mmap(x)$.  These quantities should not be conflated.
+
+The paper has four main aims.  First, we formulate the map and its two residue branches precisely.  Second, we analyze the valuation distribution and the associated logarithmic contraction heuristic.  Third, we derive the exact cycle equation and reconstruct the known cycles algebraically.  Fourth, we extend the exhaustive positive-domain computation from $10^6$ to $10^9$ and report the resulting basin counts and record trajectories.
+
+\section{Definition of the domain and map}
+Let
+\begin{equation}
+\Sset=\{x\in\mathbb Z_{>0}:x\not\equiv0\pmod3\}.
+\end{equation}
+Every $x\in\Sset$ has exactly one residue
+\[
+r(x)\in\{1,2\},\qquad r(x)\equiv x\pmod3.
+\]
+Define the affine pre-reduction map
+\begin{equation}
+\Mmap(x)=4x-r(x)=
+\begin{cases}
+4x-1,&x\equiv1\pmod3,\\
+4x-2,&x\equiv2\pmod3.
+\end{cases}
+\label{eq:M}
+\end{equation}
+Since $4\equiv1\pmod3$, we have $4x-r(x)\equiv0\pmod3$.  Therefore $\Mmap(x)$ always contains at least one factor of $3$.
+
+For $n\ne0$, let
+\[
+\vthree(n)=\max\{j\ge0:3^j\mid n\}
+\]
+be the $3$-adic valuation.  The accelerated map is
+\begin{equation}
+\boxed{
+\Tmap(x)=\frac{4x-r(x)}{3^{\vthree(4x-r(x))}}
+}
+\label{eq:T}
+\end{equation}
+and is well-defined from $\Sset$ to itself.
+
+\subsection{The title notation $(4k-1(2))/3$}
+The compact notation in the title records the two ternary affine branches: subtract $1$ when the state is $1\pmod3$ and subtract $2$ when it is $2\pmod3$.  Equation~\eqref{eq:T} is the precise definition used throughout the mathematics and computation.  The denominator $3$ in the compact title emphasizes the compulsory ternary division, while the actual reduced map divides by the full power $3^{\vthree}$.
+
+\section{Algebra of the two residue branches}
+The branch structure becomes especially transparent after writing the state in residue form.
+
+If $x=3q+1$, then
+\begin{equation}
+\Mmap(x)=4(3q+1)-1=12q+3=3(4q+1),
+\end{equation}
+so
+\begin{equation}
+\Tmap(3q+1)=\frac{4q+1}{3^{\vthree(4q+1)}}.
+\label{eq:branch1}
+\end{equation}
+Likewise, if $x=3q+2$, then
+\begin{equation}
+\Mmap(x)=4(3q+2)-2=12q+6=3(4q+2),
+\end{equation}
+and therefore
+\begin{equation}
+\Tmap(3q+2)=\frac{4q+2}{3^{\vthree(4q+2)}}.
+\label{eq:branch2}
+\end{equation}
+Equations~\eqref{eq:branch1}--\eqref{eq:branch2} show explicitly that one factor of $3$ is compulsory in the affine form, while any additional factors depend on the smaller branch quantities $4q+1$ and $4q+2$.
+
+\subsection{Exact inverse branches}
+The one-step relation can be written
+\begin{equation}
+3^k y=4x-r,
+\qquad r\in\{1,2\},\quad k\ge1,
+\label{eq:onestep}
+\end{equation}
+where $y=\Tmap(x)$.  Hence every possible predecessor associated with a prescribed residue $r$ and valuation $k$ has the form
+\begin{equation}
+x=\frac{3^k y+r}{4}.
+\label{eq:inverse}
+\end{equation}
+Such a predecessor exists exactly when the numerator is divisible by $4$ and its valuation is exactly compatible with the chosen $k$.  Because $4\equiv1\pmod3$, a valid integer in \eqref{eq:inverse} automatically has residue $r$ modulo $3$.  This inverse-branch representation is useful both for cycle algebra and for constructing the preimage tree of an attractor.
+
+\section{Step-by-step numerical examples}
+The smallest states already reveal all three positive attractors.
+
+For $x=1$,
+\[
+\Mmap(1)=4-1=3,\qquad \vthree(3)=1,\qquad \Tmap(1)=1,
+\]
+so $1$ is a fixed point.  For $x=2$,
+\[
+\Mmap(2)=8-2=6,\qquad \vthree(6)=1,\qquad \Tmap(2)=2,
+\]
+so $2$ is also a fixed point.
+
+For $x=4$,
+\[
+\Mmap(4)=16-1=15=3\cdot5,
+\qquad \Tmap(4)=5.
+\]
+For $x=5$,
+\[
+\Mmap(5)=20-2=18=3^2\cdot2,
+\qquad \Tmap(5)=2,
+\]
+so $4\to5\to2$.  For $x=7$,
+\[
+\Mmap(7)=28-1=27=3^3,
+\qquad \Tmap(7)=1,
+\]
+showing how a high valuation can produce a sharp fall in a single reduced step.
+
+The nontrivial positive cycle is
+\begin{equation}
+22\longrightarrow29\longrightarrow38\longrightarrow50\longrightarrow22.
+\label{eq:fourcycle}
+\end{equation}
+Indeed,
+\[
+\begin{aligned}
+4(22)-1&=87=3\cdot29,\\
+4(29)-2&=114=3\cdot38,\\
+4(38)-2&=150=3\cdot50,\\
+4(50)-2&=198=3^2\cdot22.
+\end{aligned}
+\]
+Thus three steps remove one factor of $3$, while the final step removes two.  The valuation vector is $(1,1,1,2)$ and its sum is $K=5$.
+
+\section{The 3-adic valuation heuristic}
+The large-scale behavior is strongly influenced by the number of powers of $3$ removed in each reduced iteration.  Suppose, heuristically, that after the compulsory divisibility by $3$, the remaining residue information is distributed uniformly modulo higher powers of $3$.  Then for $k\ge1$,
+\begin{equation}
+\Pr\bigl(\vthree(\Mmap(x))=k\bigr)
+=\left(\frac13\right)^{k-1}\left(1-\frac13\right)
+=\frac{2}{3^k}.
+\label{eq:geom}
+\end{equation}
+This is a geometric distribution on $\{1,2,3,\ldots\}$.
+
+\subsection{Expected valuation}
+From \eqref{eq:geom},
+\begin{equation}
+\mathbb E[\vthree]
+=\sum_{k=1}^{\infty} k\frac{2}{3^k}
+=\frac32.
+\label{eq:meanv}
+\end{equation}
+Thus the heuristic average denominator in multiplicative scale is $3^{3/2}=3\sqrt3\approx5.196$, while the numerator has leading coefficient $4$.
+
+\subsection{Average logarithmic drift}
+For large $x$, the subtraction of $r(x)\in\{1,2\}$ is lower order, so
+\[
+\log\frac{\Tmap(x)}{x}
+\approx \log4-\vthree\log3.
+\]
+Taking the heuristic expectation gives
+\begin{equation}
+\Delta_{\mathrm{heur}}
+=\log4-\frac32\log3
+\approx-0.261624.
+\label{eq:drift}
+\end{equation}
+The associated geometric factor is
+\begin{equation}
+\lambda_{\mathrm{heur}}
+=e^{\Delta_{\mathrm{heur}}}
+=\frac{4}{3^{3/2}}
+=\frac{4}{3\sqrt3}
+\approx0.769800.
+\label{eq:lambda}
+\end{equation}
+In this model a typical logarithmic step contracts the scale by about $23\%$.
+
+\subsection{What the heuristic does not prove}
+The negative drift gives a useful statistical explanation for the computational behavior, but it is not a proof that every deterministic orbit converges.  Successive valuations along a fixed orbit need not behave as independent samples from \eqref{eq:geom}, and a negative mean drift does not by itself exclude exceptional unbounded trajectories.  The exhaustive results below are therefore stated only for the finite domain actually tested.
+
+\section{Algebraic cycle equation}
+This section gives the exact arithmetic structure behind every periodic orbit of the map.
+
+Suppose a cycle has length $L$ and states
+\[
+x_0,x_1,\ldots,x_{L-1},\qquad x_L=x_0.
+\]
+At step $i$, define
+\[
+r_i=x_i\bmod3\in\{1,2\},
+\qquad
+k_i=\vthree(4x_i-r_i)\ge1.
+\]
+Then
+\begin{equation}
+3^{k_i}x_{i+1}=4x_i-r_i.
+\label{eq:cycle-step}
+\end{equation}
+Let
+\begin{equation}
+K=\sum_{i=0}^{L-1}k_i.
+\end{equation}
+Repeated substitution of \eqref{eq:cycle-step} around the entire loop gives
+\begin{equation}
+\boxed{
+ x_0=
+ \frac{\displaystyle
+ \sum_{j=0}^{L-1} r_j4^{L-1-j}
+ 3^{\sum_{m=0}^{j-1}k_m}}
+ {4^L-3^K}
+ }
+\label{eq:closedcycle}
+\end{equation}
+with the empty exponent sum interpreted as $0$.
+
+Equation~\eqref{eq:closedcycle} gives a necessary exact divisibility condition: for a prescribed residue/valuation word, $4^L-3^K$ must divide the numerator, and the resulting integer states must reproduce the assumed residues and valuations.
+
+\subsection{Sign condition and the critical ratio}
+The numerator of \eqref{eq:closedcycle} is positive.  Hence a positive cycle requires
+\begin{equation}
+4^L-3^K>0
+\quad\Longleftrightarrow\quad
+\frac KL<\frac{\log4}{\log3}
+\approx1.261860.
+\label{eq:positivecondition}
+\end{equation}
+A negative cycle instead requires
+\begin{equation}
+4^L-3^K<0
+\quad\Longleftrightarrow\quad
+\frac KL>\frac{\log4}{\log3}.
+\label{eq:negativecondition}
+\end{equation}
+Thus the rational approximation of $\log4/\log3$ by $K/L$ is built directly into the existence problem for cycles.
+
+\section{Algebraic reconstruction of the known cycles}
+\subsection{The fixed points}
+For a one-cycle, $L=1$ and $K=1$.  With $r_0=1$,
+\[
+x_0=\frac{1}{4-3}=1.
+\]
+With $r_0=2$,
+\[
+x_0=\frac{2}{4-3}=2.
+\]
+Thus the two positive fixed points arise immediately from the cycle equation.
+
+\subsection{The positive four-cycle}
+For \eqref{eq:fourcycle},
+\[
+L=4,\qquad
+(r_0,r_1,r_2,r_3)=(1,2,2,2),
+\qquad
+(k_0,k_1,k_2,k_3)=(1,1,1,2),
+\]
+so $K=5$.  The denominator is
+\begin{equation}
+4^4-3^5=256-243=13.
+\end{equation}
+The numerator is
+\[
+1\cdot4^3
++2\cdot4^2\cdot3
++2\cdot4\cdot3^2
++2\cdot3^3
+=64+96+72+54=286.
+\]
+Hence
+\begin{equation}
+x_0=\frac{286}{13}=22,
+\end{equation}
+and direct iteration reconstructs
+$22\to29\to38\to50\to22$.
+
+The structural point is the unusually small denominator produced by
+\begin{equation}
+4^4=256\approx243=3^5.
+\end{equation}
+Equivalently, $K/L=5/4=1.25$ is close to the critical ratio $\log4/\log3\approx1.26186$.  This Diophantine near-balance makes the four-cycle arithmetically possible.
+
+\subsection{Negative cycles as an algebraic extension}
+Although the exhaustive $10^9$ audit in this paper concerns positive starting values, the same cycle equation also reconstructs the negative cycles noted in the earlier analysis.
+
+For the two-cycle $-1\to-2\to-1$, starting at $-1$ gives
+\[
+(r_0,r_1)=(2,1),\qquad(k_0,k_1)=(1,2),
+\qquad L=2,\ K=3.
+\]
+Then
+\[
+4^2-3^3=16-27=-11,
+\qquad
+2\cdot4+1\cdot3=11,
+\]
+and therefore $x_0=11/(-11)=-1$.
+
+For the seven-cycle
+\begin{equation}
+-7\to-10\to-14\to-19\to-26\to-35\to-47\to-7,
+\end{equation}
+we have
+\[
+L=7,\quad K=9,
+\]
+with residue vector $(2,2,1,2,1,1,1)$ and valuation vector $(1,1,1,1,1,1,3)$.  The denominator is
+\[
+4^7-3^9=16384-19683=-3299,
+\]
+while the numerator in \eqref{eq:closedcycle} is $23093$.  Thus
+\[
+x_0=\frac{23093}{-3299}=-7,
+\]
+which reconstructs the full seven-cycle exactly.  These negative examples emphasize that the sign of $4^L-3^K$ cleanly separates the arithmetic regimes of positive and negative cycles.
+
+\section{Computational methodology}
+The positive exhaustive computation tests every
+\[
+1\le x\le10^9,\qquad3\nmid x.
+\]
+The exact number of admissible starts is
+\begin{equation}
+10^9-\left\lfloor\frac{10^9}{3}\right\rfloor
+=666,666,667.
+\end{equation}
+
+The scanner is implemented in C.  Each admissible start is iterated under the exact accelerated map \eqref{eq:T}.  Orbit states are tracked until a repeated state identifies a terminal cycle.  The implementation records cycle classification, reduced-map transient length, the accumulated valuation $\sum k_i$, and multiple peak conventions.  The affine operation is checked with a wider intermediate integer type before storage in 64-bit unsigned integers; the completed billion-scale run reported zero overflow cases.
+
+For resilience, the interval was split into raw-integer chunks of $10,000,000$.  A checkpoint/resume shell wrapper commits each finished chunk independently, and a separate merger combines the 100 chunk summaries into a deterministic global result.  The billion-scale run used two worker threads.  The same code was first validated through $10^6$, both directly and in checkpointed chunks, and the merged result exactly reproduced the direct computation.
+
+\section{Validation through $10^6$}
+There are $666,667$ admissible positive starts through $10^6$.  The validated basin counts are
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Attractor & Count & Percentage\\
+\midrule
+$\{1\}$ & 66,382 & 9.957295\%\\
+$\{2\}$ & 431,888 & 64.783168\%\\
+$22\to29\to38\to50\to22$ & 168,397 & 25.259537\%\\
+\bottomrule
+\end{tabular}
+\end{center}
+The three counts sum exactly to $666,667$.
+
+The $10^6$ validation also clarifies the meaning of ``steps.''  The start $969,812$ takes $249$ iterations of the reduced map before entering its terminal cycle, but the sum of the removed $3$-adic exponents before cycle entry is $326$.  Therefore the previously reported value $326$ is a count of individual divisions by $3$, not a count of accelerated iterations.  The largest fully reduced state through $10^6$ is $68,682,968,834$, first attained from $491,732$.  The corresponding peak after only the compulsory first division can reach $91,577,291,778$ along a trajectory sharing the same later orbit structure.
+
+\section{Exhaustive verification through $10^9$}
+The merged billion-scale computation gives
+\begin{equation}
+\boxed{\text{tested}=666,666,667,\qquad\text{overflowed}=0.}
+\end{equation}
+No terminal cycle other than the two fixed points and the four-cycle was found.
+
+\begin{table}[ht]
+\centering
+\caption{Complete attractor classification for all $1\le x\le10^9$ with $3\nmid x$.}
+\label{tab:1e9}
+\begin{tabular}{lrr}
+\toprule
+Attractor & Number of starts & Percentage\\
+\midrule
+$\{1\}$ & 66,019,616 & 9.902942\%\\
+$\{2\}$ & 432,100,455 & 64.815068\%\\
+$22\to29\to38\to50\to22$ & 168,546,596 & 25.281989\%\\
+\midrule
+Total & 666,666,667 & 100.000000\%\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The count identity
+\[
+66,019,616+432,100,455+168,546,596=666,666,667
+\]
+provides an immediate consistency check: every admissible start is accounted for by exactly one observed attractor.
+
+\subsection{Record transient and valuation statistics}
+The longest reduced-map transient is
+\begin{equation}
+\boxed{405\text{ iterations from }x_0=833,560,375.}
+\end{equation}
+For the same start, the accumulated number of removed factors of $3$ before cycle entry is
+\begin{equation}
+\boxed{529.}
+\end{equation}
+This again demonstrates that accelerated iterations and individual divisions by $3$ are distinct statistics.
+
+\subsection{Record peak}
+The largest fully reduced state observed in the billion-scale computation is
+\begin{equation}
+\boxed{164,210,561,845,359,809,}
+\end{equation}
+reached by a trajectory starting from
+\begin{equation}
+\boxed{x_0=664,934,564.}
+\end{equation}
+Along that orbit, the same record transition corresponds to a raw affine value
+\[
+656,842,247,381,439,234
+\]
+and, after the compulsory first division by $3$ but before any further $3$-adic reduction, to
+\[
+218,947,415,793,813,078.
+\]
+These three values illustrate why the peak convention must be stated explicitly.
+
+\section{Comparison of the $10^6$ and $10^9$ experiments}
+\begin{table}[ht]
+\centering
+\caption{Stability of positive basin proportions as the tested domain grows by a factor of $1000$.}
+\label{tab:compare}
+\begin{tabular}{lrrrr}
+\toprule
+& \multicolumn{2}{c}{$x\le10^6$} & \multicolumn{2}{c}{$x\le10^9$}\\
+Attractor & Count & \% & Count & \%\\
+\midrule
+$\{1\}$ & 66,382 & 9.957295 & 66,019,616 & 9.902942\\
+$\{2\}$ & 431,888 & 64.783168 & 432,100,455 & 64.815068\\
+Four-cycle & 168,397 & 25.259537 & 168,546,596 & 25.281989\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The proportions move only slightly between the two ranges.  The fixed point $2$ remains the dominant positive attractor, the four-cycle remains near one quarter of the admissible starts, and the fixed point $1$ remains near one tenth.  This numerical stability suggests the possibility of limiting basin densities, but the experiment does not prove that such limits exist or determine exact limiting values.
+
+At the same time, the extremal orbit statistics change dramatically.  The reduced-iteration record rises from $249$ to $405$, the accumulated-valuation record from $326$ to $529$, and the maximum reduced peak from about $6.87\times10^{10}$ to about $1.64\times10^{17}$.  Thus stable aggregate basin proportions coexist with increasingly extreme individual excursions.
+
+\section{Interpretation of the cycle structure}
+Three mechanisms interact in the dynamics.
+
+First, the valuation distribution favors contraction on the logarithmic average scale.  Second, the exact cycle equation imposes a strong divisibility constraint on every periodic residue/valuation word.  Third, the balance between $4^L$ and $3^K$ controls the size and sign of the cycle denominator.  The positive four-cycle is a particularly transparent example because $4^4-3^5=13$ is unusually small.
+
+This suggests a useful search principle for periodic orbits: rational approximations $K/L$ near $\log4/\log3$ produce small values of $|4^L-3^K|$ and hence arithmetically favorable candidates, but a candidate still has to satisfy the exact numerator divisibility and reproduce its residue and valuation pattern.  The near equality alone is therefore not sufficient for a cycle.
+
+\section{Finite theorem and global conjecture}
+The computation establishes the following finite statement.
+
+\medskip
+\noindent\textbf{Finite computational statement.}
+For every $x\in\Sset$ with $1\le x\le10^9$, the implemented exact iteration of \eqref{eq:T} reaches one of
+\[
+\{1\},\qquad\{2\},\qquad
+22\to29\to38\to50\to22,
+\]
+and no arithmetic overflow or additional terminal cycle is encountered.
+\medskip
+
+The numerical evidence motivates the following conjecture.
+
+\medskip
+\noindent\textbf{Conjecture (positive three-attractor convergence).}
+Every positive integer not divisible by $3$, under the map \eqref{eq:T}, eventually enters one of the two fixed points $1,2$ or the four-cycle $22\to29\to38\to50\to22$.
+\medskip
+
+The exhaustive computation through $10^9$ is strong finite evidence for this conjecture but does not prove it.  A proof must both exclude every additional positive cycle above the tested region and rule out unbounded trajectories.
+
+\section{What remains for a proof?}
+A complete proof would need to overcome at least three distinct obstacles.
+
+\begin{enumerate}[leftmargin=2em]
+\item The geometric distribution \eqref{eq:geom} is a probabilistic model.  A deterministic proof needs sufficient control of the actual valuation frequencies along every orbit, or an argument that does not depend on statistical independence.
+\item The cycle equation \eqref{eq:closedcycle} must be controlled for arbitrarily large $L$ and $K$.  Finite searches over lengths cannot exclude a cycle with much larger parameters.
+\item Large temporary excursions must be handled uniformly.  The observed reduced peak above $1.64\times10^{17}$ from a start below $10^9$ demonstrates that early descent or small local growth cannot serve as a global argument.
+\end{enumerate}
+
+These limitations separate the rigorous finite computation from the still-open all-integers statement.
+
+\section{Reproducibility}
+The computational archive accompanying this manuscript contains the C scanner, the checkpoint/resume launcher, the merger used to combine chunk results, validation material, and machine-readable global result files.  A typical compilation command is
+\begin{verbatim}
+clang -O3 -march=native -pthread collatz3_scan.c -lm -o collatz3_scan
+\end{verbatim}
+The billion-scale checkpointed run used
+\begin{verbatim}
+END=1000000000 CHUNK=10000000 THREADS=2 \
+ROOT=results_1e9_chunks ./run_1b_resume.sh
+\end{verbatim}
+and the global summaries were merged using
+\begin{verbatim}
+python3 merge_chunks.py results_1e9_chunks
+\end{verbatim}
+The finite computation is deterministic.  Independent reproduction should recover the three basin counts in Table~\ref{tab:1e9}, the $405$-iteration transient record, the accumulated valuation record $529$, and the maximum fully reduced state reported above.
+
+\section{Conclusion}
+The ternary $(4k-1(2))/3$ Collatz-type system studied here is most precisely represented by the accelerated map
+\[
+\Tmap(x)=\frac{4x-(x\bmod3)}{3^{\vthree(4x-(x\bmod3))}},
+\qquad3\nmid x.
+\]
+Its local rule is elementary, but the resulting arithmetic dynamics combine residue branching, variable $3$-adic compression, large transient excursions, and nontrivial periodic structure.
+
+The theoretical analysis gives two complementary viewpoints.  The geometric valuation model yields a negative average logarithmic drift and a geometric scale factor near $0.7698$, explaining why contraction is statistically plausible.  The exact cycle equation converts periodicity into a Diophantine divisibility problem controlled by the balance of $4^L$ and $3^K$.  In particular, the positive four-cycle reflects the striking near equality $4^4=256$ and $3^5=243$.
+
+The computational evidence extends the verified positive domain from $10^6$ to $10^9$.  All $666,666,667$ admissible starts were classified, with no additional attractor and no reported overflow.  The basin proportions remain close to $10\%$, $65\%$, and $25\%$ for $1$, $2$, and the four-cycle, respectively, even as the extremal trajectories become much longer and much larger.  The resulting three-attractor convergence conjecture remains open beyond the finite verified range.
+
+\section*{Data and code availability}
+The LaTeX source, PDF manuscript, computational source code, checkpoint/resume scripts, merger, machine-readable summary, and supporting documentation are intended to be deposited together as a reproducibility package.  The raw chunk directory produced on the computation machine can be added to the archival deposit as the full execution audit trail.
+
+\begin{thebibliography}{9}
+\bibitem{lagarias1985}
+J. C. Lagarias,
+``The $3x+1$ problem and its generalizations,''
+\emph{The American Mathematical Monthly}, 92(1), 3--23, 1985.
+
+\bibitem{carnielli2015}
+W. Carnielli,
+``Some Natural Generalizations of the Collatz Problem,''
+\emph{Applied Mathematics E-Notes}, 15, 207--212, 2015.
+
+\end{thebibliography}
+
+\end{document}
