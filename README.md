@@ -75,8 +75,6 @@ The exhaustive computation found no unresolved or overflowing trajectory in the 
 This finite verification provides strong computational evidence for the positive three-attractor convergence conjecture, but it is **not a proof of global convergence for all positive integers**.
 
 - **Zenodo DOI:** [10.5281/zenodo.22662980](https://doi.org/10.5281/zenodo.22662980)
-- **Author:** Farhad Banazadeh
-- **ORCID:** 0009-0004-7023-0298---
 
 ## Research Chain
 
