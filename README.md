@@ -84,7 +84,6 @@ This work extends the base ternary (4k−1(2))/3 map to a 4^r-scaled family and 
 
 It establishes exact transfer of orbit and cycle structure across all scaled domains, including the finite verification results of the base system through 10^9.
 
-**Base paper:** [10.5281/zenodo.22662980](https://doi.org/10.5281/zenodo.22662980)
 **Zenodo DOI:** [10.5281/zenodo.22671949](https://doi.org/10.5281/zenodo.22671949)
 
 ## Research Chain
