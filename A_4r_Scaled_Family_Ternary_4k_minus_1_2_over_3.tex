@@ -1,0 +1,501 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs,array,longtable}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage{siunitx}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{caption}
+\setlength{\parindent}{1.2em}
+\setlength{\parskip}{0.25em}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{$4^r$-Scaled Ternary $(4k-1(2))/3$ Map}
+\rhead{\thepage}
+\newcommand{\vthree}{\nu_3}
+\newcommand{\Sbase}{\mathcal S}
+\newcommand{\Sr}{\mathcal S_r}
+\newcommand{\rhoo}{\rho}
+
+\title{\textbf{A $4^r$-Scaled Family of the Ternary $(4k-1(2))/3$ Collatz-Type Map}\\[4pt]
+\large Exact Algebraic Conjugacy, Cycle Preservation, and Transfer of the $10^9$ Finite Verification}
+\author{\textbf{Farhad Banazadeh}\\
+\href{mailto:fn.bana@hotmail.com}{fn.bana@hotmail.com}\\
+\href{https://orcid.org/0009-0004-7023-0298}{ORCID: 0009-0004-7023-0298}}
+\date{9 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We develop the full $4^r$-scaled family of the ternary $(4k-1(2))/3$ Collatz-type map introduced and computationally studied in the author's preceding work. The base state space is
+\[
+\Sbase=\{y\in\mathbb Z_{>0}:3\nmid y\},
+\]
+with residue selector $\rhoo(y)=y\bmod3\in\{1,2\}$, affine numerator $M_0(y)=4y-\rhoo(y)$, and complete 3-adic reduction
+\[
+T_0(y)=\frac{4y-\rhoo(y)}{3^{\vthree(4y-\rhoo(y))}}.
+\]
+For every integer $r\ge0$ we define the scaled domain $\Sr=4^r\Sbase$ and the scaled affine map
+\[
+M_r(x)=4x-4^r\rhoo(x),\qquad x\in\Sr,
+\]
+so its two branches are $4x-4^r$ and $4x-2\cdot4^r$. After complete removal of all factors of $3$, the scaled compressed map is $T_r(x)=M_r(x)/3^{\vthree(M_r(x))}$.
+
+The central result is exact algebraic conjugacy. Since $4^r\equiv1\pmod3$ and $3\nmid4^r$, multiplication by $4^r$ preserves both the branch residue and the 3-adic valuation. Consequently
+\[
+T_r(4^r y)=4^rT_0(y),\qquad
+T_r^j(4^r y)=4^rT_0^j(y)\quad(j\ge0).
+\]
+Thus every orbit relation, periodic orbit, cycle length, valuation sequence, transient length, and basin membership is transported bijectively between the base system and its scaled copy; absolute peak values are multiplied by $4^r$, while normalized peak ratios are unchanged. In particular, the base fixed points $1$ and $2$ become $4^r$ and $2\cdot4^r$, and the base four-cycle $22\to29\to38\to50\to22$ becomes
+\[
+22\cdot4^r\to29\cdot4^r\to38\cdot4^r\to50\cdot4^r\to22\cdot4^r.
+\]
+No additional cycle can occur inside $\Sr$: dividing any scaled cycle by $4^r$ gives a base cycle of the same length.
+
+The preceding base paper exhaustively verified all $666,666,667$ admissible starts through $10^9$. We do not repeat that billion-scale computation here. Instead, the conjugacy theorem transfers every one of those verified trajectories exactly to the corresponding set $\{4^r y:y\le10^9,\ 3\nmid y\}\subset\Sr$, extending through $4^r10^9$ in absolute scale. The global three-attractor convergence statement remains a conjecture: the present theorem proves exact equivalence of the scaled and base dynamical problems, not global convergence of the unresolved base problem.
+\end{abstract}
+
+\noindent\textbf{Keywords:} Collatz-type map; ternary dynamics; $4^r$ scaling; algebraic conjugacy; 3-adic valuation; periodic orbits; cycle preservation; computational number theory.
+
+\section{Introduction}
+The ternary $(4k-1(2))/3$ map studied in the author's preceding paper \cite{BanazadehBase} is an accelerated integer dynamical system on positive integers not divisible by $3$. At each state, multiplication by $4$ is followed by subtraction of the nonzero residue modulo $3$, and then by complete removal of all factors of $3$. The base paper gave the exact residue branches, inverse branches, a Diophantine cycle equation, a 3-adic drift heuristic, and an exhaustive finite verification through $10^9$.
+
+The present paper asks a structural question rather than performing a new large search. If both subtraction constants are multiplied by a common power $4^r$, and the state space is simultaneously scaled by $4^r$, does a genuinely new dynamical system appear? We prove that the answer is no. The entire family is exactly conjugate to the base map through the linear scaling $y\mapsto4^r y$.
+
+This distinction is important. Numerical similarity at several small values of $r$ would only suggest a pattern. Exact conjugacy proves the pattern for every integer $r\ge0$ at once. It also specifies precisely what transfers: complete trajectories, cycle lengths, branch choices, 3-adic valuations, stopping/transient times, basin membership, and normalized orbit geometry. Absolute state values and peaks scale by $4^r$.
+
+The finite computation of \cite{BanazadehBase} remains base-system evidence. Its numerical counts are cited here only as inherited data and are not presented as a new billion-scale run of every scaled system. The new contribution is algebraic: a theorem identifying all scaled systems with the same base dynamics.
+
+\section{The base ternary map}
+Let
+\begin{equation}
+\Sbase=\{y\in\mathbb Z_{>0}:3\nmid y\}.
+\end{equation}
+For $y\in\Sbase$, define
+\[
+\rhoo(y)=y\bmod3\in\{1,2\}.
+\]
+The base affine pre-reduction is
+\begin{equation}
+M_0(y)=4y-\rhoo(y)=
+\begin{cases}
+4y-1,&y\equiv1\pmod3,\\
+4y-2,&y\equiv2\pmod3.
+\end{cases}
+\label{eq:baseM}
+\end{equation}
+Because $4\equiv1\pmod3$, the quantity $M_0(y)$ is always divisible by $3$.
+
+For a nonzero integer $n$, let
+\[
+\vthree(n)=\max\{j\ge0:3^j\mid n\}.
+\]
+The accelerated base map is
+\begin{equation}
+T_0(y)=\frac{M_0(y)}{3^{\vthree(M_0(y))}}.
+\label{eq:baseT}
+\end{equation}
+The output again belongs to $\Sbase$.
+
+Writing $y=3q+1$ or $3q+2$ gives
+\[
+M_0(3q+1)=3(4q+1),\qquad
+M_0(3q+2)=3(4q+2).
+\]
+The positive attractors observed and exhaustively verified through the finite base range are the fixed points $1$, $2$, and the four-cycle
+\begin{equation}
+22\longrightarrow29\longrightarrow38\longrightarrow50\longrightarrow22.
+\label{eq:basecycle}
+\end{equation}
+
+\section{The $4^r$-scaled family}
+Fix an integer $r\ge0$.
+
+\subsection{Scaled domain}
+Define
+\begin{equation}
+\Sr=4^r\Sbase=\{4^r y:y\in\Sbase\}.
+\label{eq:Sr}
+\end{equation}
+Every $x\in\Sr$ has a unique representation $x=4^r y$ with $y\in\Sbase$.
+
+Since $4\equiv1\pmod3$,
+\begin{equation}
+4^r\equiv1\pmod3,
+\end{equation}
+so
+\begin{equation}
+x=4^r y\equiv y\pmod3.
+\label{eq:respres}
+\end{equation}
+Thus scaling preserves the nonzero residue class modulo $3$.
+
+\subsection{Scaled affine and compressed maps}
+Define
+\begin{equation}
+M_r(x)=4x-4^r\rhoo(x),\qquad x\in\Sr,
+\label{eq:Mr}
+\end{equation}
+where $\rhoo(x)=x\bmod3\in\{1,2\}$. Equivalently,
+\begin{equation}
+M_r(x)=
+\begin{cases}
+4x-4^r,&x\equiv1\pmod3,\\
+4x-2\cdot4^r,&x\equiv2\pmod3.
+\end{cases}
+\label{eq:scaledbranches}
+\end{equation}
+The corresponding accelerated map is
+\begin{equation}
+T_r(x)=\frac{M_r(x)}{3^{\vthree(M_r(x))}}.
+\label{eq:Tr}
+\end{equation}
+
+\paragraph{Well-definedness.}
+If $x\equiv1\pmod3$, then $4x-4^r\equiv1-1\equiv0\pmod3$. If $x\equiv2\pmod3$, then $4x-2\cdot4^r\equiv2-2\equiv0\pmod3$. Hence $\vthree(M_r(x))\ge1$ for every $x\in\Sr$.
+
+\section{The key 3-adic scaling identity}
+\textbf{Lemma 4.1 (Affine scaling).} For every $r\ge0$ and $y\in\Sbase$,
+\begin{equation}
+M_r(4^r y)=4^rM_0(y).
+\label{eq:affinescale}
+\end{equation}
+
+\textit{Proof.} By \eqref{eq:respres}, $\rhoo(4^r y)=\rhoo(y)$. Therefore
+\[
+M_r(4^r y)=4(4^r y)-4^r\rhoo(y)
+=4^r(4y-\rhoo(y))=4^rM_0(y).
+\]
+\hfill$\square$
+
+\textbf{Lemma 4.2 (Valuation invariance).} For every nonzero integer $n$ and every $r\ge0$,
+\begin{equation}
+\vthree(4^r n)=\vthree(n).
+\label{eq:vinv}
+\end{equation}
+
+\textit{Proof.} Since $\gcd(4^r,3)=1$, the factor $4^r$ contributes no factor of $3$. \hfill$\square$
+
+Combining the two lemmas gives
+\begin{equation}
+\vthree(M_r(4^r y))=\vthree(M_0(y)).
+\label{eq:valuationsame}
+\end{equation}
+This equality is stronger than mere orbit scaling: corresponding trajectories remove exactly the same power of $3$ at every matched step.
+
+\section{Exact algebraic conjugacy}
+Define the scaling bijection
+\begin{equation}
+\Phi_r:\Sbase\to\Sr,\qquad \Phi_r(y)=4^r y.
+\end{equation}
+Its inverse is $\Phi_r^{-1}(x)=x/4^r$.
+
+\textbf{Theorem 5.1 (One-step conjugacy).} For every $r\ge0$ and $y\in\Sbase$,
+\begin{equation}
+\boxed{T_r(4^r y)=4^rT_0(y).}
+\label{eq:conjugacy}
+\end{equation}
+Equivalently,
+\begin{equation}
+T_r\circ\Phi_r=\Phi_r\circ T_0,
+\qquad
+T_r=\Phi_r\circ T_0\circ\Phi_r^{-1}.
+\end{equation}
+
+\textit{Proof.} From \eqref{eq:affinescale} and \eqref{eq:valuationsame},
+\[
+T_r(4^r y)
+=\frac{4^rM_0(y)}{3^{\vthree(M_0(y))}}
+=4^rT_0(y).
+\]
+\hfill$\square$
+
+\textbf{Theorem 5.2 (All iterates).} For every $j\ge0$, $r\ge0$, and $y\in\Sbase$,
+\begin{equation}
+\boxed{T_r^j(4^r y)=4^rT_0^j(y).}
+\label{eq:iterates}
+\end{equation}
+
+\textit{Proof.} The case $j=0$ is immediate. If the identity holds for $j$, then
+\[
+T_r^{j+1}(4^r y)
+=T_r(4^rT_0^j(y))
+=4^rT_0(T_0^j(y))
+=4^rT_0^{j+1}(y),
+\]
+using Theorem 5.1. \hfill$\square$
+
+\section{Exact preservation of cycles}
+\textbf{Theorem 6.1 (Cycle bijection).} A tuple
+\[
+C=(c_0,c_1,\ldots,c_{L-1})
+\]
+is a cycle of $T_0$ if and only if
+\[
+4^rC=(4^rc_0,4^rc_1,\ldots,4^rc_{L-1})
+\]
+is a cycle of $T_r$. Minimal cycle length is preserved.
+
+\textit{Proof.} If $T_0^L(c_0)=c_0$, then Theorem 5.2 gives
+\[
+T_r^L(4^rc_0)=4^rT_0^L(c_0)=4^rc_0.
+\]
+Conversely, if $x=4^ry\in\Sr$ satisfies $T_r^L(x)=x$, then
+\[
+4^rT_0^L(y)=T_r^L(4^ry)=4^ry,
+\]
+so $T_0^L(y)=y$. Since $\Phi_r$ is bijective, a shorter period on one side would imply the same shorter period on the other. \hfill$\square$
+
+\textbf{Corollary 6.2.} No cycle exists in $\Sr$ that is not the $4^r$-multiple of a base cycle. Thus scaling introduces no new periodic structure inside the scaled domain.
+
+For the known positive attractors, the fixed points become
+\begin{equation}
+4^r\longrightarrow4^r,
+\qquad
+2\cdot4^r\longrightarrow2\cdot4^r,
+\end{equation}
+and the four-cycle becomes
+\begin{equation}
+22\cdot4^r\to29\cdot4^r\to38\cdot4^r\to50\cdot4^r\to22\cdot4^r.
+\label{eq:scaledcycle}
+\end{equation}
+
+For example, at $r=1$ the attractors are $4$, $8$, and
+\[
+88\to116\to152\to200\to88,
+\]
+while at $r=2$ they are $16$, $32$, and
+\[
+352\to464\to608\to800\to352.
+\]
+These examples are exact consequences of the theorem, not independent numerical discoveries.
+
+\section{The cycle equation under scaling}
+The base one-step cycle relation from \cite{BanazadehBase} is
+\begin{equation}
+3^{k_i}y_{i+1}=4y_i-\rho_i,
+\qquad \rho_i\in\{1,2\},\quad k_i\ge1.
+\label{eq:basecyclerel}
+\end{equation}
+For the scaled system it becomes
+\begin{equation}
+3^{k_i}x_{i+1}=4x_i-4^r\rho_i.
+\label{eq:scaledcyclerel}
+\end{equation}
+Putting $x_i=4^ry_i$ and dividing by $4^r$ recovers \eqref{eq:basecyclerel} exactly. Hence the scaled cycle equation contains no new Diophantine condition.
+
+Let $K=\sum_{i=0}^{L-1}k_i$. Iterating \eqref{eq:scaledcyclerel} around a length-$L$ cycle gives
+\begin{equation}
+x_0=
+4^r\,
+\frac{\displaystyle\sum_{j=0}^{L-1}
+\rho_j4^{L-1-j}3^{\sum_{m=0}^{j-1}k_m}}
+{4^L-3^K}.
+\label{eq:closedcycle}
+\end{equation}
+The fraction is exactly the base starting value $y_0$. Therefore
+\begin{equation}
+\boxed{x_0=4^ry_0.}
+\end{equation}
+This gives a second, direct algebraic proof of cycle preservation from the closed Diophantine equation.
+
+For the base four-cycle, $L=4$, $K=5$, residues $(1,2,2,2)$, and valuations $(1,1,1,2)$. The denominator is
+\[
+4^4-3^5=256-243=13,
+\]
+and the base numerator is $286$, yielding $y_0=22$. The scaled numerator is $4^r\cdot286$, so $x_0=22\cdot4^r$.
+
+\section{Orbit statistics preserved by conjugacy}
+Let $y_j=T_0^j(y)$ and $x_j=T_r^j(4^ry)$. By Theorem 5.2,
+\begin{equation}
+x_j=4^ry_j\quad\text{for every }j\ge0.
+\end{equation}
+Several consequences are immediate.
+
+\subsection{Transient length and valuation totals}
+If $\tau_0(y)$ is the first iteration at which the base orbit enters its eventual cycle, then
+\begin{equation}
+\tau_r(4^ry)=\tau_0(y).
+\end{equation}
+Because the matched 3-adic valuations are equal step by step, the total number of individual divisions by $3$ before cycle entry is also identical.
+
+\subsection{Peaks and normalized ratios}
+For any matched finite trajectory segment,
+\begin{equation}
+\max_j x_j=4^r\max_j y_j.
+\end{equation}
+Thus absolute reduced peaks scale by $4^r$. The same is true for the raw affine peak because $M_r(4^ry)=4^rM_0(y)$. On the other hand,
+\begin{equation}
+\frac{x_j}{x_0}=\frac{y_j}{y_0},
+\end{equation}
+so every normalized peak ratio is invariant.
+
+\subsection{Basin membership}
+For any base cycle $C$, let $\mathcal B_0(C)$ be its basin and $\mathcal B_r(4^rC)$ the corresponding scaled basin. Then
+\begin{equation}
+4^ry\in\mathcal B_r(4^rC)
+\quad\Longleftrightarrow\quad
+y\in\mathcal B_0(C).
+\label{eq:basins}
+\end{equation}
+Therefore basin counts are exactly preserved on corresponding finite sets. They should not be compared at the same absolute cutoff unless the different domain sizes are accounted for.
+
+\section{The 3-adic drift viewpoint}
+The base paper derives the heuristic distribution
+\begin{equation}
+\Pr(\vthree=k)=\frac{2}{3^k},\qquad k\ge1,
+\end{equation}
+with
+\[
+\mathbb E[\vthree]=\frac32.
+\]
+The associated average logarithmic drift is
+\begin{equation}
+\Delta=\log4-\frac32\log3\approx-0.261624,
+\end{equation}
+and the corresponding geometric factor is
+\begin{equation}
+\lambda=\frac{4}{3\sqrt3}\approx0.7698.
+\end{equation}
+For matched states,
+\begin{equation}
+\frac{T_r(4^ry)}{4^ry}=\frac{T_0(y)}{y},
+\end{equation}
+so the scaled family has exactly the same normalized one-step ratios and therefore inherits the same heuristic drift model. As in the base paper, this probabilistic heuristic is not a proof of global convergence.
+
+\section{Finite verification inherited from the base paper}
+The base computation in \cite{BanazadehBase} exhaustively tested every admissible start
+\[
+1\le y\le10^9,\qquad 3\nmid y.
+\]
+There were exactly $666,666,667$ such starts, with zero reported overflow. The finite basin counts were:
+
+\begin{table}[h]
+\centering
+\caption{Base-system finite verification through $10^9$, inherited from \cite{BanazadehBase}.}
+\begin{tabular}{lrr}
+\toprule
+Attractor & Count & Percentage \\
+\midrule
+Fixed point $1$ & 66,019,616 & 9.902942395\% \\
+Fixed point $2$ & 432,100,455 & 64.815068218\% \\
+$22\to29\to38\to50\to22$ & 168,546,596 & 25.281989387\% \\
+\midrule
+Total & 666,666,667 & 100\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The longest transient had $405$ reduced iterations, beginning at $833,560,375$, and the maximum accumulated number of divisions by $3$ was $529$, attained by the same start. The largest reduced state observed was
+\[
+164,210,561,845,359,809,
+\]
+from start $664,934,564$.
+
+These are not new measurements of the scaled family. The new theorem implies that, for every fixed $r$, the corresponding $666,666,667$ scaled starts
+\begin{equation}
+\{4^ry:1\le y\le10^9,\ 3\nmid y\}
+\end{equation}
+are verified algebraically without re-running the dynamical search. They lie in the absolute interval up to $4^r10^9$, restricted to $\Sr$. Their basin counts and transient lengths are identical, while every state peak is multiplied by $4^r$.
+
+For example, the largest reduced peak among this corresponding scaled set is
+\begin{equation}
+4^r\cdot164,210,561,845,359,809,
+\end{equation}
+and it occurs for the scaled start
+\begin{equation}
+4^r\cdot664,934,564.
+\end{equation}
+Likewise, the $405$-iteration record corresponds to start $4^r\cdot833,560,375$.
+
+\section{Finite theorem and global conjecture}
+The conjugacy allows a precise separation between an exact theorem and the unresolved global statement.
+
+\textbf{Finite transfer theorem.} For every $r\ge0$, every scaled start $x=4^ry$ with $1\le y\le10^9$ and $3\nmid y$ enters one of
+\[
+4^r,\qquad2\cdot4^r,\qquad
+22\cdot4^r\to29\cdot4^r\to38\cdot4^r\to50\cdot4^r\to22\cdot4^r.
+\]
+This follows rigorously from the exhaustive finite base computation together with Theorem 5.2.
+
+\textbf{Conjecture (scaled three-attractor convergence).} For every $r\ge0$ and every $x\in\Sr$, the orbit of $x$ under $T_r$ eventually enters one of the two scaled fixed points or the scaled four-cycle above.
+
+\textbf{Theorem 11.1 (Equivalence of global conjectures).} The scaled three-attractor conjecture holds for any one $r\ge0$ if and only if the base three-attractor conjecture holds on $\Sbase$. Consequently it holds for all $r\ge0$ if and only if it holds for $r=0$.
+
+\textit{Proof.} Conjugacy transports every orbit in both directions under the bijection $\Phi_r$. \hfill$\square$
+
+Thus the parameter $r$ creates no additional global convergence problem. It also does not solve the base problem: an unbounded base trajectory, if one exists, would scale to an unbounded trajectory at every level, and an undiscovered base cycle would scale to a corresponding cycle at every level.
+
+\section{What is proved and what is not}
+The exact algebraic results of this paper prove that, for every $r\ge0$:
+\begin{enumerate}[label=(\roman*)]
+\item $\Sr=4^r\Sbase$ is in bijection with the base domain;
+\item multiplication by $4^r$ preserves the relevant residue modulo $3$;
+\item the scaled affine numerator satisfies $M_r(4^ry)=4^rM_0(y)$;
+\item the complete 3-adic valuation is unchanged at corresponding steps;
+\item $T_r$ and $T_0$ are exactly conjugate;
+\item all iterates correspond exactly;
+\item periodic orbits and minimal cycle lengths correspond bijectively;
+\item valuation sequences and transient lengths are preserved;
+\item absolute peaks scale by $4^r$, while normalized ratios are preserved;
+\item basin membership transfers exactly;
+\item the entire finite base verification through $10^9$ transfers to the corresponding scaled set through absolute scale $4^r10^9$.
+\end{enumerate}
+
+What is not proved is global convergence of every positive base orbit. The finite computation through $10^9$ cannot exclude a new base cycle or an unbounded base trajectory lying beyond the tested region. Since the scaled systems are conjugate to the base system, they inherit exactly this unresolved status.
+
+\section{Reproducibility and computational verification of the identity}
+The supplementary archive accompanying this paper contains the LaTeX source, compiled PDF, a Python verifier, a machine-readable JSON statement of the scaling rules, a README, and the base $10^9$ global summary copied as a clearly labelled inherited reference. The verifier checks, for user-selected finite ranges of $r$ and $y$, that
+\[
+M_r(4^ry)=4^rM_0(y),
+\quad
+\vthree(M_r(4^ry))=\vthree(M_0(y)),
+\quad
+T_r(4^ry)=4^rT_0(y),
+\]
+and can also compare several iterates.
+
+This small verifier is a consistency check, not the proof. The proof is the algebraic factorization in Lemma 4.1 together with $\gcd(4^r,3)=1$. The billion-scale numerical evidence belongs to the base record \cite{BanazadehBase}; the present work deliberately avoids relabelling inherited numerical data as a new computation.
+
+\section{Conclusion}
+For the ternary $(4k-1(2))/3$ Collatz-type map, multiplying both branch subtraction constants and the state space by $4^r$ produces an exact scaled copy of the base dynamics. The generalized branches are
+\[
+4x-4^r\quad\text{and}\quad4x-2\cdot4^r,
+\]
+and on $\Sr=4^r\Sbase$ the compressed map satisfies
+\[
+\boxed{T_r(4^ry)=4^rT_0(y).}
+\]
+The identity holds because powers of $4$ are simultaneously congruent to $1$ modulo $3$ and coprime to $3$. The first property preserves branch selection; the second preserves the complete 3-adic valuation.
+
+The consequences are exact rather than heuristic. Every scaled trajectory is the $4^r$-multiple of one base trajectory. Every scaled cycle is the $4^r$-multiple of one base cycle and has the same length. In particular, the two fixed points and the four-cycle of the base finite verification become their scaled counterparts, and no additional periodic orbit can exist inside a scaled domain unless a corresponding base periodic orbit exists.
+
+The exhaustive base verification through $10^9$ therefore transfers without a new large computation to every corresponding $4^r$-scaled finite domain. At the same time, the global convergence question is unchanged: proving the three-attractor conjecture for the base system would prove it simultaneously for the whole scaled family, while any counterexample in the base system would propagate throughout the family. The $4^r$ parameter is thus an exact scaling symmetry, not a source of independent dynamics.
+
+\begin{thebibliography}{9}
+\bibitem{Lagarias}
+J. C. Lagarias,
+``The $3x+1$ problem and its generalizations,''
+\emph{The American Mathematical Monthly}, 92(1), 3--23, 1985.
+DOI: \href{https://doi.org/10.2307/2322189}{10.2307/2322189}.
+
+\bibitem{BanazadehBase}
+F. Banazadeh,
+``A Ternary $(4k-1(2))/3$ Collatz-Type Map: Complete 3-Adic Reduction, Algebraic Cycle Analysis, and Exhaustive Computational Verification up to $10^9$,''
+Zenodo, 2026.
+DOI: \href{https://doi.org/10.5281/zenodo.22662980}{10.5281/zenodo.22662980}.
+
+\bibitem{BanazadehGitHub}
+F. Banazadeh,
+``Sequence Computations,'' GitHub repository, 2026.
+\url{https://github.com/FarhadBanazadeh/sequence-computations}.
+\end{thebibliography}
+
+\end{document}
