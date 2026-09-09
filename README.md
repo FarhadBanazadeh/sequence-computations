@@ -42,7 +42,7 @@ An independent study on the compressed ternary map defined on integers not divis
 ### 5. A Ternary ((4k+1)/2)/3 Collatz-Type Map and Its 4^r-Scaled Family
 This work provides the scaled family of the ternary `((4k+1)/2)/3` map: for `r ≥ 0,` the map `T_r` acts on `4^r y,` scaling the transformation. Includes an exact conjugacy verification (`verify_conjugacy.py`) über `r = 0..7,` `y ≤ 1000,` and computational consistency up to `N =  ⁹.
 
-- **Zenodo DOI:**  [10.5281/zenodo.22639385](https://doi.org/10.5281/zenodo.22639385)
+* **Zenodo DOI:**  [10.5281/zenodo.22639385](https://doi.org/10.5281/zenodo.22639385)
 
 ### 6. A Ternary `(4k−1(2))/3` Collatz-Type Map: Complete 3-Adic Reduction, Algebraic Cycle Analysis, and Exhaustive Computational Verification up to `10^9`
 
@@ -74,7 +74,7 @@ The exhaustive computation found no unresolved or overflowing trajectory in the 
 
 This finite verification provides strong computational evidence for the positive three-attractor convergence conjecture, but it is **not a proof of global convergence for all positive integers**.
 
-- **Zenodo DOI:** [10.5281/zenodo.22662980](https://doi.org/10.5281/zenodo.22662980)
+* **Zenodo DOI:** [10.5281/zenodo.22662980](https://doi.org/10.5281/zenodo.22662980)
 
 ### 7. A 4^r-Scaled Family of the Ternary (4k−1(2))/3 Collatz-Type Map: Exact Algebraic Conjugacy, Cycle Preservation, and Transfer of the 10^9 Finite Verification
 
@@ -84,7 +84,7 @@ This work extends the base ternary (4k−1(2))/3 map to a 4^r-scaled family and 
 
 It establishes exact transfer of orbit and cycle structure across all scaled domains, including the finite verification results of the base system through 10^9.
 
-**Zenodo DOI:** [10.5281/zenodo.22671949](https://doi.org/10.5281/zenodo.22671949)
+* **Zenodo DOI:** [10.5281/zenodo.22671949](https://doi.org/10.5281/zenodo.22671949)
 
 ## Research Chain
 
