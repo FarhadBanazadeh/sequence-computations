@@ -1,184 +1,278 @@
 # Sequence Computations
 
-Code and research documentation for computing integer sequences, dynamical systems, and ternary Collatz-type maps.
+Research articles, LaTeX sources, computational packages, and reproducibility materials for ternary Collatz-type maps and their scaled families.
+
+**Author:** Farhad Banazadeh
+**ORCID:** https://orcid.org/0009-0004-7023-0298
 
 ---
 
-## Contents
-- [Research Articles](#research-articles)
-- [Research Chain](#research-chain)
-- [Mathematical Formulation of the Map](#mathematical-formulation-of-the-map)
-- [Main Computational Results ($10^9$)](#main-computational-results-109)
-- [Stopping-Time & Orbit Statistics](#stopping-time--orbit-statistics)
-- [Reproducibility & Source Code](#reproducibility--source-code)
-- [Author & Contact](#author--contact)
-- [Repository Structure](#repository-structure)
-- [Publication](#publication)
-- [License](#license)
+## Research Papers & Reproducibility Index
+
+This repository contains the manuscript sources and computational materials associated with **six research works**.
+
+For each paper, direct links are provided to the publication record, PDF, LaTeX source, and associated computational or supplementary package.
 
 ---
 
-## Research Articles
+### 1. A Ternary (4k±1)/3 Collatz-Type Map — Computational Study
 
-This repository contains research articles and computational studies on ternary Collatz-type maps, related integer sequences, and their scaled families.
+This research studies the ternary Collatz-type map based on the residue-dependent transformations `(4k−1)/3` and `(4k+1)/3`.
 
-### 1. A Ternary $(4k \pm 1)/3$ Collatz-Type Map: Computational Verification up to $10^9$
-This article studies the ternary $(4k \pm 1)/3$ Collatz-type map and presents a computational verification up to $10^9$.
-* **Zenodo DOI:** [10.5281/zenodo.22195651](https://doi.org/10.5281/zenodo.22195651)
+The two Zenodo identifiers below belong to the same underlying research work and are therefore grouped here as a single research entry.
 
-### 2. Related Scaled-Family Work
-This work studies the scaled family associated with the ternary $(4k \pm 1)/3$ map and the corresponding domains based on powers of $4$.
-* **Zenodo DOI:** [10.5281/zenodo.22195652](https://doi.org/10.5281/zenodo.22195652)
+**Zenodo**
 
-### 3. A Ternary $(4k \pm 1)/3$ Collatz-Type Map and Its $(4n \pm 4^r)/3$ Scaled Family
-This work provides a general formulation of the scaled family:
-$$\frac{4n \pm 4^r}{3} \quad \text{for } r \ge 0$$
-* **Zenodo DOI:** [10.5281/zenodo.22228200](https://doi.org/10.5281/zenodo.22228200)
+* https://doi.org/10.5281/zenodo.22195651
+* https://doi.org/10.5281/zenodo.22195652
 
-### 4. A Ternary $(4k+1(2))/3$ Collatz-Type Map
-An independent study on the compressed ternary map defined on integers not divisible by $3$. For every positive integer $n \not\equiv 0 \pmod 3$, the transformation selects $4n+1$ or $4n+2$ such that the result is divisible by $3$, followed by complete removal of factors of $3$.
-* **Zenodo DOI:** [10.5281/zenodo.22279137](https://doi.org/10.5281/zenodo.22279137)
+**Repository files**
 
-### 5. A Ternary ((4k+1)/2)/3 Collatz-Type Map and Its 4^r-Scaled Family
-This work provides the scaled family of the ternary `((4k+1)/2)/3` map: for `r ≥ 0,` the map `T_r` acts on `4^r y,` scaling the transformation. Includes an exact conjugacy verification (`verify_conjugacy.py`) über `r = 0..7,` `y ≤ 1000,` and computational consistency up to `N =  ⁹.
+* [PDF](Ternary_4k_pm_1_over_3_Collatz_Map.pdf)
+* [LaTeX source](Ternary_4k_pm_1_over_3_Collatz_Map.tex)
+* [Data and computational code](Ternary_4k_pm_1_over_3_Collatz_Map_Data_and_Code.zip)
 
-* **Zenodo DOI:**  [10.5281/zenodo.22639385](https://doi.org/10.5281/zenodo.22639385)
+---
 
-### 6. A Ternary `(4k−1(2))/3` Collatz-Type Map: Complete 3-Adic Reduction, Algebraic Cycle Analysis, and Exhaustive Computational Verification up to `10^9`
+### 2. A Ternary (4k±1)/3 Collatz-Type Map and Its (4n±4^r)/3 Scaled Family
 
-This work studies the accelerated ternary Collatz-type map on positive integers not divisible by `3`, defined by
+This work develops a scaled family associated with the ternary `(4k±1)/3` system and studies its powers-of-4 scaling structure.
 
-\[
-M(x)=4x-r(x), \qquad r(x)=x \bmod 3 \in \{1,2\},
-\]
+**Zenodo DOI**
 
-followed by complete removal of all factors of `3`:
+* https://doi.org/10.5281/zenodo.22228200
 
-\[
-T(x)=\frac{4x-r(x)}{3^{\nu_3(4x-r(x))}}.
-\]
+**Repository files**
 
-The paper develops the complete 3-adic reduction, exact inverse branches, algebraic cycle equations, and a finite exhaustive computational verification for every admissible starting value
+* [PDF](Banazadeh_Ternary_4k_pm_1_over_3_Scaled_Family.pdf)
+* [LaTeX source](Banazadeh_Ternary_4k_pm_1_over_3_Scaled_Family_General.tex)
+* [Complete research and computational package](Banazadeh_Ternary_4k_pm_1_over_3_Scaled_Family_FINAL.zip)
 
-\[
-1 \le x \le 10^9, \qquad 3\nmid x.
-\]
+---
 
-A total of **666,666,667** admissible starting values were tested. Every tested orbit entered one of the following three positive attractors:
+### 3. A Ternary (4k+1(2))/3 Collatz-Type Map with Two Attracting Cycles
 
-- Fixed point `1`
-- Fixed point `2`
-- Four-cycle `22 → 29 → 38 → 50 → 22`
+This is an independent compressed ternary Collatz-type system defined on positive integers not divisible by 3.
 
-The exhaustive computation found no unresolved or overflowing trajectory in the tested range.
+The finite exhaustive computation through `10^9` identifies two observed attracting cycles:
 
-This finite verification provides strong computational evidence for the positive three-attractor convergence conjecture, but it is **not a proof of global convergence for all positive integers**.
+* `C1 = (1, 2)`
+* `C7 = (7, 10, 14, 19, 26, 35, 47)`
 
-* **Zenodo DOI:** [10.5281/zenodo.22662980](https://doi.org/10.5281/zenodo.22662980)
+The finite computation provides computational evidence and does not constitute a proof of global convergence.
 
-### 7. A 4^r-Scaled Family of the Ternary (4k−1(2))/3 Collatz-Type Map: Exact Algebraic Conjugacy, Cycle Preservation, and Transfer of the 10^9 Finite Verification
+**Zenodo DOI**
 
-This work extends the base ternary (4k−1(2))/3 map to a 4^r-scaled family and proves the exact conjugacy
+* https://doi.org/10.5281/zenodo.22279137
+
+**Repository files**
+
+* [PDF](A_Ternary_4k1_2_over_3_Collatz_Type_Map.pdf)
+* [LaTeX source](A_Ternary_4k1_2_over_3_Collatz_Type_Map.tex)
+* [Supplementary computational package](A_Ternary_4k1_2_over_3_Collatz_Type_Map_Supplementary.zip)
+
+---
+
+### 4. A Ternary (4k+1(2))/3 Collatz-Type Map and Its 4^r-Scaled Family
+
+This work develops the `4^r`-scaled family associated with the preceding `(4k+1(2))/3` compressed ternary system.
+
+**Zenodo record**
+
+* https://zenodo.org/records/22639385
+
+**Related base DOI**
+
+* https://doi.org/10.5281/zenodo.22279137
+
+**Repository files**
+
+* [PDF](A_Ternary_4k1_2_over_3_Scaled_Family.pdf)
+* [LaTeX source](A_Ternary_4k1_2_over_3_Scaled_Family.tex)
+* [Complete research package](A_Ternary_4k1_2_over_3_Scaled_Family.zip)
+
+---
+
+### 5. A Ternary (4k−1(2))/3 Collatz-Type Map: Complete 3-Adic Reduction, Algebraic Cycle Analysis, and Exhaustive Computational Verification up to 10^9
+
+This work studies an accelerated ternary Collatz-type map on positive integers not divisible by 3.
+
+The affine transformation is
+
+`M(x) = 4x − rho(x)`
+
+where
+
+`rho(x) = x mod 3` and `rho(x) ∈ {1,2}`,
+
+followed by complete removal of all powers of 3.
+
+The exhaustive finite computation through `10^9` tests exactly
+
+`666,666,667`
+
+admissible starting values.
+
+Every tested orbit enters one of three observed positive attractors:
+
+* fixed point `1`
+* fixed point `2`
+* four-cycle `22 → 29 → 38 → 50 → 22`
+
+No unresolved or overflowing trajectory was found in the tested range.
+
+This is finite computational evidence and is not a proof of global convergence for all positive integers.
+
+**Zenodo DOI**
+
+* https://doi.org/10.5281/zenodo.22662980
+
+**Repository files**
+
+* [PDF](A_Ternary_4k_minus_1_2_over_3_Collatz_Map_10e9.pdf)
+* [LaTeX source](A_Ternary_4k_minus_1_2_over_3_Collatz_Map_10e9.tex)
+* [Complete computational package](A_Ternary_4k_minus_1_2_over_3_Collatz_Map_10e9_COMPLETE.zip)
+
+---
+
+### 6. A 4^r-Scaled Family of the Ternary (4k−1(2))/3 Collatz-Type Map: Exact Algebraic Conjugacy, Cycle Preservation, and Transfer of the 10^9 Finite Verification
+
+This work extends the preceding `(4k−1(2))/3` system to its `4^r`-scaled family.
+
+For `x = 4^r y`, the central algebraic relation is
 
 `T_r(4^r y) = 4^r T_0(y)`.
 
-It establishes exact transfer of orbit and cycle structure across all scaled domains, including the finite verification results of the base system through 10^9.
+Consequently,
 
-* **Zenodo DOI:** [10.5281/zenodo.22671949](https://doi.org/10.5281/zenodo.22671949)
+`T_r^j(4^r y) = 4^r T_0^j(y)`.
 
-## Research Chain
+This gives an exact algebraic conjugacy between the base system and every scaled domain.
 
-The research develops through several related stages:
-1. The original ternary $(4k \pm 1)/3$ map.
-2. The scaled family associated with powers of $4$.
-3. The general $(4n \pm 4^r)/3$ family for $r \ge 0$.
-4. The independent ternary $(4k+1(2))/3$ dynamical map.
-5. The scaled family of the compressed `((4k+1)/2)/3` map for powers of `4` (`4^r`), with conjugacy verification`r`.
-6. Complete 3-adic and algebraic analysis of the ternary `(4k−1(2))/3` map, together with exhaustive computational verification through `10^9` and identification of the three observed positive attractors.
-7. 4^r-Scaled Family — Exact Algebraic Conjugacy
-     
-## Mathematical Formulation of the Map
+The conjugacy transfers orbit structure, periodic cycles, stopping behavior, basin membership, and the finite verification of the base system to the corresponding scaled starting values.
 
-The domain of admissible starting values is:
-$$\mathcal{D} = \{ n \in \mathbb{N} : 3 \nmid n \}$$
+This transfer should not be interpreted as a new exhaustive computation of every integer below `4^r × 10^9`.
 
-For $n = 3k + 1$, the transformation before removing factors of $3$ is:
-$$G(3k + 1) = 4k + 2$$
+**Zenodo DOI**
 
-For $n = 3k + 2$, the transformation is:
-$$G(3k + 2) = 4k + 3$$
+* https://doi.org/10.5281/zenodo.22671949
 
-Equivalently:
-$$G(n) = \left\lfloor \frac{4n + 2}{3} \right\rfloor$$
+**Repository files**
 
-Let the $3$-adic valuation be defined as:
-$$v_3(m) = \max \{ k \ge 0 : 3^k \mid m \}$$
-
-The compressed map is therefore:
-$$T(n) = \frac{G(n)}{3^{v_3(G(n))}}$$
-
-The computation uses the compressed ternary domain, with the eliminated state $3$ identified with $1$.
+* [PDF](A_4r_Scaled_Family_Ternary_4k_minus_1_2_over_3.pdf)
+* [LaTeX source](A_4r_Scaled_Family_Ternary_4k_minus_1_2_over_3.tex)
+* [Complete reproducibility package](A_4r_Scaled_Family_Ternary_4k_minus_1_2_over_3_COMPLETE.zip)
 
 ---
 
-## Main Computational Results ($10^9$)
+## Research Structure
 
-The computation was performed for every admissible starting value satisfying:
-$$1 \le n \le 10^9, \quad 3 \nmid n$$
+The six works belong to **three distinct research lines**.
 
-The number of admissible starting values is exactly **$666{,}666{,}667$**.
+They use related ternary and 3-adic ideas, but they should not be treated as a single dynamical system.
 
-Every tested starting value reached one of the two observed cycles:
+### I. Ternary (4k±1)/3 line
 
-### Cycle $C_1$
-* **Elements:** $C_1 = (1, 2)$
-* **Basin Count:** $21{,}785{,}111$
-* **Percentage:** $3.267766648366117\%$
+1. Base computational research — Zenodo `22195651 / 22195652`
+2. Scaled-family research — Zenodo `22228200`
 
-### Cycle $C_7$
-* **Elements:** $C_7 = (7, 10, 14, 19, 26, 35, 47)$
-* **Basin Count:** $644{,}881{,}556$
-* **Percentage:** $96.732233351633880\%$
+### II. Ternary (4k+1(2))/3 line
 
-### Basin Summary Table
-| Attractor / Cycle | Basin Count | Percentage |
-| :--- | :--- | :--- |
-| **Cycle $C_1 = (1, 2)$** | $21{,}785{,}111$ | $3.26776665\%$ |
-| **Cycle $C_7 = (7, 10, 14, 19, 26, 35, 47)$** | $644{,}881{,}556$ | $96.73223335\%$ |
-| **Unknown / Unresolved Orbits** | $0$ | $0.00000000\%$ |
-| **Total Verified** | **$666{,}666{,}667$** | **$100.00000000\%$** |
+3. Base compressed map with two observed attracting cycles — Zenodo `22279137`
+4. Its `4^r`-scaled family — Zenodo record `22639385`
 
-The two basin counts sum exactly to the total number of admissible starting values.
+### III. Ternary (4k−1(2))/3 line
+
+5. Base accelerated map with three observed positive attractors — Zenodo `22662980`
+6. Its exactly conjugate `4^r`-scaled family — Zenodo `22671949`
 
 ---
 
-## Stopping-Time & Orbit Statistics
+## How to Find the Source of a Paper
 
-* **Total Number of Steps:** $42{,}759{,}887{,}447$
-* **Mean Number of Steps:** $\approx 64.139831138430083$
-* **Maximum Stopping Time:** $385$ steps
-* **Starting Value Producing Maximum Stopping Time:** $n = 696{,}171{,}200$
-* **Global Maximum Trajectory Value (Peak):**  
-  $$134{,}701{,}251{,}885{,}711{,}310$$  
-  *(produced by starting value $n = 920{,}435{,}228$)*
-* **Total Factors of $3$ Removed:** $21{,}683{,}837{,}513$
+Researchers should use the **Research Papers & Reproducibility Index** above rather than identify files from filenames alone.
+
+Each research entry provides direct access to:
+
+* the corresponding Zenodo publication or record;
+* the compiled PDF;
+* the exact LaTeX manuscript source;
+* the associated computational or supplementary package.
+
+This structure is intended to make the provenance of every manuscript and computational package immediately identifiable.
 
 ---
 
-## 📂 Repository Contents
+## Reproducibility Materials
 
-This repository provides a complete bundle of research artifacts, source codes, datasets, and documentations:
+Depending on the publication, this repository contains:
 
-| Category | File Types | Description |
-| :--- | :--- | :--- |
-| **Code & Algorithms** | `.py` | Python scripts for sequence computation and verification |
-| **Datasets & Outputs** | `.json`, `.zip` | Raw sequence datasets and computational search outputs |
-| **Manuscripts & Papers** | `.pdf` | Full-text preprint and compiled research papers |
-| **Source Documents** | `.tex` | LaTeX source files for mathematical formulations |
-| **Archival Data** | `.zip` | Compressed artifacts and release bundles |
+* LaTeX manuscript sources (`.tex`)
+* compiled research papers (`.pdf`)
+* C source code
+* Python verification scripts
+* computational summaries
+* JSON data
+* trajectory and verification outputs
+* supplementary archives
+* reproducibility ZIP packages
+* checksum files
 
+The computational implementation is not identical across all six publications.
 
-## License
-The research materials are released under the Creative Commons Attribution 4.0 International License (CC BY 4.0).
+Researchers should consult the specific manuscript and computational package associated with the paper being examined.
 
-The Zenodo records provide the official publication versions and persistent DOIs.
+---
+
+## Computational Scope
+
+All exhaustive computational statements in these works refer to explicitly stated **finite ranges**.
+
+Verification through `10^9`, `10^11`, or any other finite numerical bound does not by itself constitute a proof of global convergence for all positive integers.
+
+Where a scaled-family result is obtained through exact algebraic conjugacy, the result represents an algebraic transfer from the corresponding base system and should not be interpreted as an independent exhaustive scan of every integer below the scaled numerical bound.
+
+---
+
+## Citation
+
+When using a particular mathematical result, manuscript source, computational result, or reproducibility package from this repository, please cite the corresponding Zenodo publication listed in the **Research Papers & Reproducibility Index**.
+
+See also:
+
+* [CITATION.cff](CITATION.cff)
+
+---
+
+## Author & Contact
+
+**Farhad Banazadeh**
+Independent mathematics researcher
+
+**ORCID:**
+https://orcid.org/0009-0004-7023-0298
+
+**GitHub:**
+https://github.com/FarhadBanazadeh
+
+---
+
+## Copyright and Reuse
+
+Copyright and reuse terms may differ between publications.
+
+Researchers should consult the corresponding Zenodo record and manuscript for the rights statement applicable to a particular work.
+
+For publications carrying the current all-rights-reserved statement:
+
+**© 2026 Farhad Banazadeh. All rights reserved.**
+
+The presence of source code, manuscripts, data, or supplementary material in this repository should not by itself be interpreted as granting reuse rights beyond those explicitly stated for the corresponding work.
+
+---
+
+## Persistent Publication Records
+
+Zenodo provides the persistent publication records and DOI identifiers for the research works represented in this repository.
+
+The repository serves as a structured source and reproducibility archive complementing those publication records.
