@@ -76,6 +76,17 @@ This finite verification provides strong computational evidence for the positive
 
 - **Zenodo DOI:** [10.5281/zenodo.22662980](https://doi.org/10.5281/zenodo.22662980)
 
+### 7. A 4^r-Scaled Family of the Ternary (4k−1(2))/3 Collatz-Type Map: Exact Algebraic Conjugacy, Cycle Preservation, and Transfer of the 10^9 Finite Verification
+
+This work extends the base ternary (4k−1(2))/3 map to a 4^r-scaled family and proves the exact conjugacy
+
+`T_r(4^r y) = 4^r T_0(y)`.
+
+It establishes exact transfer of orbit and cycle structure across all scaled domains, including the finite verification results of the base system through 10^9.
+
+**Base paper:** [10.5281/zenodo.22662980](https://doi.org/10.5281/zenodo.22662980)
+**Zenodo DOI:** [10.5281/zenodo.22671949](https://doi.org/10.5281/zenodo.22671949)
+
 ## Research Chain
 
 The research develops through several related stages:
@@ -84,9 +95,9 @@ The research develops through several related stages:
 3. The general $(4n \pm 4^r)/3$ family for $r \ge 0$.
 4. The independent ternary $(4k+1(2))/3$ dynamical map.
 5. The scaled family of the compressed `((4k+1)/2)/3` map for powers of `4` (`4^r`), with conjugacy verification`r`.
-6. 6. Complete 3-adic and algebraic analysis of the ternary `(4k−1(2))/3` map, together with exhaustive computational verification through `10^9` and identification of the three observed positive attractors.
----
-
+6. Complete 3-adic and algebraic analysis of the ternary `(4k−1(2))/3` map, together with exhaustive computational verification through `10^9` and identification of the three observed positive attractors.
+7. 4^r-Scaled Family — Exact Algebraic Conjugacy
+     
 ## Mathematical Formulation of the Map
 
 The domain of admissible starting values is:
