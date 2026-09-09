@@ -38,6 +38,11 @@ The two Zenodo identifiers below belong to the same underlying research work and
 
 This work develops a scaled family associated with the ternary `(4k±1)/3` system and studies its powers-of-4 scaling structure.
 
+**Related base DOI**
+
+* https://doi.org/10.5281/zenodo.22195651
+* https://doi.org/10.5281/zenodo.22195652
+ 
 **Zenodo DOI**
 
 * https://doi.org/10.5281/zenodo.22228200
@@ -153,6 +158,10 @@ The conjugacy transfers orbit structure, periodic cycles, stopping behavior, bas
 
 This transfer should not be interpreted as a new exhaustive computation of every integer below `4^r × 10^9`.
 
+**Related base DOI**
+
+* https://doi.org/10.5281/zenodo.22662980
+  
 **Zenodo DOI**
 
 * https://doi.org/10.5281/zenodo.22671949
