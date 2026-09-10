@@ -323,12 +323,14 @@ Independent mathematics researcher
 
 Copyright © 2026 Farhad Banazadeh.
 
-The research publications are distributed under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** license where specified in their corresponding Zenodo records.
+All seven research publications represented in this repository are licensed under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** license.
 
-Under CC BY 4.0, reuse, redistribution, and adaptation are permitted provided appropriate attribution is given.
+Under CC BY 4.0, the publications may be shared and adapted for any purpose, including commercial use, provided that appropriate credit is given to the author, a link to the license is provided, and any changes made are indicated.
 
-Researchers should consult the corresponding Zenodo record for the definitive licensing information applicable to each publication and associated material.
+**Author:** Farhad Banazadeh  
+**License:** Creative Commons Attribution 4.0 International (CC BY 4.0)
 
+For the authoritative publication metadata and licensing information for each work, please consult its corresponding Zenodo record.
 ---
 
 ## Persistent Publication Records
