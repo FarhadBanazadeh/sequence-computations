@@ -2,14 +2,15 @@
 
 Research articles, LaTeX sources, computational packages, and reproducibility materials for ternary Collatz-type maps and their scaled families.
 
-**Author:** Farhad Banazadeh  
+**Author:** Farhad Banazadeh
 **ORCID:** https://orcid.org/0009-0004-7023-0298
 
 ---
 
 ## Research Papers & Reproducibility Index
 
-This repository contains the manuscript sources and computational materials associated with eight research works.
+This repository contains the manuscript sources and computational materials associated with nine research works.
+
 For each paper, direct links are provided to the publication record, PDF, LaTeX source, and associated computational or supplementary package.
 
 ---
@@ -22,19 +23,20 @@ The two Zenodo identifiers below belong to the same underlying research work and
 
 **Zenodo**
 
-- https://doi.org/10.5281/zenodo.22195651
-- https://doi.org/10.5281/zenodo.22195652
-- 
+* https://doi.org/10.5281/zenodo.22195651
+* https://doi.org/10.5281/zenodo.22195652
+
 **Later work**
 
-- This computation was extended to 10^11:
-- [Zenodo 22685074](https://doi.org/10.5281/zenodo.22685074)
+This computation was subsequently extended to `10^11`:
+
+* https://doi.org/10.5281/zenodo.22685074
 
 **Repository files**
 
-- [PDF](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22195652_Ternary_4k_pm_1_over_3_Collatz_Type_Map_up_to_1e9.pdf)
-- [LaTeX source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22195652_Ternary_4k_pm_1_over_3_Collatz_Type_Map_up_to_1e9.tex)
-- [Computational package](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22195652_Ternary_4k_pm_1_over_3_Collatz_Type_Map_up_to_1e9_Computational_Pack.zip)
+* PDF: https://raw.githubusercontent.com/FarhadBanazadeh/sequence-computations/main/Farhad_Banazadeh_Zenodo22195652_Ternary_4k_pm_1_over_3_Collatz_Type_Map_up_to_1e9.pdf
+* LaTeX: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22195652_Ternary_4k_pm_1_over_3_Collatz_Type_Map_up_to_1e9.tex
+* Computational Package: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22195652_Ternary_4k_pm_1_over_3_Collatz_Type_Map_up_to_1e9_Computational_Pack.zip
 
 ---
 
@@ -44,18 +46,18 @@ This work develops a scaled family associated with the ternary `(4k±1)/3` syste
 
 **Related base DOI**
 
-- https://doi.org/10.5281/zenodo.22195651
-- https://doi.org/10.5281/zenodo.22195652
+* https://doi.org/10.5281/zenodo.22195651
+* https://doi.org/10.5281/zenodo.22195652
 
 **Zenodo DOI**
 
-- https://doi.org/10.5281/zenodo.22228200
+* https://doi.org/10.5281/zenodo.22228200
 
 **Repository files**
 
-- [PDF](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22228200_Ternary_4k_pm_1_over_3_Collatz_Type_Map_and_4r_Scaled_Family.pdf)
-- [LaTeX source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22228200_Ternary_4k_pm_1_over_3_Collatz_Type_Map_and_4r_Scaled_Family.tex)
-- [Computational package](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22228200_Ternary_4k_pm_1_over_3_Collatz_Type_Map_and_4r_Scaled_Family_Computational_Pack.zip)
+* PDF: https://raw.githubusercontent.com/FarhadBanazadeh/sequence-computations/main/Farhad_Banazadeh_Zenodo22228200_Ternary_4k_pm_1_over_3_Collatz_Type_Map_and_4r_Scaled_Family.pdf
+* LaTeX: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22228200_Ternary_4k_pm_1_over_3_Collatz_Type_Map_and_4r_Scaled_Family.tex
+* Computational Package: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22228200_Ternary_4k_pm_1_over_3_Collatz_Type_Map_and_4r_Scaled_Family_Computational_Pack.zip
 
 ---
 
@@ -65,20 +67,20 @@ This is an independent compressed ternary Collatz-type system defined on positiv
 
 The finite exhaustive computation through `10^9` identifies two observed attracting cycles:
 
-- `C1 = (1, 2)`
-- `C7 = (7, 10, 14, 19, 26, 35, 47)`
+* `C1 = (1, 2)`
+* `C7 = (7, 10, 14, 19, 26, 35, 47)`
 
 The finite computation provides computational evidence and does not constitute a proof of global convergence.
 
 **Zenodo DOI**
 
-- https://doi.org/10.5281/zenodo.22279137
+* https://doi.org/10.5281/zenodo.22279137
 
 **Repository files**
 
-- [PDF](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22279137_Ternary_4k_plus_1_2_over_3_Collatz_Type_Map_up_to_1e9.pdf)
-- [LaTeX source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22279137_Ternary_4k_plus_1_2_over_3_Collatz_Type_Map_up_to_1e9.tex)
-- [Computational package](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22279137_Ternary_4k_plus_1_2_over_3_Collatz_Type_Map_up_to_1e9_Computational_Pack.zip)
+* PDF: https://raw.githubusercontent.com/FarhadBanazadeh/sequence-computations/main/Farhad_Banazadeh_Zenodo22279137_Ternary_4k_plus_1_2_over_3_Collatz_Type_Map_up_to_1e9.pdf
+* LaTeX: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22279137_Ternary_4k_plus_1_2_over_3_Collatz_Type_Map_up_to_1e9.tex
+* Computational Package: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22279137_Ternary_4k_plus_1_2_over_3_Collatz_Type_Map_up_to_1e9_Computational_Pack.zip
 
 ---
 
@@ -88,17 +90,17 @@ This work develops the `4^r`-scaled family associated with the preceding `(4k+1(
 
 **Zenodo record**
 
-- https://zenodo.org/records/22639385
+* https://zenodo.org/records/22639385
 
 **Related base DOI**
 
-- https://doi.org/10.5281/zenodo.22279137
+* https://doi.org/10.5281/zenodo.22279137
 
 **Repository files**
 
-- [PDF](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22639385_Ternary_4k_plus_1_2_over_3_Collatz_Type_Map_and_4r_Scaled_Family.pdf)
-- [LaTeX source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22639385_Ternary_4k_plus_1_2_over_3_Collatz_Type_Map_and_4r_Scaled_Family.tex)
-- [Computational package](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22639385_Ternary_4k_plus_1_2_over_3_Collatz_Type_Map_and_4r_Scaled_Family_Computational_Pack.zip)
+* PDF: https://raw.githubusercontent.com/FarhadBanazadeh/sequence-computations/main/Farhad_Banazadeh_Zenodo22639385_Ternary_4k_plus_1_2_over_3_Collatz_Type_Map_and_4r_Scaled_Family.pdf
+* LaTeX: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22639385_Ternary_4k_plus_1_2_over_3_Collatz_Type_Map_and_4r_Scaled_Family.tex
+* Computational Package: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22639385_Ternary_4k_plus_1_2_over_3_Collatz_Type_Map_and_4r_Scaled_Family_Computational_Pack.zip
 
 ---
 
@@ -124,9 +126,9 @@ admissible starting values.
 
 Every tested orbit enters one of three observed positive attractors:
 
-- fixed point `1`
-- fixed point `2`
-- four-cycle `22 → 29 → 38 → 50 → 22`
+* fixed point `1`
+* fixed point `2`
+* four-cycle `22 → 29 → 38 → 50 → 22`
 
 No unresolved or overflowing trajectory was found in the tested range.
 
@@ -134,13 +136,13 @@ This is finite computational evidence and is not a proof of global convergence f
 
 **Zenodo DOI**
 
-- https://doi.org/10.5281/zenodo.22662980
+* https://doi.org/10.5281/zenodo.22662980
 
 **Repository files**
 
-- [PDF](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22662980_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e9.pdf)
-- [LaTeX source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22662980_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e9.tex)
-- [Computational package](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22662980_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e9_Computational_Pack.zip)
+* PDF: https://raw.githubusercontent.com/FarhadBanazadeh/sequence-computations/main/Farhad_Banazadeh_Zenodo22662980_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e9.pdf
+* LaTeX: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22662980_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e9.tex
+* Computational Package: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22662980_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e9_Computational_Pack.zip
 
 ---
 
@@ -164,17 +166,17 @@ This transfer should not be interpreted as a new exhaustive computation of every
 
 **Related base DOI**
 
-- https://doi.org/10.5281/zenodo.22662980
+* https://doi.org/10.5281/zenodo.22662980
 
 **Zenodo DOI**
 
-- https://doi.org/10.5281/zenodo.22671949
+* https://doi.org/10.5281/zenodo.22671949
 
 **Repository files**
 
-- [PDF](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22671949_4r_Scaled_Family_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_1e9.pdf)
-- [LaTeX source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22671949_4r_Scaled_Family_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_1e9.tex)
-- [Computational package](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22671949_4r_Scaled_Family_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_1e9_Computational_Pack.zip)
+* PDF: https://raw.githubusercontent.com/FarhadBanazadeh/sequence-computations/main/Farhad_Banazadeh_Zenodo22671949_4r_Scaled_Family_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_1e9.pdf
+* LaTeX: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22671949_4r_Scaled_Family_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_1e9.tex
+* Computational Package: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22671949_4r_Scaled_Family_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_1e9_Computational_Pack.zip
 
 ---
 
@@ -196,14 +198,14 @@ Using a multithreaded C11 implementation with unsigned 128-bit integer arithmeti
 
 The final exhaustive computation produced:
 
-- tested: `99,000,000,000`
-- certified: `99,000,000,000`
-- unsigned 128-bit overflows: `0`
-- maximum steps to the verified base interval: `548`
-- corresponding start: `58,528,894,046`
-- largest encountered value: `1,030,251,791,629,144,029,921`
-- corresponding start: `72,496,238,260`
-- peak iteration: `168`
+* tested: `99,000,000,000`
+* certified: `99,000,000,000`
+* unsigned 128-bit overflows: `0`
+* maximum steps to the verified base interval: `548`
+* corresponding start: `58,528,894,046`
+* largest encountered value: `1,030,251,791,629,144,029,921`
+* corresponding start: `72,496,238,260`
+* peak iteration: `168`
 
 An earlier unsigned 64-bit computation left 158 starts unresolved solely because intermediate orbit values exceeded the 64-bit range. The complete 128-bit rescan eliminated this arithmetic limitation and produced zero overflows.
 
@@ -217,87 +219,115 @@ This is a finite exhaustive computational verification and does not constitute a
 
 **Related base research**
 
-- https://doi.org/10.5281/zenodo.22195651
-- https://doi.org/10.5281/zenodo.22195652
+* https://doi.org/10.5281/zenodo.22195651
+* https://doi.org/10.5281/zenodo.22195652
 
 **Zenodo DOI**
 
-- https://doi.org/10.5281/zenodo.22685074
+* https://doi.org/10.5281/zenodo.22685074
 
 **Repository files**
 
-- [PDF](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22685074_Ternary_4k_pm_1_over_3_Collatz-Type_Map_up_to_1e11.pdf)
-- [LaTeX source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22685074_Ternary_4k_pm_1_over_3_Collatz-Type_Map_up_to_1e11.tex)
-- [Computational package](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22685074_Ternary_4k_pm_1_over_3_Collatz-Type_Map_up_to_1e11_Computational_Pack.zip)
- 
+* PDF: https://raw.githubusercontent.com/FarhadBanazadeh/sequence-computations/main/Farhad_Banazadeh_Zenodo22685074_Ternary_4k_pm_1_over_3_Collatz-Type_Map_up_to_1e11.pdf
+* LaTeX: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22685074_Ternary_4k_pm_1_over_3_Collatz-Type_Map_up_to_1e11.tex
+* Computational Package: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22685074_Ternary_4k_pm_1_over_3_Collatz-Type_Map_up_to_1e11_Computational_Pack.zip
+
 ---
 
 ### 8. Ternary (5k±1)/4 Collatz-Type Map with Two Observed Attractors: Exhaustive Computational Verification up to 10^10 and Algebraic Structure
 
-This work studies the ternary `(5k±1)/4` Collatz-type map on positive odd integers.
+This work studies the reduced ternary `(5k±1)/4` Collatz-type map on the positive odd integers.
 
-The dynamical system exhibits two observed attractors:
+The dynamical system has two observed periodic attractors:
 
-- fixed point `1`
-- three-cycle `13 → 33 → 83 → 13`
+* fixed point `1`
+* three-cycle `7 → 9 → 11 → 7`
 
-An exhaustive finite computation was performed for all positive odd starting values below `10^10`.
+An exhaustive finite computation was performed for all `5,000,000,000` positive odd starting values below `10^10`.
 
-Every tested starting value entered one of the two observed attractors, and no additional terminal cycle was detected in the verified range.
+Every tested starting value entered one of the two displayed attractors. No unresolved trajectory and no additional terminal cycle were encountered within the verified range.
 
-This is finite exhaustive computational evidence and does not constitute a proof of global convergence for all positive odd integers.
+The paper also develops the algebraic structure of the system, including periodic-orbit identities, inverse branches, two-adic valuation statistics, basin structure, and a probabilistic logarithmic-drift model.
+
+This is a finite exhaustive computational verification and does not constitute a proof of global convergence for all positive odd integers.
 
 **Zenodo DOI**
 
-- https://doi.org/10.5281/zenodo.22709065
+* https://doi.org/10.5281/zenodo.22709065
 
 **Repository files**
 
-- [PDF](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22709065_Ternary_5k_pm_1_over_4_Collatz_Type_Map_up_to_1e10.pdf)
-- [LaTeX source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22709065_Ternary_5k_pm_1_over_4_Collatz_Type_Map_up_to_1e10.tex)
-- [Computational package](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22709065_Ternary_5k_pm_1_over_4_Collatz_Type_Map_up_to_1e10_Computational_Pack.zip)
+* PDF: https://raw.githubusercontent.com/FarhadBanazadeh/sequence-computations/main/Farhad_Banazadeh_Zenodo22709065_Ternary_5k_pm_1_over_4_Collatz_Type_Map_up_to_1e10.pdf
+* LaTeX: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22709065_Ternary_5k_pm_1_over_4_Collatz_Type_Map_up_to_1e10.tex
+* Computational Package: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22709065_Ternary_5k_pm_1_over_4_Collatz_Type_Map_up_to_1e10_Computational_Pack.zip
 
-### 9. A 5^r-Scaled Family of the Reduced Ternary (5k ± 1)/4 Collatz-Type Map: Exact Algebraic Conjugacy, Cycle Preservation, Orbit-Statistic Invariance, and Transfer of the 10^10 Finite Verification
+---
 
-The paper studies a residue-dependent reduced Collatz-type map on the positive odd integers, based on the affine rules 5x - 1 and 5x + 1, followed by complete removal of all factors of 2.
-Two periodic attractors are observed:
+### 9. A 5^r-Scaled Family of the Reduced Ternary (5k±1)/4 Collatz-Type Map: Exact Algebraic Conjugacy, Cycle Preservation, Orbit-Statistic Invariance, and Transfer of the 10^10 Finite Verification
 
-the fixed point 1;
-the three-cycle 7 -> 9 -> 11 -> 7.
+This work develops the `5^r`-scaled family associated with the preceding reduced ternary `(5k±1)/4` Collatz-type map.
 
-An exhaustive computation was performed for all 5,000,000,000 positive odd starting values below 10^10. Every tested trajectory entered one of these two attractors, and no unresolved trajectory or additional terminal cycle was found within the verified range.
-The paper also studies the algebraic structure of periodic orbits, inverse branches, two-adic valuations, basin statistics, and the associated logarithmic-drift heuristic.
+For every integer `r ≥ 0`, the natural scaled state space is
 
-The repository provides the article and associated computational/reproducibility materials.
-For the complete mathematical definitions, computational results, extremal statistics, proofs, and methodological details, see the PDF article and the Zenodo archive.
+`S_r = 5^r N_odd`.
 
-Scope
+Under the scaling map
 
-The exhaustive computation establishes a finite-range result up to 10^10. It does not constitute a proof of global convergence or a proof that no other periodic orbit exists outside the verified range.
+`Phi_r(y) = 5^r y`,
+
+the reduced maps satisfy the exact relation
+
+`T_r(Phi_r(y)) = Phi_r(T_0(y))`.
+
+Consequently,
+
+`T_r^j(5^r y) = 5^r T_0^j(y)`
+
+for every integer `j ≥ 0`.
+
+This establishes an exact algebraic conjugacy between the base system and every scaled system on its natural scaled domain.
+
+The conjugacy preserves the complete orbit structure, including periodic orbits, minimal cycle lengths, basin membership, transient and capture times, first-descent stopping times, two-adic valuation sequences, inverse-branch structure, and normalized orbit statistics.
+
+The base fixed point and three-cycle therefore become
+
+`5^r → 5^r`
+
+and
+
+`7·5^r → 9·5^r → 11·5^r → 7·5^r`.
+
+The exhaustive finite verification of all `5,000,000,000` positive odd starting values below `10^10` for the base map transfers exactly to the corresponding scaled set
+
+`{5^r y : 1 ≤ y < 10^10, y odd}`
+
+for every fixed `r ≥ 0`.
+
+This is a theorem-based transfer of the base computation. It is not a new independent exhaustive scan of all odd integers below `5^r × 10^10`.
+
+The exact conjugacy is proved on the scaled domain `5^r N_odd`; no equivalent claim is made for arbitrary positive odd integers outside that domain.
 
 **Related base research**
-- https://doi.org/10.5281/zenodo.22709065
+
+* https://doi.org/10.5281/zenodo.22709065
 
 **Zenodo DOI**
 
-- https://doi.org/10.5281/zenodo.22714150
+* https://doi.org/10.5281/zenodo.22714150
 
 **Repository files**
 
-- PDF:
-https://raw.githubusercontent.com/FarhadBanazadeh/sequence-computations/main/Farhad_Banazadeh_Zenodo22714150_5%5Er_Scaled_Family_Ternary_5k_pm_1_over_4_Collatz_Type_Map.pdf
+* PDF: https://raw.githubusercontent.com/FarhadBanazadeh/sequence-computations/main/Farhad_Banazadeh_Zenodo22714150_5%5Er_Scaled_Family_Ternary_5k_pm_1_over_4_Collatz_Type_Map.pdf
+* LaTeX: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22714150_5%5Er_Scaled_Family_Ternary_5k_pm_1_over_4_Collatz_Type_Map.tex
+* Computational Package: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22714150_5%5Er_Scaled_Family_Ternary_5k_pm_1_over_4_Collatz_Type_Map_Computational_Pack.zip
 
-- LaTeX:
-https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22714150_5%5Er_Scaled_Family_Ternary_5k_pm_1_over_4_Collatz_Type_Map.tex
-
-- Computational Package:
-https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22714150_5%5Er_Scaled_Family_Ternary_5k_pm_1_over_4_Collatz_Type_Map_Computational_Pack.zip
+---
 
 ## Research Structure
 
-The eight works belong to **three distinct research lines**.
+The nine works belong to **four distinct research lines**.
 
-They use related ternary and 3-adic ideas, but they should not be treated as a single dynamical system.
+They use related ternary, residue-dependent, and valuation-based ideas, but they should not be treated as a single dynamical system.
 
 ### I. Ternary (4k±1)/3 line
 
@@ -317,8 +347,8 @@ They use related ternary and 3-adic ideas, but they should not be treated as a s
 
 ### IV. Ternary (5k±1)/4 line
 
-8. Ternary (5k±1)/4 Collatz-type map with two observed attractors — Zenodo `22709065
-9. 5^r-scaled family of the reduced ternary (5k±1)/4 Collatz-type map — Zenodo 22714150
+8. Base map with two observed attractors and exhaustive verification through `10^10` — Zenodo `22709065`
+9. Its exactly conjugate `5^r`-scaled family — Zenodo `22714150`
 
 ---
 
@@ -328,10 +358,10 @@ Researchers should use the **Research Papers & Reproducibility Index** above rat
 
 Each research entry provides direct access to:
 
-- the corresponding Zenodo publication or record;
-- the compiled PDF;
-- the exact LaTeX manuscript source;
-- the associated computational or supplementary package.
+* the corresponding Zenodo publication or record;
+* the compiled PDF;
+* the exact LaTeX manuscript source;
+* the associated computational or supplementary package.
 
 This structure is intended to make the provenance of every manuscript and computational package immediately identifiable.
 
@@ -341,18 +371,18 @@ This structure is intended to make the provenance of every manuscript and comput
 
 Depending on the publication, this repository contains:
 
-- LaTeX manuscript sources (`.tex`)
-- compiled research papers (`.pdf`)
-- C source code
-- Python verification scripts
-- computational summaries
-- JSON data
-- trajectory and verification outputs
-- supplementary archives
-- reproducibility ZIP packages
-- checksum files
+* LaTeX manuscript sources (`.tex`)
+* compiled research papers (`.pdf`)
+* C source code
+* Python verification scripts
+* computational summaries
+* JSON data
+* trajectory and verification outputs
+* supplementary archives
+* reproducibility ZIP packages
+* checksum files
 
-The computational implementation is not identical across all seven publications.
+The computational implementation is not identical across all nine research works.
 
 Researchers should consult the specific manuscript and computational package associated with the paper being examined.
 
@@ -362,7 +392,7 @@ Researchers should consult the specific manuscript and computational package ass
 
 All exhaustive computational statements in these works refer to explicitly stated **finite ranges**.
 
-Verification through `10^9`, `10^11`, or any other finite numerical bound does not by itself constitute a proof of global convergence for all positive integers.
+Verification through `10^9`, `10^10`, `10^11`, or any other finite numerical bound does not by itself constitute a proof of global convergence for all positive integers in the corresponding dynamical system.
 
 Where a scaled-family result is obtained through exact algebraic conjugacy, the result represents an algebraic transfer from the corresponding base system and should not be interpreted as an independent exhaustive scan of every integer below the scaled numerical bound.
 
@@ -374,13 +404,13 @@ When using a particular mathematical result, manuscript source, computational re
 
 See also:
 
-- [CITATION.cff](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/CITATION.cff)
+* https://github.com/FarhadBanazadeh/sequence-computations/blob/main/CITATION.cff
 
 ---
 
 ## Author & Contact
 
-**Farhad Banazadeh**  
+**Farhad Banazadeh**
 Independent mathematics researcher
 
 **ORCID:** https://orcid.org/0009-0004-7023-0298
@@ -393,18 +423,19 @@ Independent mathematics researcher
 
 Copyright © 2026 Farhad Banazadeh.
 
-All seven research publications represented in this repository are licensed under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** license.
+The research publications represented in this repository are licensed under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** license, subject to the authoritative licensing information associated with each individual Zenodo record.
 
-Under CC BY 4.0, the publications may be shared and adapted for any purpose, including commercial use, provided that appropriate credit is given to the author, a link to the license is provided, and any changes made are indicated.
+Under CC BY 4.0, works may be shared and adapted for any purpose, including commercial use, provided that appropriate credit is given to the author, a link to the license is provided, and any changes made are indicated.
 
-**Author:** Farhad Banazadeh  
+**Author:** Farhad Banazadeh
 **License:** Creative Commons Attribution 4.0 International (CC BY 4.0)
 
 For the authoritative publication metadata and licensing information for each work, please consult its corresponding Zenodo record.
+
 ---
 
 ## Persistent Publication Records
 
 Zenodo provides the persistent publication records and DOI identifiers for the research works represented in this repository.
 
-The repository serves as a structured source and reproducibility archive complementing those publication records.
+This GitHub repository serves as a structured source, computational, and reproducibility archive complementing those persistent publication records.
