@@ -24,6 +24,11 @@ The two Zenodo identifiers below belong to the same underlying research work and
 
 - https://doi.org/10.5281/zenodo.22195651
 - https://doi.org/10.5281/zenodo.22195652
+- 
+**Later work**
+
+- This computation was extended to 10^11:
+- [Zenodo 22685074](https://doi.org/10.5281/zenodo.22685074)
 
 **Repository files**
 
