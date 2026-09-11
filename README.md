@@ -288,6 +288,10 @@ The exhaustive computation establishes a finite-range result up to 10^10. It doe
 - [LaTeX source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22714150_5^r_Scaled_Family_Ternary_5k_pm_1_over_4_Collatz_Type_Map.tex)
 - [Computational package](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22714150_5^r_Scaled_Family_Ternary_5k_pm_1_over_4_Collatz_Type_Map_Computational_Pack.zip)
 
+PDF
+LaTeX source
+Computational package
+
 ## Research Structure
 
 The eight works belong to **three distinct research lines**.
