@@ -9,8 +9,7 @@ Research articles, LaTeX sources, computational packages, and reproducibility ma
 
 ## Research Papers & Reproducibility Index
 
-This repository contains the manuscript sources and computational materials associated with **seven research works**.
-
+This repository contains the manuscript sources and computational materials associated with eight research works.
 For each paper, direct links are provided to the publication record, PDF, LaTeX source, and associated computational or supplementary package.
 
 ---
@@ -228,9 +227,35 @@ This is a finite exhaustive computational verification and does not constitute a
 
 ---
 
+### 8. Ternary (5k±1)/4 Collatz-Type Map with Two Observed Attractors: Exhaustive Computational Verification up to 10^10 and Algebraic Structure
+
+This work studies the ternary `(5k±1)/4` Collatz-type map on positive odd integers.
+
+The dynamical system exhibits two observed attractors:
+
+- fixed point `1`
+- three-cycle `13 → 33 → 83 → 13`
+
+An exhaustive finite computation was performed for all positive odd starting values below `10^10`.
+
+Every tested starting value entered one of the two observed attractors, and no additional terminal cycle was detected in the verified range.
+
+This is finite exhaustive computational evidence and does not constitute a proof of global convergence for all positive odd integers.
+
+**Zenodo DOI**
+
+- https://doi.org/10.5281/zenodo.22709065
+
+**Repository files**
+
+- [PDF](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22709065_Ternary_5k_pm_1_over_4_Collatz_Type_Map_up_to_1e10.pdf)
+- [LaTeX source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22709065_Ternary_5k_pm_1_over_4_Collatz_Type_Map_up_to_1e10.tex)
+- [Computational package](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22709065_Ternary_5k_pm_1_over_4_Collatz_Type_Map_up_to_1e10_Computational_Pack.zip)
+---
+
 ## Research Structure
 
-The seven works belong to **three distinct research lines**.
+The eight works belong to **three distinct research lines**.
 
 They use related ternary and 3-adic ideas, but they should not be treated as a single dynamical system.
 
@@ -250,6 +275,10 @@ They use related ternary and 3-adic ideas, but they should not be treated as a s
 6. Base accelerated map with three observed positive attractors — Zenodo `22662980`
 7. Its exactly conjugate `4^r`-scaled family — Zenodo `22671949`
 
+### IV. Ternary (5k±1)/4 line
+
+8. Ternary (5k±1)/4 Collatz-type map with two observed attractors — Zenodo `22709065
+ 
 ---
 
 ## How to Find the Source of a Paper
