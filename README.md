@@ -256,7 +256,35 @@ This is finite exhaustive computational evidence and does not constitute a proof
 - [PDF](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22709065_Ternary_5k_pm_1_over_4_Collatz_Type_Map_up_to_1e10.pdf)
 - [LaTeX source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22709065_Ternary_5k_pm_1_over_4_Collatz_Type_Map_up_to_1e10.tex)
 - [Computational package](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22709065_Ternary_5k_pm_1_over_4_Collatz_Type_Map_up_to_1e10_Computational_Pack.zip)
----
+
+### 9.A 5^r-Scaled Family of the Reduced Ternary (5k ± 1)/4 Collatz-Type Map: Exact Algebraic Conjugacy, Cycle Preservation, Orbit-Statistic Invariance, and Transfer of the 10^10 Finite Verification
+
+The paper studies a residue-dependent reduced Collatz-type map on the positive odd integers, based on the affine rules 5x - 1 and 5x + 1, followed by complete removal of all factors of 2.
+Two periodic attractors are observed:
+
+the fixed point 1;
+the three-cycle 7 -> 9 -> 11 -> 7.
+
+An exhaustive computation was performed for all 5,000,000,000 positive odd starting values below 10^10. Every tested trajectory entered one of these two attractors, and no unresolved trajectory or additional terminal cycle was found within the verified range.
+The paper also studies the algebraic structure of periodic orbits, inverse branches, two-adic valuations, basin statistics, and the associated logarithmic-drift heuristic.
+
+The repository provides the article and associated computational/reproducibility materials.
+For the complete mathematical definitions, computational results, extremal statistics, proofs, and methodological details, see the PDF article and the Zenodo archive.
+
+Scope
+
+The exhaustive computation establishes a finite-range result up to 10^10. It does not constitute a proof of global convergence or a proof that no other periodic orbit exists outside the verified range.
+
+**Related base research**
+- https://doi.org/10.5281/zenodo.22709065
+
+**Zenodo DOI**
+
+- https://doi.org/10.5281/zenodo.22714150
+
+- [PDF](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22714150_5^r_Scaled_Family_Ternary_5k_pm_1_over_4_Collatz_Type_Map.pdf)
+- [LaTeX source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22714150_5^r_Scaled_Family_Ternary_5k_pm_1_over_4_Collatz_Type_Map.tex)
+- [Computational package](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22714150_5^r_Scaled_Family_Ternary_5k_pm_1_over_4_Collatz_Type_Map_Computational_Pack.zip)
 
 ## Research Structure
 
@@ -283,7 +311,8 @@ They use related ternary and 3-adic ideas, but they should not be treated as a s
 ### IV. Ternary (5k±1)/4 line
 
 8. Ternary (5k±1)/4 Collatz-type map with two observed attractors — Zenodo `22709065
- 
+9. 5^r-scaled family of the reduced ternary (5k±1)/4 Collatz-type map — Zenodo 22714150
+
 ---
 
 ## How to Find the Source of a Paper
