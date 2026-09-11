@@ -257,7 +257,7 @@ This is finite exhaustive computational evidence and does not constitute a proof
 - [LaTeX source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22709065_Ternary_5k_pm_1_over_4_Collatz_Type_Map_up_to_1e10.tex)
 - [Computational package](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22709065_Ternary_5k_pm_1_over_4_Collatz_Type_Map_up_to_1e10_Computational_Pack.zip)
 
-### 9.A 5^r-Scaled Family of the Reduced Ternary (5k ± 1)/4 Collatz-Type Map: Exact Algebraic Conjugacy, Cycle Preservation, Orbit-Statistic Invariance, and Transfer of the 10^10 Finite Verification
+### 9. A 5^r-Scaled Family of the Reduced Ternary (5k ± 1)/4 Collatz-Type Map: Exact Algebraic Conjugacy, Cycle Preservation, Orbit-Statistic Invariance, and Transfer of the 10^10 Finite Verification
 
 The paper studies a residue-dependent reduced Collatz-type map on the positive odd integers, based on the affine rules 5x - 1 and 5x + 1, followed by complete removal of all factors of 2.
 Two periodic attractors are observed:
@@ -281,6 +281,8 @@ The exhaustive computation establishes a finite-range result up to 10^10. It doe
 **Zenodo DOI**
 
 - https://doi.org/10.5281/zenodo.22714150
+
+**Repository files**
 
 - [PDF](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22714150_5^r_Scaled_Family_Ternary_5k_pm_1_over_4_Collatz_Type_Map.pdf)
 - [LaTeX source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22714150_5^r_Scaled_Family_Ternary_5k_pm_1_over_4_Collatz_Type_Map.tex)
