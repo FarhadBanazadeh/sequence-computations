@@ -30,13 +30,13 @@ The two Zenodo identifiers below belong to the same underlying research work and
 
 This computation was subsequently extended to `10^11`:
 
-* https://doi.org/10.5281/zenodo.22685074
+* [Zenodo 22685074](https://doi.org/10.5281/zenodo.22685074)
 
 **Repository files**
 
 * PDF: https://raw.githubusercontent.com/FarhadBanazadeh/sequence-computations/main/Farhad_Banazadeh_Zenodo22195652_Ternary_4k_pm_1_over_3_Collatz_Type_Map_up_to_1e9.pdf
-* LaTeX: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22195652_Ternary_4k_pm_1_over_3_Collatz_Type_Map_up_to_1e9.tex
-* Computational Package: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22195652_Ternary_4k_pm_1_over_3_Collatz_Type_Map_up_to_1e9_Computational_Pack.zip
+* [LaTeX source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22195652_Ternary_4k_pm_1_over_3_Collatz_Type_Map_up_to_1e9.tex)
+* [Computational package](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22195652_Ternary_4k_pm_1_over_3_Collatz_Type_Map_up_to_1e9_Computational_Pack.zip)
 
 ---
 
@@ -56,8 +56,8 @@ This work develops a scaled family associated with the ternary `(4k±1)/3` syste
 **Repository files**
 
 * PDF: https://raw.githubusercontent.com/FarhadBanazadeh/sequence-computations/main/Farhad_Banazadeh_Zenodo22228200_Ternary_4k_pm_1_over_3_Collatz_Type_Map_and_4r_Scaled_Family.pdf
-* LaTeX: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22228200_Ternary_4k_pm_1_over_3_Collatz_Type_Map_and_4r_Scaled_Family.tex
-* Computational Package: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22228200_Ternary_4k_pm_1_over_3_Collatz_Type_Map_and_4r_Scaled_Family_Computational_Pack.zip
+* [LaTeX source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22228200_Ternary_4k_pm_1_over_3_Collatz_Type_Map_and_4r_Scaled_Family.tex)
+* [Computational package](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22228200_Ternary_4k_pm_1_over_3_Collatz_Type_Map_and_4r_Scaled_Family_Computational_Pack.zip)
 
 ---
 
@@ -79,8 +79,8 @@ The finite computation provides computational evidence and does not constitute a
 **Repository files**
 
 * PDF: https://raw.githubusercontent.com/FarhadBanazadeh/sequence-computations/main/Farhad_Banazadeh_Zenodo22279137_Ternary_4k_plus_1_2_over_3_Collatz_Type_Map_up_to_1e9.pdf
-* LaTeX: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22279137_Ternary_4k_plus_1_2_over_3_Collatz_Type_Map_up_to_1e9.tex
-* Computational Package: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22279137_Ternary_4k_plus_1_2_over_3_Collatz_Type_Map_up_to_1e9_Computational_Pack.zip
+* [LaTeX source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22279137_Ternary_4k_plus_1_2_over_3_Collatz_Type_Map_up_to_1e9.tex)
+* [Computational package](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22279137_Ternary_4k_plus_1_2_over_3_Collatz_Type_Map_up_to_1e9_Computational_Pack.zip)
 
 ---
 
@@ -99,8 +99,8 @@ This work develops the `4^r`-scaled family associated with the preceding `(4k+1(
 **Repository files**
 
 * PDF: https://raw.githubusercontent.com/FarhadBanazadeh/sequence-computations/main/Farhad_Banazadeh_Zenodo22639385_Ternary_4k_plus_1_2_over_3_Collatz_Type_Map_and_4r_Scaled_Family.pdf
-* LaTeX: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22639385_Ternary_4k_plus_1_2_over_3_Collatz_Type_Map_and_4r_Scaled_Family.tex
-* Computational Package: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22639385_Ternary_4k_plus_1_2_over_3_Collatz_Type_Map_and_4r_Scaled_Family_Computational_Pack.zip
+* [LaTeX source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22639385_Ternary_4k_plus_1_2_over_3_Collatz_Type_Map_and_4r_Scaled_Family.tex)
+* [Computational package](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22639385_Ternary_4k_plus_1_2_over_3_Collatz_Type_Map_and_4r_Scaled_Family_Computational_Pack.zip)
 
 ---
 
@@ -141,8 +141,8 @@ This is finite computational evidence and is not a proof of global convergence f
 **Repository files**
 
 * PDF: https://raw.githubusercontent.com/FarhadBanazadeh/sequence-computations/main/Farhad_Banazadeh_Zenodo22662980_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e9.pdf
-* LaTeX: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22662980_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e9.tex
-* Computational Package: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22662980_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e9_Computational_Pack.zip
+* [LaTeX source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22662980_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e9.tex)
+* [Computational package](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22662980_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e9_Computational_Pack.zip)
 
 ---
 
@@ -175,8 +175,8 @@ This transfer should not be interpreted as a new exhaustive computation of every
 **Repository files**
 
 * PDF: https://raw.githubusercontent.com/FarhadBanazadeh/sequence-computations/main/Farhad_Banazadeh_Zenodo22671949_4r_Scaled_Family_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_1e9.pdf
-* LaTeX: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22671949_4r_Scaled_Family_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_1e9.tex
-* Computational Package: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22671949_4r_Scaled_Family_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_1e9_Computational_Pack.zip
+* [LaTeX source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22671949_4r_Scaled_Family_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_1e9.tex)
+* [Computational package](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22671949_4r_Scaled_Family_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_1e9_Computational_Pack.zip)
 
 ---
 
@@ -229,8 +229,8 @@ This is a finite exhaustive computational verification and does not constitute a
 **Repository files**
 
 * PDF: https://raw.githubusercontent.com/FarhadBanazadeh/sequence-computations/main/Farhad_Banazadeh_Zenodo22685074_Ternary_4k_pm_1_over_3_Collatz-Type_Map_up_to_1e11.pdf
-* LaTeX: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22685074_Ternary_4k_pm_1_over_3_Collatz-Type_Map_up_to_1e11.tex
-* Computational Package: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22685074_Ternary_4k_pm_1_over_3_Collatz-Type_Map_up_to_1e11_Computational_Pack.zip
+* [LaTeX source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22685074_Ternary_4k_pm_1_over_3_Collatz-Type_Map_up_to_1e11.tex)
+* [Computational package](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22685074_Ternary_4k_pm_1_over_3_Collatz-Type_Map_up_to_1e11_Computational_Pack.zip)
 
 ---
 
@@ -258,8 +258,8 @@ This is a finite exhaustive computational verification and does not constitute a
 **Repository files**
 
 * PDF: https://raw.githubusercontent.com/FarhadBanazadeh/sequence-computations/main/Farhad_Banazadeh_Zenodo22709065_Ternary_5k_pm_1_over_4_Collatz_Type_Map_up_to_1e10.pdf
-* LaTeX: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22709065_Ternary_5k_pm_1_over_4_Collatz_Type_Map_up_to_1e10.tex
-* Computational Package: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22709065_Ternary_5k_pm_1_over_4_Collatz_Type_Map_up_to_1e10_Computational_Pack.zip
+* [LaTeX source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22709065_Ternary_5k_pm_1_over_4_Collatz_Type_Map_up_to_1e10.tex)
+* [Computational package](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22709065_Ternary_5k_pm_1_over_4_Collatz_Type_Map_up_to_1e10_Computational_Pack.zip)
 
 ---
 
@@ -318,8 +318,8 @@ The exact conjugacy is proved on the scaled domain `5^r N_odd`; no equivalent cl
 **Repository files**
 
 * PDF: https://raw.githubusercontent.com/FarhadBanazadeh/sequence-computations/main/Farhad_Banazadeh_Zenodo22714150_5%5Er_Scaled_Family_Ternary_5k_pm_1_over_4_Collatz_Type_Map.pdf
-* LaTeX: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22714150_5%5Er_Scaled_Family_Ternary_5k_pm_1_over_4_Collatz_Type_Map.tex
-* Computational Package: https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22714150_5%5Er_Scaled_Family_Ternary_5k_pm_1_over_4_Collatz_Type_Map_Computational_Pack.zip
+* [LaTeX source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22714150_5%5Er_Scaled_Family_Ternary_5k_pm_1_over_4_Collatz_Type_Map.tex)
+* [Computational package](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22714150_5%5Er_Scaled_Family_Ternary_5k_pm_1_over_4_Collatz_Type_Map_Computational_Pack.zip)
 
 ---
 
@@ -404,7 +404,7 @@ When using a particular mathematical result, manuscript source, computational re
 
 See also:
 
-* https://github.com/FarhadBanazadeh/sequence-computations/blob/main/CITATION.cff
+* [CITATION.cff](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/CITATION.cff)
 
 ---
 
