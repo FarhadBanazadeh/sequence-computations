@@ -1,0 +1,654 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,array,longtable}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=blue!55!black,urlcolor=blue!55!black}
+\setlist{nosep}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newcommand{\vTwo}{\nu_2}
+\newcommand{\Odd}{\mathbb{N}_{\mathrm{odd}}}
+
+\title{\textbf{Ternary \((5k\pm1)/4\) Collatz-Type Map with Two Observed Attractors}\\
+\large Exhaustive Computational Verification up to \(10^{10}\)\\
+\large Algebraic Structure}
+\author{Farhad Banazadeh\\
+\normalsize \href{mailto:fn.bana@hotmail.com}{fn.bana@hotmail.com}\\
+\normalsize ORCID: \href{https://orcid.org/0009-0004-7023-0298}{0009-0004-7023-0298}}
+\date{11 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We study a residue-dependent reduced Collatz-type map on the positive odd integers,
+\[
+T(x)=\frac{N(x)}{2^{\vTwo(N(x))}},\qquad
+N(x)=
+\begin{cases}
+5x-1,&x\equiv1\pmod4,\\
+5x+1,&x\equiv3\pmod4.
+\end{cases}
+\]
+Because \(N(x)\) is always divisible by \(4\), \(T\) maps positive odd integers to positive odd integers. Two exact periodic attractors are immediately present: the fixed point \(1\), and the three-cycle \(7\to9\to11\to7\).
+
+The main computational result is an exhaustive scan of every one of the \(5{,}000{,}000{,}000\) positive odd starting values below \(10^{10}\), using C code with unsigned 128-bit arithmetic for orbit states and raw affine values. Every tested orbit entered one of the two displayed attractors within the safety bound of \(10^6\) reduced iterations. No unresolved trajectory and no additional attractor was encountered. The observed basin proportions were \(71.988495060\%\) for the fixed point and \(28.011504940\%\) for the three-cycle. The maximum stopping time was \(174\), the maximum reduced odd peak was \(11{,}134{,}926{,}214{,}451\), the maximum raw affine peak was \(55{,}674{,}631{,}072{,}256\), and the maximum observed reduced-peak/start ratio was approximately \(3673.42\).
+
+We also derive the exact Diophantine identity obeyed by any periodic orbit and describe the natural two-adic valuation distribution and associated negative logarithmic drift. Crucially, the drift argument is treated as a probabilistic heuristic, not as a proof of global convergence. The exhaustive computation is therefore a finite-range theorem about the executed search, not a proof that the two displayed cycles are the only possible attractors on all positive odd integers.
+\end{abstract}
+
+\section{Introduction}
+
+The classical \(3x+1\) problem is the best-known member of a family of arithmetic dynamical systems in which an affine transformation is followed by division by powers of two. Generalized Syracuse and Collatz mappings have been studied from number-theoretic, probabilistic, and ergodic viewpoints; see, for example, Lagarias \cite{Lagarias1985}, Matthews and Watts \cite{MatthewsWatts1985}, and Carnielli \cite{Carnielli2015}.
+
+The present map replaces the classical odd affine step by a residue-dependent \(5x\pm1\) rule. The sign is chosen according to \(x\bmod4\), in such a way that at least two powers of two are removed at every step. This produces a compact odd-to-odd dynamical system with two small, easily verified cycles.
+
+An earlier base analysis of this map reported a complete scan of the first \(500{,}000\) positive odd starts (all odd \(x<10^6\)) and developed an average-contraction discussion and a cycle equation. The present version retains that basic program but extends the computation by four orders of magnitude in the upper bound, upgrades the implementation to 128-bit arithmetic, records additional extremal statistics, and separates rigorous statements from heuristic ones. In particular, a negative expected logarithmic drift is not used to infer that every individual orbit must converge, and a general appeal to Diophantine approximation is not treated as an exclusion proof for all other cycles.
+
+\section{Definition and elementary structure}
+
+Let
+\[
+\Odd=\{1,3,5,\ldots\}.
+\]
+For \(x\in\Odd\), define
+\begin{equation}
+N(x)=
+\begin{cases}
+5x-1,&x\equiv1\pmod4,\\
+5x+1,&x\equiv3\pmod4,
+\end{cases}
+\qquad
+T(x)=\frac{N(x)}{2^{\vTwo(N(x))}}.
+\label{eq:map}
+\end{equation}
+Here \(\vTwo(n)\) denotes the exponent of \(2\) in the prime factorization of the positive integer \(n\).
+
+\begin{proposition}
+For every \(x\in\Odd\), one has \(\vTwo(N(x))\ge2\). Consequently \(T(x)\in\Odd\), so \(T\) is closed on the positive odd integers.
+\end{proposition}
+
+\begin{proof}
+If \(x=4m+1\), then
+\[
+5x-1=20m+4=4(5m+1).
+\]
+If \(x=4m+3\), then
+\[
+5x+1=20m+16=4(5m+4).
+\]
+Thus \(4\mid N(x)\) in both branches. Dividing by all factors of \(2\) leaves an odd positive integer.
+\end{proof}
+
+The smallest orbits already reveal two periodic attractors:
+\[
+T(1)=\frac{4}{4}=1,
+\]
+and
+\[
+7\longmapsto9\longmapsto11\longmapsto7,
+\]
+because
+\[
+5\cdot7+1=36=4\cdot9,\quad
+5\cdot9-1=44=4\cdot11,\quad
+5\cdot11+1=56=8\cdot7.
+\]
+Thus \(\{1\}\) is a fixed point and \(\{7,9,11\}\) is a three-cycle.
+
+\section{Exact algebraic identity for a periodic orbit}
+
+Suppose
+\[
+x_0,x_1,\ldots,x_{L-1}
+\]
+is a periodic orbit of period \(L\), with indices understood modulo \(L\). For each step write
+\begin{equation}
+2^{a_i}x_{i+1}=5x_i+\varepsilon_i,
+\label{eq:step}
+\end{equation}
+where
+\[
+a_i=\vTwo(5x_i+\varepsilon_i)\ge2,\qquad
+\varepsilon_i=
+\begin{cases}
+-1,&x_i\equiv1\pmod4,\\
++1,&x_i\equiv3\pmod4.
+\end{cases}
+\]
+Define
+\[
+A=\sum_{i=0}^{L-1}a_i,\qquad
+S_j=\sum_{i=0}^{j-1}a_i,\qquad S_0=0.
+\]
+
+\begin{proposition}[Cycle identity]
+Every periodic orbit satisfies
+\begin{equation}
+(2^A-5^L)x_0
+=
+\sum_{j=0}^{L-1}
+5^{L-1-j}\varepsilon_j2^{S_j}.
+\label{eq:cycleidentity}
+\end{equation}
+Equivalently,
+\begin{equation}
+x_0=
+\frac{\displaystyle\sum_{j=0}^{L-1}5^{L-1-j}\varepsilon_j2^{S_j}}
+{2^A-5^L},
+\label{eq:cycleclosed}
+\end{equation}
+provided the denominator is nonzero.
+\end{proposition}
+
+\begin{proof}
+Successively substitute the affine relations \eqref{eq:step}. After \(L\) steps,
+\[
+2^A x_L
+=
+5^Lx_0+
+\sum_{j=0}^{L-1}5^{L-1-j}\varepsilon_j2^{S_j}.
+\]
+Since \(x_L=x_0\), rearrangement gives \eqref{eq:cycleidentity}.
+\end{proof}
+
+This identity is an exact necessary condition. It must be supplemented by integrality, positivity, residue-class, and exact valuation constraints. It is therefore useful for cycle searches, but it is not by itself a proof that no other cycles exist.
+
+For the fixed point, \(L=1\), \(a_0=2\), and \(\varepsilon_0=-1\), so
+\[
+(2^2-5) x_0=-1,
+\]
+hence \(x_0=1\).
+
+For the cycle \(7\to9\to11\to7\),
+\[
+(a_0,a_1,a_2)=(2,2,3),\qquad
+(\varepsilon_0,\varepsilon_1,\varepsilon_2)=(+1,-1,+1).
+\]
+Thus \(A=7\), \(S_0=0\), \(S_1=2\), \(S_2=4\), and
+\[
+(2^7-5^3)7
+=25-20+16
+=21.
+\]
+The left-hand side is also \(3\cdot7=21\), verifying the identity exactly.
+
+\section{Two-adic valuation distribution and drift heuristic}
+
+The residue-dependent sign forces \(a=\vTwo(N(x))\ge2\). On successively finer powers of two, the relevant congruences yield a geometric distribution in natural density.
+
+\begin{proposition}
+For \(k\ge2\), among odd residue classes in the natural two-adic model,
+\begin{equation}
+\Pr(\vTwo(N(x))=k)=2^{-(k-1)}.
+\label{eq:vdist}
+\end{equation}
+Consequently,
+\[
+\mathbb{E}[\,\vTwo(N(x))\,]
+=
+\sum_{k=2}^{\infty}k\,2^{-(k-1)}
+=3.
+\]
+\end{proposition}
+
+A convenient way to interpret \eqref{eq:vdist} is that divisibility by \(4\) is forced, and each additional factor of \(2\) imposes one further binary congruence condition. This is an exact statement at the level of uniform residue classes modulo sufficiently high powers of two.
+
+For large \(x\), the additive \(\pm1\) term is small relative to \(5x\), so one is naturally led to the approximation
+\[
+\log\frac{T(x)}{x}
+\approx
+\log5-\vTwo(N(x))\log2.
+\]
+Using the distribution above gives the average logarithmic increment
+\begin{equation}
+\Delta_{\log}
+\approx
+\log5-3\log2
+=
+\log\frac58
+\approx-0.4700036292.
+\label{eq:logdrift}
+\end{equation}
+The corresponding geometric typical multiplier is \(5/8\).
+
+\begin{remark}
+Equation \eqref{eq:logdrift} is a heuristic for orbit behavior, not a theorem asserting convergence of every orbit. Correlations along arithmetic trajectories can matter, and negative expected logarithmic drift does not rule out exceptional divergent trajectories or additional periodic orbits.
+\end{remark}
+
+There is also an important distinction between the geometric multiplier and the ordinary expected approximate multiplier. Under \eqref{eq:vdist},
+\[
+\mathbb{E}\!\left[\frac{5}{2^a}\right]
+=
+\sum_{k=2}^{\infty}\frac{5}{2^k}2^{-(k-1)}
+=
+\frac56,
+\]
+not \(5/8\). The value \(5/8\) is the exponential of the expected logarithmic increment.
+
+The numerical data below reinforce the caution: substantial transient growth occurs even though the logarithmic heuristic is negative.
+
+\section{Computational methodology}
+
+Two C programs were used. The principal exhaustive scanner records basin counts, mean stopping time, maximum stopping time, maximum reduced odd peak, and maximum raw affine peak. A second ``deep scan'' independently recomputes the same principal statistics and additionally records a stopping-time histogram, the largest encountered two-adic valuation, the largest reduced-peak/start ratio, and full trajectories for record holders.
+
+For a starting value \(x_0\), the stopping time used in the C scans is the number of applications of the reduced map \(T\) until first entry into either
+\[
+\{1\}
+\quad\text{or}\quad
+\{7,9,11\}.
+\]
+A starting state already in one of these attractors therefore has stopping time zero. This convention is important when comparing with earlier prototype scripts that may count the terminal step differently.
+
+The production code uses \texttt{unsigned \_\_int128} for the evolving odd state and for \(5x\pm1\), avoiding silent 64-bit overflow during the observed excursions. The safety cap was \(10^6\) reduced iterations per starting value. The scan covered every positive odd integer less than the stated upper bound; no random sampling was used.
+
+The recorded machine environment was Apple LLVM/Clang 10.0.0 targeting x86\_64 macOS. The production compile command was
+\begin{verbatim}
+clang -O3 -march=native collatz5_scan_1e10.c -o collatz5_scan_1e10
+\end{verbatim}
+and the deep scan was compiled analogously.
+
+\section{Exhaustive finite-range results}
+
+Table \ref{tab:summary} summarizes the scans under the C stopping convention.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{@{}rrrrrr@{}}
+\toprule
+Upper bound & Odd starts & Basin \(1\) & Basin \(7,9,11\) & Mean steps & Max steps\\
+\midrule
+\(10^6\) & 500,000 & 72.246200\% & 27.753800\% & 24.220062 & 95\\
+\(10^8\) & 50,000,000 & 71.837990\% & 28.162010\% & 33.982627 & 145\\
+\(10^9\) & 500,000,000 & 71.898479\% & 28.101521\% & 38.874384 & 153\\
+\(10^{10}\) & 5,000,000,000 & 71.988495\% & 28.011505\% & 43.775640 & 174\\
+\bottomrule
+\end{tabular}
+\caption{Exhaustive scans of positive odd starting values.}
+\label{tab:summary}
+\end{table}
+
+For the full \(10^{10}\) run,
+\[
+5{,}000{,}000{,}000
+\]
+odd starts were tested and all
+\[
+5{,}000{,}000{,}000
+\]
+were resolved; the unresolved count was exactly zero. Of these,
+\[
+3{,}599{,}424{,}753
+\quad(71.988495060\%)
+\]
+entered the fixed point \(1\), while
+\[
+1{,}400{,}575{,}247
+\quad(28.011504940\%)
+\]
+entered the three-cycle \(7\to9\to11\to7\).
+
+The principal record values were:
+\begin{align*}
+\text{maximum stopping time} &=174,
+&x_0&=8{,}793{,}787{,}045,\\
+\text{maximum reduced odd peak} &=11{,}134{,}926{,}214{,}451,
+&x_0&=9{,}250{,}534{,}785,\\
+\text{maximum raw affine peak} &=55{,}674{,}631{,}072{,}256,
+&x_0&=9{,}250{,}534{,}785.
+\end{align*}
+The deep scan also found
+\[
+\max \vTwo(N(x))=34
+\]
+on a trajectory beginning at \(2{,}814{,}749{,}767\). The event occurred at
+\[
+x=3{,}435{,}973{,}837,
+\]
+where
+\[
+N(x)=17{,}179{,}869{,}184=2^{34}.
+\]
+The largest reduced-peak/start ratio was
+\[
+3673.419845666274,
+\]
+for
+\[
+x_0=2{,}750{,}717{,}625,
+\]
+whose reduced odd peak was
+\[
+10{,}104{,}540{,}713{,}499.
+\]
+
+These records show directly that the system can undergo large excursions before capture. In particular, a negative average logarithmic drift is compatible with peak-to-start amplification by several thousand.
+
+The deep scan reproduced the full \(10^{10}\) basin counts, mean stopping time, maximum stopping time, and peak records of the principal scan. This agreement provides an internal cross-check between the lean production scanner and the statistics-rich implementation.
+
+\section{Stopping-time distribution}
+
+The deep scan records the full stopping-time histogram. The support observed at the \(10^{10}\) cutoff extends from \(0\) through \(174\). The upper tail is sparse: exactly one starting value was observed at each of stopping times \(170,171,172,173,\) and \(174\). The record \(174\) is achieved by \(8{,}793{,}787{,}045\).
+
+The mean stopping time grows across the tested cutoffs:
+\[
+24.220062,\quad
+33.982626840,\quad
+38.874384282,\quad
+43.775639881800
+\]
+for upper bounds \(10^6,10^8,10^9,10^{10}\), respectively. No asymptotic law is claimed from these four finite data points, but they provide a clear computational target for future analysis.
+
+\section{Basin proportions}
+
+The observed basin frequencies remain near \(72\%\) and \(28\%\) over the tested cutoffs, but they do not vary monotonically:
+\[
+72.246200\%,\quad
+71.837990\%,\quad
+71.8984792\%,\quad
+71.988495060\%
+\]
+for the basin of \(1\). Accordingly, the data suggest stability on this scale but do not establish a limiting density, and no exact limiting fraction is proposed here.
+
+Determining whether the two basins possess natural densities, and if so computing them, remains an open problem for this map.
+
+\section{What the computation proves -- and what it does not}
+
+The finite computational statement is precise:
+
+\begin{quote}
+For every positive odd starting value \(x<10^{10}\), the implemented reduced-map iteration, using the stated 128-bit arithmetic and a safety cap of \(10^6\) reduced steps, reached either \(1\) or one of \(7,9,11\). No tested starting value was unresolved.
+\end{quote}
+
+This is exhaustive verification over the stated finite set of \(5\times10^9\) starting values. It does \emph{not} establish any of the following global statements:
+\begin{itemize}
+\item that every positive odd integer eventually reaches one of the two displayed cycles;
+\item that no additional positive cycle exists;
+\item that no divergent orbit exists;
+\item that the observed basin percentages converge to limiting densities.
+\end{itemize}
+
+The cycle identity \eqref{eq:cycleidentity} supplies exact arithmetic restrictions on any hypothetical periodic orbit, and the negative-log-drift calculation supplies a natural probabilistic explanation for the observed tendency toward descent. Neither replaces a global proof.
+
+
+\section{Extended algebraic and probabilistic analysis of contraction and capture}
+
+This section expands the structural interpretation of the map without changing the finite computational claims established above.  The central distinction is between three statements: an exact one-step algebraic description, a probabilistic model for typical long trajectories, and the observed finite-range capture by the two known attractors.  The first is rigorous; the second explains the numerical behavior statistically; the third is an exhaustive computational fact up to the tested bound.  A global theorem identifying the two observed attractors as the only attractors on all positive odd integers would require an additional argument beyond the present paper.
+
+\subsection{Expansion and contraction at a single reduced step}
+
+Write a reduced step in the form
+\[
+T(x)=\frac{5x+\varepsilon}{2^a},\qquad
+\varepsilon\in\{-1,+1\},\qquad a=\vTwo(5x+\varepsilon)\ge2.
+\]
+Then the exact multiplicative ratio is
+\begin{equation}
+\frac{T(x)}{x}=\frac{5+\varepsilon/x}{2^a}.
+\label{eq:onestepratio}
+\end{equation}
+The smallest possible valuation, $a=2$, is the only valuation that produces systematic expansion at large $x$:
+\[
+\frac{T(x)}{x}\approx\frac54>1.
+\]
+For $a=3$ the large-$x$ multiplier is approximately $5/8<1$, and for every $a\ge4$ the contraction is still stronger.  Thus the dynamics can be viewed as a competition between frequent $a=2$ expansion steps and less frequent but stronger division events.
+
+Under the two-adic residue model of Section 4,
+\[
+\Pr(a=2)=\frac12,\qquad
+\Pr(a=3)=\frac14,\qquad
+\Pr(a=4)=\frac18,\qquad\ldots
+\]
+so half of the residue classes produce the weak expanding regime, while the other half produce a contracting regime.  Counting steps alone is therefore misleading: the magnitude of the division is essential.  The logarithm is the natural observable because multiplicative changes add along an orbit.
+
+For a trajectory $x_0,x_1,\ldots,x_n$, the exact telescoping relation is
+\begin{equation}
+\log\frac{x_n}{x_0}
+=
+\sum_{i=0}^{n-1}
+\left[
+\log 5-a_i\log2+
+\log\left(1+\frac{\varepsilon_i}{5x_i}\right)
+\right].
+\label{eq:exactlogsum}
+\end{equation}
+The last term is the finite-$x$ correction to the large-scale model.  Away from very small states it is small, while the principal competition is between $\log5$ and $a_i\log2$.
+
+\subsection{The critical average valuation}
+
+Ignoring the vanishing finite-$x$ correction for a moment, a long segment contracts in logarithmic scale when
+\[
+\frac1n\sum_{i=0}^{n-1}a_i
+>
+\frac{\log5}{\log2}
+=\log_2 5
+\approx2.3219280949.
+\]
+The residue-model expectation is $3$, leaving a gap of approximately
+\[
+3-\log_2 5\approx0.6780719051.
+\]
+This is the algebraic reason the probabilistic model has a substantial negative logarithmic drift.  In particular, the expected valuation is not merely above the minimum value $2$; it lies well above the critical value needed to compensate for multiplication by $5$.
+
+Equivalently, if a long orbit segment contains valuations $a_0,\ldots,a_{n-1}$ with total
+\[
+A_n=\sum_{i=0}^{n-1}a_i,
+\]
+then its principal multiplicative factor is
+\[
+\frac{5^n}{2^{A_n}}.
+\]
+Typical residue-model behavior has $A_n\approx3n$, giving
+\[
+\frac{5^n}{2^{A_n}}\approx\left(\frac58\right)^n.
+\]
+This gives a precise algebraic meaning to ``statistical contraction'': it is a statement about the accumulated valuation $A_n$, not a claim that every individual step decreases the state.
+
+\subsection{Why large excursions remain possible}
+
+The same model explains why the observed trajectories can climb far above their starting values.  A run of $r$ consecutive $a=2$ steps has approximate multiplier
+\[
+\left(\frac54\right)^r,
+\]
+and, in the independent-residue idealization, probability about $2^{-r}$.  Such runs are exponentially uncommon but are not forbidden.  More general excursions arise whenever a finite block has
+\[
+A_n<n\log_2 5,
+\]
+so that $5^n/2^{A_n}>1$ before later high valuations reverse the growth.
+
+This interpretation is consistent with the exhaustive records.  The start $2{,}750{,}717{,}625$ reaches a reduced odd peak $10{,}104{,}540{,}713{,}499$, a factor $3673.419845666274$ above its initial value.  Another trajectory encounters the exact event
+\[
+5(3{,}435{,}973{,}837)-1
+=17{,}179{,}869{,}184
+=2^{34},
+\]
+which collapses a very large odd state directly to $1$.  The coexistence of long expansions and occasional very large valuations is therefore not a contradiction; it is exactly the kind of intermittent behavior predicted by a multiplicative process with negative mean logarithmic increment.
+
+\subsection{Periodic-orbit balance}
+
+A genuine cycle must have zero total logarithmic change.  Applying \eqref{eq:exactlogsum} around a period $L$ gives the exact balance
+\begin{equation}
+0=L\log5-A\log2+
+\sum_{i=0}^{L-1}
+\log\left(1+\frac{\varepsilon_i}{5x_i}\right),
+\label{eq:cyclelogbalance}
+\end{equation}
+where $A=\sum_i a_i$.  Hence
+\begin{equation}
+\frac{A}{L}
+=
+\log_2 5+
+\frac{1}{L\log2}
+\sum_{i=0}^{L-1}
+\log\left(1+\frac{\varepsilon_i}{5x_i}\right).
+\label{eq:cycleaveragevaluation}
+\end{equation}
+For a cycle consisting of large states, the correction term is small, so its mean valuation must lie very close to $\log_2 5\approx2.32193$, markedly below the residue-model mean $3$.  Thus a large hypothetical cycle would require an atypical valuation profile biased toward small exponents.  This is a useful necessary statistical signature, although it is not an impossibility proof.
+
+The two observed cycles satisfy the exact balance.  For the three-cycle $7\to9\to11\to7$, one has $A=2+2+3=7$ and $A/L=7/3\approx2.33333$, already very close to $\log_2 5$.  The small finite-state corrections in \eqref{eq:cycleaveragevaluation} account exactly for the difference.  For the fixed point $1$, $A/L=2$ and the non-negligible correction from $5x-1=4$ closes the balance exactly.
+
+\section{Exact inverse branches and the algebra of the two basins}
+
+Forward iteration is convenient for computation, but basin structure is more transparent when the map is inverted.  Let $y$ be a positive odd integer and suppose $T(x)=y$.  For an exponent $a\ge2$, the two possible inverse formulas are
+\begin{align}
+x&=\frac{2^a y+1}{5} &&\text{for the }5x-1\text{ branch},
+\label{eq:inverseminus}\\
+x&=\frac{2^a y-1}{5} &&\text{for the }5x+1\text{ branch}.
+\label{eq:inverseplus}
+\end{align}
+These formulas are exact whenever the numerator is divisible by $5$.  Moreover, because $a\ge2$ and $y$ is odd, the first formula automatically gives $x\equiv1\pmod4$ and the second gives $x\equiv3\pmod4$.  Thus the branch condition is recovered automatically from the inverse construction.
+
+The integrality conditions are
+\begin{align}
+2^a y&\equiv-1\pmod5 &&\text{for \eqref{eq:inverseminus}},\label{eq:invcongminus}\\
+2^a y&\equiv+1\pmod5 &&\text{for \eqref{eq:inverseplus}}.\label{eq:invcongplus}
+\end{align}
+Since $2$ has multiplicative order $4$ modulo $5$, admissible exponents occur in residue classes modulo $4$.  Consequently every odd target $y$ not divisible by $5$ has structured infinite families of inverse candidates, with exponents separated by four.  If $5\mid y$, neither congruence can hold, so such a $y$ has no predecessor under $T$.
+
+This gives an exact rooted-forest picture of the phase space.  Starting from the fixed point $1$ and from the nodes $7,9,11$, one may recursively generate all positive odd integers that are known to enter the corresponding attractor.  The two basins are disjoint because a deterministic forward orbit cannot enter two distinct cycles.  The exhaustive scan up to $10^{10}$ says that, within that finite interval, these two inverse forests account for every tested odd starting value.
+
+\subsection{Examples of inverse structure}
+
+For $y=1$, the inverse conditions generate, among others,
+\[
+1\leftarrow3\leftarrow5\leftarrow13\leftarrow\cdots
+\]
+when the appropriate admissible exponent and sign are selected.  For the other attractor, the cycle itself supplies
+\[
+7\leftarrow11\leftarrow9\leftarrow7,
+\]
+and additional inverse branches feed new states into these cycle nodes.  Repeated inverse expansion therefore produces two increasingly large arithmetic trees rooted at the observed attractors.
+
+The inverse formulas also explain why the basins need not have equal density.  The number and arithmetic location of predecessors of a target depend on its residue modulo $5$ and on the admissible exponent classes modulo $4$.  Once an inverse node is created, its own residue controls the next generation.  The basin problem is therefore a weighted residue-tree problem rather than a symmetric coin flip between two attractors.
+
+\section{Probabilistic model for the observed basin split}
+
+The exhaustive computation gives the empirical frequencies
+\[
+\widehat p_1(10^{10})=0.71988495060,
+\qquad
+\widehat p_C(10^{10})=0.28011504940,
+\]
+where $C=\{7,9,11\}$.  The purpose of this section is to explain what kind of mechanism can produce such an asymmetric split and what can, and cannot, presently be inferred from the data.
+
+\subsection{A transfer-of-mass viewpoint}
+
+The valuation law assigns the idealized weight
+\[
+w(a)=2^{-(a-1)},\qquad a\ge2.
+\]
+For a target state $y$, only those $a$ satisfying one of the congruences \eqref{eq:invcongminus}--\eqref{eq:invcongplus} produce an integer predecessor.  Because admissibility is periodic modulo $4$, the formal incoming weight through a fixed admissible exponent class $a\equiv r\pmod4$ is a geometric series
+\begin{equation}
+W_r
+=
+\sum_{m\ge0}2^{-(r+4m-1)}
+=
+\frac{2^{-(r-1)}}{1-2^{-4}},
+\label{eq:classweight}
+\end{equation}
+with the first admissible $r\ge2$ chosen in that class.  Thus different residue states receive different weighted collections of inverse branches.  Iterating this rule defines a natural transfer process on residue classes and, at greater resolution, on the inverse trees themselves.
+
+This framework gives a structural reason for a persistent non-$50/50$ basin split: the roots $1$ and $7,9,11$ sit in different residue configurations, and their inverse trees collect different amounts of weighted arithmetic mass.  However, turning this transfer picture into an exact theorem for the natural densities of the full infinite basins requires control of correlations and of the limit as the residue modulus and inverse depth both grow.
+
+\subsection{What the four exhaustive cutoffs say}
+
+The measured basin-$1$ proportions are
+\[
+\begin{array}{c|c}
+X & \widehat p_1(X)\\ \hline
+10^6 & 0.722462000\\
+10^8 & 0.718379900\\
+10^9 & 0.718984792\\
+10^{10} & 0.71988495060
+\end{array}
+\]
+with complementary proportions for the three-cycle.  The values remain close to $0.72$ but are not monotone.  Therefore the attractive numerical description ``approximately $72\%$ versus $28\%$'' is justified over the tested scales, whereas an assertion that the limiting densities are exactly $0.72$ and $0.28$, or exactly $18/25$ and $7/25$, is not established by these data.
+
+The finite counts at $10^{10}$ are exact outputs of the exhaustive scan, not samples.  Hence there is no sampling error for the finite interval $x<10^{10}$.  Statistical uncertainty enters only when one attempts to extrapolate those deterministic finite frequencies to an infinite-density statement.
+
+\subsection{Conditional capture interpretation}
+
+The probabilistic contraction model and the inverse-tree model complement one another.  The former says that a typical large orbit is expected to return toward smaller scales because its accumulated valuation tends to exceed the critical value $\log_2 5$.  The latter describes how, once smaller scales are repeatedly revisited, arithmetic residue classes route states into the inverse forests of the fixed point and the three-cycle.
+
+This gives the following conditional mechanism:
+\begin{enumerate}
+\item high states experience an overall negative logarithmic drift in the residue model;
+\item repeated returns to lower scales increase opportunities to enter one of the two known inverse trees;
+\item once an orbit enters either tree, deterministic forward iteration carries it to that tree's root cycle;
+\item the unequal weighted residue structure of the two inverse forests produces unequal capture frequencies.
+\end{enumerate}
+Every step in this mechanism has an exact algebraic counterpart, but the transition from the probabilistic model to a statement about \emph{every} positive orbit is not proved here.  The exhaustive result confirms that the mechanism succeeds for all $5\times10^9$ tested odd starts below $10^{10}$.
+
+\section{Synthesis: why the observed dynamics is strongly convergent in finite computation}
+
+The numerical behavior can now be summarized through four mutually consistent structures.
+
+First, the map forces at least two divisions by $2$ at every step.  Second, the exact two-adic residue distribution has mean valuation $3$, above the critical average $\log_2 5$.  Third, any periodic orbit must satisfy both the exact Diophantine cycle identity and the near-critical valuation balance \eqref{eq:cycleaveragevaluation}; large cycles therefore require highly constrained sign, residue, and valuation patterns.  Fourth, inverse iteration organizes captured states into two arithmetic forests rooted at $1$ and at $7,9,11$.
+
+Together these facts explain why the computation looks strongly convergent: expansion blocks occur, sometimes producing enormous peaks, but they are statistically opposed by stronger division events; when trajectories return to small arithmetic scales, the two observed inverse forests provide large capture sets.  The exhaustive scan then supplies the decisive finite statement that every odd start below $10^{10}$ was in one of those two basins.
+
+It is useful to distinguish the resulting levels of confidence:
+\begin{itemize}
+\item \textbf{proved algebraically:} closure on odd integers, the two displayed cycles, the inverse-branch formulas, the periodic-orbit identity, and the residue-class valuation distribution;
+\item \textbf{proved computationally on a finite set:} capture of all $5{,}000{,}000{,}000$ odd starts below $10^{10}$ by the two displayed attractors under the stated implementation and stopping convention;
+\item \textbf{strongly supported heuristic interpretation:} negative typical logarithmic drift and an inverse-tree explanation for the asymmetric basin frequencies;
+\item \textbf{open globally:} convergence of every positive odd orbit, nonexistence of further positive cycles, and existence or exact values of limiting basin densities.
+\end{itemize}
+
+This separation is not merely cautious terminology.  It identifies exactly where a future proof would have to add new mathematics: one must control arithmetic correlations along every orbit, or derive a global descent/capture principle strong enough to bridge the gap between negative average drift and universal convergence.  Likewise, an exact $72/28$-type density theorem would require a limiting analysis of the weighted inverse trees rather than extrapolation from finite cutoffs.
+
+\section{Reproducibility archive}
+
+The accompanying Zenodo computation archive contains:
+\begin{itemize}
+\item \texttt{collatz5\_scan\_1e10.c}: production exhaustive scanner;
+\item \texttt{collatz5\_deep\_scan.c}: statistics-rich independent scanner;
+\item saved outputs for \(10^8\), \(10^9\), and \(10^{10}\);
+\item deep-scan outputs for \(10^6\) and \(10^{10}\);
+\item \texttt{scan\_summary.csv} and \texttt{deep\_scan\_summary\_1e10.json};
+\item the present \LaTeX{} source and compiled PDF;
+\item a README with build and run commands; and
+\item SHA-256 checksums for archive contents.
+\end{itemize}
+
+The original executable binaries are intentionally omitted from the curated archive because they are platform-dependent; reproducibility should proceed from the included source code.
+
+\section{Conclusion}
+
+The residue-dependent map \eqref{eq:map} is a simple reduced \(5x\pm1\) dynamical system with two exact small cycles, \(\{1\}\) and \(\{7,9,11\}\). Exhaustive computation over all \(5{,}000{,}000{,}000\) positive odd starts below \(10^{10}\) found that every tested orbit entered one of these cycles within the imposed safety limit. The scan found no additional attractor and no unresolved starting value in that finite range.
+
+At the same time, the record trajectories demonstrate nontrivial transient behavior: stopping time reaches \(174\), reduced peaks exceed \(10^{13}\), and the peak/start ratio exceeds \(3.6\times10^3\). The two-adic valuation model yields a negative average logarithmic drift \(\log(5/8)\), which is consistent with the observed overall tendency toward smaller scales but should remain explicitly heuristic.
+
+The most important theoretical questions are therefore still global: whether every positive orbit is eventually captured by the two observed cycles, whether any other positive periodic orbit can satisfy the full Diophantine and valuation constraints, and whether the two observed basins possess limiting natural densities. The present paper is intended as a reproducible computational and algebraic base for those questions.
+
+\begin{thebibliography}{9}
+
+\bibitem{Lagarias1985}
+J. C. Lagarias,
+``The \(3x+1\) problem and its generalizations,''
+\emph{The American Mathematical Monthly}, vol. 92, no. 1, pp. 3--23, 1985.
+doi: \href{https://doi.org/10.1080/00029890.1985.11971528}{10.1080/00029890.1985.11971528}.
+
+\bibitem{MatthewsWatts1985}
+K. Matthews and A. Watts,
+``A Markov approach to the generalized Syracuse algorithm,''
+\emph{Acta Arithmetica}, vol. 45, no. 1, pp. 29--42, 1985.
+doi: \href{https://doi.org/10.4064/aa-45-1-29-42}{10.4064/aa-45-1-29-42}.
+
+\bibitem{Carnielli2015}
+W. Carnielli,
+``Some natural generalizations of the Collatz problem,''
+\emph{Applied Mathematics E-Notes}, vol. 15, pp. 207--215, 2015.
+
+\end{thebibliography}
+
+\end{document}
