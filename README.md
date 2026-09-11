@@ -284,13 +284,14 @@ The exhaustive computation establishes a finite-range result up to 10^10. It doe
 
 **Repository files**
 
-- [PDF](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22714150_5^r_Scaled_Family_Ternary_5k_pm_1_over_4_Collatz_Type_Map.pdf)
-- [LaTeX source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22714150_5^r_Scaled_Family_Ternary_5k_pm_1_over_4_Collatz_Type_Map.tex)
-- [Computational package](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22714150_5^r_Scaled_Family_Ternary_5k_pm_1_over_4_Collatz_Type_Map_Computational_Pack.zip)
+- PDF:
+https://raw.githubusercontent.com/FarhadBanazadeh/sequence-computations/main/Farhad_Banazadeh_Zenodo22714150_5%5Er_Scaled_Family_Ternary_5k_pm_1_over_4_Collatz_Type_Map.pdf
 
-PDF
-LaTeX source
-Computational package
+- LaTeX:
+https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22714150_5%5Er_Scaled_Family_Ternary_5k_pm_1_over_4_Collatz_Type_Map.tex
+
+- Computational Package:
+https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22714150_5%5Er_Scaled_Family_Ternary_5k_pm_1_over_4_Collatz_Type_Map_Computational_Pack.zip
 
 ## Research Structure
 
