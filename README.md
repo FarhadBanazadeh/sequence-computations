@@ -9,7 +9,7 @@ Research articles, LaTeX sources, computational packages, and reproducibility ma
 
 ## Research Papers & Reproducibility Index
 
-This repository contains the manuscript sources and computational materials associated with nine research works.
+This repository contains the manuscript sources and computational materials associated with ten research works.
 
 For each paper, direct links are provided to the publication record, PDF, LaTeX source, and associated computational or supplementary package.
 
@@ -323,9 +323,42 @@ The exact conjugacy is proved on the scaled domain `5^r N_odd`; no equivalent cl
 
 ---
 
+### 10. The Reduced 5k + 1(3)/4 Collatz-Type Domain with Four Observed Attractors
+
+This work studies a residue-dependent reduced `5x+c` Collatz-type map on the positive odd integers, referred to as the `5k + 1(3)/4` domain.
+
+For an odd state `x`, the affine correction is selected from `{1,3}` according to the residue class of `x mod 4`, after which all powers of two are removed.
+
+The system has four directly observed periodic attractors:
+
+* fixed point `1`
+* three-cycle `31 → 39 → 49 → 31`
+* three-cycle `37 → 47 → 59 → 37`
+* three-cycle `61 → 77 → 97 → 61`
+
+An exhaustive finite computation tested all `5,000,000,000` positive odd starting values below `10^10`.
+
+Every tested orbit entered one of the four displayed attractors, with zero unresolved cases.
+
+The paper also develops the exact periodic-orbit identity, inverse branches, two-adic valuation distribution, basin statistics, stopping-time and peak records, and a probabilistic contraction analysis.
+
+These algebraic and computational results motivate a Four-Attractor Conjecture. The conjecture is explicitly distinguished from the finite exhaustive verification and is not claimed as a proof of global convergence for all positive odd integers.
+
+**Zenodo DOI**
+
+* https://doi.org/10.5281/zenodo.22726453
+
+**Repository files**
+
+* PDF: https://raw.githubusercontent.com/FarhadBanazadeh/sequence-computations/main/Farhad_Banazadeh_Zenodo22726453_Reduced_5k_plus_1_3_over_4_Collatz_Type_Map_up_to_1e10.pdf
+* [LaTeX source](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22726453_Reduced_5k_plus_1_3_over_4_Collatz_Type_Map_up_to_1e10.tex)
+* [Computational package](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22726453_Reduced_5k_plus_1_3_over_4_Collatz_Type_Map_up_to_1e10_Computational_Pack.zip)
+
+---
+
 ## Research Structure
 
-The nine works belong to **four distinct research lines**.
+The ten works belong to **five distinct research lines**.
 
 They use related ternary, residue-dependent, and valuation-based ideas, but they should not be treated as a single dynamical system.
 
@@ -349,6 +382,10 @@ They use related ternary, residue-dependent, and valuation-based ideas, but they
 
 8. Base map with two observed attractors and exhaustive verification through `10^10` — Zenodo `22709065`
 9. Its exactly conjugate `5^r`-scaled family — Zenodo `22714150`
+
+### V. Reduced 5k + 1(3)/4 line
+
+10. Base residue-dependent reduced map with four observed attractors and exhaustive verification of all `5,000,000,000` positive odd starting values below `10^10` — Zenodo `22726453`
 
 ---
 
@@ -382,7 +419,7 @@ Depending on the publication, this repository contains:
 * reproducibility ZIP packages
 * checksum files
 
-The computational implementation is not identical across all nine research works.
+The computational implementation is not identical across all ten research works.
 
 Researchers should consult the specific manuscript and computational package associated with the paper being examined.
 
