@@ -1,0 +1,602 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array,longtable,microtype,hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{remark}{Remark}
+\newcommand{\vTwo}{\nu_2}
+\newcommand{\Odd}{\mathbb N_{\mathrm{odd}}}
+\title{A $5^r$-Scaled Family of the Reduced $5k+1(3)/4$ Collatz-Type Map\\\large Exact Algebraic Conjugacy, Four-Cycle Preservation, Orbit-Statistic Invariance, and Transfer of the $10^{10}$ Finite Verification}
+\author{Farhad Banazadeh\\\texttt{fn.bana@hotmail.com}\\ORCID: 0009-0004-7023-0298}
+\date{14 September 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We develop the full $5^r$-scaled family associated with the residue-dependent reduced $5k+1(3)/4$ Collatz-type map studied in the author's preceding work. The base state space is the positive odd integers and the base affine numerator is
+\[
+M_0(y)=5y+c(y),\qquad
+c(y)=\begin{cases}3,&y\equiv1\pmod4,\\1,&y\equiv3\pmod4,\end{cases}
+\qquad
+T_0(y)=\frac{M_0(y)}{2^{\vTwo(M_0(y))}}.
+\]
+For every integer $r\ge0$ we define the scaled domain $S_r=5^r\Odd$ and
+\[
+M_r(x)=5x+5^r c(x),\qquad
+T_r(x)=\frac{M_r(x)}{2^{\vTwo(M_r(x))}},\qquad x\in S_r,
+\]
+where the same residue selector is used because $5^r\equiv1\pmod4$. Thus the forced first compression has the two forms
+\[
+\frac{5x+3\cdot5^r}{4}\quad(x\equiv1\!\!\pmod4),\qquad
+\frac{5x+5^r}{4}\quad(x\equiv3\!\!\pmod4),
+\]
+followed by complete removal of any additional powers of two.
+
+The central result is an exact algebraic conjugacy. Multiplication by $5^r$ preserves the branch residue and the complete two-adic valuation, so
+\[
+T_r(5^r y)=5^rT_0(y),\qquad T_r^j(5^r y)=5^rT_0^j(y)\quad(j\ge0).
+\]
+Consequently every branch sequence, valuation sequence, periodic orbit, minimal cycle length, capture time, first-descent stopping time, basin membership, and normalized orbit profile is transported bijectively between the base system and its scaled copy. Absolute reduced and raw affine peaks are multiplied by $5^r$, while peak/start ratios are invariant. The four displayed base attractors therefore become the fixed point $5^r$ and the three cycles
+\[
+(31,39,49)5^r,\qquad(37,47,59)5^r,\qquad(61,77,97)5^r.
+\]
+No additional periodic orbit can occur inside $S_r$ unless a corresponding base periodic orbit exists.
+
+The preceding base paper exhaustively verified all $5,000,000,000$ positive odd starts below $10^{10}$, with zero unresolved cases. We do not relabel those data as new scans. Instead, the conjugacy theorem transfers every verified trajectory exactly to
+\[
+F_r=\{5^r y:1\le y<10^{10},\ y\ \text{odd}\}\subset S_r,
+\]
+a structured set extending below absolute scale $5^r10^{10}$. The inherited four-basin counts and all dimensionless orbit statistics are unchanged, while dimensional state values scale by $5^r$. Global four-attractor convergence remains open: the scaled problem is exactly equivalent to the unresolved base problem.
+\end{abstract}
+
+\noindent\textbf{Keywords:} Collatz-type map; $5x+c$; $(5x+\{1,3\}5^r)/4$; $5^r$ scaling; algebraic conjugacy; two-adic valuation; four attractors; cycle preservation; computational number theory.
+
+\section{Introduction}
+The classical $3x+1$ problem belongs to a broad class of arithmetic dynamical systems in which an affine operation is followed by division by powers of two. Generalized Syracuse and Collatz maps have been studied from algebraic, probabilistic, and computational viewpoints; see Lagarias~\cite{Lagarias1985}, Matthews and Watts~\cite{MatthewsWatts1985}, and Carnielli~\cite{Carnielli2015}.
+
+The base system for the present paper is the reduced $5k+1(3)/4$ domain introduced in the author's preceding work~\cite{BanazadehBase}. For an odd state $y$, the correction is $3$ when $y\equiv1\pmod4$ and $1$ when $y\equiv3\pmod4$. This makes $5y+c(y)$ divisible by at least $4$, after which all powers of $2$ are removed. The base computation found four displayed attractors and exhaustively resolved every positive odd start below $10^{10}$.
+
+The present paper asks a structural question rather than performing another billion-scale scan. Replace the base corrections $3$ and $1$ by $3\cdot5^r$ and $5^r$, while simultaneously restricting the state space to the $5^r$-scaled copy of the positive odd integers. Does this create genuinely new dynamics? We prove that it does not. For every $r\ge0$, the scaled map is exactly conjugate to the base map by
+\[
+\Phi_r(y)=5^r y.
+\]
+This gives an infinite family at once, not merely a collection of checked examples.
+
+The organization follows the same theorem-first pattern used for a related $5^r$-scaled ternary family~\cite{BanazadehScaledPM}. We first define the base and scaled systems, then prove the key affine and two-adic identities, derive exact conjugacy, transport cycles and orbit statistics, scale the periodic-orbit equation and inverse forests, and finally transfer the finite $10^{10}$ verification without misrepresenting inherited data as newly recomputed measurements.
+
+\section{The base reduced $5k+1(3)/4$ map}
+Let
+\[
+S=\Odd=\{1,3,5,\ldots\}.
+\]
+Define
+\[
+c(y)=\begin{cases}
+3,&y\equiv1\pmod4,\\
+1,&y\equiv3\pmod4,
+\end{cases}
+\]
+and
+\begin{equation}
+M_0(y)=5y+c(y),\qquad
+T_0(y)=\frac{M_0(y)}{2^{\vTwo(M_0(y))}}.
+\label{eq:base}
+\end{equation}
+Because $5\equiv1\pmod4$, the branch choice forces $4\mid M_0(y)$ for every odd $y$, so $\vTwo(M_0(y))\ge2$ and $T_0(y)$ is again positive and odd.
+
+The four displayed periodic attractors are
+\[
+1\to1,
+\]
+\[
+31\to39\to49\to31,
+\qquad
+37\to47\to59\to37,
+\qquad
+61\to77\to97\to61.
+\]
+For example,
+\[
+5(31)+1=156=4\cdot39,\quad
+5(39)+1=196=4\cdot49,\quad
+5(49)+3=248=8\cdot31.
+\]
+The other displayed cycles are checked in the same way.
+
+\section{The full $5^r$-scaled family}
+Fix an integer $r\ge0$.
+
+\subsection{Scaled domain}
+Define
+\begin{equation}
+S_r=5^rS=\{5^r y:y\in S\}.
+\label{eq:Sr}
+\end{equation}
+Every $x\in S_r$ has a unique representation $x=5^r y$ with $y$ odd. Since
+\begin{equation}
+5^r\equiv1\pmod4,
+\label{eq:mod4}
+\end{equation}
+we have $5^r y\equiv y\pmod4$. Hence
+\begin{equation}
+c(5^r y)=c(y).
+\label{eq:branchpres}
+\end{equation}
+
+\subsection{Scaled affine and reduced maps}
+For $x\in S_r$, define
+\begin{equation}
+M_r(x)=5x+5^r c(x)
+=\begin{cases}
+5x+3\cdot5^r,&x\equiv1\pmod4,\\
+5x+5^r,&x\equiv3\pmod4,
+\end{cases}
+\label{eq:Mr}
+\end{equation}
+and
+\begin{equation}
+T_r(x)=\frac{M_r(x)}{2^{\vTwo(M_r(x))}}.
+\label{eq:Tr}
+\end{equation}
+The branch rule again forces $4\mid M_r(x)$. Thus the first compressed forms are
+\begin{equation}
+\frac{5x+3\cdot5^r}{4},\qquad \frac{5x+5^r}{4},
+\label{eq:forced4}
+\end{equation}
+with the applicable expression determined by $x\pmod4$. Equation~\eqref{eq:Tr}, however, removes \emph{all} factors of two, not only the forced factor $4$.
+
+\begin{remark}[Why the scaled domain is essential]
+The exact theorem concerns $S_r=5^rS$. For a general odd integer not divisible by $5^r$, the factorization in the next section is unavailable. Therefore the claim of identical dynamics is made on the scaled copy $S_r$, not on all positive odd integers under the affine formulas in~\eqref{eq:Mr}.
+\end{remark}
+
+\section{Key scaling identities}
+\begin{lemma}[Affine scaling]
+For every $r\ge0$ and $y\in S$,
+\begin{equation}
+M_r(5^r y)=5^rM_0(y).
+\label{eq:affscale}
+\end{equation}
+\end{lemma}
+\begin{proof}
+By~\eqref{eq:branchpres}, $c(5^r y)=c(y)$. Therefore
+\[
+M_r(5^r y)=5(5^r y)+5^r c(y)=5^r(5y+c(y))=5^rM_0(y).
+\]
+\end{proof}
+
+\begin{lemma}[Valuation invariance]
+For every nonzero integer $n$ and every $r\ge0$,
+\begin{equation}
+\vTwo(5^r n)=\vTwo(n).
+\label{eq:v2inv}
+\end{equation}
+\end{lemma}
+\begin{proof}
+The factor $5^r$ is odd and therefore contributes no factor of $2$.
+\end{proof}
+
+Combining the lemmas gives the stepwise identity
+\begin{equation}
+\vTwo(M_r(5^r y))=\vTwo(M_0(y)).
+\label{eq:stepv2}
+\end{equation}
+Thus corresponding trajectories remove exactly the same power of two at every matched step.
+
+\section{Exact algebraic conjugacy}
+Define the bijection
+\[
+\Phi_r:S\to S_r,\qquad \Phi_r(y)=5^r y,
+\]
+with inverse $\Phi_r^{-1}(x)=x/5^r$.
+
+\begin{theorem}[One-step conjugacy]
+For every $r\ge0$ and $y\in S$,
+\begin{equation}
+T_r(5^r y)=5^rT_0(y).
+\label{eq:conj1}
+\end{equation}
+Equivalently,
+\[
+T_r\circ\Phi_r=\Phi_r\circ T_0,
+\qquad
+T_r=\Phi_r\circ T_0\circ\Phi_r^{-1}.
+\]
+\end{theorem}
+\begin{proof}
+Using~\eqref{eq:affscale} and~\eqref{eq:stepv2},
+\[
+T_r(5^r y)
+=\frac{5^rM_0(y)}{2^{\vTwo(M_0(y))}}
+=5^rT_0(y).
+\]
+\end{proof}
+
+\begin{theorem}[All iterates]
+For every $j\ge0$, $r\ge0$, and $y\in S$,
+\begin{equation}
+T_r^j(5^r y)=5^rT_0^j(y).
+\label{eq:alliter}
+\end{equation}
+\end{theorem}
+\begin{proof}
+Induct on $j$. The case $j=0$ is immediate. If the identity holds for $j$, then
+\[
+T_r^{j+1}(5^r y)=T_r(5^rT_0^j(y))=5^rT_0^{j+1}(y).
+\]
+\end{proof}
+
+Equation~\eqref{eq:alliter} is the organizing identity of the paper. It proves exact orbit-by-orbit equivalence, not approximate similarity.
+
+\section{Exact preservation of the four displayed cycles}
+\begin{theorem}[Cycle bijection]
+A tuple $C=(c_0,\ldots,c_{L-1})$ is a cycle of $T_0$ if and only if
+\[
+5^rC=(5^rc_0,\ldots,5^rc_{L-1})
+\]
+is a cycle of $T_r$. Minimal cycle length is preserved.
+\end{theorem}
+\begin{proof}
+If $T_0^L(c_0)=c_0$, then by~\eqref{eq:alliter},
+\[
+T_r^L(5^rc_0)=5^rT_0^L(c_0)=5^rc_0.
+\]
+Conversely, every $x\in S_r$ is $5^ry$; division of $T_r^L(5^ry)=5^ry$ by $5^r$ gives $T_0^L(y)=y$. Bijectivity preserves minimal period.
+\end{proof}
+
+\begin{corollary}
+No periodic orbit exists inside $S_r$ that is not the $5^r$-multiple of a base periodic orbit.
+\end{corollary}
+
+The displayed attractors become
+\begin{equation}
+5^r\to5^r,
+\label{eq:fixscaled}
+\end{equation}
+\begin{equation}
+31\cdot5^r\to39\cdot5^r\to49\cdot5^r\to31\cdot5^r,
+\label{eq:c31scaled}
+\end{equation}
+\begin{equation}
+37\cdot5^r\to47\cdot5^r\to59\cdot5^r\to37\cdot5^r,
+\label{eq:c37scaled}
+\end{equation}
+and
+\begin{equation}
+61\cdot5^r\to77\cdot5^r\to97\cdot5^r\to61\cdot5^r.
+\label{eq:c61scaled}
+\end{equation}
+
+For $r=1$ these are
+\[
+5\to5,
+\]
+\[
+155\to195\to245\to155,
+\quad
+185\to235\to295\to185,
+\quad
+305\to385\to485\to305.
+\]
+For $r=2$ they are
+\[
+25\to25,
+\]
+\[
+775\to975\to1225\to775,
+\quad
+925\to1175\to1475\to925,
+\quad
+1525\to1925\to2425\to1525.
+\]
+For $r=3$, the first nontrivial cycle is
+\[
+3875\to4875\to6125\to3875.
+\]
+These are theorem-level consequences of scaling, not independent numerical discoveries.
+
+\section{Periodic-orbit equation under scaling}
+For a base orbit write
+\begin{equation}
+2^{a_i}y_{i+1}=5y_i+c_i,
+\qquad a_i=\vTwo(5y_i+c_i)\ge2,
+\label{eq:basecycle}
+\end{equation}
+where $c_i\in\{1,3\}$. For the scaled orbit $x_i=5^ry_i$,
+\begin{equation}
+2^{a_i}x_{i+1}=5x_i+5^r c_i.
+\label{eq:scaledcycle}
+\end{equation}
+Define
+\[
+A=\sum_{i=0}^{L-1}a_i,\qquad
+S_j=\sum_{i=0}^{j-1}a_i,\qquad S_0=0.
+\]
+Iteration around a length-$L$ cycle gives
+\begin{equation}
+(2^A-5^L)x_0
+=5^r\sum_{j=0}^{L-1}5^{L-1-j}c_j2^{S_j}.
+\label{eq:scaledcycleid}
+\end{equation}
+Hence
+\begin{equation}
+x_0
+=5^r\frac{\sum_{j=0}^{L-1}5^{L-1-j}c_j2^{S_j}}{2^A-5^L}
+=5^r y_0.
+\label{eq:scaledx0}
+\end{equation}
+The scaled Diophantine identity therefore contains no new integrality condition beyond the base identity. Because every $c_i$ is positive, the same necessary condition remains
+\begin{equation}
+2^A>5^L,\qquad \frac{A}{L}>\log_2 5.
+\label{eq:crit}
+\end{equation}
+
+As an explicit check, the base $31$-cycle has $(a_0,a_1,a_2)=(2,2,3)$ and $(c_0,c_1,c_2)=(1,1,3)$, so
+\[
+(2^7-5^3)31=93.
+\]
+Multiplying by $5^r$ gives
+\[
+(2^7-5^3)(31\cdot5^r)=93\cdot5^r,
+\]
+exactly the scaled cycle equation.
+
+\section{Orbit statistics preserved by conjugacy}
+Let $y_j=T_0^j(y)$ and $x_j=T_r^j(5^ry)$. Then $x_j=5^ry_j$ for every $j$.
+
+\subsection{Capture/transient time}
+Let $\tau_0(y)$ be the first iteration at which the base orbit enters one of the four displayed attractors. Then
+\begin{equation}
+\tau_r(5^ry)=\tau_0(y).
+\label{eq:capture}
+\end{equation}
+The full valuation sequence is identical, so the accumulated number of divisions by two over every matched finite segment is also identical.
+
+\subsection{First-descent stopping time}
+Define, whenever it exists,
+\[
+\sigma_0(y)=\min\{j\ge1:T_0^j(y)<y\}.
+\]
+Since multiplication by $5^r$ preserves strict inequalities,
+\[
+T_r^j(5^ry)<5^ry\iff T_0^j(y)<y.
+\]
+Therefore
+\begin{equation}
+\sigma_r(5^ry)=\sigma_0(y).
+\label{eq:firstdescent}
+\end{equation}
+If $L_0(y)=T_0^{\sigma_0(y)}(y)$ is the first lower value, then
+\begin{equation}
+L_r(5^ry)=5^rL_0(y).
+\label{eq:firstlower}
+\end{equation}
+
+\subsection{Reduced and raw peaks}
+For any matched finite trajectory segment,
+\begin{equation}
+\max_j x_j=5^r\max_j y_j.
+\label{eq:peakscale}
+\end{equation}
+The raw affine values scale in the same way by~\eqref{eq:affscale}. On the other hand,
+\begin{equation}
+\frac{x_j}{x_0}=\frac{y_j}{y_0},
+\label{eq:normratio}
+\end{equation}
+so normalized peak/start ratios and normalized orbit profiles are invariant. Peak iteration indices are unchanged.
+
+\subsection{Basin membership}
+For a base cycle $C$, let $B_0(C)$ be its basin and let $B_r(5^rC)$ be the corresponding basin within $S_r$. Then
+\begin{equation}
+5^ry\in B_r(5^rC)\iff y\in B_0(C).
+\label{eq:basin}
+\end{equation}
+Thus basin counts and proportions are exactly preserved on corresponding finite sets.
+
+\section{Two-adic valuation law and drift under scaling}
+The base map forces $a=\vTwo(M_0(y))\ge2$. In the natural two-adic residue model,
+\begin{equation}
+\Pr(a=k)=2^{-(k-1)},\qquad k\ge2,
+\end{equation}
+and
+\begin{equation}
+\mathbb E[a]=3.
+\end{equation}
+For large $y$,
+\[
+\log\frac{T_0(y)}y\approx\log5-a\log2,
+\]
+so
+\begin{equation}
+\mathbb E[\Delta\log]\approx\log5-3\log2=\log(5/8)\approx-0.4700036292.
+\label{eq:drift}
+\end{equation}
+The geometric typical multiplier is $5/8$, whereas the ordinary expected approximate multiplier is $5/6$.
+
+For matched states, the normalized one-step ratio is exact:
+\begin{equation}
+\frac{T_r(5^ry)}{5^ry}=\frac{T_0(y)}y.
+\label{eq:ratioexact}
+\end{equation}
+Hence the scaled family inherits the same valuation distribution, critical average valuation $\log_2 5$, and logarithmic-drift heuristic. Negative expected logarithmic drift remains a probabilistic interpretation, not a proof of universal convergence.
+
+\section{Exact inverse branches and scaled inverse forests}
+Suppose $T_0(y)=z$ and the removed power is $2^a$, $a\ge2$. The base inverse candidates are
+\begin{equation}
+y=\frac{2^az-3}{5}\quad(c=3),
+\qquad
+y=\frac{2^az-1}{5}\quad(c=1),
+\label{eq:baseinv}
+\end{equation}
+subject to integrality and the corresponding branch condition. Equivalently, the integrality congruences are
+\[
+2^az\equiv3\pmod5,
+\qquad
+2^az\equiv1\pmod5.
+\]
+
+For the scaled system, if $T_r(x)=w$ with $x=5^ry$ and $w=5^rz$, then
+\begin{equation}
+x=\frac{2^aw-3\cdot5^r}{5}
+=5^r\frac{2^az-3}{5},
+\label{eq:scaledinv3}
+\end{equation}
+and
+\begin{equation}
+x=\frac{2^aw-5^r}{5}
+=5^r\frac{2^az-1}{5}.
+\label{eq:scaledinv1}
+\end{equation}
+Thus every inverse edge in the base forest is multiplied by $5^r$, and division by $5^r$ sends every inverse edge in $S_r$ back to a base edge. The four inverse forests rooted at the fixed point and the three displayed cycles are therefore exact scaled copies.
+
+\section{Finite verification inherited from the base paper}
+The base computation exhaustively tested every positive odd starting value below $10^{10}$:
+\[
+5,000,000,000\ \text{starts}.
+\]
+Every tested orbit reached one of the four displayed attractors, and the unresolved count was zero. Table~\ref{tab:base} records the inherited $10^{10}$ summary.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{@{}lr@{}}
+\toprule
+Quantity & Base value through $10^{10}$\\
+\midrule
+Odd starts & 5,000,000,000\\
+Basin of $1$ & 3,151,484,732 (63.02969464\%)\\
+Basin of $31\to39\to49\to31$ & 663,199,586 (13.26399172\%)\\
+Basin of $37\to47\to59\to37$ & 990,204,968 (19.80409936\%)\\
+Basin of $61\to77\to97\to61$ & 195,110,714 (3.90221428\%)\\
+Unresolved & 0\\
+Maximum capture time & 194 at 9,614,632,545\\
+Maximum reduced odd peak & 17,570,609,003,297\\
+Peak-holder start & 9,123,181,791\\
+Capture time of peak-holder & 77\\
+\bottomrule
+\end{tabular}
+\caption{Inherited base statistics. These are not new measurements of the $5^r$ family.}
+\label{tab:base}
+\end{table}
+
+For every fixed $r$, define the corresponding finite set
+\begin{equation}
+F_r=\{5^ry:1\le y<10^{10},\ y\ \text{odd}\}.
+\label{eq:Fr}
+\end{equation}
+It contains exactly $5,000,000,000$ starts and inherits the same basin counts, proportions, capture-time distribution, maximum capture time, and valuation sequences. Absolute state values scale. In particular, on $F_r$,
+\begin{equation}
+\max\text{ reduced peak}=5^r\cdot17,570,609,003,297,
+\end{equation}
+attained by the scaled start
+\begin{equation}
+5^r\cdot9,123,181,791,
+\end{equation}
+and the maximum capture time remains $194$, attained at
+\begin{equation}
+5^r\cdot9,614,632,545.
+\end{equation}
+The corresponding set lies below absolute scale $5^r10^{10}$, but it is a structured subset of $S_r$, not the set of all odd integers below that absolute bound.
+
+For illustration only, when $r=1$ the inherited record start is $48,073,162,725$ and the inherited maximum reduced peak is $87,853,045,016,485$; when $r=2$ these become $240,365,813,625$ and $439,265,225,082,425$. No new orbit computation is required for these scaled values.
+
+\section{Finite transfer theorem and global equivalence}
+\begin{theorem}[Finite transfer theorem]
+For every $r\ge0$, every scaled start
+\[
+x=5^ry,\qquad 1\le y<10^{10},\quad y\ \mathrm{odd},
+\]
+enters one of the four scaled attractors~\eqref{eq:fixscaled}--\eqref{eq:c61scaled}, subject exactly to the same finite computational conditions used in the base verification.
+\end{theorem}
+\begin{proof}
+The base computation establishes the finite statement for each corresponding $y$. Equation~\eqref{eq:alliter} transports the entire verified trajectory by multiplication by $5^r$.
+\end{proof}
+
+\begin{conjecture}[Scaled Four-Attractor Conjecture]
+For every $r\ge0$ and every $x\in S_r$, the orbit of $x$ under $T_r$ eventually enters exactly one of the four scaled attractors~\eqref{eq:fixscaled}--\eqref{eq:c61scaled}.
+\end{conjecture}
+
+\begin{theorem}[Equivalence of global conjectures]
+For any fixed $r\ge0$, the scaled Four-Attractor Conjecture holds on $S_r$ if and only if the base Four-Attractor Conjecture holds on $S$. Consequently it holds for every $r\ge0$ if and only if it holds for $r=0$.
+\end{theorem}
+\begin{proof}
+The conjugacy $\Phi_r$ transports every orbit in both directions.
+\end{proof}
+
+Thus $r$ creates no independent convergence problem and does not solve the base problem. Any divergent base orbit would scale to a divergent orbit in every $S_r$, and any undiscovered base cycle would scale to a cycle of the same minimal length in every $S_r$.
+
+\section{What is proved and what is not}
+The exact algebraic results prove, for every $r\ge0$:
+\begin{enumerate}
+\item $S_r=5^rS$ is in bijection with the base domain;
+\item multiplication by $5^r$ preserves the residue modulo $4$ relevant to branch selection;
+\item $M_r(5^ry)=5^rM_0(y)$;
+\item the complete two-adic valuation is unchanged at corresponding steps;
+\item $T_r$ and $T_0$ are exactly conjugate;
+\item all iterates, branch sequences, and valuation sequences correspond exactly;
+\item periodic orbits and minimal cycle lengths correspond bijectively;
+\item capture times and first-descent stopping times are preserved;
+\item first-lower values, reduced peaks, and raw affine peaks scale by $5^r$;
+\item normalized peak/start ratios and peak iteration locations are preserved;
+\item basin membership and basin counts on corresponding finite sets transfer exactly;
+\item inverse branches and complete inverse forests scale exactly;
+\item the finite verification through $10^{10}$ transfers to $F_r$ through absolute scale below $5^r10^{10}$.
+\end{enumerate}
+
+What is \emph{not} proved is global convergence of every positive base orbit, nonexistence of additional base cycles, or existence and exact values of limiting natural basin densities. The finite scan through $10^{10}$ cannot exclude phenomena beyond the tested range. Since the scaled systems are conjugate to the base system, they inherit exactly this unresolved global status.
+
+\section{Reproducibility and verification of the scaling identity}
+The supplementary archive accompanying this paper contains the \LaTeX{} source and compiled PDF, a small Python verifier, a machine-readable JSON statement of the scaling rules and inherited base statistics, the inherited base cutoff and $10^{10}$ summaries, a README, citation metadata, and SHA-256 checksums.
+
+The verifier checks, for user-selected finite ranges of $r$ and odd $y$, the identities
+\[
+M_r(5^ry)=5^rM_0(y),
+\]
+\[
+\vTwo(M_r(5^ry))=\vTwo(M_0(y)),
+\]
+\[
+T_r(5^ry)=5^rT_0(y),
+\]
+and compares several iterates. It also verifies the scaled forms of the four displayed attractors. This program is a consistency check, not the proof; the proof is the algebraic factorization together with $5^r\equiv1\pmod4$ and $\gcd(5^r,2)=1$.
+
+The $10^{10}$ numerical evidence belongs to the base computational record~\cite{BanazadehBase}. The present paper deliberately avoids presenting inherited trajectories as newly recomputed data.
+
+\section{Conclusion}
+Replacing the base corrections $3$ and $1$ by $3\cdot5^r$ and $5^r$ while scaling the odd state space by $5^r$ produces an exact copy of the reduced $5k+1(3)/4$ dynamics. The generalized affine branches are
+\[
+5x+3\cdot5^r,\qquad 5x+5^r,
+\]
+with forced first compression by $4$ and subsequent complete two-adic reduction. For every $r\ge0$ and every positive odd $y$,
+\[
+T_r(5^ry)=5^rT_0(y).
+\]
+The reason is exact: $5^r\equiv1\pmod4$ preserves branch selection, while the odd factor $5^r$ preserves the full two-adic valuation.
+
+Every scaled periodic orbit is therefore the $5^r$-multiple of a base periodic orbit with the same minimal period. In particular, the fixed point and three observed three-cycles become $5^r$, $(31,39,49)5^r$, $(37,47,59)5^r$, and $(61,77,97)5^r$. Capture times and first-descent stopping times are unchanged; first-lower values and absolute peaks scale by $5^r$; normalized orbit ratios are unchanged; and the four inverse forests and basin memberships are transported bijectively.
+
+The exhaustive base verification of all five billion positive odd starts below $10^{10}$ therefore transfers, without a new billion-scale scan, to every corresponding finite domain $F_r$. The global convergence question is unchanged. A proof of the base Four-Attractor Conjecture would prove the scaled conjecture simultaneously for all $r$, while any base counterexample would propagate through the entire family. The parameter $r$ is therefore an exact scaling symmetry, not a source of independent dynamics.
+
+\begin{thebibliography}{9}
+\bibitem{Lagarias1985}
+J. C. Lagarias, ``The $3x+1$ problem and its generalizations,'' \emph{The American Mathematical Monthly}, vol. 92, no. 1, pp. 3--23, 1985. doi: 10.1080/00029890.1985.11971528.
+
+\bibitem{MatthewsWatts1985}
+K. Matthews and A. Watts, ``A Markov approach to the generalized Syracuse algorithm,'' \emph{Acta Arithmetica}, vol. 45, no. 1, pp. 29--42, 1985. doi: 10.4064/aa-45-1-29-42.
+
+\bibitem{Carnielli2015}
+W. Carnielli, ``Some natural generalizations of the Collatz problem,'' \emph{Applied Mathematics E-Notes}, vol. 15, pp. 207--215, 2015.
+
+\bibitem{BanazadehBase}
+F. Banazadeh, ``The Reduced $5k+1(3)/4$ Collatz-Type Domain with Four Observed Attractors: Algebraic Structure, Basin Statistics, Probabilistic Contraction, and Exhaustive Verification up to $10^{10}$,'' Zenodo, 2026. doi: 10.5281/zenodo.22726453.
+
+\bibitem{BanazadehScaledPM}
+F. Banazadeh, ``A $5^r$-Scaled Family of the Reduced Ternary $(5k\pm1)/4$ Collatz-Type Map: Exact Algebraic Conjugacy, Cycle Preservation, Orbit-Statistic Invariance, and Transfer of the $10^{10}$ Finite Verification,'' Zenodo, 2026. doi: 10.5281/zenodo.22714150.
+\end{thebibliography}
+
+\end{document}
