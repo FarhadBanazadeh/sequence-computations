@@ -14,7 +14,7 @@ https://orcid.org/0009-0004-7023-0298
 
 # Research Papers & Reproducibility Index
 
-This repository contains the manuscript sources and computational materials associated with eleven research works.
+This repository contains the manuscript sources and computational materials associated
 
 For each paper, direct links are provided to the Zenodo publication record, the PDF hosted on Zenodo, the LaTeX source hosted in this GitHub repository, and the associated computational or supplementary package hosted in this GitHub repository.
 
@@ -534,7 +534,7 @@ They use related ternary, residue-dependent, and valuation-based ideas, but they
 
 ## VI. Reduced 5k − 1(3)/4 line
 
-Base residue-dependent reduced map with two observed attractors and exhaustive verification of all 50,000,000,000 positive odd starting values below 10^11 — Zenodo 22752810
+12. Base residue-dependent reduced map with two observed attractors and exhaustive verification of all 50,000,000,000 positive odd starting values below 10^11 — Zenodo 22752810
 ---
 
 # How to Find the Source of a Paper
@@ -566,8 +566,6 @@ Depending on the publication, this repository contains:
 * supplementary archives
 * reproducibility ZIP packages
 * checksum files
-
-The computational implementation is not identical across all eleven research works.
 
 Researchers should consult the specific manuscript and computational package associated with the paper being examined.
 
