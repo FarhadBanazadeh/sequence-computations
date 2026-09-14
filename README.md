@@ -492,11 +492,11 @@ https://zenodo.org/records/22752810
 
 ### LaTeX source — GitHub
 
-[Farhad_Banazadeh_Zenodo22752810_Reduced_5k_minus_1_3_over_4_Collatz_Type_Map_up_to_1e11](https://github.com/).tex
+Farhad_Banazadeh_Zenodo22752810_Reduced_5k_minus_1_3_over_4_Collatz_Type_Map_up_to_1e11.tex
 
 ### Computational package — GitHub
 
-[Farhad_Banazadeh_Zenodo22752810_Reduced_5k_minus_1_3_over_4_Collatz_Type_Map_up_to_1e11_Computational_Pack](https://github.com/).zip
+Farhad_Banazadeh_Zenodo22752810_Reduced_5k_minus_1_3_over_4_Collatz_Type_Map_up_to_1e11_Computational_Pack.zip
 
 ---
 
