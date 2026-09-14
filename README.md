@@ -478,7 +478,27 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 
 https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22746283_5r_Scaled_5k1_3_over4_Collatz_Type_Map_up_to_1e10_Computational_Pack.zip
 
----
+### 12. The Reduced 5k−1(3)/4 Collatz-Type Domain with Two Observed Attractors up to 10^11
+
+This work studies the reduced 5k−1(3)/4 Collatz-type map on the positive odd integers. An exhaustive computational verification of all 50,000,000,000 positive odd starting values below 10^11 found two observed fixed-point attractors, 1 and 3, with no additional cycles detected.
+
+### Zenodo DOI
+
+https://doi.org/10.5281/zenodo.22752810
+
+### PDF — Zenodo
+
+https://zenodo.org/records/22752810
+
+### LaTeX source — GitHub
+
+Farhad_Banazadeh_Zenodo22752810_Reduced_5k_minus_1_3_over_4_Collatz_Type_Map_up_to_1e11.tex
+
+### Computational package — GitHub
+
+Farhad_Banazadeh_Zenodo22752810_Reduced_5k_minus_1_3_over_4_Collatz_Type_Map_up_to_1e11_Computational_Pack.zip---
+
+....
 
 # Research Structure
 
