@@ -492,11 +492,11 @@ https://zenodo.org/records/22752810
 
 ### LaTeX source — GitHub
 
-Farhad_Banazadeh_Zenodo22752810_Reduced_5k_minus_1_3_over_4_Collatz_Type_Map_up_to_1e11.tex
+https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22752810_Reduced_5k_minus_1_3_over_4_Collatz_Type_Map_up_to_1e11.tex
 
 ### Computational package — GitHub
 
-Farhad_Banazadeh_Zenodo22752810_Reduced_5k_minus_1_3_over_4_Collatz_Type_Map_up_to_1e11_Computational_Pack.zip
+https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22752810_Reduced_5k_minus_1_3_over_4_Collatz_Type_Map_up_to_1e11_Computational_Pack.zip
 
 ---
 
@@ -532,6 +532,9 @@ They use related ternary, residue-dependent, and valuation-based ideas, but they
 10. Base residue-dependent reduced map with four observed attractors and exhaustive verification of all `5,000,000,000` positive odd starting values below `10^10` — Zenodo `22726453`
 11. Its exactly conjugate `5^r`-scaled family with transferred `10^10` finite verification — Zenodo `22746283`
 
+## VI. Reduced 5k − 1(3)/4 line
+
+Base residue-dependent reduced map with two observed attractors and exhaustive verification of all 50,000,000,000 positive odd starting values below 10^11 — Zenodo 22752810
 ---
 
 # How to Find the Source of a Paper
