@@ -498,6 +498,69 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 
 https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22752810_Reduced_5k_minus_1_3_over_4_Collatz_Type_Map_up_to_1e11_Computational_Pack.zip
 
+## 13. A 5^r-Scaled Family of the Reduced 5k-1(3)/4 Collatz-Type Map with Two Observed Attractors: Exact Algebraic Conjugacy, Two-Attractor Transport, Orbit-Statistic Invariance, and Transfer of the 10^11 Finite Verification
+
+This work develops the `5^r`-scaled family associated with the reduced residue-dependent `5k-1(3)/4` Collatz-type map with two observed attractors.
+
+For every integer `r ≥ 0`, the scaled state space is
+
+`S_r = 5^r N_odd`.
+
+The scaled affine branches are
+
+`5x - 5^r` for `x ≡ 1 (mod 4)`
+
+and
+
+`5x - 3·5^r` for `x ≡ 3 (mod 4)`,
+
+followed by complete removal of all powers of two.
+
+The central algebraic relation is
+
+`T_r(5^r y) = 5^r T_0(y)`.
+
+Consequently,
+
+`T_r^j(5^r y) = 5^r T_0^j(y)`
+
+for every integer `j ≥ 0`.
+
+This establishes an exact algebraic conjugacy between the base system and every scaled system on its natural scaled domain.
+
+The conjugacy preserves branch sequences, complete two-adic valuation sequences, periodic-orbit structure, minimal periods, capture times, first-descent stopping times, basin membership, and normalized orbit geometry.
+
+The two observed base fixed points therefore scale exactly to:
+
+* fixed point `5^r`
+* fixed point `3·5^r`
+
+The exhaustive finite verification of all `50,000,000,000` positive odd base starting values below `10^11` transfers exactly to the corresponding scaled set
+
+`{5^r y : 1 ≤ y < 10^11, y odd}`
+
+for every fixed `r ≥ 0`.
+
+This is a theorem-based transfer of the base computation and is not a new independent exhaustive scan for each value of `r`.
+
+The exact conjugacy establishes equivalence between the scaled and base dynamical problems, but it does not constitute a proof of global convergence.
+
+### Related base research
+
+[View the base 5k-1(3)/4 research on Zenodo](https://doi.org/10.5281/zenodo.22752810)
+
+### Zenodo DOI
+
+[View the published Zenodo record — DOI: 10.5281/zenodo.22770779](https://doi.org/10.5281/zenodo.22770779)
+
+### PDF — GitHub
+
+[View the published PDF](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22770779_5r_Scaled_Reduced_5k_minus_1_3_over_4_up_to_1e11.pdf)
+
+### Computational package — GitHub
+
+[Download the computational and reproducibility package](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22770779_5r_Scaled_Reduced_5k_minus_1_3_over_4_up_to_1e11_Computational_Pack.zip)
+
 ---
 
 # Research Structure
@@ -527,14 +590,16 @@ They use related ternary, residue-dependent, and valuation-based ideas, but they
 8. Base map with two observed attractors and exhaustive verification through `10^10` — Zenodo `22709065`
 9. Its exactly conjugate `5^r`-scaled family — Zenodo `22714150`
 
-## V. Reduced 5k + 1(3)/4 line
+## V. Reduced (5k+1(3))/4 line
 
 10. Base residue-dependent reduced map with four observed attractors and exhaustive verification of all `5,000,000,000` positive odd starting values below `10^10` — Zenodo `22726453`
 11. Its exactly conjugate `5^r`-scaled family with transferred `10^10` finite verification — Zenodo `22746283`
 
-## VI. Reduced 5k − 1(3)/4 line
+## VI. Reduced (5k−1(3))/4 line
 
 12. Base residue-dependent reduced map with two observed attractors and exhaustive verification of all 50,000,000,000 positive odd starting values below 10^11 — Zenodo 22752810
+13. 13. `5^r`-scaled family of the reduced `5k − 1(3)/4` map with exact algebraic conjugacy, two-attractor transport, orbit-statistic invariance, and transfer of the `10^11` finite verification — Zenodo 22770779
+       
 ---
 
 # How to Find the Source of a Paper
