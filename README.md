@@ -547,19 +547,24 @@ The exact conjugacy establishes equivalence between the scaled and base dynamica
 
 ### Related base research
 
-[View the base 5k-1(3)/4 research on Zenodo](https://doi.org/10.5281/zenodo.22752810)
+https://doi.org/10.5281/zenodo.22752810
 
 ### Zenodo DOI
 
-[View the published Zenodo record — DOI: 10.5281/zenodo.22770779](https://doi.org/10.5281/zenodo.22770779)
+https://doi.org/10.5281/zenodo.22770779
 
 ### PDF — GitHub
 
-[View the published PDF](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22770779_5r_Scaled_Reduced_5k_minus_1_3_over_4_up_to_1e11.pdf)
+https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22770779_5r_Scaled_Reduced_5k_minus_1_3_over_4_up_to_1e11.pdf
+
+
+### LaTeX source — GitHub
+
+https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22770779_5r_Scaled_Reduced_5k_minus_1_3_over_4_up_to_1e11.tex
 
 ### Computational package — GitHub
 
-[Download the computational and reproducibility package](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22770779_5r_Scaled_Reduced_5k_minus_1_3_over_4_up_to_1e11_Computational_Pack.zip)
+https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22770779_5r_Scaled_Reduced_5k_minus_1_3_over_4_up_to_1e11_Computational_Pack.zip
 
 ---
 
