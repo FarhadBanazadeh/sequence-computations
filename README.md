@@ -594,11 +594,11 @@ https://doi.org/10.5281/zenodo.22786203
 
 ### LaTeX source — GitHub
 
-Farhad_Banazadeh_Zenodo22786203_Reduced_6k_pm_1_2_over_5_Collatz_Type_Map_up_to_1e11.tex
+https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22786203_Reduced_6k_pm_1_2_over_5_Collatz_Type_Map_up_to_1e11.tex
 
 ### Computational package — GitHub
 
-Farhad_Banazadeh_Zenodo22786203_Reduced_6k_pm_1_2_over_5_Collatz_Type_Map_up_to_1e11_Computational_Pack.zip
+https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22786203_Reduced_6k_pm_1_2_over_5_Collatz_Type_Map_up_to_1e11_Computational_Pack.zip
 
 The Zenodo record contains the published article and associated reproducibility materials.
 
