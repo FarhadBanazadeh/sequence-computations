@@ -566,11 +566,47 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 
 https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22770779_5r_Scaled_Reduced_5k_minus_1_3_over_4_up_to_1e11_Computational_Pack.zip
 
+## 14. The Reduced 6k+_1(2)/5 Collatz-Type Domain with Two Observed Attractors up to 10^11
+
+Computational and algebraic study of the reduced 6k+_1(2)/5 Collatz-type map, with three observed attractors and exhaustive verification up to 10^11.
+
+Computational Results
+
+The exhaustive 128-bit computation tested all 80,000,000,000 positive starting values not divisible by 5 up to 10^11.
+
+Attractor 1: 51.49947907%
+Attractor 2: 14.51658518%
+9-cycle: 33.98393574%
+New cycles detected: 0
+128-bit overflows: 0
+Step-limit cases: 0
+Maximum stopping time: 755 steps, at n = 63,909,268,656
+Maximum observed peak: 18,774,256,269,070,896,812,821, from n = 73,433,001,822
+
+These results constitute an exhaustive finite verification up to 10^11 and are not claimed as a proof of global convergence.
+
+### Zenodo DOI
+
+DOI: 10.5281/zenodo.22786203
+
+### PDF — GitHub
+https://doi.org/10.5281/zenodo.22786203
+
+### LaTeX source — GitHub
+
+Farhad_Banazadeh_Zenodo22786203_Reduced_6k_pm_1_2_over_5_Collatz_Type_Map_up_to_1e11.tex
+
+### Computational package — GitHub
+
+Farhad_Banazadeh_Zenodo22786203_Reduced_6k_pm_1_2_over_5_Collatz_Type_Map_up_to_1e11_Computational_Pack.zip
+
+The Zenodo record contains the published article and associated reproducibility materials.
+
 ---
 
-# Research Structure
+## Research Structure
 
-The eleven works belong to **five distinct research lines**.
+The all works belong to **Seven distinct research lines**.
 
 They use related ternary, residue-dependent, and valuation-based ideas, but they should not be treated as a single dynamical system.
 
@@ -604,7 +640,11 @@ They use related ternary, residue-dependent, and valuation-based ideas, but they
 
 12. Base residue-dependent reduced map with two observed attractors and exhaustive verification of all 50,000,000,000 positive odd starting values below 10^11 — Zenodo 22752810
 13. 13. `5^r`-scaled family of the reduced `5k − 1(3)/4` map with exact algebraic conjugacy, two-attractor transport, orbit-statistic invariance, and transfer of the `10^11` finite verification — Zenodo 22770779
-       
+
+## VII. Reduced (6k+_1(2))/5 line
+
+14. Base residue-dependent reduced map with three observed attractors and exhaustive verification of all 80,000,000,000 positive starting values not divisible by 5 up to `10^11` — Zenodo 22786203
+        
 ---
 
 # How to Find the Source of a Paper
