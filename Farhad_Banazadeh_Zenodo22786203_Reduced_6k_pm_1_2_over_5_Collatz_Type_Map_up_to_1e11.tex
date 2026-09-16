@@ -1,0 +1,288 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,array,longtable,microtype,hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\setlength{\parskip}{0.45em}
+\setlength{\parindent}{0pt}
+\title{\textbf{The Reduced $6k\pm\{1,2\}/5$ Collatz-Type Domain with Three Observed Attractors up to $10^{11}$}}
+\author{Farhad Banazadeh\\\texttt{fn.bana@hotmail.com}\\ORCID: 0009-0004-7023-0298}
+\date{16 September 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We study a residue-dependent reduced Collatz-type map on the positive integers not divisible by 5. For a reduced state $n$, an affine correction from $\{-2,-1,1,2\}$ is selected by $n\pmod 5$ so that the numerator is divisible by 5, after which every additional factor of 5 is removed. The resulting map has three directly verified periodic attractors: the fixed points $\{1\}$ and $\{2\}$, and the 9-cycle
+\[
+\{22,26,31,37,44,53,64,77,92\}.
+\]
+A four-thread C computation using a fast 64-bit path with automatic unsigned 128-bit fallback exhaustively tested all $80{,}000{,}000{,}000$ starting values $n\le 10^{11}$ with $5\nmid n$. Every tested orbit entered one of the three displayed attractors. The counts were $41{,}199{,}583{,}259$ for $\{1\}$, $11{,}613{,}268{,}146$ for $\{2\}$, and $27{,}187{,}148{,}595$ for the 9-cycle; no additional cycle, 128-bit overflow, or step-limit event was recorded. The maximum observed stopping time was 755, attained at $n=63{,}909{,}268{,}656$. The largest observed reduced peak was $18{,}774{,}256{,}269{,}070{,}896{,}812{,}821$, on the orbit beginning at $n=73{,}433{,}001{,}822$. We give the elementary algebraic structure, numerical examples for all three basins, a five-adic drift heuristic, finite-range basin statistics, and reproducibility details. The exhaustive result is a finite computational verification and is not presented as a proof of global convergence.
+\end{abstract}
+
+\section{Introduction}
+The classical $3x+1$ problem is the best-known member of a broad family of arithmetic dynamical systems defined by residue-dependent affine transformations followed by division by a prime power. Generalized Collatz and Syracuse maps have been studied from number-theoretic and probabilistic viewpoints; see, for example, Lagarias~\cite{Lagarias1985}, Matthews and Watts~\cite{MatthewsWatts1985}, and Carnielli~\cite{Carnielli2015}.
+
+The present paper studies a reduced $6n+c$ rule controlled by residues modulo 5. The correction is chosen so that $6n+c$ is divisible by 5, and all factors of 5 are then removed. The finite computation reported here exhibits three terminal attractors: two fixed points and one cycle of length nine. Our goals are to define the map exactly, verify the observed attractors directly, give transparent examples of capture into each basin, summarize an exhaustive scan through $10^{11}$, and distinguish the exact finite computational statement from any global conjecture.
+
+\section{Definition and elementary structure}
+Let
+\[
+\mathcal{D}=\{n\in\mathbb{Z}_{>0}:5\nmid n\}.
+\]
+For $n\in\mathcal{D}$ define
+\[
+c(n)=\begin{cases}
+-1,&n\equiv1\pmod5,\\
+-2,&n\equiv2\pmod5,\\
++2,&n\equiv3\pmod5,\\
++1,&n\equiv4\pmod5,
+\end{cases}
+\qquad N(n)=6n+c(n),
+\]
+and
+\begin{equation}
+T(n)=\frac{N(n)}{5^{\nu_5(N(n))}},
+\label{eq:T}
+\end{equation}
+where $\nu_5(m)$ is the exponent of 5 in the prime factorization of $m$.
+
+\textbf{Proposition 1.} For every $n\in\mathcal{D}$, $\nu_5(N(n))\ge1$, and hence $T(n)\in\mathcal{D}$.
+
+\textit{Proof.} Since $6\equiv1\pmod5$, the four corrections are exactly those needed to make $n+c(n)\equiv0\pmod5$. Thus $5\mid N(n)$. Division by all powers of 5 leaves a positive integer not divisible by 5. \hfill$\square$
+
+Direct calculation gives three periodic attractors:
+\[
+1\longrightarrow1,\qquad 2\longrightarrow2,
+\]
+and
+\[
+22\to26\to31\to37\to44\to53\to64\to77\to92\to22.
+\]
+Indeed,
+\[
+T(1)=\frac{6-1}{5}=1,\qquad T(2)=\frac{12-2}{5}=2,
+\]
+while the nine-cycle is verified by
+\begin{align*}
+6(22)-2&=130=5\cdot26, & 6(26)-1&=155=5\cdot31,\\
+6(31)-1&=185=5\cdot37, & 6(37)-2&=220=5\cdot44,\\
+6(44)+1&=265=5\cdot53, & 6(53)+2&=320=5\cdot64,\\
+6(64)+1&=385=5\cdot77, & 6(77)-2&=460=5\cdot92,\\
+6(92)-2&=550=25\cdot22.&&
+\end{align*}
+The last transition illustrates why all additional factors of 5 must be removed.
+
+\section{Numerical examples of the three basins}
+The following examples show explicitly how ordinary starting values reach each observed attractor.
+
+\subsection*{Capture by the fixed point 1}
+Starting from $n=9$,
+\[
+9\to11\to13\to16\to19\to23\to28\to34\to41\to49\to59\to71\to17\to4\to1.
+\]
+For example, $9\equiv4\pmod5$, so $T(9)=(6\cdot9+1)/5=11$. Near the end, $17\equiv2\pmod5$ gives $(6\cdot17-2)/5=20$, and removal of the additional factor 5 gives $T(17)=4$; then $T(4)=(24+1)/25=1$.
+
+\subsection*{Capture by the fixed point 2}
+Starting from $n=24$,
+\[
+24\to29\to7\to8\to2.
+\]
+Here $T(24)=(144+1)/5=29$, $T(29)=(174+1)/25=7$, $T(7)=(42-2)/5=8$, and $T(8)=(48+2)/25=2$.
+
+\subsection*{Capture by the 9-cycle}
+Starting from $n=36$,
+\[
+36\to43\to52\to62\to74\to89\to107\to128\to154\to37,
+\]
+after which the orbit follows the displayed 9-cycle. For instance, $T(36)=(216-1)/5=43$, while $T(154)=(924+1)/25=37$.
+
+These examples also demonstrate that the reduced step can remove more than one factor of 5 in a single iteration.
+
+\section{Exact identity for a periodic orbit}
+Suppose $x_0,x_1,\ldots,x_{L-1}$ is a periodic orbit, with indices modulo $L$. Write
+\begin{equation}
+5^{a_i}x_{i+1}=6x_i+c_i,
+\label{eq:affine}
+\end{equation}
+where $a_i=\nu_5(6x_i+c_i)\ge1$ and $c_i\in\{-2,-1,1,2\}$. Define
+\[
+A=\sum_{i=0}^{L-1}a_i,\qquad S_j=\sum_{i=0}^{j-1}a_i,\quad S_0=0.
+\]
+Successive substitution yields the exact cycle identity
+\begin{equation}
+(5^A-6^L)x_0=\sum_{j=0}^{L-1}6^{L-1-j}c_j5^{S_j}.
+\label{eq:cycleidentity}
+\end{equation}
+Unlike domains in which all corrections have one sign, the right side here can contain both positive and negative terms. Consequently, no sign inequality such as $5^A>6^L$ follows from \eqref{eq:cycleidentity} alone. The identity is nevertheless an exact arithmetic constraint on every hypothetical periodic orbit.
+
+\section{Five-adic valuation model and drift heuristic}
+The branch rule forces at least one factor of 5. In the natural uniform five-adic residue model, each additional factor imposes one further congruence condition modulo 5, giving
+\begin{equation}
+\Pr(a=k)=\frac{4}{5^k},\qquad k\ge1,
+\end{equation}
+and therefore
+\begin{equation}
+\mathbb{E}[a]=\sum_{k\ge1}k\frac{4}{5^k}=\frac54.
+\end{equation}
+For large $n$, the additive correction is small relative to $6n$, so
+\[
+\log\frac{T(n)}{n}\approx\log6-a\log5.
+\]
+The corresponding model mean logarithmic increment is
+\begin{equation}
+\mathbb{E}[\Delta\log]\approx\log6-\frac54\log5\approx-0.2200379213,
+\end{equation}
+with geometric typical multiplier
+\[
+\frac{6}{5^{5/4}}\approx0.802488366.
+\]
+This negative logarithmic drift is a heuristic for typical large-scale behavior. It is not a theorem of universal convergence, because actual orbit residues are arithmetically correlated.
+
+\subsection*{Expansion, contraction, and the critical valuation}
+A single reduced step has the exact ratio
+\begin{equation}
+\frac{T(n)}{n}=\frac{6+c(n)/n}{5^a},\qquad a=\nu_5(6n+c(n))\ge1.
+\end{equation}
+For large $n$, the overwhelmingly common case $a=1$ has approximate multiplier $6/5>1$, whereas every step with $a\ge2$ has approximate multiplier at most $6/25<1$. Thus this domain does not contract at every step: its typical contraction arises from the occasional removal of two or more factors of 5 being strong enough to compensate for runs of $a=1$ steps.
+
+Ignoring the bounded additive correction at large scale, a block of $m$ reduced steps contracts when its average valuation satisfies
+\begin{equation}
+\frac1m\sum_{i=0}^{m-1}a_i>\log_5 6\approx1.1132827526.
+\end{equation}
+The five-adic residue-model mean is $5/4=1.25$, leaving a positive margin of approximately $0.1367172474$ above this critical value. Equivalently, the model mean logarithmic increment is negative, as computed above. This gives a quantitative probabilistic reason for expecting downward drift even though $\Pr(a=1)=4/5$ and most individual large-state steps are mildly expanding.
+
+\subsection*{Why very large excursions remain compatible with negative drift}
+In the residue model, a run of $r$ consecutive $a=1$ steps has idealized probability $(4/5)^r$ and approximate multiplier $(6/5)^r$. Such runs are therefore neither impossible nor extremely rare at modest lengths. More generally, an orbit expands over a block whenever its accumulated valuation is temporarily below the critical balance $m\log_5 6$. This explains why a negative long-run logarithmic drift can coexist with very large transient peaks. The production record peak above $1.8\times10^{22}$ is a concrete finite-range example of this intermittent expansion.
+
+\subsection*{Periodic-orbit balance}
+For a periodic orbit, taking logarithms of \eqref{eq:affine} and summing once around the cycle gives the exact identity
+\begin{equation}
+0=L\log6-A\log5+\sum_{i=0}^{L-1}\log\!\left(1+\frac{c_i}{6x_i}\right).
+\end{equation}
+Hence
+\begin{equation}
+\frac{A}{L}=\log_5 6+\frac{1}{L\log5}\sum_{i=0}^{L-1}\log\!\left(1+\frac{c_i}{6x_i}\right).
+\end{equation}
+Because the corrections $c_i$ have both signs, the finite-state correction in this formula can be positive or negative. Nevertheless, for a hypothetical cycle consisting entirely of very large states, the correction terms are small and its mean valuation must lie close to the critical value $\log_5 6$. In the independent residue model this is below the mean $5/4$, so a large cycle would require a valuation profile atypically biased toward small exponents, together with the exact integrality and residue constraints of \eqref{eq:cycleidentity}. This is a structural heuristic, not an exclusion proof.
+
+\subsection*{Inverse branches and a three-basin interpretation}
+If $T(x)=y$ and the reduced step removes exactly $a\ge1$ factors of 5, then every predecessor must satisfy
+\begin{equation}
+x=\frac{5^a y-c}{6},\qquad c\in\{-2,-1,1,2\},
+\end{equation}
+with integrality and the additional requirement that the resulting $x\pmod5$ selects that same correction $c$. Thus inverse iteration from the two fixed points and from the nine nodes of the observed cycle generates three residue-controlled predecessor forests. Within the verified interval through $10^{11}$, every tested reduced start belongs to one of these three forward basins.
+
+The exhaustive full-range basin vector is
+\begin{equation}
+\widehat p(10^{11})=(0.5149947907,\;0.1451658518,\;0.3398393574),
+\end{equation}
+corresponding respectively to $\{1\}$, $\{2\}$, and the 9-cycle. The unequal proportions are compatible with the three inverse forests having different residue structures and therefore collecting different amounts of five-adic predecessor mass. The nearby proportions at $10^8$, $10^9$, and $10^{10}$ show that the same three-way split persists across the displayed finite cutoffs. However, the present analysis does not derive the three percentages from first principles and does not prove that they converge to limiting natural densities. They should therefore be read as exact empirical frequencies for the finite scanned intervals, with the inverse-branch picture providing a probabilistic mechanism rather than an exact density theorem.
+
+\section{Computational methodology}
+The production computation used the accompanying C implementation \texttt{scan\_6n\_over5\_128\_v2.c}. The scanner evaluates every starting value $1\le n\le10^{11}$ with $5\nmid n$; no random sampling is used. Four POSIX worker threads process raw intervals of $10^8$ integers, producing 1000 durable chunks. There are exactly $8\times10^{10}$ reduced starting values in the full interval.
+
+The v2 implementation uses 64-bit unsigned arithmetic in the normal path and automatically switches to unsigned \texttt{\_\_int128} arithmetic when a 64-bit affine operation could overflow. It checks the two fixed points and the nine known cycle states as terminal outcomes, uses a Brent cycle detector for additional repeated states, maintains a shared cache for small states, and imposes a hard safety limit of $10^7$ reduced steps. The production output recorded zero 128-bit overflow events and zero step-limit events.
+
+For this paper, the \emph{stopping time} is the number of applications of $T$ before first entry into one of the three known attractors. A starting value already in an attractor has stopping time zero. The \emph{peak} is the largest reduced state encountered from the start through first attractor entry. The scanner also counts the total number of factors of 5 removed along the transient trajectory.
+
+\section{Exhaustive finite-range results}
+Table~\ref{tab:cutoffs} gives cumulative results obtained directly by aggregating the archived production chunks. Each row is exhaustive for the stated reduced interval.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{r r r r r}
+\toprule
+Upper bound & Reduced starts & Basin 1 & Basin 2 & Basin 9-cycle\\
+\midrule
+$10^8$  & 80,000,000 & 51.43893125\% & 14.55363750\% & 34.00743125\%\\
+$10^9$  & 800,000,000 & 51.48676050\% & 14.53485688\% & 33.97838262\%\\
+$10^{10}$ & 8,000,000,000 & 51.50542750\% & 14.48127021\% & 34.01330229\%\\
+$10^{11}$ & 80,000,000,000 & 51.49947907\% & 14.51658518\% & 33.98393574\%\\
+\bottomrule
+\end{tabular}
+\caption{Cumulative exhaustive basin proportions for starting values not divisible by 5.}
+\label{tab:cutoffs}
+\end{table}
+
+At the full cutoff the exact counts are
+\[
+41{,}199{,}583{,}259,
+\quad 11{,}613{,}268{,}146,
+\quad 27{,}187{,}148{,}595,
+\]
+for $\{1\}$, $\{2\}$, and the 9-cycle, respectively. Their sum is exactly
+\[
+80{,}000{,}000{,}000.
+\]
+The additional-cycle count was zero, the overflow count was zero, and the step-limit count was zero.
+
+The full production run was recorded in 1000 completed chunks, each containing $80{,}000{,}000$ reduced starting values. The cumulative proportions in Table~\ref{tab:cutoffs} are empirical finite-range frequencies; no claim is made here that they converge to exact natural densities.
+
+\section{Stopping-time and peak records}
+The maximum stopping time in the full scan was
+\[
+\boxed{755\text{ steps at }n=63{,}909{,}268{,}656}.
+\]
+On that trajectory the largest reduced value was
+\[
+303{,}105{,}476{,}921{,}832{,}704,
+\]
+and the scanner counted 856 removed factors of 5. Independent direct iteration of the archived map reproduces these values and shows that the trajectory enters the fixed point 1.
+
+The largest reduced peak over all $80$ billion starts was
+\[
+\boxed{18{,}774{,}256{,}269{,}070{,}896{,}812{,}821},
+\]
+attained at reduced step 250 on the trajectory beginning at
+\[
+n=73{,}433{,}001{,}822.
+\]
+That trajectory has stopping time 445 and enters the fixed point 1. Its peak is substantially larger than the $10^{11}$ starting-value cutoff, illustrating that finite capture can coexist with large transient excursions.
+
+For scale comparison, the cumulative maximum stopping times at $10^8$, $10^9$, $10^{10}$, and $10^{11}$ were respectively 449, 536, 565, and 755. These observations do not by themselves establish an asymptotic law.
+
+\section{What the computation proves -- and what it does not}
+The finite computational statement is exact relative to the archived implementation and output: every one of the $80{,}000{,}000{,}000$ starting values $n\le10^{11}$ with $5\nmid n$ was classified into one of the three displayed attractors, with no recorded additional cycle, 128-bit overflow, or step-limit event. The per-chunk outcome counts sum exactly to the final totals, and the archived chunk maxima reproduce the reported global stopping-time and peak records.
+
+This does \emph{not} prove that every positive integer is eventually captured, that no additional positive cycle exists beyond the tested range, or that no divergent orbit exists. Nor does it prove that the displayed finite basin proportions converge to limiting natural densities. The five-adic drift model and the periodic-orbit identity provide structural evidence, but neither turns the finite verification into a global theorem.
+
+Multiples of 5 are omitted from the reduced starting domain because removing their factors of 5 immediately maps them to a member of $\mathcal{D}$. Thus the reduced-domain verification naturally represents the nontrivial states after five-adic reduction.
+
+\section{Three-attractor conjecture}
+\textbf{Conjecture 1 (Three-Attractor Conjecture).} Every positive integer, after removal of any initial factors of 5, eventually enters exactly one of
+\[
+\{1\},\qquad \{2\},\qquad \{22,26,31,37,44,53,64,77,92\}.
+\]
+Equivalently, these are conjectured to be the only terminal positive periodic attractors of the reduced map, and no divergent positive orbit is conjectured to exist.
+
+The conjecture is motivated by the exhaustive $10^{11}$ verification, the absence of additional detected cycles in the tested range, the negative logarithmic drift of the five-adic residue model, and the arithmetic restrictions embodied in the exact cycle identity. None of these observations, separately or together, excludes a remote exceptional orbit or an additional cycle outside the tested range.
+
+\section{Reproducibility archive}
+The accompanying curated archive contains the v2 production C source, the complete 1000-row chunk table, the per-chunk stopping/peak record table, the cycle-detection log (header only, reflecting zero additional cycles), the final production summary, the \LaTeX{} source of this paper, a README describing the rule and files, and SHA-256 checksums. The obsolete pre-v2 source, its executable, and validation outputs that used the earlier cycle classification are intentionally omitted from the curated archive. Platform-dependent executable binaries are also omitted so that reproduction proceeds from source.
+
+The production source can be built on a compatible Clang/POSIX system with a command of the form
+\begin{verbatim}
+clang -O3 -march=native -pthread -std=c11 -Wall -Wextra \
+  scan_6n_over5_128_v2.c -o scan_6n_over5_128_v2
+\end{verbatim}
+A representative full-range invocation is documented in the archive README. Because the original production output prefix is \texttt{scan\_1e11}, the archived output files retain that prefix.
+
+\section{Conclusion}
+The reduced $6n\pm\{1,2\}$ over 5 map is a simple residue-dependent arithmetic dynamical system with three directly verified small attractors: two fixed points and one 9-cycle. Exhaustive computation of all $80$ billion reduced starts through $10^{11}$ found that every tested orbit entered one of these attractors, with zero additional cycles, zero 128-bit overflows, and zero step-limit cases. The observed basin split is approximately $51.50\%$, $14.52\%$, and $33.98\%$ at the full cutoff, while record trajectories show substantial transient growth.
+
+The correct hierarchy of conclusions is therefore: the map and displayed attractors are verified algebraically; capture is verified computationally on the finite tested set; negative five-adic logarithmic drift is a heuristic description of typical behavior; and universal capture by exactly these three attractors remains a conjecture. A global proof would require new arithmetic control beyond the finite computation and residue-model heuristic used here.
+
+\begin{thebibliography}{9}
+\bibitem{Lagarias1985}
+J. C. Lagarias, ``The $3x+1$ problem and its generalizations,'' \emph{The American Mathematical Monthly}, vol. 92, no. 1, pp. 3--23, 1985. doi: 10.1080/00029890.1985.11971528.
+
+\bibitem{MatthewsWatts1985}
+K. Matthews and A. Watts, ``A Markov approach to the generalized Syracuse algorithm,'' \emph{Acta Arithmetica}, vol. 45, no. 1, pp. 29--42, 1985. doi: 10.4064/aa-45-1-29-42.
+
+\bibitem{Carnielli2015}
+W. Carnielli, ``Some natural generalizations of the Collatz problem,'' \emph{Applied Mathematics E-Notes}, vol. 15, pp. 207--215, 2015.
+\end{thebibliography}
+
+\end{document}
