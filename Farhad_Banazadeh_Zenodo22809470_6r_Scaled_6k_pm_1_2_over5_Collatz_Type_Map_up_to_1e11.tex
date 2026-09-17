@@ -1,0 +1,294 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,array,microtype,hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\setlength{\parskip}{0.45em}\setlength{\parindent}{0pt}
+\title{\textbf{\LARGE A $6^r$-Scaled Family of the Reduced $6k\pm\{1,2\}/5$ Collatz-Type Map with Three Observed Attractors}\\[0.55em]
+\large Exact Algebraic Conjugacy, Three-Attractor Transport, Orbit-Statistic Invariance, and Transfer of the $10^{11}$ Finite Verification}
+\author{Farhad Banazadeh\\\texttt{fn.bana@hotmail.com}\\ORCID: 0009-0004-7023-0298}
+\date{17 September 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We develop the full $6^r$-scaled family of the reduced $6k\pm\{1,2\}/5$ Collatz-type map previously studied computationally through $10^{11}$. The base domain is $\mathcal D=\{y\in\mathbb Z_{>0}:5\nmid y\}$, with correction $c(y)\in\{-2,-1,1,2\}$ selected by $y\pmod5$, affine numerator $M_0(y)=6y+c(y)$, and complete 5-adic reduction $T_0(y)=M_0(y)/5^{\nu_5(M_0(y))}$. For every integer $r\ge0$ we define $\mathcal D_r=6^r\mathcal D$ and $M_r(x)=6x+6^r c(x)$, whose four branches are $6x-6^r$, $6x-2\cdot6^r$, $6x+2\cdot6^r$, and $6x+6^r$. Since $6^r\equiv1\pmod5$ and $5\nmid6^r$, multiplication by $6^r$ preserves both branch selection and the complete 5-adic valuation. Hence
+\[
+T_r(6^r y)=6^rT_0(y),\qquad T_r^j(6^r y)=6^rT_0^j(y)\quad(j\ge0).
+\]
+Thus trajectories, valuation sequences, transient lengths, basin membership, and minimal cycle lengths are transported bijectively; absolute peaks scale by $6^r$ and normalized peak ratios are invariant. The base fixed points $1,2$ become $6^r,2\cdot6^r$, while the observed 9-cycle becomes $6^r\{22,26,31,37,44,53,64,77,92\}$. The base record exhaustively verified all $80{,}000{,}000{,}000$ admissible starts through $10^{11}$. We do not repeat that computation: conjugacy transfers those exact verified trajectories to $\{6^r y:y\le10^{11},5\nmid y\}\subset\mathcal D_r$. Numerical examples in all three basins illustrate the transport explicitly. Global three-attractor convergence remains conjectural; the theorem establishes exact equivalence of the scaled and base dynamical problems, not a proof of unresolved global convergence.
+\end{abstract}
+
+\section{Introduction}
+Residue-dependent affine maps followed by complete prime-adic reduction form a natural class of generalized Collatz and Syracuse systems; see Lagarias~\cite{Lagarias1985}, Matthews and Watts~\cite{MatthewsWatts1985}, and Carnielli~\cite{Carnielli2015}. The author's preceding base study~\cite{BanazadehBase2026} defined the reduced $6k\pm\{1,2\}/5$ map, established its elementary algebraic structure, exhibited two fixed points and a 9-cycle, and exhaustively tested every admissible start through $10^{11}$.
+
+The present paper asks a structural rather than computational question. If all four affine correction constants and the state space are simultaneously multiplied by $6^r$, does a genuinely new dynamical system appear? We prove that it does not: for every integer $r\ge0$, the scaled system is exactly conjugate to the base system by multiplication by $6^r$. This yields exact transport of complete trajectories, periodic structure, 5-adic valuation sequences, stopping times, basin membership, and normalized orbit geometry.
+
+The $10^{11}$ numerical data quoted below belong to the base computation~\cite{BanazadehBase2026}. They are inherited through the conjugacy theorem and are not relabelled as independent $80$-billion-start computations for each $r$.
+
+\section{The base reduced map}
+Let
+\[
+\mathcal D=\{y\in\mathbb Z_{>0}:5\nmid y\}.
+\]
+Define
+\[
+c(y)=\begin{cases}-1,&y\equiv1\pmod5,\\-2,&y\equiv2\pmod5,\\+2,&y\equiv3\pmod5,\\+1,&y\equiv4\pmod5,\end{cases}
+\qquad M_0(y)=6y+c(y),
+\]
+and
+\begin{equation}T_0(y)=\frac{M_0(y)}{5^{\nu_5(M_0(y))}}.\label{eq:base}\end{equation}
+Because $6\equiv1\pmod5$, the selected correction makes $M_0(y)$ divisible by 5, and complete removal of its factors of 5 returns a member of $\mathcal D$.
+
+The three observed attractors in the base finite verification are
+\[
+1\to1,\qquad2\to2,
+\]
+and
+\begin{equation}22\to26\to31\to37\to44\to53\to64\to77\to92\to22.\label{eq:basecycle}\end{equation}
+These are directly verified algebraically in the base paper~\cite{BanazadehBase2026}.
+
+\section{The $6^r$-scaled family}
+Fix $r\ge0$ and define
+\begin{equation}\mathcal D_r=6^r\mathcal D=\{6^r y:y\in\mathcal D\}.\label{eq:domain}\end{equation}
+Every $x\in\mathcal D_r$ has a unique representation $x=6^r y$. Since
+\begin{equation}6^r\equiv1\pmod5,\label{eq:residue}\end{equation}
+we have $x\equiv y\pmod5$, so scaling preserves the branch residue.
+
+Define
+\begin{equation}M_r(x)=6x+6^r c(x),\qquad x\in\mathcal D_r,\label{eq:Mr}\end{equation}
+where $c(x)$ is selected by the same residue rule modulo 5. Equivalently,
+\[
+M_r(x)=\begin{cases}
+6x-6^r,&x\equiv1\pmod5,\\
+6x-2\cdot6^r,&x\equiv2\pmod5,\\
+6x+2\cdot6^r,&x\equiv3\pmod5,\\
+6x+6^r,&x\equiv4\pmod5.
+\end{cases}
+\]
+The compressed scaled map is
+\begin{equation}T_r(x)=\frac{M_r(x)}{5^{\nu_5(M_r(x))}}.\label{eq:Tr}\end{equation}
+Equation~\eqref{eq:residue} makes the appropriate branch numerator divisible by 5, so $T_r$ is well-defined on $\mathcal D_r$.
+
+\section{Key 5-adic scaling identities}
+\textbf{Lemma 4.1 (Affine scaling).} For every $r\ge0$ and $y\in\mathcal D$,
+\begin{equation}M_r(6^r y)=6^rM_0(y).\label{eq:affinescale}\end{equation}
+\textit{Proof.} Since $6^r y\equiv y\pmod5$, we have $c(6^r y)=c(y)$. Therefore
+\[
+M_r(6^r y)=6(6^r y)+6^r c(y)=6^r(6y+c(y))=6^rM_0(y).\qquad\square
+\]
+
+\textbf{Lemma 4.2 (Valuation invariance).} For every nonzero integer $n$ and $r\ge0$,
+\begin{equation}\nu_5(6^r n)=\nu_5(n).\label{eq:valinv}\end{equation}
+\textit{Proof.} Since $\gcd(6^r,5)=1$, the scaling factor contributes no factor of 5. \hfill$\square$
+
+Consequently,
+\begin{equation}\nu_5(M_r(6^r y))=\nu_5(M_0(y)).\label{eq:matchedval}\end{equation}
+Thus corresponding steps remove exactly the same power of 5.
+
+\section{Exact algebraic conjugacy}
+Define the bijection
+\[
+\Phi_r:\mathcal D\to\mathcal D_r,\qquad \Phi_r(y)=6^r y.
+\]
+\textbf{Theorem 5.1 (One-step conjugacy).} For every $r\ge0$ and $y\in\mathcal D$,
+\begin{equation}T_r(6^r y)=6^rT_0(y).\label{eq:conj}\end{equation}
+Equivalently,
+\[
+T_r\circ\Phi_r=\Phi_r\circ T_0,\qquad T_r=\Phi_r\circ T_0\circ\Phi_r^{-1}.
+\]
+\textit{Proof.} Combine \eqref{eq:affinescale} and \eqref{eq:matchedval} in \eqref{eq:Tr}. \hfill$\square$
+
+\textbf{Theorem 5.2 (All iterates).} For every $j\ge0$,
+\begin{equation}T_r^j(6^r y)=6^rT_0^j(y).\label{eq:iterates}\end{equation}
+\textit{Proof.} Induction on $j$ using Theorem 5.1. \hfill$\square$
+
+\section{Three-attractor transport and cycle preservation}
+\textbf{Theorem 6.1 (Cycle bijection).} A tuple $(a_0,\ldots,a_{L-1})$ is a cycle of $T_0$ if and only if $(6^r a_0,\ldots,6^r a_{L-1})$ is a cycle of $T_r$. Minimal cycle length is preserved.
+
+\textit{Proof.} Apply \eqref{eq:iterates} with $j=L$ in both directions through the bijection $\Phi_r$. A shorter period on one side would give the same shorter period on the other. \hfill$\square$
+
+Hence the observed base attractors transport to
+\begin{equation}6^r\to6^r,\qquad2\cdot6^r\to2\cdot6^r,\label{eq:fixedscaled}\end{equation}
+and
+\begin{equation}
+22\cdot6^r\to26\cdot6^r\to31\cdot6^r\to37\cdot6^r\to44\cdot6^r\to53\cdot6^r\to64\cdot6^r\to77\cdot6^r\to92\cdot6^r\to22\cdot6^r.\label{eq:scaledcycle}
+\end{equation}
+No periodic orbit can occur inside $\mathcal D_r$ unless dividing it by $6^r$ produces a base periodic orbit of the same minimal length. This statement does not assert that the three displayed base attractors are globally exhaustive; it says that scaled periodic structure is in bijection with base periodic structure.
+
+At $r=1$, the displayed attractors are $6$, $12$, and
+\[
+132\to156\to186\to222\to264\to318\to384\to462\to552\to132.
+\]
+At $r=2$, they are $36$, $72$, and
+\[
+792\to936\to1116\to1332\to1584\to1908\to2304\to2772\to3312\to792.
+\]
+
+\section{Numerical examples in all three basins}
+The base paper gives transparent examples entering each of the three observed basins. Conjugacy turns each one into an infinite family of exact examples.
+
+\subsection*{Example A: capture by the scaled fixed point $6^r$}
+The base trajectory from $9$ is
+\[
+9\to11\to13\to16\to19\to23\to28\to34\to41\to49\to59\to71\to17\to4\to1.
+\]
+Therefore, for every $r\ge0$,
+\[
+9\cdot6^r\to11\cdot6^r\to13\cdot6^r\to\cdots\to4\cdot6^r\to6^r.
+\]
+For $r=1$ this is
+\[
+54\to66\to78\to96\to114\to138\to168\to204\to246\to294\to354\to426\to102\to24\to6.
+\]
+For instance, $54\equiv4\pmod5$ and the scaled branch gives $(6\cdot54+6)/5=66$. At $x=102$, the numerator is $6\cdot102-2\cdot6=600=25\cdot24$, illustrating complete 5-adic reduction.
+
+\subsection*{Example B: capture by the scaled fixed point $2\cdot6^r$}
+The base trajectory $24\to29\to7\to8\to2$ yields
+\[
+24\cdot6^r\to29\cdot6^r\to7\cdot6^r\to8\cdot6^r\to2\cdot6^r.
+\]
+At $r=1$,
+\[
+144\to174\to42\to48\to12.
+\]
+Indeed $M_1(174)=6\cdot174+6=1050=25\cdot42$, so the same valuation $\nu_5=2$ appearing at the corresponding base step is preserved.
+
+\subsection*{Example C: capture by the scaled 9-cycle}
+The base trajectory
+\[
+36\to43\to52\to62\to74\to89\to107\to128\to154\to37
+\]
+enters the 9-cycle. Thus
+\[
+36\cdot6^r\to43\cdot6^r\to52\cdot6^r\to\cdots\to154\cdot6^r\to37\cdot6^r
+\]
+enters \eqref{eq:scaledcycle}. At $r=1$ the transient is
+\[
+216\to258\to312\to372\to444\to534\to642\to768\to924\to222,
+\]
+after which
+\[
+222\to264\to318\to384\to462\to552\to132\to156\to186\to222.
+\]
+The final transient step has $M_1(924)=6\cdot924+6=5550=25\cdot222$, matching the base two-factor reduction from $154$ to $37$.
+
+\section{Cycle equation under scaling}
+For a scaled periodic orbit write
+\begin{equation}5^{a_i}x_{i+1}=6x_i+6^r c_i,\qquad c_i\in\{-2,-1,1,2\}.\label{eq:scaledcycleeq}\end{equation}
+Putting $x_i=6^r y_i$ and dividing by $6^r$ recovers exactly
+\[
+5^{a_i}y_{i+1}=6y_i+c_i.
+\]
+Thus the scaled cycle equation contains no new Diophantine condition. If $A=\sum_{i=0}^{L-1}a_i$ and $S_j=\sum_{i=0}^{j-1}a_i$, successive substitution gives
+\begin{equation}
+(5^A-6^L)x_0=6^r\sum_{j=0}^{L-1}6^{L-1-j}c_j5^{S_j}.\label{eq:scaledidentity}
+\end{equation}
+Dividing by $6^r$ is precisely the base cycle identity. This supplies a second direct algebraic view of cycle transport.
+
+\section{Orbit statistics preserved by conjugacy}
+Let $y_j=T_0^j(y)$ and $x_j=T_r^j(6^r y)$. Then $x_j=6^r y_j$ for all $j$.
+
+\textbf{Transient/stopping time.} First entry into the corresponding attractor occurs at the same iteration, so
+\[
+\tau_r(6^r y)=\tau_0(y).
+\]
+The complete valuation sequence is identical step by step, hence the accumulated number of removed factors of 5 before attractor entry is also identical.
+
+\textbf{Peaks.} For every matched finite trajectory segment,
+\[
+\max_j x_j=6^r\max_j y_j,
+\]
+while
+\[
+\frac{x_j}{x_0}=\frac{y_j}{y_0}.
+\]
+Thus absolute reduced peaks scale by $6^r$ and every normalized peak ratio is invariant.
+
+\textbf{Basins.} If $C$ is a base cycle, then
+\[
+6^r y\in B_r(6^rC)\quad\Longleftrightarrow\quad y\in B_0(C).
+\]
+Therefore basin counts are exactly preserved on corresponding finite sets. Counts at the same absolute cutoff should not be conflated with counts on corresponding scaled sets.
+
+\section{Five-adic drift viewpoint}
+The base residue model uses
+\[
+\Pr(\nu_5=k)=\frac4{5^k},\qquad k\ge1,\qquad \mathbb E[\nu_5]=\frac54,
+\]
+with heuristic mean logarithmic increment
+\[
+\Delta\approx\log6-\frac54\log5\approx-0.2200379213
+\]
+and geometric typical multiplier $6/5^{5/4}\approx0.802488366$~\cite{BanazadehBase2026}. For matched states,
+\[
+\frac{T_r(6^r y)}{6^r y}=\frac{T_0(y)}{y},
+\]
+so normalized one-step ratios are exactly identical and the scaled family inherits the same heuristic drift model. As in the base work, this heuristic is not a proof of global convergence.
+
+\section{Finite verification inherited from the base record}
+The base computation~\cite{BanazadehBase2026} exhaustively tested every $1\le y\le10^{11}$ with $5\nmid y$, a total of $80{,}000{,}000{,}000$ starts. The reported full-cutoff basin counts were:
+\begin{table}[ht]\centering\small
+\begin{tabular}{lrr}\toprule
+Observed attractor & Count & Percentage\\\midrule
+Fixed point $1$ & 41,199,583,259 & 51.49947907\%\\
+Fixed point $2$ & 11,613,268,146 & 14.51658518\%\\
+9-cycle \eqref{eq:basecycle} & 27,187,148,595 & 33.98393574\%\\\midrule
+Total & 80,000,000,000 & 100\%\\\bottomrule
+\end{tabular}
+\caption{Base-system finite verification through $10^{11}$, inherited from the supplied base record~\cite{BanazadehBase2026}.}
+\end{table}
+The base run reported zero additional cycles, zero unsigned-128 overflow events, and zero step-limit events. Its maximum stopping time was 755, at $y=63{,}909{,}268{,}656$, and its largest reduced peak was
+\[
+18{,}774{,}256{,}269{,}070{,}896{,}812{,}821,
+\]
+from $y=73{,}433{,}001{,}822$~\cite{BanazadehBase2026}.
+
+For every fixed $r$, Theorem 5.2 therefore verifies algebraically the corresponding set
+\begin{equation}\{6^r y:1\le y\le10^{11},\ 5\nmid y\}\subset\mathcal D_r.\label{eq:verifiedset}\end{equation}
+It contains the same $80$ billion starts and extends through absolute scale $6^r10^{11}$ within the scaled domain. Basin counts and stopping times are identical. The 755-step record corresponds to scaled start
+\[
+6^r\cdot63{,}909{,}268{,}656,
+\]
+and the largest reduced peak on the corresponding scaled set is
+\[
+6^r\cdot18{,}774{,}256{,}269{,}070{,}896{,}812{,}821,
+\]
+from scaled start $6^r\cdot73{,}433{,}001{,}822$.
+
+These are exact consequences of conjugacy applied to the inherited base verification, not new measurements from independently rerunning the full search for each $r$.
+
+\section{Finite theorem and global conjecture}
+\textbf{Finite transfer theorem.} For every $r\ge0$, every $x=6^r y$ with $1\le y\le10^{11}$ and $5\nmid y$ enters one of the two scaled fixed points in \eqref{eq:fixedscaled} or the scaled 9-cycle \eqref{eq:scaledcycle}. This follows from the exhaustive base finite verification together with Theorem 5.2.
+
+\textbf{Conjecture (scaled three-attractor convergence).} For every $r\ge0$ and every $x\in\mathcal D_r$, the orbit of $x$ under $T_r$ eventually enters one of the two scaled fixed points or the scaled 9-cycle.
+
+\textbf{Theorem 12.1 (Equivalence of global conjectures).} The scaled three-attractor conjecture holds for any one $r\ge0$ if and only if the base three-attractor conjecture holds on $\mathcal D$. Consequently it holds for all $r\ge0$ if and only if it holds for $r=0$.
+
+\textit{Proof.} The bijective conjugacy transports every orbit in both directions. \hfill$\square$
+
+Thus the parameter $r$ creates no additional global convergence problem, but it also does not solve the base problem. Any undiscovered base cycle or unbounded base trajectory would have a scaled counterpart at every level.
+
+\section{What is proved and what is not}
+For every integer $r\ge0$, the algebra proves: (i) $\mathcal D_r=6^r\mathcal D$ is in bijection with the base domain; (ii) multiplication by $6^r$ preserves residues modulo 5; (iii) $M_r(6^r y)=6^rM_0(y)$; (iv) the complete 5-adic valuation is preserved; (v) $T_r$ and $T_0$ are exactly conjugate; (vi) all iterates correspond; (vii) cycles and minimal periods correspond bijectively; (viii) valuation sequences and transient lengths are preserved; (ix) absolute peaks scale by $6^r$ while normalized ratios are invariant; (x) basin membership transfers exactly; and (xi) the complete base verification through $10^{11}$ transfers to the corresponding set \eqref{eq:verifiedset} through absolute scale $6^r10^{11}$.
+
+What is not proved is global convergence of every base orbit, absence of all additional base cycles, or absence of an unbounded base orbit. The exhaustive $10^{11}$ computation is finite. Exact conjugacy preserves this unresolved status rather than removing it.
+
+\section{Reproducibility archive}
+The accompanying archive contains this \LaTeX{} source and compiled PDF, a Python verifier, a machine-readable JSON statement of the scaled rules, the inherited base $10^{11}$ summary, the supplied base-paper source as provenance material, a README, and SHA-256 checksums. The verifier checks finite samples of
+\[
+M_r(6^r y)=6^rM_0(y),\quad \nu_5(M_r(6^r y))=\nu_5(M_0(y)),\quad T_r(6^r y)=6^rT_0(y),
+\]
+and several iterates. It is a consistency check, not the proof; the proof is the factorization in Lemma 4.1 together with $6^r\equiv1\pmod5$ and $\gcd(6^r,5)=1$.
+
+\section{Conclusion}
+Multiplying the state space and all four correction constants of the reduced $6k\pm\{1,2\}/5$ map by $6^r$ produces an exact scaled copy of the base dynamics. The central identity $T_r(6^r y)=6^rT_0(y)$ holds for every $r\ge0$, so complete trajectories, valuation sequences, stopping times, basin membership, and cycle lengths are preserved exactly; only absolute state magnitudes and peaks acquire the factor $6^r$.
+
+Accordingly, the two observed base fixed points become $6^r$ and $2\cdot6^r$, and the observed 9-cycle becomes its $6^r$ multiple. The exhaustive base verification of $80$ billion admissible starts through $10^{11}$ transfers without a new large computation to the corresponding scaled set through absolute scale $6^r10^{11}$. The global convergence question is unchanged: proving the base three-attractor conjecture would prove it simultaneously for the entire scaled family, while any base counterexample would propagate through the same conjugacy.
+
+\begin{thebibliography}{9}
+\bibitem{Lagarias1985} J. C. Lagarias, ``The $3x+1$ problem and its generalizations,'' \emph{The American Mathematical Monthly}, vol. 92, no. 1, pp. 3--23, 1985. doi: 10.1080/00029890.1985.11971528.
+\bibitem{MatthewsWatts1985} K. Matthews and A. Watts, ``A Markov approach to the generalized Syracuse algorithm,'' \emph{Acta Arithmetica}, vol. 45, no. 1, pp. 29--42, 1985. doi: 10.4064/aa-45-1-29-42.
+\bibitem{Carnielli2015} W. Carnielli, ``Some natural generalizations of the Collatz problem,'' \emph{Applied Mathematics E-Notes}, vol. 15, pp. 207--215, 2015.
+\bibitem{BanazadehBase2026} F. Banazadeh, ``The Reduced $6k\pm\{1,2\}/5$ Collatz-Type Domain with Three Observed Attractors up to $10^{11}$,'' Zenodo, 2026. doi: \href{https://doi.org/10.5281/zenodo.22786203}{10.5281/zenodo.22786203}; record: \url{https://zenodo.org/records/22786203}.
+\end{thebibliography}
+\end{document}
