@@ -602,6 +602,56 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 
 The Zenodo record contains the published article and associated reproducibility materials.
 
+## 15. A 6^r-Scaled Family of the Reduced 6k ± {1,2}/5 Collatz-Type Map with Three Observed Attractors
+
+This work develops the 6^r-scaled family associated with the preceding reduced 6k ± {1,2}/5 Collatz-type map with three observed attractors.
+For every integer r ≥ 0, the scaled state space is
+S_r = 6^r S,
+where S is the reduced base domain of positive integers not divisible by 5.
+Under the scaling map
+Phi_r(y) = 6^r y,
+the reduced maps satisfy the exact algebraic relation
+T_r(6^r y) = 6^r T_0(y).
+Consequently,
+T_r^j(6^r y) = 6^r T_0^j(y)
+for every integer j ≥ 0.
+
+This establishes an exact algebraic conjugacy between the base system and every scaled system on its natural scaled domain.
+The conjugacy preserves complete trajectories, branch selections, 5-adic valuation sequences, periodic-orbit structure, minimal periods, transient lengths, stopping times, basin membership, and normalized orbit statistics. Absolute reduced-state peaks are multiplied by 6^r.
+The three observed base attractors therefore scale exactly to:
+
+fixed point 6^r
+fixed point 2·6^r
+9-cycle
+22·6^r → 26·6^r → 31·6^r → 37·6^r → 44·6^r → 53·6^r → 64·6^r → 77·6^r → 92·6^r → 22·6^r
+
+The exhaustive finite verification of all 80,000,000,000 base starting values n ≤ 10^11 with 5 ∤ n transfers exactly to the corresponding scaled set
+{6^r y : 1 ≤ y ≤ 10^11, 5 ∤ y}
+for every fixed r ≥ 0.
+
+This is a theorem-based transfer of the base computation and is not a new independent exhaustive scan for each value of r.
+The exact conjugacy establishes equivalence between the scaled and base dynamical problems, but it does not constitute a proof of global three-attractor convergence.
+
+## Related base research
+
+https://doi.org/10.5281/zenodo.22786203
+
+### Zenodo DOI
+
+https://doi.org/10.5281/zenodo.22809470
+
+### PDF — GitHub
+
+https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22809470_6r_Scaled_6k_pm_1_2_over5_Collatz_Type_Map_up_to_1e11.pdf
+
+### LaTeX source — GitHub
+
+https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22809470_6r_Scaled_6k_pm_1_2_over5_Collatz_Type_Map_up_to_1e11.tex
+
+### Computational package — GitHub
+
+https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22809470_6r_Scaled_6k_pm_1_2_over5_Collatz_Type_Map_up_to_1e11_Computational_Pack.zip
+
 ---
 
 ## Research Structure
@@ -644,7 +694,8 @@ They use related ternary, residue-dependent, and valuation-based ideas, but they
 ## VII. Reduced (6k+_1(2))/5 line
 
 14. Base residue-dependent reduced map with three observed attractors and exhaustive verification of all 80,000,000,000 positive starting values not divisible by 5 up to `10^11` — Zenodo 22786203
-        
+15. Its exactly conjugate 6^r-scaled family with three-attractor transport, orbit-statistic invariance, and transfer of the 10^11 finite verification — Zenodo 22809470
+
 ---
 
 # How to Find the Source of a Paper
