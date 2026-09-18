@@ -765,12 +765,12 @@ They use related ternary, residue-dependent, and valuation-based ideas, but they
 
 ## II. Ternary (4k+1(2))/3 line
 
-4. Base compressed map with two observed attracting cycles — verification through 10^11 (v2.0), Zenodo 22823314; previous 10^9 version: Zenodo 22279137 
+4. Base compressed map with two observed attracting cycles — verification through 10^11 (v2.0), Zenodo 22823314; previous 10^9 (v1.0), Zenodo 22279137 
 5. Its `4^r-scaled family — Zenodo record `22639385`
 
 ## III. Ternary (4k−1(2))/3 line
 
-6. Base accelerated map with three observed positive attractors — Zenodo `22662980`
+6. Base accelerated map with three observed positive attractors up to 10^9 (v1.0), Zenodo `22662980`
  Extended Version 2.0 with exhaustive computational verification through `10^11` — Zenodo `228345178.
 7. Its exactly conjugate `4^r-scaled family — Zenodo `22671949`
 
