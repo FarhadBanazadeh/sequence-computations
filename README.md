@@ -674,6 +674,65 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 
 https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22809470_6r_Scaled_6k_pm_1_2_over5_Collatz_Type_Map_up_to_1e11_Computational_Pack.zip
 
+## 16. # Ternary (7k ± 1)/6 Collatz-Type Map with a Single Observed Attractor up to 10^11
+
+This work studies a residue-dependent Collatz-type dynamical system on the positive integers coprime to 6.
+
+For an admissible state \(n\),
+and all factors of 2 and 3 are removed from the affine numerator.
+
+- if \(n\equiv1\pmod6\), form \((7n-1)/6\);
+- if \(n\equiv5\pmod6\), form \((7n+1)/6\);
+- then remove every remaining factor of 2 and 3.
+The state \(1\) is an exact fixed point and is the single attractor observed in the complete finite computation.
+The computation examined exactly:
+
+**33,333,333,333 admissible starting values**
+
+with the following result:
+
+- Reached the fixed point 1: **33,333,333,333**
+- Nontrivial cycles detected: **0**
+- Unresolved trajectories: **0**
+- Safety cap: **1,000,000 reduced iterations**## Main Computational ResultDOI:
+
+Thus every tested admissible trajectory below 10^11 reached 1.
+
+## Computational Records
+
+### Maximum first-descent stopping time
+
+- Stopping time: **35**
+- Starting value: **7,449,779,881**
+- First lower value: **237,507,511**
+
+### Maximum total reduced stopping time
+
+- Total reduced steps to 1: **77**
+- Starting value: **62,073,713,149**
+
+### Maximum reduced trajectory peak
+
+- Peak: **1,830,618,509,383**
+- Starting value: **97,860,819,035**
+- Peak reached at reduced step: **19**
+
+### Zenodo DOI
+
+https://doi.org/10.5281/zenodo.22829703
+
+### ### PDF — GitHub
+
+https://zenodo.org/records/22829703/files/Farhad_Banazadeh_Ternary_7k_pm_1_over_6_Collatz_Type_Map_up_to_1e11_ZENODO_READY.pdf?download=1
+
+### LaTeX source — GitHub
+
+https://zenodo.org/records/22829703/files/Farhad_Banazadeh_Ternary_7k_pm_1_over_6_Collatz_Type_Map_up_to_1e11_ZENODO_READY.tex?download=1
+
+### Computational package — GitHub
+
+https://zenodo.org/records/22829703/files/Farhad_Banazadeh_Ternary_7k_pm_1_over_6_Collatz_Type_Map_up_to_1e11_Computational_Pack_ZENODO_READY.zip?download=1
+
 ---
 
 ## Research Structure
@@ -717,6 +776,10 @@ They use related ternary, residue-dependent, and valuation-based ideas, but they
 
 14. Base residue-dependent reduced map with three observed attractors and exhaustive verification of all 80,000,000,000 positive starting values not divisible by 5 up to `10^11` — Zenodo 22786203
 15. Its exactly conjugate 6^r-scaled family with three-attractor transport, orbit-statistic invariance, and transfer of the 10^11 finite verification — Zenodo 22809470
+
+## VIII. Ternary (7k±1)/6 line
+
+16. Base ternary residue-dependent reduced map with a single observed attractor and exhaustive verification of all 33,333,333,333 admissible starting values below `10^11`](https://doi.org/10.5281/zenodo.22829703) — Zenodo 22829703
 
 ---
 
