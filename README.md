@@ -158,7 +158,6 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 ## 5. A Ternary (4k−1(2))/3 Collatz-Type Map: Complete 3-Adic Reduction, Algebraic Cycle Analysis, and Exhaustive Computational Verification up to 10^9 (v1.0)
 
 This work studies an accelerated ternary Collatz-type map on positive integers not divisible by 3.
-
 The affine transformation is
 
 `M(x) = 4x − rho(x)`
@@ -168,9 +167,7 @@ where
 `rho(x) = x mod 3` and `rho(x) ∈ {1,2}`,
 
 followed by complete removal of all powers of 3.
-
 The exhaustive finite computation through `10^9` tests exactly `666,666,667` admissible starting values.
-
 Every tested orbit enters one of three observed positive attractors:
 
 * fixed point `1`
@@ -178,8 +175,23 @@ Every tested orbit enters one of three observed positive attractors:
 * four-cycle `22 → 29 → 38 → 50 → 22`
 
 No unresolved or overflowing trajectory was found in the tested range.
-
 This is finite computational evidence and is not a proof of global convergence for all positive integers.
+
+### Zenodo DOI
+
+https://doi.org/10.5281/zenodo.22662980
+
+### PDF — Zenodo
+
+https://zenodo.org/records/22662980/files/Farhad_Banazadeh_Zenodo22662980_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e9.pdf
+
+### LaTeX source — GitHub
+
+https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22662980_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e9.tex
+
+### Computational package — GitHub
+
+https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22662980_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e9_Computational_Pack.zip 
 
 ## Current Version — Verification through 10^11 (v2.0)
 
@@ -187,27 +199,19 @@ A total of 66,666,666,667 admissible starting values were tested. Every tested o
 
 ### Zenodo DOI
 
-https://doi.org/10.5281/zenodo.22662980
 https://doi.org/10.5281/zenodo.22834517
 
 ### PDF — Zenodo
 
-https://zenodo.org/records/22662980/files/Farhad_Banazadeh_Zenodo22662980_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e9.pdf (v1.0)
-
-https://zenodo.org/records/22834517/files/Farhad_Banazadeh_Zenodo22834517_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e11.pdf (v2.0)
+https://zenodo.org/records/22834517/files/Farhad_Banazadeh_Zenodo22834517_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e11.pdf 
 
 ### LaTeX source — GitHub
 
-https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22662980_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e9.tex
-(v1.0)
-
-https://zenodo.org/records/22834517/files/Farhad_Banazadeh_Zenodo22834517_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e11.tex (v2.0)
+https://zenodo.org/records/22834517/files/Farhad_Banazadeh_Zenodo22834517_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e11.tex 
 
 ### Computational package — GitHub
 
-https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22662980_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e9_Computational_Pack.zip (v1.0)
-
-https://zenodo.org/records/22834517/files/Farhad_Banazadeh_Zenodo22834517_Ternary_4k_minus_1_2_over_3_1e11_Computational_Pack.zip (v2.0)
+https://zenodo.org/records/22834517/files/Farhad_Banazadeh_Zenodo22834517_Ternary_4k_minus_1_2_over_3_1e11_Computational_Pack.zip 
 
 ---
 
