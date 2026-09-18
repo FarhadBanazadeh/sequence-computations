@@ -109,7 +109,7 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 
 https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22823314_Ternary_4k_plus_1_2_over_3_Collatz_Type_Map_up_to_1e11_Computational_Pack.zip
 
-## Previous Version — Verification through 10^9
+## Previous Version — Verification through 10^9 (v1.0)
 
 ### Zenodo DOI
 
