@@ -89,7 +89,7 @@ The finite exhaustive computation through `10^9` identifies two observed attract
 
 The finite computation provides computational evidence and does not constitute a proof of global convergence.
 
-## Current Version — Verification through 10^11 (v1.1)
+## Current Version — Verification through 10^11 (v2.0)
 
 A total of 66,666,666,667 admissible starting values were tested. Every tested orbit reached one of the two observed cycles, with zero unknown or unresolved orbits.
 
@@ -155,7 +155,7 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 
 ---
 
-## 5. A Ternary (4k−1(2))/3 Collatz-Type Map: Complete 3-Adic Reduction, Algebraic Cycle Analysis, and Exhaustive Computational Verification up to 10^9
+## 5. A Ternary (4k−1(2))/3 Collatz-Type Map: Complete 3-Adic Reduction, Algebraic Cycle Analysis, and Exhaustive Computational Verification up to 10^9 (v1.0)
 
 This work studies an accelerated ternary Collatz-type map on positive integers not divisible by 3.
 
@@ -181,21 +181,33 @@ No unresolved or overflowing trajectory was found in the tested range.
 
 This is finite computational evidence and is not a proof of global convergence for all positive integers.
 
+## Current Version — Verification through 10^11 (v2.0)
+
+A total of 66,666,666,667 admissible starting values were tested. Every tested orbit reached one of the three observed positive attractors — the fixed points 1 and 2, or the four-cycle 22 → 29 → 38 → 50 → 22 — with zero unknown or unresolved orbits and zero arithmetic overflow events.
+
 ### Zenodo DOI
 
 https://doi.org/10.5281/zenodo.22662980
+https://doi.org/10.5281/zenodo.22834517
 
 ### PDF — Zenodo
 
-https://zenodo.org/records/22662980/files/Farhad_Banazadeh_Zenodo22662980_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e9.pdf
+https://zenodo.org/records/22662980/files/Farhad_Banazadeh_Zenodo22662980_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e9.pdf (v1.0)
+
+https://zenodo.org/records/22834517/files/Farhad_Banazadeh_Zenodo22834517_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e11.pdf (v2.0)
 
 ### LaTeX source — GitHub
 
 https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22662980_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e9.tex
+(v1.0)
+
+https://zenodo.org/records/22834517/files/Farhad_Banazadeh_Zenodo22834517_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e11.tex (v2.0)
 
 ### Computational package — GitHub
 
-https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22662980_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e9_Computational_Pack.zip
+https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22662980_Ternary_4k_minus_1_2_over_3_Collatz_Type_Map_up_to_1e9_Computational_Pack.zip (v1.0)
+
+https://zenodo.org/records/22834517/files/Farhad_Banazadeh_Zenodo22834517_Ternary_4k_minus_1_2_over_3_1e11_Computational_Pack.zip (v2.0)
 
 ---
 
@@ -749,30 +761,31 @@ They use related ternary, residue-dependent, and valuation-based ideas, but they
 
 ## II. Ternary (4k+1(2))/3 line
 
-4. Base compressed map with two observed attracting cycles — verification through 10^11 (v1.1), Zenodo 22823314; previous 10^9 version: Zenodo 22279137
-5. Its `4^r`-scaled family — Zenodo record `22639385`
+4. Base compressed map with two observed attracting cycles — verification through 10^11 (v2.0), Zenodo 22823314; previous 10^9 version: Zenodo 22279137 
+5. Its `4^r-scaled family — Zenodo record `22639385`
 
 ## III. Ternary (4k−1(2))/3 line
 
 6. Base accelerated map with three observed positive attractors — Zenodo `22662980`
-7. Its exactly conjugate `4^r`-scaled family — Zenodo `22671949`
+ Extended Version 2.0 with exhaustive computational verification through `10^11` — Zenodo `228345178.
+7. Its exactly conjugate `4^r-scaled family — Zenodo `22671949`
 
 ## IV. Ternary (5k±1)/4 line
 
 8. Base map with two observed attractors and exhaustive verification through `10^10` — Zenodo `22709065`
-9. Its exactly conjugate `5^r`-scaled family — Zenodo `22714150`
+9. Its exactly conjugate `5^r-scaled family — Zenodo `22714150`
 
 ## V. Reduced (5k+1(3))/4 line
 
 10. Base residue-dependent reduced map with four observed attractors and exhaustive verification of all `5,000,000,000` positive odd starting values below `10^10` — Zenodo `22726453`
-11. Its exactly conjugate `5^r`-scaled family with transferred `10^10` finite verification — Zenodo `22746283`
+11. Its exactly conjugate `5^r-scaled family with transferred `10^10` finite verification — Zenodo `22746283`
 
 ## VI. Reduced (5k−1(3))/4 line
 
 12. Base residue-dependent reduced map with two observed attractors and exhaustive verification of all 50,000,000,000 positive odd starting values below 10^11 — Zenodo 22752810`
 13.`5^r-scaled family of the reduced `5k−1(3)/4` map with exact algebraic conjugacy, two-attractor transport, orbit-statistic invariance, and transfer of the `10^11` finite verification — Zenodo 22770779
 
-## VII. Reduced (6k+_1(2))/5 line
+## VII. Reduced (6k±{1,2})/5 line
 
 14. Base residue-dependent reduced map with three observed attractors and exhaustive verification of all 80,000,000,000 positive starting values not divisible by 5 up to `10^11` — Zenodo 22786203
 15. Its exactly conjugate 6^r-scaled family with three-attractor transport, orbit-statistic invariance, and transfer of the 10^11 finite verification — Zenodo 22809470
