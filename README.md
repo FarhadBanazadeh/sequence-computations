@@ -769,8 +769,8 @@ They use related ternary, residue-dependent, and valuation-based ideas, but they
 
 ## VI. Reduced (5k−1(3))/4 line
 
-12. Base residue-dependent reduced map with two observed attractors and exhaustive verification of all 50,000,000,000 positive odd starting values below 10^11 — Zenodo 22752810
-13. 13. `5^r`-scaled family of the reduced `5k − 1(3)/4` map with exact algebraic conjugacy, two-attractor transport, orbit-statistic invariance, and transfer of the `10^11` finite verification — Zenodo 22770779
+12. Base residue-dependent reduced map with two observed attractors and exhaustive verification of all 50,000,000,000 positive odd starting values below 10^11 — Zenodo 22752810`
+13.`5^r-scaled family of the reduced `5k−1(3)/4` map with exact algebraic conjugacy, two-attractor transport, orbit-statistic invariance, and transfer of the `10^11` finite verification — Zenodo 22770779
 
 ## VII. Reduced (6k+_1(2))/5 line
 
