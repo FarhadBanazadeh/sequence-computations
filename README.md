@@ -89,6 +89,28 @@ The finite exhaustive computation through `10^9` identifies two observed attract
 
 The finite computation provides computational evidence and does not constitute a proof of global convergence.
 
+## Current Version — Verification through 10^11 (v1.1)
+
+A total of 66,666,666,667 admissible starting values were tested. Every tested orbit reached one of the two observed cycles, with zero unknown or unresolved orbits.
+
+### Zenodo DOI
+
+https://doi.org/10.5281/zenodo.22823314
+
+### PDF — Zenodo
+
+https://zenodo.org/records/22823314/files/Farhad_Banazadeh_Zenodo22823314_Ternary_4k_plus_1_2_over_3_Collatz_Type_Map_up_to_1e11.pdf
+
+### LaTeX source — GitHub
+
+https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22823314_Ternary_4k_plus_1_2_over_3_Collatz_Type_Map_up_to_1e11.tex
+
+### Computational package — GitHub
+
+https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22823314_Ternary_4k_plus_1_2_over_3_Collatz_Type_Map_up_to_1e11_Computational_Pack.zip
+
+## Previous Version — Verification through 10^9
+
 ### Zenodo DOI
 
 https://doi.org/10.5281/zenodo.22279137
@@ -668,7 +690,7 @@ They use related ternary, residue-dependent, and valuation-based ideas, but they
 
 ## II. Ternary (4k+1(2))/3 line
 
-4. Base compressed map with two observed attracting cycles — Zenodo `22279137`
+4. Base compressed map with two observed attracting cycles — verification through 10^11 (v1.1), Zenodo 22823314; previous 10^9 version: Zenodo 22279137
 5. Its `4^r`-scaled family — Zenodo record `22639385`
 
 ## III. Ternary (4k−1(2))/3 line
