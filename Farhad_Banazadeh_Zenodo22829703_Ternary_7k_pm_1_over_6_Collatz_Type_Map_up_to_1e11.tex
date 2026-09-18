@@ -1,0 +1,392 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array,longtable}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\usepackage{enumitem}
+\setlength{\parindent}{1.25em}
+\setlength{\parskip}{0.15em}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{corollary}{Corollary}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\vTwo}{\nu_2}
+\newcommand{\vThree}{\nu_3}
+\title{\textbf{Ternary $(7k\pm1)/6$ Collatz-Type Map with a Single Observed Attractor}\\[2mm]
+\large Complete $(2,3)$-Adic Reduction, Algebraic Cycle Analysis, and Exhaustive Computational Verification up to $10^{11}$}
+\author{Farhad Banazadeh\\\href{mailto:fn.bana@hotmail.com}{fn.bana@hotmail.com}\\ORCID: \href{https://orcid.org/0009-0004-7023-0298}{0009-0004-7023-0298}}
+\date{12 September 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We study a residue-dependent reduced Collatz-type map on the positive integers coprime to $6$. For $n\equiv1\pmod 6$ we form $(7n-1)/6$, while for $n\equiv5\pmod6$ we form $(7n+1)/6$, and then remove every remaining factor of $2$ and $3$. Equivalently,
+\[
+T(n)=\frac{7n+\varepsilon(n)}{2^{a(n)}3^{b(n)}},\qquad
+\varepsilon(n)=\begin{cases}-1,&n\equiv1\pmod6,\\+1,&n\equiv5\pmod6,\end{cases}
+\]
+where $a(n)=\nu_2(7n+\varepsilon(n))\ge1$ and $b(n)=\nu_3(7n+\varepsilon(n))\ge1$. The fixed point $1$ is immediate.
+
+The main computational result is an exhaustive scan of all $33,333,333,333$ admissible starting values $n<10^{11}$. Every tested trajectory reached $1$ within the safety cap of $10^6$ reduced iterations. No nontrivial cycle and no unresolved trajectory was encountered. The maximum first-descent stopping time was $35$, attained at $n=7,449,779,881$ with first lower value $237,507,511$; the maximum total number of reduced steps to $1$ was $77$, attained at $n=62,073,713,149$; and the largest reduced state observed was $1,830,618,509,383$, reached at step $19$ from $n=97,860,819,035$.
+
+We derive an exact Diophantine identity for every hypothetical periodic orbit, exact inverse-branch conditions, and the natural residue-density laws for the $2$- and $3$-adic valuations. In the idealized residue model, $\mathbb E[a]=2$ and $\mathbb E[b]=3/2$, giving average logarithmic increment
+\[
+\log 7-2\log2-\tfrac32\log3\approx-1.0883026451,
+\]
+with geometric typical multiplier about $0.33679$. Even the ordinary expected approximate multiplier is $7/12<1$. These facts provide a strong probabilistic explanation for the observed contraction and show that a large hypothetical cycle would require an atypical near-critical valuation profile. They do not constitute a proof of global convergence or a proof that no other cycle exists outside the verified finite range.
+\end{abstract}
+
+\section{Introduction}
+Collatz-type dynamics combine affine arithmetic with repeated division by selected prime factors. The present system uses a residue-dependent $7n\pm1$ numerator, a compulsory division by $6$, and then complete removal of all remaining powers of $2$ and $3$. This produces a deterministic map on the reduced state space of positive integers coprime to $6$.
+
+The purpose of this paper is threefold. First, we define the reduced map and establish its elementary algebraic structure. Second, we report a complete finite computation through $10^{11}$, covering exactly $33,333,333,333$ admissible starting values. Third, we develop algebraic and probabilistic constraints that explain why the computation displays strong convergence to the fixed point $1$ and why nontrivial periodic behavior is severely constrained.
+
+A strict distinction is maintained throughout between exact algebra, exhaustive finite computation, and probabilistic interpretation. The computation proves a statement about the explicitly tested finite set. The valuation model explains the observed tendency statistically. Neither is promoted to a global convergence theorem.
+
+\section{Definition and elementary structure}
+Let
+\[
+\mathcal D=\{n\in\N:n\ge1,\ \gcd(n,6)=1\}=\{n:n\equiv1\text{ or }5\pmod6\}.
+\]
+For $n\in\mathcal D$, define
+\[
+\varepsilon(n)=\begin{cases}
+-1,&n\equiv1\pmod6,\\
++1,&n\equiv5\pmod6,
+\end{cases}
+\qquad N(n)=7n+\varepsilon(n).
+\]
+Set
+\[
+a(n)=\nu_2(N(n)),\qquad b(n)=\nu_3(N(n)),
+\]
+and define the fully reduced map
+\begin{equation}
+T(n)=\frac{N(n)}{2^{a(n)}3^{b(n)}}.
+\label{eq:T}
+\end{equation}
+This is exactly the same as first forming $(7n-1)/6$ or $(7n+1)/6$ according to $n\bmod6$ and then stripping every remaining factor of $2$ and $3$.
+
+\begin{proposition}[Closure]
+For every $n\in\mathcal D$, one has $a(n)\ge1$ and $b(n)\ge1$, and $T(n)\in\mathcal D$.
+\end{proposition}
+\begin{proof}
+If $n\equiv1\pmod6$, then $7n-1\equiv0\pmod6$. If $n\equiv5\pmod6$, then $7n+1\equiv0\pmod6$. Thus both $2$ and $3$ divide $N(n)$. Removing all factors of $2$ and $3$ leaves a positive integer coprime to $6$.
+\end{proof}
+
+The smallest state is already periodic:
+\[
+T(1)=\frac{7-1}{2\cdot3}=1.
+\]
+Thus $1$ is an exact fixed point. The exhaustive computation described below found no other periodic orbit among the tested trajectories.
+
+\section{Exact algebraic identity for a periodic orbit}
+Suppose $x_0,x_1,\ldots,x_{L-1}$ is a periodic orbit of period $L$, with indices modulo $L$. Write
+\begin{equation}
+q_i x_{i+1}=7x_i+\varepsilon_i,
+\qquad q_i=2^{a_i}3^{b_i},\quad a_i,b_i\ge1,
+\label{eq:step}
+\end{equation}
+where $\varepsilon_i\in\{-1,+1\}$ is forced by $x_i\bmod6$. Define
+\[
+Q_j=\prod_{i=0}^{j-1}q_i,\qquad Q_0=1,\qquad Q=Q_L.
+\]
+
+\begin{proposition}[Cycle identity]
+Every periodic orbit satisfies
+\begin{equation}
+(Q-7^L)x_0=\sum_{j=0}^{L-1}7^{L-1-j}\varepsilon_j Q_j.
+\label{eq:cycle}
+\end{equation}
+Equivalently, whenever $Q\ne7^L$,
+\begin{equation}
+x_0=\frac{\sum_{j=0}^{L-1}7^{L-1-j}\varepsilon_j Q_j}{Q-7^L}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Successively substitute the relations \eqref{eq:step}. After $L$ steps,
+\[
+Qx_L=7^Lx_0+\sum_{j=0}^{L-1}7^{L-1-j}\varepsilon_jQ_j.
+\]
+Since $x_L=x_0$, rearrangement gives \eqref{eq:cycle}.
+\end{proof}
+
+For the fixed point $1$, $L=1$, $q_0=6$, and $\varepsilon_0=-1$, so $(6-7)\cdot1=-1$, exactly as required. Equation \eqref{eq:cycle} is a necessary condition only: any candidate cycle must also satisfy positivity, integrality, the exact residue-dependent sign rule, and the exact $2$- and $3$-adic valuations at every step.
+
+\section{Valuation laws in the natural residue model}
+The sign choice forces one factor of $2$ and one factor of $3$ in every numerator. Successively finer congruence conditions give geometric valuation laws in natural residue density.
+
+\begin{proposition}[Marginal valuation distributions]
+For $k\ge1$ and $\ell\ge1$,
+\begin{align}
+\Pr(a=k)&=2^{-k},\label{eq:a-dist}\\
+\Pr(b=\ell)&=\frac{2}{3^{\ell}}.\label{eq:b-dist}
+\end{align}
+Consequently,
+\[
+\mathbb E[a]=2,\qquad \mathbb E[b]=\frac32.
+\]
+\end{proposition}
+
+The first law reflects that divisibility by $2$ is forced and each additional binary divisibility condition has density $1/2$. For the $3$-adic valuation, divisibility by $3$ is forced and each additional factor of $3$ has conditional density $1/3$. By the Chinese remainder theorem, the corresponding $2$-power and $3$-power congruence conditions factor in the uniform residue model, giving the joint idealization
+\begin{equation}
+\Pr(a=k,b=\ell)=2^{-k}\frac{2}{3^\ell}.
+\label{eq:joint}
+\end{equation}
+This is an exact natural-density statement for residue classes at any fixed finite valuation resolution; treating successive values along one orbit as independent is the heuristic step.
+
+\section{Logarithmic drift and the strength of contraction}
+From \eqref{eq:T},
+\begin{equation}
+\frac{T(n)}{n}=\frac{7+\varepsilon(n)/n}{2^{a(n)}3^{b(n)}}.
+\label{eq:ratio}
+\end{equation}
+For large $n$, the finite correction $\varepsilon(n)/n$ is negligible. The idealized logarithmic increment is therefore
+\[
+\Delta\log\approx\log7-a\log2-b\log3.
+\]
+Using the valuation means gives
+\begin{equation}
+\mathbb E[\Delta\log]\approx
+\log7-2\log2-\frac32\log3
+\approx-1.0883026451.
+\label{eq:drift}
+\end{equation}
+The corresponding geometric typical multiplier is
+\[
+\exp(\mathbb E[\Delta\log])
+=\frac{7}{4\,3^{3/2}}
+\approx0.3367876570.
+\]
+
+There is also a useful ordinary expectation. Under the joint residue model,
+\[
+\mathbb E[2^{-a}]=\sum_{k\ge1}4^{-k}=\frac13,
+\qquad
+\mathbb E[3^{-b}]=\sum_{\ell\ge1}\frac{2}{9^\ell}=\frac14.
+\]
+Hence
+\begin{equation}
+\mathbb E\!\left[\frac{7}{2^a3^b}\right]=\frac{7}{12}<1.
+\label{eq:ordinary}
+\end{equation}
+Both geometric and ordinary idealized multipliers point toward contraction.
+
+A particularly transparent fact is that the smallest possible denominator is $2\cdot3=6$. Thus the only asymptotically expanding valuation pair is
+\[
+(a,b)=(1,1),\qquad \frac{7}{6}>1.
+\]
+Its residue-model weight is $1/3$. Every other valuation pair has $2^a3^b\ge12$ and therefore gives a strong large-state contraction. The dynamics are consequently a competition between occasional weak $7/6$ expansions and more strongly contracting division events.
+
+\begin{remark}
+Equations \eqref{eq:drift} and \eqref{eq:ordinary} are not global convergence proofs. Arithmetic correlations along a deterministic orbit can differ from an independent residue process. They explain the observed behavior statistically but do not eliminate exceptional infinite trajectories by themselves.
+\end{remark}
+
+\section{Critical balance for a hypothetical cycle}
+For a trajectory $x_0,\ldots,x_L$, the exact telescoping identity is
+\begin{equation}
+\log\frac{x_L}{x_0}
+=\sum_{i=0}^{L-1}\left[
+\log7-a_i\log2-b_i\log3+
+\log\left(1+\frac{\varepsilon_i}{7x_i}\right)
+\right].
+\label{eq:telescoping}
+\end{equation}
+Around a cycle, the left side is zero. Therefore every period-$L$ cycle obeys
+\begin{equation}
+\frac1L\sum_{i=0}^{L-1}(a_i\log2+b_i\log3)
+=\log7+\frac1L\sum_{i=0}^{L-1}
+\log\left(1+\frac{\varepsilon_i}{7x_i}\right).
+\label{eq:cycle-balance}
+\end{equation}
+For a cycle whose states are all large, the correction term is small, so the average logarithm of the removed $2$- and $3$-power must be very close to $\log7\approx1.94591$. By contrast, the residue-model mean is
+\[
+2\log2+\frac32\log3\approx3.03421,
+\]
+a gap of about $1.08830$ per reduced step. A large hypothetical cycle must therefore sustain a valuation profile substantially biased toward unusually small total divisibility.
+
+This gives a precise sense in which additional cycles are statistically disfavored. They are not algebraically impossible merely because the mean drift is negative; rather, they must simultaneously satisfy the exact Diophantine identity \eqref{eq:cycle}, the residue-dependent signs, the exact valuations, and a near-critical multiplicative balance that is atypical under the natural residue model.
+
+\section{Exact inverse branches}
+Let $y\in\mathcal D$ and suppose $T(x)=y$. For integers $a,b\ge1$, put $q=2^a3^b$. From $qy=7x+\varepsilon$,
+\begin{equation}
+x=\frac{qy-\varepsilon}{7}.
+\label{eq:inverse-general}
+\end{equation}
+Thus the two inverse formulas are
+\begin{align}
+x&=\frac{2^a3^b y+1}{7}, &&(x\equiv1\pmod6,\ \varepsilon=-1),\label{eq:inverse-minus}\\
+x&=\frac{2^a3^b y-1}{7}, &&(x\equiv5\pmod6,\ \varepsilon=+1).\label{eq:inverse-plus}
+\end{align}
+Because $2^a3^b y$ is divisible by $6$, the required branch residue modulo $6$ is automatic whenever the quotient is integral. Integrality requires
+\begin{align}
+2^a3^b y&\equiv-1\pmod7 &&\text{for \eqref{eq:inverse-minus}},\\
+2^a3^b y&\equiv+1\pmod7 &&\text{for \eqref{eq:inverse-plus}}.
+\end{align}
+Since $2$ and $3$ are units modulo $7$ with orders $3$ and $6$, respectively, admissible exponent pairs have a periodic arithmetic structure modulo these orders. Recursively applying these inverse rules generates the exact predecessor tree of the fixed point $1$. The exhaustive scan through $10^{11}$ shows that every tested admissible start lies in this finite-depth explored basin, although it does not prove that the inverse tree covers all of $\mathcal D$.
+
+\section{Computational methodology}
+The exhaustive scanner enumerates precisely the positive integers $n<10^{11}$ satisfying $\gcd(n,6)=1$. It evaluates the reduced map using unsigned 128-bit arithmetic for evolving states and arithmetic intermediates. Each path is followed until it reaches $1$, a cycle is detected by Brent-style cycle detection, or the safety cap of $10^6$ reduced iterations is reached.
+
+The production implementation uses the equivalent computational form
+\[
+n\equiv1\pmod6:\quad R\!\left(\frac{7n-1}{6}\right),
+\qquad
+n\equiv5\pmod6:\quad R\!\left(\frac{7n+1}{6}\right),
+\]
+where $R$ removes all remaining factors of $2$ and $3$.
+
+Three orbit statistics are deliberately distinguished:
+\begin{itemize}[leftmargin=2em]
+\item the \emph{first-descent stopping time} $\sigma(n)$, the first reduced step $j\ge1$ for which $T^j(n)<n$;
+\item the \emph{total steps to $1$}, the first $j\ge0$ for which $T^j(n)=1$;
+\item the \emph{reduced peak}, the largest reduced state encountered along the computed trajectory, together with the step at which it first occurs.
+\end{itemize}
+The scan was divided into $3334$ chunks. The final chunk covered $[99,990,000,001,99,999,999,997]$ and the complete run processed exactly $33,333,333,333$ admissible starts.
+
+\section{Exhaustive finite-range results}
+The final computation produced
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+Quantity & Result\\
+\midrule
+Upper bound & $10^{11}$\\
+Admissible starts tested & $33,333,333,333$\\
+Reached $1$ & $33,333,333,333$\\
+Detected nontrivial cycles & $0$\\
+Unresolved trajectories & $0$\\
+Safety cap & $1,000,000$ reduced steps\\
+\bottomrule
+\end{tabular}
+\end{center}
+Thus every tested admissible starting value reached $1$ within the prescribed cap.
+
+The principal records were
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Statistic & Starting value & Record\\
+\midrule
+First-descent stopping time & $7,449,779,881$ & $\sigma=35$\\
+First lower value & $7,449,779,881$ & $237,507,511$\\
+Total reduced steps to $1$ & $62,073,713,149$ & $77$\\
+Reduced peak & $97,860,819,035$ & $1,830,618,509,383$\\
+Step of peak & $97,860,819,035$ & $19$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Top ten first-descent stopping times}
+\begin{center}\small
+\begin{tabular}{rrrr}
+\toprule
+Rank & $n$ & $\sigma$ & First lower value\\\midrule
+1&7,449,779,881&35&237,507,511\\
+2&8,691,409,861&34&237,507,511\\
+3&10,139,978,171&33&237,507,511\\
+4&6,230,614,679&31&3,859,936,355\\
+5&9,513,522,709&31&3,929,156,705\\
+6&36,542,777,617&30&2,156,063,293\\
+7&46,837,960,621&30&11,053,960,777\\
+8&66,177,594,361&30&35,140,944,995\\
+9&4,740,497,065&29&2,157,642,821\\
+10&13,127,221,081&29&7,966,493,509\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Top ten total steps to $1$}
+\begin{center}\small
+\begin{tabular}{rrr}
+\toprule
+Rank & $n$ & Total steps\\\midrule
+1&62,073,713,149&77\\
+2&72,419,332,007&76\\
+3&81,452,110,031&76\\
+4&96,238,245,817&76\\
+5&56,326,147,045&75\\
+6&56,326,147,075&75\\
+7&56,326,147,117&75\\
+8&71,390,734,667&75\\
+9&84,489,220,667&75\\
+10&84,489,220,675&75\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Top ten reduced peaks}
+\begin{center}\small
+\begin{tabular}{rrrr}
+\toprule
+Rank & $n$ & Peak & Step\\\midrule
+1&97,860,819,035&1,830,618,509,383&19\\
+2&71,545,403,027&1,821,647,393,467&21\\
+3&83,469,636,865&1,821,647,393,467&20\\
+4&97,381,243,009&1,821,647,393,467&19\\
+5&85,951,943,053&1,737,595,384,783&24\\
+6&87,259,995,793&1,632,315,823,655&19\\
+7&99,142,968,755&1,589,659,583,891&18\\
+8&98,873,504,063&1,585,338,983,705&18\\
+9&98,372,066,051&1,577,298,920,429&18\\
+10&97,915,095,145&1,569,971,843,285&18\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Why the finite dynamics look strongly convergent}
+The computation and the algebra point in the same direction for several independent reasons.
+
+First, every reduced step removes at least one factor of $2$ and one factor of $3$. The minimally reduced case has asymptotic multiplier only $7/6$, so even an expanding step is relatively weak. Second, only the pair $(a,b)=(1,1)$ expands at large scale, while all other valuation pairs contract. Third, the natural residue model assigns the expanding pair weight $1/3$ and gives a strongly negative mean logarithmic increment. Fourth, the exact inverse formulas organize all captured values into a predecessor tree rooted at $1$. Fifth, the exhaustive computation finds that every one of the $33,333,333,333$ tested admissible starts belongs to that basin.
+
+These points also explain why large excursions remain possible. A sufficiently long block dominated by $(a,b)=(1,1)$ can multiply the state roughly by $(7/6)^r$ before stronger divisibility events reverse the growth. The record peak above $1.83\times10^{12}$ is therefore compatible with a process having negative mean logarithmic drift.
+
+\section{Why additional cycles are strongly constrained}
+A nontrivial cycle would have to pass several simultaneous filters:
+\begin{enumerate}[leftmargin=2em]
+\item it must satisfy the exact Diophantine identity \eqref{eq:cycle};
+\item every sign $\varepsilon_i$ must agree with the actual state modulo $6$;
+\item every pair $(a_i,b_i)$ must equal the exact valuations of $7x_i+\varepsilon_i$;
+\item the product of the removed prime powers must satisfy the exact zero-drift balance \eqref{eq:cycle-balance};
+\item for a large cycle, its average valuation weight must be close to $\log7$, far below the residue-model mean $2\log2+\tfrac32\log3$;
+\item its states must avoid falling into the inverse basin of $1$.
+\end{enumerate}
+The finite scan adds a very strong computational exclusion: no nontrivial cycle was encountered from any admissible start below $10^{11}$. In particular, there is no nontrivial periodic orbit containing a state below $10^{11}$, because starting from that state would have exposed the cycle rather than reaching $1$.
+
+The correct global conclusion is nevertheless limited. The combined algebraic and probabilistic constraints make large additional cycles highly atypical in the natural residue model and the finite computation excludes them throughout an enormous tested region, but no argument here proves their absolute nonexistence at arbitrarily large scales.
+
+\section{What is proved and what remains heuristic}
+The results separate naturally into three levels.
+
+\textbf{Exact algebra.} The map is closed on $\mathcal D$; $1$ is a fixed point; every periodic orbit satisfies \eqref{eq:cycle}; the inverse branches \eqref{eq:inverse-minus}--\eqref{eq:inverse-plus} are exact; and the fixed-resolution residue-density laws for $a$ and $b$ follow from congruence counting.
+
+\textbf{Exhaustive finite computation.} Every admissible $n<10^{11}$ reached $1$ within $10^6$ reduced steps. The tested set contains exactly $33,333,333,333$ starting values. No cycle and no unresolved trajectory was recorded. The extremal statistics and top-ten tables above are direct outputs of the completed scan.
+
+\textbf{Probabilistic interpretation.} Treating successive residue states as sufficiently mixing leads to the joint valuation model \eqref{eq:joint}, the negative drift \eqref{eq:drift}, and the expected approximate multiplier $7/12$. These explain why convergence is overwhelmingly favored and why a hypothetical large cycle requires an atypical valuation profile. They do not prove convergence for every positive admissible integer.
+
+\section{Reproducibility archive}
+The accompanying computational package preserves the completed scan materials supplied for this study, including the production C sources, platform-specific and portable source variants, final summary, progress log, checkpoint and chunk-history data, cycle and unresolved logs, historical stopping records, and top-ten CSV tables. The article source and compiled PDF are included alongside those materials. The repository associated with this research program is available at \url{https://github.com/FarhadBanazadeh/sequence-computations}.
+
+The executable binary included in the original scan folder is retained in the archival package as part of the exact completed-run record; independent reproduction should preferably compile from the supplied C source on the target platform.
+
+\section{Conclusion}
+The reduced ternary $(7k\pm1)/6$ system is a simple arithmetic dynamical map on positive integers coprime to $6$, with complete removal of factors $2$ and $3$ after each residue-dependent affine step. The fixed point $1$ is exact. Exhaustive computation over all $33,333,333,333$ admissible starts below $10^{11}$ found that every tested trajectory reaches $1$, with zero detected nontrivial cycles and zero unresolved cases.
+
+The algebraic structure is unusually favorable to contraction. The only asymptotically expanding valuation pair is the minimally divisible case $(1,1)$; all other pairs contract. The natural residue model gives mean valuations $2$ and $3/2$, a geometric typical multiplier about $0.33679$, and an ordinary expected approximate multiplier $7/12$. A hypothetical nontrivial cycle must overcome this statistical contraction while also satisfying exact sign, valuation, integrality, and Diophantine constraints at every step.
+
+The resulting picture is therefore strong but carefully delimited: convergence to $1$ is exhaustively established throughout the tested range and is strongly supported by the algebraic-probabilistic structure beyond it, while universal convergence and absolute nonexistence of further cycles remain open global statements.
+
+\begin{thebibliography}{9}
+\bibitem{repo}
+F. Banazadeh, \emph{Sequence Computations: research articles, source code, computational packages, and reproducibility materials}, GitHub repository, 2026.\\
+\url{https://github.com/FarhadBanazadeh/sequence-computations}
+\end{thebibliography}
+
+\appendix
+\section{Historical first-descent records}
+The completed scan also preserves the historical staircase of record first-descent stopping times in \texttt{historical\_stopping\_records.csv}. This file is included verbatim in the computational package rather than reproduced in full here. Its terminal record agrees with the final summary: $n=7,449,779,881$, $\sigma=35$, and first lower value $237,507,511$.
+
+\section{Archival interpretation of the scan}
+The finite claim can be stated without statistical qualification: under the supplied implementation and its explicit stopping conditions, every admissible start below $10^{11}$ reached $1$ before the safety cap. The probabilistic analysis enters only when extrapolating from that finite theorem to behavior at untested scales.
+
+\end{document}
