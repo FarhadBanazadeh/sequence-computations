@@ -392,7 +392,7 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 
 ---
 
-## 10. The Reduced 5k + 1(3)/4 Collatz-Type Domain with Four Observed Attractors
+## 10. The Reduced (5k+1(3))/4 Collatz-Type Domain with Four Observed Attractors
 
 This work studies a residue-dependent reduced `5x+c` Collatz-type map on the positive odd integers, referred to as the `5k + 1(3)/4` domain.
 
@@ -431,7 +431,7 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 
 ---
 
-## 11. A 5^r-Scaled Family of the Reduced 5k+1(3)/4 Collatz-Type Map: Exact Algebraic Conjugacy, Four-Attractor Preservation, and Transfer of the 10^10 Finite Verification
+## 11. A 5^r-Scaled Family of the Reduced (5k+1(3))/4 Collatz-Type Map: Exact Algebraic Conjugacy, Four-Attractor Preservation, and Transfer of the 10^10 Finite Verification
 
 This work develops the `5^r`-scaled family associated with the preceding reduced residue-dependent `5k+1(3)/4` Collatz-type map with four observed attractors.
 
@@ -500,7 +500,7 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 
 https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22746283_5r_Scaled_5k1_3_over4_Collatz_Type_Map_up_to_1e10_Computational_Pack.zip
 
-## 12. The Reduced 5k−1(3)/4 Collatz-Type Domain with Two Observed Attractors up to 10^11
+## 12. The Reduced (5k−1(3))/4 Collatz-Type Domain with Two Observed Attractors up to 10^11
 
 This work studies the reduced 5k−1(3)/4 Collatz-type map on the positive odd integers. An exhaustive computational verification of all 50,000,000,000 positive odd starting values below 10^11 found two observed fixed-point attractors, 1 and 3, with no additional cycles detected.
 
@@ -520,7 +520,7 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 
 https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22752810_Reduced_5k_minus_1_3_over_4_Collatz_Type_Map_up_to_1e11_Computational_Pack.zip
 
-## 13. A 5^r-Scaled Family of the Reduced 5k-1(3)/4 Collatz-Type Map with Two Observed Attractors: Exact Algebraic Conjugacy, Two-Attractor Transport, Orbit-Statistic Invariance, and Transfer of the 10^11 Finite Verification
+## 13. A 5^r-Scaled Family of the Reduced (5k-1(3))/4 Collatz-Type Map with Two Observed Attractors: Exact Algebraic Conjugacy, Two-Attractor Transport, Orbit-Statistic Invariance, and Transfer of the 10^11 Finite Verification
 
 This work develops the `5^r`-scaled family associated with the reduced residue-dependent `5k-1(3)/4` Collatz-type map with two observed attractors.
 
@@ -588,7 +588,7 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 
 https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22770779_5r_Scaled_Reduced_5k_minus_1_3_over_4_up_to_1e11_Computational_Pack.zip
 
-## 14. The Reduced 6k+_1(2)/5 Collatz-Type Domain with Two Observed Attractors up to 10^11
+## 14. The Reduced (6k±{1,2})/5 Collatz-Type Domain with Two Observed Attractors up to 10^11
 
 Computational and algebraic study of the reduced 6k+_1(2)/5 Collatz-type map, with three observed attractors and exhaustive verification up to 10^11.
 
@@ -624,7 +624,7 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 
 The Zenodo record contains the published article and associated reproducibility materials.
 
-## 15. A 6^r-Scaled Family of the Reduced 6k ± {1,2}/5 Collatz-Type Map with Three Observed Attractors
+## 15. A 6^r-Scaled Family of the Reduced (6k±{1,2})/5 Collatz-Type Map with Three Observed Attractors
 
 This work develops the 6^r-scaled family associated with the preceding reduced 6k ± {1,2}/5 Collatz-type map with three observed attractors.
 For every integer r ≥ 0, the scaled state space is
@@ -674,7 +674,7 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 
 https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22809470_6r_Scaled_6k_pm_1_2_over5_Collatz_Type_Map_up_to_1e11_Computational_Pack.zip
 
-## 16. # Ternary (7k ± 1)/6 Collatz-Type Map with a Single Observed Attractor up to 10^11
+## 16. Ternary (7k±1)/6 Collatz-Type Map with a Single Observed Attractor up to 10^11
 
 This work studies a residue-dependent Collatz-type dynamical system on the positive integers coprime to 6.
 
@@ -721,7 +721,7 @@ Thus every tested admissible trajectory below 10^11 reached 1.
 
 https://doi.org/10.5281/zenodo.22829703
 
-### ### PDF — GitHub
+### PDF — GitHub
 
 https://zenodo.org/records/22829703/files/Farhad_Banazadeh_Ternary_7k_pm_1_over_6_Collatz_Type_Map_up_to_1e11_ZENODO_READY.pdf?download=1
 
