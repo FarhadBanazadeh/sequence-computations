@@ -1,0 +1,573 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,array,longtable,microtype,hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\setlength{\parskip}{0.45em}
+\setlength{\parindent}{0pt}
+\title{A Ternary $(4k+1(2))/3$ Collatz-Type Map with Two Attracting Cycles:\\
+Theoretical Analysis and Exhaustive Computational Verification up to $10^{11}$}
+\author{Farhad Banazadeh\\\texttt{fn.bana@hotmail.com}\\ORCID: 0009-0004-7023-0298}
+\date{18 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This paper studies the ternary $(4k+1(2))/3$ Collatz-type map, based on division by $3$ and a complete $3$-adic compression step. The starting values are positive integers not divisible by $3$. For $n=3p+1$ the pre-reduced value is $4p+2$, while for $n=3p+2$ it is $4p+3$. After this step, all factors of $3$ are removed. In the compressed convention used in the computation, the state $3$ is represented by $1$. Two cycles are observed: $C_1=(1,2)$ and $C_7=(7,10,14,19,26,35,47)$. A $3$-adic heuristic based on Haar measure gives the distribution $\Pr(v_3=k)=2/3^{k+1}$ and $\mathbb{E}[v_3]=1/2$. This gives the average logarithmic drift
+$\delta=\ln(4/3)-(1/2)\ln 3\approx-0.2616$, corresponding to an average multiplicative factor of about $0.7698$, or about a $23.02\%$ decrease per step on the logarithmic model. This is a heuristic, not a proof of global convergence.
+
+An exhaustive computation of every admissible starting value $1\le n\le10^{11}$ was completed by combining the previously audited range $1\le n\le10^9$ with a new exhaustive extension $10^9<n\le10^{11}$. There are exactly $66,666,666,667$ admissible starts. Every one was classified into one of the two observed cycles, with zero unknown cases, zero arithmetic overflows, and zero step-limit cases. The $C_1$ basin contains $2,179,160,439$ starts ($3.2687406585\%$), and the $C_7$ basin contains $64,487,506,228$ starts ($96.7312593415\%$). The combined computation used $5,449,566,633,079$ steps to known attractors, with mean $81.7434994958$ steps per admissible start. The maximum number of steps to a known attractor was $487$, attained by $n=81,078,368,921$. The largest value reached by any tested trajectory was $1,261,811,304,250,099,959,379$, obtained from $n=96,110,420,480$ at step $165$. A maximum of $23$ extra factors of $3$ was removed in a single compressed step, and the combined total number of extra removed factors was $2,755,160,788,171$. These results give strong finite computational evidence for the conjecture that every positive integer eventually enters one of the two cycles; they do not constitute a proof of global convergence.
+\end{abstract}
+
+\section{Introduction}
+The classical Collatz problem asks about the long-term behavior of a very simple integer map. Many related maps replace the division by $2$ with other divisors, use several residue classes, or compress an orbit by removing selected prime factors. The present work studies one such ternary system, built around division by $3$ and complete removal of factors of $3$ after each pre-reduced step.
+
+The main difference from the earlier map studied by the author is important. The earlier map used the two branches $(4k-1)/3$ and $(4k+1)/3$ together with the direct $k/3$ branch. The present map instead uses $4k+2$ for the residue class $1\pmod 3$ and $4k+1$ for the residue class $2\pmod 3$, followed by complete $3$-adic compression. The present system therefore has a different orbit structure and two observed terminal cycles.
+
+The paper has three goals. First, it gives a precise definition of the map and explains why every step is integral. Second, it develops the $3$-adic and average-logarithmic analysis supplied in the theoretical note. Third, it records the large computational experiment through $10^{11}$, including basin sizes, step counts, peak values, factor-of-$3$ statistics, and record cases.
+
+The computational evidence is deliberately separated from the conjecture. A finite exhaustive computation can establish the behavior of every tested starting value, but it cannot by itself establish the same statement for all positive integers.
+
+\section{Definition of the map}
+Let
+\[
+D=\{n\in\mathbb N:3\nmid n\}.
+\]
+Every $n\in D$ belongs to exactly one of the two residue classes
+\[
+n=3p+1\quad\text{or}\quad n=3p+2,
+\qquad p\ge0.
+\]
+Define the pre-reduction map $G:D\to\mathbb N$ by
+\[
+G(n)=\left\lfloor\frac{4n+2}{3}\right\rfloor.
+\]
+Equivalently,
+\[
+G(3p+1)=4p+2,
+\qquad
+G(3p+2)=4p+3.
+\]
+The reason for the floor is only to write the two residue cases in one expression; the two displayed formulas show that $G(n)$ is always an integer.
+
+For a positive integer $m$, let
+\[
+v_3(m)=\max\{r\ge0:3^r\mid m\}
+\]
+be the exponent of $3$ in $m$. The compressed map is
+\[
+T(n)=\frac{G(n)}{3^{v_3(G(n))}}.
+\tag{1}
+\]
+Thus $T(n)$ is not divisible by $3$ after the compression.
+
+The computational convention used in the exhaustive program identifies the eliminated state $3$ with the state $1$. In particular,
+\[
+1\longrightarrow2\longrightarrow1.
+\]
+This convention is part of the definition of the compressed state space used for the reported computation.
+
+The sequence generated from an initial value $x_0\in D$ is
+\[
+x_{j+1}=T(x_j),\qquad j\ge0.
+\]
+
+\section{How the rule works: numerical examples}
+The map is easiest to understand through direct examples.
+
+For $n=1=3(0)+1$,
+\[
+G(1)=4(0)+2=2,
+\qquad T(1)=2.
+\]
+For $n=2=3(0)+2$,
+\[
+G(2)=4(0)+3=3=3^1,
+\qquad T(2)=1.
+\]
+Hence $1\to2\to1$.
+
+For $n=4=3(1)+1$,
+\[
+G(4)=6,
+\qquad T(4)=2,
+\]
+so $4\to2\to1\to2\to1\cdots$.
+
+For $n=5=3(1)+2$,
+\[
+G(5)=7,
+\qquad T(5)=7.
+\]
+Therefore $5$ enters the seven-cycle immediately.
+
+A central example is
+\[
+7\to10\to14\to19\to26\to35\to47\to7.
+\tag{2}
+\]
+Every step from $7$ through $35$ has no factor of $3$ to remove. At $47$,
+\[
+G(47)=4(15)+3=63=3^2\cdot7,
+\]
+and therefore
+\[
+T(47)=63/9=7.
+\]
+This closes the cycle.
+
+Another example showing compression is
+\[
+2\to3\to1\to2\to1\cdots,
+\]
+where the state $3$ is normalized to $1$. The compression is important: it makes the dynamics live on the nonmultiples of $3$ and records the complete $3$-adic removal in a single step.
+
+\section{The two observed cycles}
+The first observed cycle is
+\[
+C_1=(1,2),
+\]
+with length $2$. Its exact transitions are
+\[
+1\to2,
+\qquad 2\to1.
+\]
+
+The second observed cycle is
+\[
+C_7=(7,10,14,19,26,35,47),
+\]
+with length $7$.
+
+For the seven-cycle, the first six transitions are
+\[
+7\to10\to14\to19\to26\to35\to47,
+\]
+and the final transition is
+\[
+47\to63\to7
+\]
+in the uncompressed description, or simply $47\to7$ in the compressed map. Thus the final step removes exactly two factors of $3$.
+
+The theoretical note gives multiplicative cycle-scale estimates
+\[
+\lambda_1=\frac{(4/3)^2}{3}=\frac{16}{27}\approx0.5926<1,
+\]
+and
+\[
+\lambda_2=\frac{(4/3)^7}{3^2}
+=\frac{16384}{19683}
+\approx0.8324<1.
+\]
+These values are useful heuristic stability indicators for the asymptotic multiplicative model. They should not be confused with ordinary derivatives of the integer map, because the actual map contains the discrete valuation operation.
+
+For comparison, the exact product of the actual ratios around $C_1$ is
+\[
+\frac21\cdot\frac13=\frac23<1,
+\]
+while the exact product around $C_7$ telescopes to $1$ because the cycle returns to its starting value. The values $16/27$ and $16384/19683$ are therefore best understood as the theoretical-note's asymptotic scale estimates rather than exact cycle multipliers.
+
+\section{Stopping time and peak}
+For an initial value $x_0=n$, write its orbit as
+\[
+x_0,x_1,x_2,\ldots,
+\qquad x_{j+1}=T(x_j).
+\]
+For the two-cycle system, a natural stopping time is the first index at which the orbit becomes smaller than its initial value:
+\[
+\sigma(n)=\min\{j\ge1:x_j<n\},
+\tag{3}
+\]
+when such an index exists. This is the stopping-time definition used in the theoretical analysis.
+
+For an orbit segment up to a stopping time, define the peak by
+\[
+P_\sigma(n)=\max_{0\le j\le\sigma(n)}x_j.
+\tag{4}
+\]
+For the large $10^{11}$ computation, an additional global trajectory peak was tracked independently of this stopping-time definition. It is the maximum value reached before the trajectory was classified into one of the observed cycles.
+
+The distinction matters. An orbit may have a relatively short stopping time but still make a very large temporary excursion. This is exactly what happens in the largest-peak record reported below.
+
+\section{Methodology}
+Two complementary approaches were used.
+
+\subsection{Theoretical $3$-adic analysis}
+The first approach studies the distribution of the number of factors of $3$ removed after the pre-reduction step. The analysis uses the Haar-measure heuristic on the ring of $3$-adic integers $\mathbb Z_3$ and assumes that large orbit values sample residue classes in an approximately uniform way.
+
+\subsection{Exhaustive computation}
+The finite verification covers every integer
+\[
+1\le n\le10^{11},\qquad 3\nmid n.
+\]
+The total number of admissible starts is
+\[
+10^{11}-\left\lfloor\frac{10^{11}}{3}\right\rfloor
+=66,666,666,667.
+\]
+The original audit covered $1\le n\le10^9$. To preserve that completed computation, the extension scan covered only
+\[
+1,000,000,001\le n\le100,000,000,000,
+\qquad 3\nmid n,
+\]
+which contains exactly $66,000,000,000$ admissible starts. The two aggregate data sets were then combined arithmetically.
+
+The extension program uses a fast 64-bit hot path and automatically promotes a trajectory to \texttt{unsigned \_\_int128} when the next arithmetic operation cannot safely be represented in 64 bits. This safeguard is essential: the final global peak is larger than the maximum unsigned 64-bit integer. The scan used four POSIX threads, dynamic chunks of $30,000,000$ raw integers, a checkpoint CSV, an explicit unknown counter, overflow detection, and a safety limit of $1,000,000$ steps. The extension completed with zero unknown cases, zero overflows, and zero step-limit cases.
+
+The extension run took $30,700.091$ seconds (about $8.53$ hours) on the author's MacBook Pro. Its complete chunk log, summary, source code, and the earlier $10^9$ audit materials are included in the computational package.
+
+\section{Theoretical analysis: average logarithmic contraction}
+For large $n$, the pre-reduced value has the approximate scale
+\[
+G(n)\approx\frac43n.
+\]
+If
+\[
+v=v_3(G(n)),
+\]
+then after complete removal of factors of $3$,
+\[
+T(n)=\frac{G(n)}{3^v}
+\approx n\frac{4}{3^{v+1}}.
+\tag{5}
+\]
+Therefore the logarithmic change is approximately
+\[
+\ln\frac{T(n)}n
+\approx \ln\frac43-v\ln3.
+\tag{6}
+\]
+
+\subsection{Ergodic and Haar-measure viewpoint}
+The theoretical note treats the large-scale orbit as sampling residue classes in an approximately uniform way. In the $3$-adic setting, the natural reference measure is Haar measure on $\mathbb Z_3$. This does not mean that a deterministic orbit is literally random; rather, it gives a useful ergodic model for the frequency of residue classes and therefore for the frequency of powers of $3$ removed by the compression.
+
+The key quantity is the $3$-adic valuation of the pre-reduced value after the compulsory division by $3$. Under the uniform-residue or Haar-measure heuristic in $\mathbb Z_3$,
+\[
+\Pr(v=0)=1-\frac13=\frac23,
+\]
+\[
+\Pr(v=1)=\frac13-\frac19=\frac29,
+\]
+and, in general,
+\[
+\Pr(v=k)=\frac{2}{3^{k+1}},
+\qquad k\ge0.
+\tag{7}
+\]
+Indeed, $v=k$ means divisibility by $3^k$ but not by $3^{k+1}$. The probability of divisibility by $3^k$ is $3^{-k}$, and the difference between successive probabilities gives (7).
+
+\subsection{Expected number of removed factors}
+Using (7),
+\[
+\mathbb E[v]
+=\sum_{k=0}^{\infty}k\frac{2}{3^{k+1}}
+=\frac{2}{9}\sum_{k=1}^{\infty}k\left(\frac13\right)^{k-1}.
+\]
+Since
+\[
+\sum_{k=1}^{\infty}kr^{k-1}=\frac{1}{(1-r)^2},
+\qquad |r|<1,
+\]
+we obtain
+\[
+\mathbb E[v]
+=\frac{2}{9}\frac{1}{(1-1/3)^2}
+=\frac12.
+\tag{8}
+\]
+Thus the heuristic predicts one half of a factor-of-$3$ exponent on average per step.
+
+\subsection{Logarithmic drift}
+Taking the expectation in (6),
+\[
+\delta
+=\mathbb E\left[\ln\frac{T(n)}n\right]
+\approx \ln\frac43-\mathbb E[v]\ln3.
+\]
+Using (8),
+\[
+\boxed{\delta=\ln\frac43-\frac12\ln3
+=\ln\left(\frac4{3\sqrt3}\right)}.
+\tag{9}
+\]
+Numerically,
+\[
+\delta\approx-0.2616<0.
+\]
+Therefore the corresponding geometric mean factor is
+\[
+e^\delta=\frac4{3\sqrt3}\approx0.7698.
+\tag{10}
+\]
+In this model, the orbit size decreases by about
+\[
+1-0.7698\approx0.2302,
+\]
+or $23.02\%$, per step on the logarithmic average scale.
+
+This is the central theoretical reason for expecting contraction. The pre-reduction step multiplies the size by roughly $4/3$, but the average removal of $3$-adic factors contributes an additional factor of roughly $3^{-1/2}$. The combined average factor is below $1$.
+
+\subsection{Average multiplicative factor}
+Equation (10) gives more than a negative logarithmic drift. It gives the geometric mean scale factor
+\[
+\rho=\exp(\delta)=\frac{4}{3\sqrt3}\approx0.7698.
+\tag{14}
+\]
+Thus the theoretical model predicts
+\[
+\frac{T(n)}{n}\quad\text{to have geometric mean approximately }0.7698
+\]
+for large states. Equivalently, the logarithmic size is expected to decrease by about $0.2616$ per step, while the corresponding geometric size decreases by about $23.02\%$ per step. This is the main contraction mechanism proposed in the theoretical analysis.
+
+\subsection{What the negative drift does and does not prove}
+The negative value in (9) is a strong heuristic indication of downward behavior, but it is not a proof of convergence of every orbit. The valuation distribution was obtained from an asymptotic uniformity assumption, while an actual orbit is deterministic and its successive residue classes are not independent random samples.
+
+In particular, the statement that divergence has probability zero belongs to the probabilistic heuristic. It should not be stated as a theorem about every integer orbit. A rigorous proof would require a deterministic argument controlling all possible long-term residue patterns, or a different global argument.
+
+\section{Algebraic view of the seven-cycle}
+The seven-cycle is especially simple because the first six compressed steps have no factor of $3$ removed. Its values satisfy
+\[
+7\mapsto10\mapsto14\mapsto19\mapsto26\mapsto35\mapsto47.
+\]
+The final pre-reduced value is
+\[
+G(47)=63=3^2\cdot7.
+\]
+Therefore
+\[
+T(47)=\frac{63}{3^2}=7.
+\]
+The cycle closes only because the final step removes two powers of $3$ at once.
+
+This gives a useful picture of the dynamics. The increasing branches can produce a long upward run, but a sufficiently divisible pre-reduced value can produce a strong downward jump. The seven-cycle is a compact example of this balance: six consecutive increases are followed by one compressed return.
+
+\section{Computational verification up to $10^{11}$}
+The exhaustive verification classifies every admissible starting value through $10^{11}$. Table~\ref{tab:main} gives the combined result from the original $10^9$ audit and the new extension scan.
+
+\begin{table}[h]
+\centering
+\caption{Complete computational result for $1\le n\le10^{11}$, $3\nmid n$.}
+\label{tab:main}
+\begin{tabular}{lr}
+\toprule
+Quantity & Value\\
+\midrule
+Upper bound $N$ & 100,000,000,000\\
+Admissible starts & 66,666,666,667\\
+Cycle $C_1=(1,2)$ count & 2,179,160,439\\
+Cycle $C_1$ percentage & 3.2687406585\%\\
+Cycle $C_7$ count & 64,487,506,228\\
+Cycle $C_7$ percentage & 96.7312593415\%\\
+Unknown & 0\\
+Total steps to known attractor & 5,449,566,633,079\\
+Mean steps to known attractor & 81.7434994958\\
+Maximum steps to known attractor & 487\\
+Start attaining maximum steps & 81,078,368,921\\
+Global peak & 1,261,811,304,250,099,959,379\\
+Start attaining global peak & 96,110,420,480\\
+Step of global peak & 165\\
+Total extra factors of $3$ removed & 2,755,160,788,171\\
+Maximum extra factors in one step & 23\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+As a consistency check,
+\[
+2,179,160,439+64,487,506,228=66,666,666,667,
+\]
+so the two cycle counts account for every admissible starting value. No tested start remained unresolved.
+
+The new extension interval alone contained $66,000,000,000$ admissible starts: $2,157,375,328$ entered $C_1$ and $63,842,624,672$ entered $C_7$. Its total step count was $5,406,806,745,632$ and its total count of extra removed factors of $3$ was $2,733,476,950,658$.
+
+The basin proportions remain strongly unequal in this finite domain: about $3.269\%$ of admissible starts enter $C_1$ and about $96.731\%$ enter $C_7$. This is a statement about the tested finite range, not a proof of an asymptotic basin density.
+
+\section{A one-million range stopping-time study}
+The theoretical note also contains a detailed stopping-time study over the first million integers not divisible by $3$. There are $666,667$ admissible starts in that range. The reported maximum stopping time is
+\[
+143
+\]
+at
+\[
+n=497,116,
+\]
+with a peak of
+\[
+410,683,162
+\]
+within the stopping-time segment.
+
+The ten leading stopping-time records reported in that study are shown below.
+
+\begin{table}[h]
+\centering
+\caption{Top stopping-time records in the $10^6$ study.}
+\begin{tabular}{rrrr}
+\toprule
+Rank & Start $n$ & $\sigma(n)$ & Peak\\
+\midrule
+1 & 497,116 & 143 & 410,683,162\\
+2 & 662,822 & 142 & 410,683,162\\
+3 & 883,763 & 141 & 410,683,162\\
+4 & 749,897 & 129 & 2,687,932,606\\
+5 & 629,449 & 127 & 263,207,404,847\\
+6 & 839,266 & 126 & 263,207,404,847\\
+7 & 832,280 & 121 & 2,687,932,606\\
+8 & 981,244 & 120 & 40,062,776,062\\
+9 & 360,637 & 119 & 517,652,138\\
+10 & 999,863 & 118 & 2,687,932,606\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The value $497,116$ is the stopping-time champion in the one-million study. It survives for 143 steps before first becoming smaller than its starting value, while its orbit reaches about $410$ million in the measured segment. This is a useful example of why stopping time and peak size are different quantities.
+
+The one-million experiment reported approximately $3.31\%$ of starts entering $C_1$ and $96.69\%$ entering $C_7$. The complete $10^{11}$ audit gives the more precise basin proportions reported in Table~\ref{tab:main}. These percentages are therefore reported separately rather than mixed together.
+
+\section{The $10^{11}$ record for maximum steps to an attractor}
+The final audit found a maximum of
+\[
+487
+\]
+steps to a known attracting cycle, attained by
+\[
+n=81,078,368,921.
+\]
+This statistic is deliberately called \emph{steps to an attractor}. It is distinct from the first-lower stopping time $\sigma(n)$ defined in (3), and the two quantities should not be conflated.
+
+\section{The $10^{11}$ record for largest peak}
+The largest trajectory value found in the complete audit is
+\[
+1,261,811,304,250,099,959,379,
+\]
+obtained from
+\[
+n=96,110,420,480
+\]
+at step
+\[
+165.
+\]
+In scientific notation the peak is approximately $1.2618\times10^{21}$. It exceeds the unsigned 64-bit maximum $2^{64}-1$, which independently demonstrates the need for wider arithmetic in the extension scanner. The supplied implementation therefore promotes trajectories to 128-bit arithmetic when necessary.
+
+\section{Factor-of-$3$ statistics}
+Across the complete range through $10^{11}$, the combined number of extra factors of $3$ removed by compression was
+\[
+2,755,160,788,171.
+\]
+The largest number of extra factors removed in one step in the extension scan was
+\[
+23,
+\]
+attained for the starting value $70,607,384,120$ at its first compressed step. These measurements give direct finite-domain information about the valuation mechanism used in the $3$-adic heuristic.
+
+\section{Why the two cycles are natural candidates}
+The first cycle is created by a short interaction with the factor $3$:
+\[
+1\to2\to3\to1
+\]
+in the uncompressed description, which becomes $1\to2\to1$ after normalization.
+
+The second cycle contains a longer increasing chain:
+\[
+7\to10\to14\to19\to26\to35\to47,
+\]
+followed by the strong compression
+\[
+47\to63\to7.
+\]
+The cycle therefore shows exactly the type of competition suggested by the $3$-adic heuristic: several steps with approximate factor $4/3$ can be balanced by a later removal of powers of $3$.
+
+The $10^{11}$ basin counts show that the second cycle captures the great majority of tested starts. This does not mean that $C_7$ is globally dominant in a mathematical sense; it means only that it is dominant in the finite computational domain tested here.
+
+\section{Computational conjecture}
+The numerical evidence leads to the following conjecture.
+
+\textbf{Conjecture (Two-Cycle Convergence Conjecture).} Every positive integer, under the compressed ternary $3$-adic map defined by (1), eventually enters one of the two cycles
+\[
+C_1=(1,2)
+\]
+and
+\[
+C_7=(7,10,14,19,26,35,47).
+\]
+In particular, no other periodic cycle and no divergent orbit to infinity exists in the positive integers.
+
+The exhaustive computation through $10^{11}$ provides strong finite evidence for this conjecture. It does not prove the conjecture for all positive integers.
+
+\section{What is still needed for a proof?}
+A proof of the conjecture would have to address at least three main issues.
+
+First, the negative drift in (9) depends on a Haar-measure or uniform-residue heuristic. A rigorous proof would need to control the deterministic frequency of $3$-adic valuations along every orbit, or avoid the probabilistic model entirely.
+
+Second, a proof must rule out every other periodic cycle. The computation found only $C_1$ and $C_7$ in the tested range, but a cycle whose entries lie above the tested range is not excluded by finite computation.
+
+Third, a proof must rule out an orbit that grows forever. The global peak of more than $10^{21}$ from a start below $10^{11}$ shows that very large temporary growth is possible. Therefore a proof cannot rely only on small numerical behavior.
+
+These are genuine open parts of the problem as studied here. The paper therefore treats the theoretical contraction as a heuristic and the $10^{11}$ result as a finite theorem about the tested set, while treating the all-integers statement as a conjecture.
+
+\section{Relation to the author's earlier ternary map}
+The present map is related to the author's earlier paper, but it is not the same map. The earlier work studied the ternary $(4k\pm1)/3$ map with a fixed point at $1$. The present map uses the pre-reduction rule
+\[
+G(3p+1)=4p+2,
+\qquad
+G(3p+2)=4p+3,
+\]
+followed by complete removal of factors of $3$, and it has the two observed cycles $C_1$ and $C_7$.
+
+The earlier article is therefore cited as related background, not as a source of the present computational result. The two studies should be kept as separate records because their maps, terminal structures, and numerical behavior are different.
+
+The author's previous article is available through Zenodo at
+\href{https://doi.org/10.5281/ZENODO.22195651}{doi:10.5281/ZENODO.22195651},
+and the computational repository is
+\href{https://github.com/FarhadBanazadeh/sequence-computations}{github.com/FarhadBanazadeh/sequence-computations}.
+
+\section{Reproducibility}
+The accompanying computational package contains this LaTeX source, the generated PDF, the original $10^9$ audit materials, the complete $10^9<n\le10^{11}$ extension summary and chunk-by-chunk checkpoint CSV, and the C sources used for the extension. The FAST extension source is the recommended reproduction program for the new range.
+
+A representative compilation command is
+\begin{verbatim}
+clang -O3 -march=native -flto -DNDEBUG -std=c11 -pthread \\
+  scan_ternary_4k_plus_1_2_over_3_FAST_mac_v2.c -o scan_ternary_FAST
+./scan_ternary_FAST
+\end{verbatim}
+The extension scan used four threads and a raw integer chunk width of $30,000,000$. Its final summary reports $66,000,000,000$ admissible starts, zero unknowns, zero overflows, zero step-limit cases, and a wall time of $30,700.091$ seconds. The checkpoint CSV records all $3,300$ chunks through $100,000,000,000$.
+
+The finite computation is deterministic. The aggregate $10^{11}$ statistics in Table~\ref{tab:main} are obtained by adding the extension totals to the previously published $10^9$ audit totals. Record maxima are taken over both ranges.
+
+\section{Conclusion}
+This paper introduced a new ternary $3$-adic Collatz-type map in which the pre-reduced value is approximately $4n/3$ and all factors of $3$ are then removed. The resulting compressed dynamics have two observed cycles, $C_1=(1,2)$ and $C_7=(7,10,14,19,26,35,47)$.
+
+The theoretical analysis gives a simple explanation for why contraction is plausible. Under the Haar-measure heuristic,
+\[
+\Pr(v_3=k)=\frac{2}{3^{k+1}},
+\qquad
+\mathbb E[v_3]=\frac12,
+\]
+and hence
+\[
+\delta=\ln\frac43-\frac12\ln3\approx-0.2616.
+\]
+The corresponding average multiplicative factor is about $0.7698$, suggesting a $23.02\%$ decrease per step on the logarithmic scale. This is useful evidence, but it is not a proof.
+
+The computational evidence is much stronger in the finite domain. Every one of the $66,666,666,667$ admissible starting values up to $10^{11}$ was classified into one of the two observed cycles, with zero unknown cases. The $C_1$ basin contains $2,179,160,439$ starts and the $C_7$ basin contains $64,487,506,228$. The combined total is $5,449,566,633,079$ steps to known attractors, with mean $81.7434994958$. The maximum is $487$ steps to an attractor, attained by $n=81,078,368,921$, and the largest trajectory peak is $1,261,811,304,250,099,959,379$, attained from $n=96,110,420,480$ at step $165$.
+
+The results strongly support the Two-Cycle Convergence Conjecture: every positive integer eventually enters $C_1$ or $C_7$, with no other cycle and no divergent orbit. The conjecture remains open. The purpose of the present paper is to provide a clear mathematical definition, a complete theoretical analysis of the $3$-adic mechanism, a large finite computation, and enough source and data material for independent reproduction.
+
+\section*{Data and code availability}
+The supplementary archive associated with this paper contains the original and extension verification sources, the complete chunk checkpoint, the final extension summary, the earlier audit results, the article source, and documentation of the computation. The paper source is supplied separately so that the PDF and LaTeX source can be deposited independently on Zenodo and GitHub.
+
+\begin{thebibliography}{9}
+\bibitem{lagarias1985}
+J. C. Lagarias, ``The 3x+1 problem and its generalizations,'' \emph{The American Mathematical Monthly}, 92(1), 3--23, 1985. DOI: \href{https://doi.org/10.2307/2322189}{10.2307/2322189}.
+
+\bibitem{banazadeh2026}
+Farhad Banazadeh, ``A Ternary $(4k\pm1)/3$ Collatz-Type Map: Computational Verification up to $10^9$,'' 2026. Zenodo DOI: \href{https://doi.org/10.5281/ZENODO.22195651}{10.5281/ZENODO.22195651}.
+
+\bibitem{github}
+Farhad Banazadeh, ``Sequence Computations,'' GitHub repository, 2026. \href{https://github.com/FarhadBanazadeh/sequence-computations}{github.com/FarhadBanazadeh/sequence-computations}.
+\end{thebibliography}
+
+\end{document}
