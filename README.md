@@ -779,7 +779,7 @@ They use related ternary, residue-dependent, and valuation-based ideas, but they
 
 ## VIII. Ternary (7k±1)/6 line
 
-16. Base ternary residue-dependent reduced map with a single observed attractor and exhaustive verification of all 33,333,333,333 admissible starting values below `10^11`](https://doi.org/10.5281/zenodo.22829703) — Zenodo 22829703
+16. Base ternary residue-dependent reduced map with a single observed attractor and exhaustive verification of all 33,333,333,333 admissible starting values below `10^11` — Zenodo 22829703
 
 ---
 
