@@ -1,0 +1,1155 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,array,longtable}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black}
+\setlength{\parindent}{1.25em}
+\setlength{\parskip}{0.15em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\vTwo}{\nu_2}
+\newcommand{\vThree}{\nu_3}
+\newcommand{\Dr}{\mathcal D_r}
+\newcommand{\D}{\mathcal D}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Rtwothree}{R_{2,3}}
+\title{\textbf{A Ternary $(7k\pm1)/6$ Collatz-Type Map and Its $(7k\pm7^r)/6$ Scaled Family}\\[2mm]
+\large Exact Algebraic Conjugacy, Cycle and Inverse-Tree Transport, Orbit-Statistic Invariance,\\
+$(2,3)$-Adic Drift Preservation, and Transfer of the $10^{11}$ Finite Verification}
+\author{Farhad Banazadeh\\\href{mailto:fn.bana@hotmail.com}{fn.bana@hotmail.com}\\ORCID: \href{https://orcid.org/0009-0004-7023-0298}{0009-0004-7023-0298}}
+\date{19 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We develop the full $7^r$-scaled family associated with the reduced ternary $(7k\pm1)/6$ Collatz-type map on positive integers coprime to $6$. The base map, previously verified exhaustively for all $33,333,333,333$ admissible starts below $10^{11}$, is
+\[
+T_0(n)=\frac{7n+\eps(n)}{2^{a(n)}3^{b(n)}},\qquad
+\eps(n)=\begin{cases}-1,&n\equiv1\pmod6,\\+1,&n\equiv5\pmod6,\end{cases}
+\]
+where $a(n)=\nu_2(7n+\eps(n))$ and $b(n)=\nu_3(7n+\eps(n))$. For every integer $r\ge0$ we define the scaled domain
+\[
+\mathcal D_r=7^r\mathcal D,\qquad \mathcal D=\{n\ge1:\gcd(n,6)=1\},
+\]
+and the scaled numerator
+\[
+N_r(x)=7x+7^r\eps(x),\qquad x\in\mathcal D_r,
+\]
+followed by complete removal of all factors of $2$ and $3$.
+
+Because $7^r\equiv1\pmod6$ and $\gcd(7^r,6)=1$, multiplication by $7^r$ preserves the branch residue and contributes no $2$- or $3$-adic valuation. We prove the exact conjugacy
+\[
+T_r(7^r n)=7^rT_0(n),\qquad
+T_r^j(7^r n)=7^rT_0^j(n)\quad(j\ge0).
+\]
+Consequently the complete directed functional graph, all cycles and minimal periods, all valuation sequences, first-descent times, total times to the fixed point, predecessor trees, order relations along trajectories, and normalized peak ratios are transported bijectively. The unique base fixed point $1$ becomes the unique scaled fixed point $7^r$. Absolute orbit magnitudes, first-lower values, and reduced peaks are multiplied by $7^r$, while dimensionless orbit geometry is unchanged.
+
+We derive the scaled cycle identity, the exact scaled inverse-branch conditions, the corresponding critical zero-drift condition for a hypothetical cycle, and a relative-density formulation showing that the base $(2,3)$-adic laws are unchanged under scaling. Hence the residue-model means $\mathbb E[a]=2$ and $\mathbb E[b]=3/2$, the heuristic logarithmic drift $\log7-2\log2-\tfrac32\log3\approx-1.0883026451$, the geometric typical multiplier $\approx0.3367876570$, and the ordinary expected approximate multiplier $7/12$ all remain exactly the same after normalization.
+
+The exhaustive base verification transfers without a new $33$-billion-start scan: for every fixed $r\ge0$, all $33,333,333,333$ states $x=7^rn$ with $n<10^{11}$ and $\gcd(n,6)=1$ reach $7^r$. The inherited record first-descent time remains $35$, the inherited maximum total time remains $77$, and the inherited peak step remains $19$, while the associated starts, first-lower value, and peak height are multiplied by $7^r$. This is an exact theorem about the corresponding scaled finite set, not an independent computation for each $r$.
+
+A crucial domain qualification is proved explicitly: the identity $T_r(7^rn)=7^rT_0(n)$ is a conjugacy on $\mathcal D_r=7^r\mathcal D$; it is generally false if one applies the affine expression $(7k\pm7^r)/6$ to arbitrary $k$ outside the scaled domain. Finally, global convergence for any one scaled level is equivalent to global convergence of the base map. Thus scaling neither creates a new global convergence problem nor solves the unresolved base problem.
+\end{abstract}
+
+\section{Introduction}
+Residue-dependent affine maps followed by complete prime-adic reduction form a natural class of generalized Collatz and Syracuse systems. Classical and generalized perspectives may be found, for example, in Lagarias \cite{Lagarias1985}, Matthews and Watts \cite{MatthewsWatts1985}, and Carnielli \cite{Carnielli2015}. The specific base system studied here was introduced and computationally verified in the author's preceding work \cite{Base7Paper}. That paper considered positive integers coprime to $6$, applied $7n-1$ or $7n+1$ according to the residue modulo $6$, and then removed every factor of $2$ and $3$. Its finite computation exhaustively treated all admissible starts below $10^{11}$ and found convergence to $1$ in every tested case.
+
+The purpose of the present paper is structural rather than computational. We ask what happens when the state space and the additive correction are simultaneously scaled by $7^r$. The resulting affine expressions may be written in the familiar form
+\[
+\frac{7k-7^r}{6}\quad\text{or}\quad\frac{7k+7^r}{6},
+\]
+followed, as in the base system, by complete removal of all remaining factors of $2$ and $3$. The correct state space is not all positive integers: it is the scaled lattice $\mathcal D_r=7^r\mathcal D$. On this domain, the new system is exactly conjugate to the base system.
+
+A closely related scaling philosophy appears in the author's separate ternary $(4k\pm1)/3$ scaled-family paper \cite{Scaled4Paper} and, for a different map with different attractor structure and a different prime-adic reduction, in \cite{Scaled6Paper}. Those works are cited only as structural context. No trajectory, attractor, count, or computational conclusion from those different maps is imported into the present system.
+
+The central result is the exact identity
+\begin{equation}
+T_r(7^rn)=7^rT_0(n),
+\label{eq:central}
+\end{equation}
+valid for every $r\ge0$ and every $n\in\mathcal D$. The power of \eqref{eq:central} is that it is not merely an equality of one-step formulas. It is a conjugacy of dynamical systems. It therefore transports the complete functional graph and every graph-theoretic or order-theoretic property that is preserved by multiplication by a positive constant.
+
+We make several points more explicit than is usual in a short scaling argument. First, we prove branch-residue preservation and separate $2$- and $3$-adic valuation invariance. Second, we derive the scaled cycle equation and the scaled inverse branches rather than merely referring back to the base system. Third, we distinguish absolute magnitude from normalized magnitude: when $r$ varies, a large value of $x=7^rn$ may be large only because of the scale factor. The finite correction is controlled by $n=x/7^r$, not by $x$ alone. Fourth, we show by an explicit counterexample why the scaled domain is essential and why \eqref{eq:central} must not be asserted for arbitrary integers $k$.
+
+Throughout the paper we keep three logical levels separate:
+\begin{enumerate}[label=(\roman*)]
+\item exact algebraic theorems, including conjugacy and all consequences that follow from it;
+\item inherited finite computation from the base record \cite{Base7Paper};
+\item probabilistic interpretation based on natural residue densities.
+\end{enumerate}
+The first level is proved for all $r\ge0$. The second is a finite theorem on corresponding scaled sets. The third explains observed contraction statistically but is not a proof of universal convergence.
+
+\section{The base reduced ternary map}
+Let
+\begin{equation}
+\mathcal D=\{n\in\N:n\ge1,\ \gcd(n,6)=1\}=\{n:n\equiv1\text{ or }5\pmod6\}.
+\label{eq:D}
+\end{equation}
+Define
+\begin{equation}
+\eps(n)=\begin{cases}
+-1,&n\equiv1\pmod6,\\
++1,&n\equiv5\pmod6,
+\end{cases}
+\qquad N_0(n)=7n+\eps(n).
+\label{eq:epsbase}
+\end{equation}
+Since $N_0(n)$ is divisible by both $2$ and $3$, define
+\[
+a_0(n)=\nu_2(N_0(n)),\qquad b_0(n)=\nu_3(N_0(n)),
+\]
+and
+\begin{equation}
+T_0(n)=\frac{N_0(n)}{2^{a_0(n)}3^{b_0(n)}}.
+\label{eq:T0}
+\end{equation}
+Equivalently, one first forms $(7n-1)/6$ or $(7n+1)/6$ and then strips every remaining factor of $2$ and $3$.
+
+\begin{proposition}[Base closure]
+For every $n\in\mathcal D$, $a_0(n)\ge1$, $b_0(n)\ge1$, and $T_0(n)\in\mathcal D$.
+\end{proposition}
+\begin{proof}
+If $n\equiv1\pmod6$, then $7n-1\equiv0\pmod6$. If $n\equiv5\pmod6$, then $7n+1\equiv0\pmod6$. Complete removal of the factors $2$ and $3$ leaves a positive integer coprime to $6$.
+\end{proof}
+
+The preceding base paper \cite{Base7Paper} established the following finite record, which will be inherited exactly later.
+\begin{table}[ht]
+\centering
+\begin{tabular}{@{}lr@{}}
+\toprule
+Base finite-verification quantity & Result \\
+\midrule
+Cutoff & $n<10^{11}$ \\
+Admissible starts & $33,333,333,333$ \\
+Reached $1$ & $33,333,333,333$ \\
+Detected nontrivial cycles & $0$ \\
+Unresolved trajectories & $0$ \\
+Safety cap & $1,000,000$ reduced steps \\
+Maximum first-descent time & $35$ \\
+Start attaining it & $7,449,779,881$ \\
+First lower value & $237,507,511$ \\
+Maximum total steps to $1$ & $77$ \\
+Start attaining it & $62,073,713,149$ \\
+Largest reduced peak & $1,830,618,509,383$ \\
+Peak start & $97,860,819,035$ \\
+Step of peak & $19$ \\
+\bottomrule
+\end{tabular}
+\caption{Inherited base-system finite record from \cite{Base7Paper}.}
+\label{tab:base-record}
+\end{table}
+
+\section{Definition of the $7^r$-scaled family}
+Fix an integer $r\ge0$ and define
+\begin{equation}
+\mathcal D_r=7^r\mathcal D=\{7^rn:n\in\mathcal D\}.
+\label{eq:Dr}
+\end{equation}
+Every $x\in\mathcal D_r$ has a unique normalized coordinate
+\[
+n=\frac{x}{7^r}\in\mathcal D.
+\]
+Because
+\begin{equation}
+7^r\equiv1\pmod6,
+\label{eq:7mod6}
+\end{equation}
+we have
+\begin{equation}
+x=7^rn\equiv n\pmod6.
+\label{eq:respres}
+\end{equation}
+Thus the same sign rule can be used on $\mathcal D_r$:
+\begin{equation}
+\eps_r(x)=\eps(x)=\begin{cases}
+-1,&x\equiv1\pmod6,\\
++1,&x\equiv5\pmod6.
+\end{cases}
+\label{eq:epsr}
+\end{equation}
+Define the scaled affine numerator
+\begin{equation}
+N_r(x)=7x+7^r\eps_r(x).
+\label{eq:Nr}
+\end{equation}
+Equivalently,
+\[
+N_r(x)=\begin{cases}
+7x-7^r,&x\equiv1\pmod6,\\
+7x+7^r,&x\equiv5\pmod6.
+\end{cases}
+\]
+Define
+\begin{equation}
+a_r(x)=\nu_2(N_r(x)),\qquad b_r(x)=\nu_3(N_r(x)),
+\label{eq:arbr}
+\end{equation}
+and the fully reduced scaled map
+\begin{equation}
+T_r(x)=\frac{N_r(x)}{2^{a_r(x)}3^{b_r(x)}}.
+\label{eq:Tr}
+\end{equation}
+Since at least one factor of both $2$ and $3$ is present, this is equivalent to
+\begin{equation}
+T_r(x)=\Rtwothree\!\left(\frac{7x+7^r\eps_r(x)}{6}\right),
+\label{eq:Tr-sixform}
+\end{equation}
+where $\Rtwothree$ removes all remaining factors of $2$ and $3$.
+
+\section{Scaling lemmas: residues, affine numerators, and valuations}
+\begin{lemma}[Branch-residue preservation]
+For every $r\ge0$ and $n\in\mathcal D$,
+\[
+\eps_r(7^rn)=\eps(n).
+\]
+\end{lemma}
+\begin{proof}
+Equation \eqref{eq:7mod6} gives $7^rn\equiv n\pmod6$, so the two numbers lie in the same one of the two admissible residue classes $1$ and $5$ modulo $6$.
+\end{proof}
+
+\begin{lemma}[Exact affine factorization]
+For every $r\ge0$ and $n\in\mathcal D$,
+\begin{equation}
+N_r(7^rn)=7^rN_0(n).
+\label{eq:affinefactor}
+\end{equation}
+\end{lemma}
+\begin{proof}
+Using branch preservation,
+\[
+N_r(7^rn)=7(7^rn)+7^r\eps(n)=7^r(7n+\eps(n))=7^rN_0(n).
+\]
+\end{proof}
+
+\begin{lemma}[$(2,3)$-adic valuation invariance]
+For every nonzero integer $m$ and every $r\ge0$,
+\begin{equation}
+\nu_2(7^rm)=\nu_2(m),\qquad \nu_3(7^rm)=\nu_3(m).
+\label{eq:valscale}
+\end{equation}
+Consequently,
+\begin{equation}
+a_r(7^rn)=a_0(n),\qquad b_r(7^rn)=b_0(n).
+\label{eq:valinv}
+\end{equation}
+\end{lemma}
+\begin{proof}
+The factor $7^r$ is coprime to $6$, so it contributes neither a factor $2$ nor a factor $3$. Apply this observation to \eqref{eq:affinefactor}.
+\end{proof}
+
+\begin{corollary}[Scaled closure]
+For every $x\in\mathcal D_r$, $a_r(x)\ge1$, $b_r(x)\ge1$, and $T_r(x)\in\mathcal D_r$.
+\end{corollary}
+\begin{proof}
+Write $x=7^rn$. The base numerator contains at least one factor of $2$ and $3$, and \eqref{eq:affinefactor}--\eqref{eq:valinv} imply that complete $(2,3)$-reduction leaves $7^r$ times a number in $\mathcal D$.
+\end{proof}
+
+\section{Exact algebraic conjugacy and functional-graph isomorphism}
+Define
+\begin{equation}
+\Phi_r:\mathcal D\longrightarrow\mathcal D_r,\qquad \Phi_r(n)=7^rn.
+\label{eq:Phi}
+\end{equation}
+This is a bijection with inverse $\Phi_r^{-1}(x)=x/7^r$.
+
+\begin{theorem}[One-step conjugacy]
+For every $r\ge0$ and $n\in\mathcal D$,
+\begin{equation}
+T_r(7^rn)=7^rT_0(n).
+\label{eq:onestep}
+\end{equation}
+Equivalently,
+\begin{equation}
+T_r\circ\Phi_r=\Phi_r\circ T_0,
+\qquad
+T_r=\Phi_r\circ T_0\circ\Phi_r^{-1}.
+\label{eq:conjugacy}
+\end{equation}
+\end{theorem}
+\begin{proof}
+By \eqref{eq:affinefactor} and \eqref{eq:valinv},
+\[
+T_r(7^rn)
+=\frac{7^rN_0(n)}{2^{a_0(n)}3^{b_0(n)}}
+=7^rT_0(n).
+\]
+\end{proof}
+
+\begin{theorem}[All iterates]
+For every $j\ge0$,
+\begin{equation}
+T_r^j(7^rn)=7^rT_0^j(n).
+\label{eq:alliterates}
+\end{equation}
+\end{theorem}
+\begin{proof}
+The case $j=0$ is immediate. If the identity holds at $j$, then one-step conjugacy gives
+\[
+T_r^{j+1}(7^rn)=T_r(7^rT_0^j(n))=7^rT_0^{j+1}(n).
+\]
+\end{proof}
+
+\begin{theorem}[Conjugacy between arbitrary scale levels]
+For any $r,s\ge0$, define
+\begin{equation}
+\Psi_{r,s}:\mathcal D_r\to\mathcal D_s,
+\qquad
+\Psi_{r,s}(7^rn)=7^sn.
+\label{eq:Psi}
+\end{equation}
+Then $\Psi_{r,s}$ is a bijection and
+\begin{equation}
+T_s\circ\Psi_{r,s}=\Psi_{r,s}\circ T_r.
+\label{eq:crossconj}
+\end{equation}
+Thus all members of the scaled family are mutually conjugate.
+\end{theorem}
+\begin{proof}
+The map is $\Phi_s\circ\Phi_r^{-1}$. Equation \eqref{eq:crossconj} follows by substituting the conjugacy formula \eqref{eq:conjugacy} for $T_r$ and $T_s$.
+\end{proof}
+
+\begin{theorem}[Directed functional-graph isomorphism]
+Let $G_0$ be the directed graph with vertex set $\mathcal D$ and one edge $n\to T_0(n)$ from each vertex. Let $G_r$ be the analogous graph for $T_r$ on $\mathcal D_r$. Then $\Phi_r$ is a directed graph isomorphism $G_0\cong G_r$.
+\end{theorem}
+\begin{proof}
+$\Phi_r$ is bijective on vertices, and \eqref{eq:onestep} says exactly that an edge $n\to T_0(n)$ is carried to the edge $7^rn\to T_r(7^rn)$.
+\end{proof}
+
+This graph statement packages many later consequences: cycles, in-degree within the domain, predecessor trees, basin structure, and transient lengths are not merely similar but exactly isomorphic after normalization.
+
+\section{Fixed points, cycles, and the scaled Diophantine identity}
+\subsection{The unique fixed point}
+The base system has an elementary uniqueness property that is useful to record explicitly.
+
+\begin{proposition}[Unique base fixed point]
+The only fixed point of $T_0$ in $\mathcal D$ is $1$.
+\end{proposition}
+\begin{proof}
+If $T_0(n)=n$, then
+\[
+(2^a3^b-7)n=\eps(n),\qquad a,b\ge1.
+\]
+Since $n\ge1$ and the right side is $\pm1$, necessarily $n=1$ and $2^a3^b-7=\eps(1)=-1$. Hence $2^a3^b=6$, which gives $a=b=1$. Conversely $T_0(1)=1$.
+\end{proof}
+
+\begin{corollary}[Unique scaled fixed point]
+For each $r\ge0$, the only fixed point of $T_r$ in $\mathcal D_r$ is
+\begin{equation}
+7^r.
+\label{eq:fixedscaled}
+\end{equation}
+\end{corollary}
+\begin{proof}
+Conjugacy gives a bijection between fixed points. Directly,
+\[
+T_r(7^r)=7^rT_0(1)=7^r.
+\]
+\end{proof}
+
+\subsection{Cycle preservation}
+\begin{theorem}[Cycle bijection and preservation of minimal period]
+A tuple $(n_0,\ldots,n_{L-1})$ is a periodic orbit of $T_0$ of minimal period $L$ if and only if
+\begin{equation}
+(7^rn_0,\ldots,7^rn_{L-1})
+\label{eq:scaledcycle}
+\end{equation}
+is a periodic orbit of $T_r$ of minimal period $L$.
+\end{theorem}
+\begin{proof}
+Apply \eqref{eq:alliterates} with $j=L$. A shorter period on one side would, after applying the inverse bijection, give the same shorter period on the other side.
+\end{proof}
+
+\begin{corollary}
+There exists a nontrivial cycle in $\mathcal D_r$ if and only if there exists a nontrivial cycle in $\mathcal D$. More strongly, cycles correspond one-to-one with the same period multiset.
+\end{corollary}
+
+\subsection{Exact cycle identity at scale $r$}
+Suppose $x_0,\ldots,x_{L-1}$ is a period-$L$ orbit of $T_r$. Write
+\begin{equation}
+q_ix_{i+1}=7x_i+7^r\eps_i,
+\qquad
+q_i=2^{a_i}3^{b_i},\quad a_i,b_i\ge1,
+\label{eq:scaledstep}
+\end{equation}
+where $\eps_i\in\{-1,+1\}$ is forced by $x_i\pmod6$. Define
+\[
+Q_j=\prod_{i=0}^{j-1}q_i,\qquad Q_0=1,\qquad Q=Q_L.
+\]
+
+\begin{theorem}[Scaled cycle identity]
+Every period-$L$ orbit of $T_r$ satisfies
+\begin{equation}
+(Q-7^L)x_0
+=7^r\sum_{j=0}^{L-1}7^{L-1-j}\eps_jQ_j.
+\label{eq:scaledcycleidentity}
+\end{equation}
+Whenever $Q\ne7^L$,
+\begin{equation}
+x_0=7^r\frac{\sum_{j=0}^{L-1}7^{L-1-j}\eps_jQ_j}{Q-7^L}.
+\label{eq:scaledcyclex0}
+\end{equation}
+\end{theorem}
+\begin{proof}
+Successive substitution in \eqref{eq:scaledstep} gives
+\[
+Qx_L=7^Lx_0+7^r\sum_{j=0}^{L-1}7^{L-1-j}\eps_jQ_j.
+\]
+Since $x_L=x_0$, rearrange.
+\end{proof}
+
+Writing $x_0=7^rn_0$ and dividing \eqref{eq:scaledcycleidentity} by $7^r$ gives exactly the base identity
+\begin{equation}
+(Q-7^L)n_0=\sum_{j=0}^{L-1}7^{L-1-j}\eps_jQ_j.
+\label{eq:basecycleidentityagain}
+\end{equation}
+Thus the scaled Diophantine condition contains no new cycle arithmetic after normalization. It is literally the base condition in scaled coordinates.
+
+\section{Exact inverse branches and predecessor-tree transport}
+Let $y\in\mathcal D_r$ and suppose $T_r(x)=y$. For $a,b\ge1$ put $q=2^a3^b$. Then
+\begin{equation}
+qy=7x+7^r\eps,
+\qquad
+x=\frac{qy-7^r\eps}{7}.
+\label{eq:scaledinversegeneral}
+\end{equation}
+Thus the two formal inverse branches are
+\begin{align}
+x&=\frac{2^a3^b y+7^r}{7},&&x\equiv1\pmod6,\ \eps=-1,
+\label{eq:invminus}\\
+x&=\frac{2^a3^b y-7^r}{7},&&x\equiv5\pmod6,\ \eps=+1.
+\label{eq:invplus}
+\end{align}
+There is a subtle point for $r\ge1$: the numerators in \eqref{eq:invminus}--\eqref{eq:invplus} are automatically divisible by $7$ when $y$ is divisible by $7^r$. Ordinary integrality alone therefore does not characterize predecessors in the scaled domain. Membership in $\mathcal D_r$ supplies the missing condition.
+
+Write $y=7^rz$ with $z\in\mathcal D$. Then
+\begin{equation}
+x=7^{r-1}(qz-\eps).
+\label{eq:invnorm}
+\end{equation}
+For this $x$ to belong to $\mathcal D_r$, one must have $7\mid(qz-\eps)$.
+
+\begin{theorem}[Exact scaled inverse-domain conditions]
+Let $y=7^rz\in\mathcal D_r$ and $q=2^a3^b$ with $a,b\ge1$. A candidate from \eqref{eq:scaledinversegeneral} belongs to $\mathcal D_r$ if and only if
+\begin{equation}
+qz\equiv\eps\pmod7.
+\label{eq:scaledinvcong}
+\end{equation}
+Equivalently,
+\begin{align}
+2^a3^bz&\equiv-1\pmod7 &&\text{for the }x\equiv1\pmod6\text{ branch},
+\label{eq:scaledinvcongminus}\\
+2^a3^bz&\equiv+1\pmod7 &&\text{for the }x\equiv5\pmod6\text{ branch}.
+\label{eq:scaledinvcongplus}
+\end{align}
+When these conditions hold, the normalized predecessor $x/7^r$ is exactly the corresponding base predecessor of $z$.
+\end{theorem}
+\begin{proof}
+Equation \eqref{eq:invnorm} belongs to $7^r\mathbb Z$ if and only if $qz-\eps$ is divisible by $7$. Dividing by $7^r$ then yields
+\[
+\frac{x}{7^r}=\frac{qz-\eps}{7},
+\]
+which is the base inverse formula. The residue modulo $6$ follows exactly as in the base inverse construction because $qz$ is divisible by $6$.
+\end{proof}
+
+\begin{corollary}[Predecessor-tree isomorphism]
+For every $y=7^rz\in\mathcal D_r$, multiplication by $7^r$ is a bijection between the full set of base predecessors of $z$ and the full set of scaled-domain predecessors of $y$. Iterating this statement gives an isomorphism of complete predecessor trees.
+\end{corollary}
+
+Because $2$ and $3$ have orders $3$ and $6$ modulo $7$, respectively, the admissible exponent pairs $(a,b)$ have the same periodic arithmetic structure modulo these orders at every scale. The scale parameter changes the absolute values of vertices but not the inverse-branch exponent structure.
+
+\section{Orbit statistics and normalized geometry}
+Fix $n\in\mathcal D$ and write
+\[
+n_j=T_0^j(n),\qquad x_j=T_r^j(7^rn)=7^rn_j.
+\]
+Every coordinatewise order relation is preserved because multiplication by $7^r$ is strictly increasing.
+
+\subsection{First descent and first lower value}
+Define the base first-descent stopping time
+\begin{equation}
+\sigma_0(n)=\min\{j\ge1:T_0^j(n)<n\},
+\label{eq:sigma0}
+\end{equation}
+when it exists, and define $\sigma_r$ analogously on $\mathcal D_r$.
+
+\begin{proposition}[First-descent invariance]
+For every $n\in\mathcal D$,
+\begin{equation}
+\sigma_r(7^rn)=\sigma_0(n)
+\label{eq:sigmainv}
+\end{equation}
+whenever either side is defined. If the first lower base value is $m=T_0^{\sigma_0(n)}(n)$, then the first lower scaled value is $7^rm$.
+\end{proposition}
+\begin{proof}
+For every $j$, $x_j<x_0$ if and only if $7^rn_j<7^rn$, which is equivalent to $n_j<n$.
+\end{proof}
+
+\subsection{Total time to the fixed point}
+Define
+\[
+\tau_0(n)=\min\{j\ge0:T_0^j(n)=1\}
+\]
+when the orbit reaches $1$, and
+\[
+\tau_r(x)=\min\{j\ge0:T_r^j(x)=7^r\}
+\]
+when the scaled orbit reaches its fixed point.
+
+\begin{proposition}[Total-time invariance]
+\begin{equation}
+\tau_r(7^rn)=\tau_0(n).
+\label{eq:tauinv}
+\end{equation}
+\end{proposition}
+\begin{proof}
+By \eqref{eq:alliterates}, $T_r^j(7^rn)=7^r$ if and only if $T_0^j(n)=1$.
+\end{proof}
+
+\subsection{Peaks and normalized peaks}
+For any finite trajectory segment $0\le j\le J$,
+\begin{equation}
+\max_{0\le j\le J}x_j=7^r\max_{0\le j\le J}n_j,
+\label{eq:peakscale}
+\end{equation}
+and the first index attaining the maximum is unchanged. Moreover,
+\begin{equation}
+\frac{x_j}{x_0}=\frac{n_j}{n_0}
+\label{eq:normalizedratio}
+\end{equation}
+for every $j$.
+
+\begin{proposition}[Peak transport]
+Absolute reduced peaks scale by $7^r$, peak times are invariant, and every normalized peak ratio
+\[
+\frac{\max_j x_j}{x_0}
+\]
+is identical to the corresponding base ratio.
+\end{proposition}
+
+\subsection{Valuation-sequence invariance}
+At each matched step,
+\begin{equation}
+(a_r(x_j),b_r(x_j))=(a_0(n_j),b_0(n_j)).
+\label{eq:valsequence}
+\end{equation}
+Therefore the complete symbolic valuation word along a trajectory is invariant under scaling, as are all finite sums such as $\sum a_j$, $\sum b_j$, and $\sum(a_j\log2+b_j\log3)$ over matched trajectory segments.
+
+\subsection{A general homogeneous-statistic transfer principle}
+The preceding examples are instances of a general statement.
+
+\begin{theorem}[Homogeneous orbit-statistic transport]
+Let $F$ be a function of a finite trajectory segment satisfying
+\[
+F(cz_0,\ldots,cz_J)=c^dF(z_0,\ldots,z_J)
+\]
+for every $c>0$ and some degree $d$. Then corresponding base and scaled segments satisfy
+\begin{equation}
+F(x_0,\ldots,x_J)=7^{rd}F(n_0,\ldots,n_J).
+\label{eq:homogstat}
+\end{equation}
+In particular, degree-$0$ statistics are invariant and degree-$1$ magnitude statistics scale by $7^r$.
+\end{theorem}
+\begin{proof}
+Substitute $x_j=7^rn_j$ for every coordinate.
+\end{proof}
+
+This theorem covers maxima, minima, ranges, arithmetic means of states, and many normalized ratios. Discrete-time indices such as first descent and peak position are not homogeneous numerical functions of the states, but their invariance follows from preservation of all order relations.
+
+\section{Valuation densities and drift are unchanged}
+The base residue model gives the exact fixed-resolution natural-density laws
+\begin{equation}
+\Pr(a=k)=2^{-k},\qquad
+\Pr(b=\ell)=\frac{2}{3^\ell},\qquad k,\ell\ge1,
+\label{eq:basedists}
+\end{equation}
+and, under the Chinese remainder factorization of the fixed congruence conditions,
+\begin{equation}
+\Pr(a=k,b=\ell)=2^{-k}\frac{2}{3^\ell}.
+\label{eq:jointdist}
+\end{equation}
+Consequently,
+\begin{equation}
+\mathbb E[a]=2,\qquad \mathbb E[b]=\frac32.
+\label{eq:means}
+\end{equation}
+
+For $r\ge1$, the set $\mathcal D_r$ is a sparse subset of the positive integers, so an unqualified natural density in all of $\N$ is not the right comparison. The correct notion is relative density in the scaled lattice, or equivalently density after normalization by $7^r$.
+
+For a subset $A_r\subseteq\mathcal D_r$, define its scaled relative density, when the limit exists, by
+\begin{equation}
+\delta_r(A_r)=\lim_{X\to\infty}
+\frac{\#\{x\in A_r:x<7^rX\}}
+{\#\{x\in\mathcal D_r:x<7^rX\}}.
+\label{eq:reldensity}
+\end{equation}
+Under $x=7^rn$, numerator and denominator reduce exactly to counts in $\mathcal D$ below $X$.
+
+\begin{theorem}[Relative-density invariance]
+For every fixed finite valuation condition $C$ on $(a,b)$, the relative density of states in $\mathcal D_r$ satisfying $C$ equals the base density of normalized states in $\mathcal D$ satisfying $C$. In particular, \eqref{eq:basedists}--\eqref{eq:jointdist} hold unchanged in scaled relative density.
+\end{theorem}
+\begin{proof}
+The bijection $x=7^rn$ preserves $(a,b)$ exactly by \eqref{eq:valinv}, and maps the cutoff $n<X$ to $x<7^rX$.
+\end{proof}
+
+\subsection{Exact normalized one-step ratios}
+For $x=7^rn$,
+\begin{align}
+\frac{T_r(x)}{x}
+&=\frac{7+\eps_r(x)7^r/x}{2^{a_r(x)}3^{b_r(x)}}
+\label{eq:scaledratio1}\\
+&=\frac{7+\eps(n)/n}{2^{a_0(n)}3^{b_0(n)}}
+=\frac{T_0(n)}{n}.
+\label{eq:scaledratio2}
+\end{align}
+Thus normalized growth or contraction is exactly identical step by step.
+
+\subsection{Heuristic logarithmic drift}
+For normalized state $n$ large, the correction $\eps(n)/n$ is small. The idealized increment is
+\[
+\Delta\log\approx\log7-a\log2-b\log3.
+\]
+Using \eqref{eq:means},
+\begin{equation}
+\mathbb E[\Delta\log]
+\approx\log7-2\log2-\frac32\log3
+\approx-1.0883026451.
+\label{eq:drift}
+\end{equation}
+The geometric typical multiplier is
+\begin{equation}
+\exp(\mathbb E[\Delta\log])
+=\frac{7}{4\,3^{3/2}}
+\approx0.3367876570.
+\label{eq:geomult}
+\end{equation}
+Also,
+\[
+\mathbb E[2^{-a}]=\frac13,
+\qquad
+\mathbb E[3^{-b}]=\frac14,
+\]
+so the ordinary expected approximate multiplier is
+\begin{equation}
+\mathbb E\!\left[\frac{7}{2^a3^b}\right]=\frac7{12}<1.
+\label{eq:ordinarymult}
+\end{equation}
+These quantities are the same at every scale because the valuation pair and normalized one-step ratio are the same.
+
+\begin{remark}[The correct asymptotic variable]
+When $r$ varies, the statement ``$x$ is large'' is not sufficient to neglect the additive correction. Indeed,
+\begin{equation}
+\frac{7^r\eps}{7x}=\frac{\eps}{7(x/7^r)}=\frac{\eps}{7n}.
+\label{eq:asympcorrection}
+\end{equation}
+Thus the asymptotic regime is $n=x/7^r\to\infty$, not merely $x\to\infty$. A state may be enormous in absolute size solely because $r$ is large while its normalized dynamics remain those of a small base state.
+\end{remark}
+
+The only asymptotically expanding valuation pair remains $(a,b)=(1,1)$, with approximate multiplier $7/6$ and residue-model weight $1/3$. Every other pair has $2^a3^b\ge12$ and is asymptotically contracting in normalized coordinates.
+
+\section{Critical balance for a hypothetical scaled cycle}
+For a scaled trajectory $x_0,\ldots,x_L$ satisfying \eqref{eq:scaledstep},
+\begin{align}
+\log\frac{x_L}{x_0}
+=\sum_{i=0}^{L-1}\Bigg[
+&\log7-a_i\log2-b_i\log3\\
+&+\log\!\left(1+\frac{\eps_i7^r}{7x_i}\right)
+\Bigg].
+\label{eq:scaledtelescoping}
+\end{align}
+Around a cycle, the left side is zero. Hence every period-$L$ scaled cycle obeys
+\begin{equation}
+\frac1L\sum_{i=0}^{L-1}(a_i\log2+b_i\log3)
+=\log7+\frac1L\sum_{i=0}^{L-1}
+\log\!\left(1+\frac{\eps_i7^r}{7x_i}\right).
+\label{eq:scaledcritical}
+\end{equation}
+Writing $x_i=7^rn_i$ converts the correction term exactly to
+\[
+\log\!\left(1+\frac{\eps_i}{7n_i}\right),
+\]
+so \eqref{eq:scaledcritical} is identical to the base critical-balance equation after normalization.
+
+For a hypothetical cycle whose normalized states $n_i$ are all large, the rightmost correction is small, forcing the average removed logarithmic prime-power weight to be close to $\log7\approx1.94591$. The residue-model mean is
+\begin{equation}
+2\log2+\frac32\log3\approx3.03421,
+\label{eq:valmeanlog}
+\end{equation}
+leaving the same gap of approximately $1.08830$ per reduced step at every scale. Scaling therefore does not make a cycle statistically easier or harder in normalized coordinates; it simply copies the same arithmetic problem to a different absolute magnitude.
+
+\section{Transfer of the exhaustive verification through $10^{11}$}
+The base computation in \cite{Base7Paper} exhaustively scanned all
+\[
+33,333,333,333
+\]
+admissible starts $n<10^{11}$ and reported that every one reached $1$, with no detected nontrivial cycle and no unresolved trajectory.
+
+For fixed $r$, define the corresponding scaled finite set
+\begin{equation}
+\mathcal S_r(10^{11})
+=\{7^rn:n<10^{11},\ \gcd(n,6)=1\}\subset\mathcal D_r.
+\label{eq:scaledfiniteset}
+\end{equation}
+It contains exactly the same number of elements and lies below the absolute cutoff $7^r10^{11}$ within the scaled lattice.
+
+\begin{theorem}[Finite verification transfer]
+For every integer $r\ge0$, every state in $\mathcal S_r(10^{11})$ reaches the fixed point $7^r$. There are no nontrivial cycles and no unresolved trajectories among the corresponding scaled trajectories inherited from the base verification. Every trajectory uses exactly the same number of reduced steps as its normalized base trajectory.
+\end{theorem}
+\begin{proof}
+Let $x=7^rn\in\mathcal S_r(10^{11})$. The inherited base computation gives some $j$ with $T_0^j(n)=1$. Equation \eqref{eq:alliterates} then yields
+\[
+T_r^j(x)=7^rT_0^j(n)=7^r.
+\]
+If a scaled state in this set lay on a nontrivial cycle, dividing the entire cycle by $7^r$ would give a nontrivial base cycle containing a tested start, contradicting the base record.
+\end{proof}
+
+\begin{remark}
+This theorem does not claim that the original $33,333,333,333$-start computation was independently rerun for each $r$. It transfers the already completed finite trajectories exactly through a proved conjugacy. The logical strength is algebraic, not computational duplication.
+\end{remark}
+
+\subsection{Transferred extremal records}
+Let
+\[
+n_\sigma=7,449,779,881,\qquad m_\sigma=237,507,511,
+\]
+be the inherited base first-descent record with $\sigma=35$. Let
+\[
+n_\tau=62,073,713,149
+\]
+be the inherited total-step record with $77$ steps. Let
+\[
+n_P=97,860,819,035,\qquad P=1,830,618,509,383
+\]
+be the inherited peak record, with the peak first reached at step $19$.
+
+\begin{corollary}[General record transport]
+On $\mathcal S_r(10^{11})$:
+\begin{align*}
+\text{maximum first-descent time}&=35,\\
+\text{record start}&=7^r n_\sigma,\\
+\text{first lower value}&=7^r m_\sigma,\\
+\text{maximum total steps}&=77,\\
+\text{record total-step start}&=7^r n_\tau,\\
+\text{largest reduced peak}&=7^rP,\\
+\text{peak start}&=7^rn_P,\\
+\text{step of peak}&=19.
+\end{align*}
+\end{corollary}
+
+Table \ref{tab:r123records} gives exact values for the first three nontrivial scales.
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{@{}r r r r r@{}}
+\toprule
+$r$ & $7^r$ & $7^rn_\sigma$ & $7^rm_\sigma$ & $7^rn_\tau$ \\
+\midrule
+1 & 7 & 52,148,459,167 & 1,662,552,577 & 434,515,992,043 \\
+2 & 49 & 365,039,214,169 & 11,637,868,039 & 3,041,611,944,301 \\
+3 & 343 & 2,555,274,499,183 & 81,465,076,273 & 21,291,283,610,107 \\
+\bottomrule
+\end{tabular}
+\caption{Transferred first-descent and total-step record starts for $r=1,2,3$. The stopping times remain $35$ and $77$.}
+\label{tab:r123records}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{@{}r r r r@{}}
+\toprule
+$r$ & $7^rn_P$ & $7^rP$ & Peak step \\
+\midrule
+1 & 685,025,733,245 & 12,814,329,565,681 & 19 \\
+2 & 4,795,180,132,715 & 89,700,306,959,767 & 19 \\
+3 & 33,566,260,929,005 & 627,902,148,718,369 & 19 \\
+\bottomrule
+\end{tabular}
+\caption{Transferred peak records for $r=1,2,3$.}
+\label{tab:r123peaks}
+\end{table}
+
+\subsection{Transferred top-ten first-descent records}
+The ten base records reported in \cite{Base7Paper} transfer term by term. The scaled record list is therefore the following symbolic table; $\sigma$ is unchanged while both magnitude columns acquire the factor $7^r$.
+\begin{longtable}{@{}r r r r@{}}
+\caption{Top ten inherited first-descent records at scale $r$.}\label{tab:top10sigma}\\
+\toprule
+Rank & Scaled start & $\sigma$ & Scaled first lower value \\
+\midrule
+\endfirsthead
+\toprule
+Rank & Scaled start & $\sigma$ & Scaled first lower value \\
+\midrule
+\endhead
+1 & $7^r(7,449,779,881)$ & 35 & $7^r(237,507,511)$ \\
+2 & $7^r(8,691,409,861)$ & 34 & $7^r(237,507,511)$ \\
+3 & $7^r(10,139,978,171)$ & 33 & $7^r(237,507,511)$ \\
+4 & $7^r(6,230,614,679)$ & 31 & $7^r(3,859,936,355)$ \\
+5 & $7^r(9,513,522,709)$ & 31 & $7^r(3,929,156,705)$ \\
+6 & $7^r(36,542,777,617)$ & 30 & $7^r(2,156,063,293)$ \\
+7 & $7^r(46,837,960,621)$ & 30 & $7^r(11,053,960,777)$ \\
+8 & $7^r(66,177,594,361)$ & 30 & $7^r(35,140,944,995)$ \\
+9 & $7^r(4,740,497,065)$ & 29 & $7^r(2,157,642,821)$ \\
+10 & $7^r(13,127,221,081)$ & 29 & $7^r(7,966,493,509)$ \\
+\bottomrule
+\end{longtable}
+
+\subsection{Transferred top-ten total-step records}
+\begin{longtable}{@{}r r r@{}}
+\caption{Top ten inherited total-step records at scale $r$.}\label{tab:top10steps}\\
+\toprule
+Rank & Scaled start & Total reduced steps to $7^r$ \\
+\midrule
+\endfirsthead
+\toprule
+Rank & Scaled start & Total reduced steps to $7^r$ \\
+\midrule
+\endhead
+1 & $7^r(62,073,713,149)$ & 77 \\
+2 & $7^r(72,419,332,007)$ & 76 \\
+3 & $7^r(81,452,110,031)$ & 76 \\
+4 & $7^r(96,238,245,817)$ & 76 \\
+5 & $7^r(56,326,147,045)$ & 75 \\
+6 & $7^r(56,326,147,075)$ & 75 \\
+7 & $7^r(56,326,147,117)$ & 75 \\
+8 & $7^r(71,390,734,667)$ & 75 \\
+9 & $7^r(84,489,220,667)$ & 75 \\
+10 & $7^r(84,489,220,675)$ & 75 \\
+\bottomrule
+\end{longtable}
+
+\subsection{Transferred top-ten peak records}
+\begin{longtable}{@{}r r r r@{}}
+\caption{Top ten inherited reduced-peak records at scale $r$.}\label{tab:top10peaks}\\
+\toprule
+Rank & Scaled start & Scaled peak & Step \\
+\midrule
+\endfirsthead
+\toprule
+Rank & Scaled start & Scaled peak & Step \\
+\midrule
+\endhead
+1 & $7^r(97,860,819,035)$ & $7^r(1,830,618,509,383)$ & 19 \\
+2 & $7^r(71,545,403,027)$ & $7^r(1,821,647,393,467)$ & 21 \\
+3 & $7^r(83,469,636,865)$ & $7^r(1,821,647,393,467)$ & 20 \\
+4 & $7^r(97,381,243,009)$ & $7^r(1,821,647,393,467)$ & 19 \\
+5 & $7^r(85,951,943,053)$ & $7^r(1,737,595,384,783)$ & 24 \\
+6 & $7^r(87,259,995,793)$ & $7^r(1,632,315,823,655)$ & 19 \\
+7 & $7^r(99,142,968,755)$ & $7^r(1,589,659,583,891)$ & 18 \\
+8 & $7^r(98,873,504,063)$ & $7^r(1,585,338,983,705)$ & 18 \\
+9 & $7^r(98,372,066,051)$ & $7^r(1,577,298,920,429)$ & 18 \\
+10 & $7^r(97,915,095,145)$ & $7^r(1,569,971,843,285)$ & 18 \\
+\bottomrule
+\end{longtable}
+
+\section{Explicit scaled trajectories}
+The identity \eqref{eq:alliterates} gives infinitely many exact numerical examples from any single base trajectory. Consider
+\begin{equation}
+71\to83\to97\to113\to11\to13\to5\to1.
+\label{eq:baseexample}
+\end{equation}
+The corresponding valuation/sign data are
+\[
+(1,1,+),(1,1,+),(1,1,-),(3,2,+),(1,1,+),(1,2,-),(2,2,+),
+\]
+where $(a,b,\operatorname{sign}\eps)$ is recorded at each nonterminal state.
+
+For $r=1$, multiplication by $7$ gives
+\begin{equation}
+497\to581\to679\to791\to77\to91\to35\to7.
+\label{eq:r1example}
+\end{equation}
+For instance,
+\[
+N_1(497)=7\cdot497+7=3486=2\cdot3\cdot581,
+\]
+so $T_1(497)=581$. At $x=791\equiv5\pmod6$,
+\[
+N_1(791)=7\cdot791+7=5544=2^3\cdot3^2\cdot77,
+\]
+matching the base step $113\to11$ multiplied by $7$.
+
+For $r=2$,
+\begin{equation}
+3479\to4067\to4753\to5537\to539\to637\to245\to49.
+\label{eq:r2example}
+\end{equation}
+For $r=3$,
+\begin{equation}
+24353\to28469\to33271\to38759\to3773\to4459\to1715\to343.
+\label{eq:r3example}
+\end{equation}
+The time length, valuation sequence, sign sequence, and every normalized state ratio are identical across \eqref{eq:baseexample}--\eqref{eq:r3example}.
+
+A very short example is $7\to1$ in the base system, because $7\cdot7-1=48=2^4\cdot3$. At scale $r$ this becomes
+\[
+7^{r+1}\to7^r,
+\]
+and the removed valuation pair remains $(4,1)$ for every $r$.
+
+\section{Why the scaled domain is essential}
+It is tempting to write the expression
+\[
+\Rtwothree\!\left(\frac{7k\pm7^r}{6}\right)
+\]
+for an arbitrary admissible integer $k$ and then expect it to equal $7^rT_0(k)$. That is false in general. The conjugacy requires that the input itself be scaled: $k=7^rn$.
+
+\begin{example}[A counterexample outside $\mathcal D_1$]
+Take $r=1$ and $k=11$. Since $11\equiv5\pmod6$, the plus branch gives
+\[
+\Rtwothree\!\left(\frac{7\cdot11+7}{6}\right)
+=\Rtwothree(14)=7.
+\]
+But the base map gives
+\[
+T_0(11)=13,
+\]
+so
+\[
+7T_0(11)=91\ne7.
+\]
+There is no contradiction: $11\notin\mathcal D_1=7\mathcal D$.
+\end{example}
+
+\begin{proposition}[Precise scope of the scaling theorem]
+The identity
+\[
+T_r(x)=7^rT_0(x/7^r)
+\]
+is defined and proved for $x\in\mathcal D_r$. Without the condition $7^r\mid x$ and $x/7^r\in\mathcal D$, the factorization \eqref{eq:affinefactor} needed for conjugacy is unavailable and the identity need not hold.
+\end{proposition}
+
+This qualification is mathematically important. The present family is a family of scaled dynamical systems on scaled domains, not a claim that every arbitrary integer under an affine formula with correction $7^r$ follows a base trajectory multiplied by $7^r$.
+
+\section{Global convergence and counterexample transport}
+The finite computation does not prove that every base orbit converges to $1$. It is therefore appropriate to state the global claim as a conjecture.
+
+\begin{conjecture}[Base global convergence]
+Every $n\in\mathcal D$ satisfies $T_0^j(n)=1$ for some $j\ge0$.
+\end{conjecture}
+
+\begin{conjecture}[Scaled global convergence at level $r$]
+For a fixed $r\ge0$, every $x\in\mathcal D_r$ satisfies $T_r^j(x)=7^r$ for some $j\ge0$.
+\end{conjecture}
+
+\begin{theorem}[Equivalence of all global convergence conjectures]
+The base global convergence conjecture holds if and only if the scaled global convergence conjecture holds for any one fixed $r\ge0$. Consequently, it holds for all $r\ge0$ if and only if it holds for $r=0$.
+\end{theorem}
+\begin{proof}
+If the base conjecture holds and $x=7^rn$, choose $j$ with $T_0^j(n)=1$; then \eqref{eq:alliterates} gives $T_r^j(x)=7^r$. Conversely, if every state in $\mathcal D_r$ reaches $7^r$, apply this to $7^rn$ and divide the resulting equality by $7^r$ to obtain a base iterate equal to $1$.
+\end{proof}
+
+\begin{corollary}[Transport of counterexamples]
+Any hypothetical nonconvergent base orbit produces a nonconvergent counterpart at every scale $r$ by multiplication by $7^r$. Any hypothetical nontrivial base cycle produces a cycle of the same minimal period at every scale. Conversely, any scaled counterexample normalizes to a base counterexample.
+\end{corollary}
+
+Thus the parameter $r$ creates no additional global dynamical difficulty, but exact conjugacy also cannot resolve a difficulty already present at $r=0$.
+
+\section{Counting at corresponding and absolute cutoffs}
+For $X>0$, let
+\[
+A_0(X)=\#\{n<X:n\in\mathcal D\},
+\qquad
+A_r(Y)=\#\{x<Y:x\in\mathcal D_r\}.
+\]
+By the bijection $x=7^rn$,
+\begin{equation}
+A_r(7^rX)=A_0(X).
+\label{eq:countcorrespond}
+\end{equation}
+This is the counting identity relevant to transferred finite verification.
+
+At the same absolute cutoff $Y$ rather than corresponding cutoffs, one has
+\begin{equation}
+A_r(Y)=A_0(Y/7^r),
+\label{eq:absolute_count}
+\end{equation}
+with the obvious interpretation of a nonintegral upper bound. Therefore it would be incorrect to compare counts at a fixed absolute cutoff across different $r$ and call them the same data set. Exact preservation applies to corresponding normalized sets.
+
+\section{Computational consistency checks and reproducibility package}
+The proof of conjugacy is algebraic and does not depend on computation. Nevertheless, a compact verifier accompanies this paper as a consistency and reproducibility aid. It checks, over a user-selectable finite range of normalized states and scale levels, the identities
+\begin{align}
+N_r(7^rn)&=7^rN_0(n),\\
+a_r(7^rn)&=a_0(n),\\
+b_r(7^rn)&=b_0(n),\\
+T_r(7^rn)&=7^rT_0(n),\\
+T_r^j(7^rn)&=7^rT_0^j(n).
+\end{align}
+It also verifies the explicit example trajectories and the arithmetic in the transferred record tables.
+
+The archive contains:
+\begin{enumerate}[label=(\arabic*)]
+\item the complete \LaTeX{} source of this paper;
+\item the compiled PDF;
+\item a Python verifier for the base and scaled maps;
+\item a machine-readable JSON statement of the definitions and main identities;
+\item CSV files containing the inherited base top-ten records and their symbolic scaled interpretation;
+\item a README explaining provenance and logical status;
+\item SHA-256 checksums for all archived files.
+\end{enumerate}
+The inherited $10^{11}$ computation is not rerun by the lightweight verifier. Its role is to check the scaling identities; the exhaustive finite record belongs to the base study \cite{Base7Paper}.
+
+\section{What is proved, what is inherited, and what remains heuristic}
+The conclusions separate cleanly into three categories.
+
+\subsection*{Exact algebra for every $r\ge0$}
+The following statements are proved without finite-search assumptions:
+\begin{enumerate}[label=(\roman*)]
+\item $\mathcal D_r=7^r\mathcal D$ is in bijection with the base domain;
+\item multiplication by $7^r$ preserves residues modulo $6$;
+\item $N_r(7^rn)=7^rN_0(n)$;
+\item the complete $2$- and $3$-adic valuations are preserved step by step;
+\item $T_r$ and $T_0$ are exactly conjugate;
+\item all iterates correspond under multiplication by $7^r$;
+\item any two scale levels are mutually conjugate;
+\item the complete directed functional graphs are isomorphic;
+\item the unique fixed point $1$ becomes the unique fixed point $7^r$;
+\item cycles and minimal periods correspond bijectively;
+\item the exact cycle Diophantine identity is the scaled base identity;
+\item inverse branches and predecessor trees correspond exactly after the scaled-domain membership condition is imposed;
+\item first-descent times, total times, peak positions, valuation words, and all order relations are invariant;
+\item absolute state magnitudes and peaks scale by $7^r$, while normalized ratios are invariant;
+\item relative valuation-density laws and normalized drift formulas are unchanged;
+\item global convergence, existence of nontrivial cycles, and existence of nonconvergent orbits are equivalent questions at every scale.
+\end{enumerate}
+
+\subsection*{Inherited finite theorem}
+The exhaustive base scan through $10^{11}$ is a completed finite computation from \cite{Base7Paper}. Conjugacy transfers those exact trajectories to the corresponding set $\mathcal S_r(10^{11})$ for every $r$. This is a theorem combining the base finite record with the exact conjugacy; it is not a fresh exhaustive scan at each scale.
+
+\subsection*{Probabilistic interpretation}
+The residue-density laws are exact at fixed finite valuation resolution, but treating successive orbit states as independent or sufficiently mixing is heuristic. The negative drift \eqref{eq:drift}, geometric multiplier \eqref{eq:geomult}, and ordinary multiplier \eqref{eq:ordinarymult} explain the observed contraction statistically. They do not prove that every orbit converges or that no unobserved cycle exists beyond the verified normalized range.
+
+\section{Conclusion}
+The family defined by the reduced affine forms $(7k\pm7^r)/6$ becomes mathematically transparent once the correct scaled domain $\mathcal D_r=7^r\mathcal D$ is used. The factorization
+\[
+7(7^rn)+7^r\eps(n)=7^r(7n+\eps(n))
+\]
+combined with $\gcd(7^r,6)=1$ gives exact preservation of the branch and the complete $(2,3)$-adic reduction. The resulting conjugacy
+\[
+T_r(7^rn)=7^rT_0(n)
+\]
+propagates to every iterate and to the entire functional graph.
+
+Accordingly, the scaled family contains no new dynamical structure relative to the base system after normalization. The unique fixed point is $7^r$; any cycle has a base cycle of the same minimal period; predecessor trees are scaled copies; first-descent and total stopping times are unchanged; absolute peaks acquire the factor $7^r$; normalized peak ratios, valuation sequences, and logarithmic increments are unchanged. The exact cycle equation and critical-balance condition reduce to the base formulas after division by $7^r$.
+
+The completed base verification of all $33,333,333,333$ admissible starts below $10^{11}$ therefore transfers simultaneously to every scale: every corresponding state $7^rn$ reaches $7^r$, with the same step statistics and with all magnitude records multiplied by $7^r$. No new massive computation is required to establish this corresponding finite theorem.
+
+The domain restriction is essential. Applying the expression $(7k\pm7^r)/6$ to arbitrary $k$ outside $7^r\mathcal D$ does not in general produce a scaled base orbit. The family studied here is precisely the conjugate family on the scaled domains.
+
+Finally, exact scaling preserves unresolved global status as faithfully as it preserves proved finite structure. Universal convergence at one scale is equivalent to universal convergence at every scale and to the base conjecture. Any future proof or counterexample for the base system would therefore propagate immediately through the entire $7^r$ family.
+
+\appendix
+\section{Detailed derivation of the valuation distributions}
+For completeness, we recall why the base marginal laws used in Section 10 have the stated form and why scaling introduces no change.
+
+Because the sign rule guarantees $2\mid N_0(n)$, the condition $\nu_2(N_0(n))\ge k$ for $k\ge1$ imposes one additional independent binary congruence for each extra factor after the first. Among admissible residue classes at sufficiently high modulus, the conditional probability of another factor of $2$ is $1/2$. Thus
+\[
+\Pr(a\ge k)=2^{1-k},
+\]
+and therefore
+\[
+\Pr(a=k)=\Pr(a\ge k)-\Pr(a\ge k+1)=2^{-k}.
+\]
+Similarly, $3\mid N_0(n)$ is forced, and each additional factor of $3$ occurs with conditional density $1/3$. Hence
+\[
+\Pr(b\ge\ell)=3^{1-\ell},
+\]
+so
+\[
+\Pr(b=\ell)=3^{1-\ell}-3^{-\ell}=\frac{2}{3^\ell}.
+\]
+At fixed finite resolution, the relevant powers of $2$ and $3$ are coprime; the Chinese remainder theorem factors the simultaneous congruence counts, giving
+\[
+\Pr(a=k,b=\ell)=2^{-k}\frac{2}{3^\ell}.
+\]
+Then
+\[
+\mathbb E[a]=\sum_{k\ge1}k2^{-k}=2,
+\]
+and
+\[
+\mathbb E[b]=\sum_{\ell\ge1}\ell\frac{2}{3^\ell}=\frac32.
+\]
+For $x=7^rn$, valuation invariance \eqref{eq:valinv} transports every one of these congruence classes bijectively to the corresponding scaled lattice. No new density calculation is required.
+
+\section{A theorem-level summary of the scaling mechanism}
+The complete argument may be compressed into the following dependency chain:
+\[
+7^r\equiv1\pmod6
+\Longrightarrow
+\eps(7^rn)=\eps(n),
+\]
+\[
+7(7^rn)+7^r\eps(n)=7^r(7n+\eps(n)),
+\]
+\[
+\gcd(7^r,6)=1
+\Longrightarrow
+\bigl(\nu_2,\nu_3\bigr)\text{ unchanged},
+\]
+\[
+T_r(7^rn)=7^rT_0(n)
+\Longrightarrow
+T_r^j(7^rn)=7^rT_0^j(n),
+\]
+\[
+\text{all functional-graph, cycle, basin, and orbit-statistic consequences.}
+\]
+This sequence shows precisely which arithmetic facts are essential: residue preservation modulo the branch modulus and coprimality of the scale factor with the primes removed by reduction.
+
+\section{Reference links and provenance note}
+The principal base record for the present system is the author's preceding paper \cite{Base7Paper}, whose source and computational pack were supplied as provenance for this work. The Zenodo record link is included explicitly in the bibliography. The title of the present paper follows the structural ``base map and scaled family'' convention also used in the author's earlier $4^r$-scaled work \cite{Scaled4Paper}. The separate $6^r$-scaled paper \cite{Scaled6Paper} concerns a different map and different dynamics; it served only as a presentation reference and none of its numerical results is used in the present derivations.
+
+\begin{thebibliography}{99}
+\bibitem{Lagarias1985}
+J. C. Lagarias,
+``The $3x+1$ problem and its generalizations,''
+\emph{The American Mathematical Monthly}, vol. 92, no. 1, pp. 3--23, 1985.
+\href{https://doi.org/10.1080/00029890.1985.11971528}{doi:10.1080/00029890.1985.11971528}.
+
+\bibitem{MatthewsWatts1985}
+K. Matthews and A. Watts,
+``A Markov approach to the generalized Syracuse algorithm,''
+\emph{Acta Arithmetica}, vol. 45, no. 1, pp. 29--42, 1985.
+\href{https://doi.org/10.4064/aa-45-1-29-42}{doi:10.4064/aa-45-1-29-42}.
+
+\bibitem{Carnielli2015}
+W. Carnielli,
+``Some natural generalizations of the Collatz problem,''
+\emph{Applied Mathematics E-Notes}, vol. 15, pp. 207--215, 2015.
+
+\bibitem{Base7Paper}
+F. Banazadeh,
+``Ternary $(7k\pm1)/6$ Collatz-Type Map with a Single Observed Attractor: Complete $(2,3)$-Adic Reduction, Algebraic Cycle Analysis, and Exhaustive Computational Verification up to $10^{11}$,''
+Zenodo, 2026.
+\href{https://zenodo.org/records/22829703}{https://zenodo.org/records/22829703}.
+
+\bibitem{Scaled4Paper}
+F. Banazadeh,
+``A Ternary $(4k\pm1)/3$ Collatz-Type Map and Its $(4n\pm4^r)/3$ Scaled Family,''
+Zenodo, 2026, record 22228200.
+\href{https://zenodo.org/records/22228200}{https://zenodo.org/records/22228200}.
+
+\bibitem{Scaled6Paper}
+F. Banazadeh,
+``A $6^r$-Scaled Family of the Reduced $6k\pm\{1,2\}/5$ Collatz-Type Map with Three Observed Attractors,''
+Zenodo, 2026, record 22809470.
+\href{https://zenodo.org/records/22809470}{https://zenodo.org/records/22809470}.
+
+\bibitem{SequenceRepo}
+F. Banazadeh,
+``Sequence Computations: research articles, source code, computational packages, and reproducibility materials,''
+GitHub repository, 2026.
+\href{https://github.com/FarhadBanazadeh/sequence-computations}{https://github.com/FarhadBanazadeh/sequence-computations}.
+\end{thebibliography}
+
+\end{document}
