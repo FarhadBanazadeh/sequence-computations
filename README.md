@@ -625,10 +625,11 @@ These results constitute an exhaustive finite verification up to 10^11 and are n
 
 ### Zenodo DOI
 
-DOI: 10.5281/zenodo.22786203
+https://doi.org/10.5281/zenodo.22786203
 
 ### PDF — GitHub
-https://doi.org/10.5281/zenodo.22786203
+
+https://zenodo.org/records/22786203
 
 ### LaTeX source — GitHub
 
@@ -739,7 +740,7 @@ https://doi.org/10.5281/zenodo.22829703
 
 ### PDF — GitHub
 
-https://zenodo.org/records/22829703/files/Farhad_Banazadeh_Ternary_7k_pm_1_over_6_Collatz_Type_Map_up_to_1e11_ZENODO_READY.pdf
+https://zenodo.org/records/22829703/files/Farhad_Banazadeh_Ternary_7k_pm_1_over_6_Collatz_Type_Map_up_to_1e11.pdf
 
 ### LaTeX source — GitHub
 
