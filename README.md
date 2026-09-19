@@ -739,15 +739,49 @@ https://doi.org/10.5281/zenodo.22829703
 
 ### PDF — GitHub
 
-https://zenodo.org/records/22829703/files/Farhad_Banazadeh_Ternary_7k_pm_1_over_6_Collatz_Type_Map_up_to_1e11_ZENODO_READY.pdf?download=1
+https://zenodo.org/records/22829703/files/Farhad_Banazadeh_Ternary_7k_pm_1_over_6_Collatz_Type_Map_up_to_1e11_ZENODO_READY.pdf
 
 ### LaTeX source — GitHub
 
-https://zenodo.org/records/22829703/files/Farhad_Banazadeh_Ternary_7k_pm_1_over_6_Collatz_Type_Map_up_to_1e11_ZENODO_READY.tex?download=1
+https://zenodo.org/records/22829703/files/Farhad_Banazadeh_Ternary_7k_pm_1_over_6_Collatz_Type_Map_up_to_1e11.tex
 
 ### Computational package — GitHub
 
-https://zenodo.org/records/22829703/files/Farhad_Banazadeh_Ternary_7k_pm_1_over_6_Collatz_Type_Map_up_to_1e11_Computational_Pack_ZENODO_READY.zip?download=1
+https://zenodo.org/records/22829703/files/Farhad_Banazadeh_Ternary_7k_pm_1_over_6_Collatz_Type_Map_up_to_1e11_Computational_Pack.zip
+
+## 17. # A Ternary (7k±1)/6 Collatz-Type Map and Its (7k±7^r)/6 Scaled Family
+
+This work develops the full 7^r-scaled family of the reduced (7k±1)/6 Collatz-type map.
+The main exact identity is:
+
+T_r(7^r n) = 7^r T(n)
+
+and, for every j >= 0,
+
+T_r^j(7^r n) = 7^r T^j(n).
+
+Thus trajectories, valuation sequences, stopping times, cycle lengths, basin structure, and normalized orbit ratios are preserved under scaling, while absolute states and reduced peaks are multiplied by 7^r.
+The exhaustive base verification below 10^11 transfers exactly to the corresponding scaled domains without rerunning the full computation.
+
+## Related base research
+
+https://doi.org/10.5281/zenodo.22829703
+
+### Zenodo DOI
+
+https://doi.org/10.5281/zenodo.22845484
+
+### PDF — GitHub
+
+https://doi.org/10.5281/zenodo.22845484
+
+### LaTeX source — GitHub
+
+https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22845484_7r_Scaled_Family_7k_pm_1_over6_Collatz_Type_Map.tex
+
+### Computational package — GitHub
+
+https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22845484_7r_Scaled_Family_7k_pm_1_over6_Collatz_Type_Map_Computational_Pack.zip
 
 ---
 
@@ -797,6 +831,7 @@ They use related ternary, residue-dependent, and valuation-based ideas, but they
 ## VIII. Ternary (7k±1)/6 line
 
 16. Base ternary residue-dependent reduced map with a single observed attractor and exhaustive verification of all 33,333,333,333 admissible starting values below `10^11` — Zenodo 22829703
+17. Exact 7^r-scaled family of the ternary (7k±1)/6 map, with algebraic conjugacy, preservation of trajectories, valuations, stopping times and cycle structure, and transfer of the complete base verification below 10^11 to the corresponding scaled domains — Zenodo 22845484
 
 ---
 
