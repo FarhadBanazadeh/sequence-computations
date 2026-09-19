@@ -749,7 +749,7 @@ https://zenodo.org/records/22829703/files/Farhad_Banazadeh_Ternary_7k_pm_1_over_
 
 https://zenodo.org/records/22829703/files/Farhad_Banazadeh_Ternary_7k_pm_1_over_6_Collatz_Type_Map_up_to_1e11_Computational_Pack.zip
 
-## 17. # A Ternary (7k±1)/6 Collatz-Type Map and Its (7k±7^r)/6 Scaled Family
+## 17. A Ternary (7k±1)/6 Collatz-Type Map and Its (7k±7^r)/6 Scaled Family
 
 This work develops the full 7^r-scaled family of the reduced (7k±1)/6 Collatz-type map.
 The main exact identity is:
@@ -787,8 +787,7 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 
 ## Research Structure
 
-The all works belong to **Seven distinct research lines**.
-
+All of these works belong to eight distinct research lines.
 They use related ternary, residue-dependent, and valuation-based ideas, but they should not be treated as a single dynamical system.
 
 ## I. Ternary (4k±1)/3 line
