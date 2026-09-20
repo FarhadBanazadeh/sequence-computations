@@ -818,11 +818,11 @@ https://zenodo.org/records/22856438
 
 ### LaTeX source — GitHub
 
-Farhad_Banazadeh_Zenodo22856438_Reduced_Floor_6k_over_5_plus_1_over_5_Collatz_Type_Map_up_to_1e11
+[Farhad_Banazadeh_Zenodo22856438_Reduced_Floor_6k_over_5_plus_1_over_5_Collatz_Type_Map_up_to_1e11](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/)
 
 ### Computational package — GitHub
 
-Farhad_Banazadeh_Zenodo22856438_Reduced_Floor_6k_over_5_plus_1_over_5_Collatz_Type_Map_up_to_1e11_Computational_Pack
+[Farhad_Banazadeh_Zenodo22856438_Reduced_Floor_6k_over_5_plus_1_over_5_Collatz_Type_Map_up_to_1e11_Computational_Pack](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/)
 
 ---
 
@@ -867,7 +867,7 @@ They use related ternary, residue-dependent, and valuation-based ideas, but they
 
 14. Base residue-dependent reduced map with three observed attractors and exhaustive verification of all 80,000,000,000 positive starting values not divisible by 5 up to `10^11` — Zenodo 22786203
 15. Its exactly conjugate 6^r-scaled family with three-attractor transport, orbit-statistic invariance, and transfer of the 10^11 finite verification — Zenodo 22809470
-16. Floor-based reduced map (T(n)=(\lfloor6n/5\rfloor+1)/5^{\nu_5(\lfloor6n/5\rfloor+1)}) with one observed attractor, complete 5-adic reduction, and exhaustive verification of all positive starting values up to 10^11 — Zenodo 22856438
+16. Floor-based reduced map $T(n)=(\lfloor 6n/5\rfloor+1)/5^{\nu_5(\lfloor 6n/5\rfloor+1)}$ with one observed attractor, complete 5-adic reduction, and exhaustive verification of all positive starting values up to 10^11 — Zenodo 22856438
     
 ## VIII. Ternary (7k±1)/6 line
 
