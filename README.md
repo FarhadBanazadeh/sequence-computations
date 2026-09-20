@@ -818,11 +818,11 @@ https://zenodo.org/records/22856438
 
 ### LaTeX source — GitHub
 
-[Farhad_Banazadeh_Zenodo22856438_Reduced_Floor_6k_over_5_plus_1_over_5_Collatz_Type_Map_up_to_1e11](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/)
+https://github.com/FarhadBanazadeh/sequence-computations/blob/main//Farhad_Banazadeh_Zenodo22856438_Reduced_Floor_6k_over_5_plus_1_over_5_Collatz_Type_Map_up_to_1e11.tex
 
 ### Computational package — GitHub
 
-[Farhad_Banazadeh_Zenodo22856438_Reduced_Floor_6k_over_5_plus_1_over_5_Collatz_Type_Map_up_to_1e11_Computational_Pack](https://github.com/FarhadBanazadeh/sequence-computations/blob/main/)
+https://github.com/FarhadBanazadeh/sequence-computations/blob/main//Farhad_Banazadeh_Zenodo22856438_Reduced_Floor_6k_over_5_plus_1_over_5_Collatz_Type_Map_up_to_1e11_Computational_Pack.zip
 
 ---
 
