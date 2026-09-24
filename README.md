@@ -215,17 +215,34 @@ https://zenodo.org/records/22834517/files/Farhad_Banazadeh_Zenodo22834517_Ternar
 
 ## Current Version — Verification through 10^11 (v3.0)
 
-Version 3.0 extends the theoretical and computational analysis of the ternary Collatz-type map. It includes an exact 3-adic symbolic description, a density-one first-descent theorem, algebraic cycle analysis, and exhaustive computational verification through (10^{11}).
-A total of 66,666,666,667 admissible starting values were tested. Every tested orbit reached one of the three observed positive attractors — the fixed points 1 and 2, or the four-cycle
+Version 3.0 substantially extends both the theoretical and computational analysis of the ternary Collatz-type map.
 
-22 → 29 → 38 → 50 → 22
+On the theoretical side, this version develops an exact 3-adic symbolic description of the accelerated dynamics. Explicit inverse branches are used to characterize the map on the 3-adic side and to derive the valuation distribution governing successive reduced-map steps. This framework leads to an exact multi-step identity and a deterministic sufficient condition for strict descent in terms of the accumulated 3-adic valuation.
 
-with zero unknown or unresolved orbits and zero arithmetic overflow events.
-For every admissible starting value (n) with (50 < n \le 10^{11}), a strict first descent was found. The largest observed first-descent time was 355 reduced-map iterations, attained at
+A finite-horizon correspondence is then established between 3-adic survivor cylinders and ordinary positive integers. This makes it possible to compute exact finite-horizon survivor measures using rational arithmetic. At horizon 50, the corresponding first-descent density is approximately 99.7628073795%.
+
+The probabilistic structure is further used to obtain a density-one first-descent theorem: among positive integers not divisible by 3, the set of starting values that eventually fall strictly below their initial value has relative natural density 1.
+
+The algebraic cycle analysis is also strengthened. The known positive terminal cycles remain
+
+1
+2
+and
+22 → 29 → 38 → 50 → 22.
+
+On the computational side, Version 3.0 retains and integrates the exhaustive verification through 10^11. A total of 66,666,666,667 admissible starting values were tested. Every tested orbit reached one of the three observed positive attractors, with zero unknown or unresolved orbits and zero arithmetic overflow events.
+
+For every admissible starting value n with
+
+50 < n ≤ 10^11,
+
+a strict first descent was found. The largest observed first-descent time was 355 reduced-map iterations, attained at
 
 n = 76,089,719,024.
 
-The exhaustive computation is a finite verification through (10^{11}) and does not constitute a proof of universal convergence.
+The accompanying computational package includes source code, archived checkpoint data, exact-rational dynamic-programming material, validation results, audit reports, the extremal first-descent trace, aggregate results, and SHA-256 manifests for reproducibility and independent verification.
+
+The exhaustive computation establishes a finite verification through 10^11. It does not constitute a proof of universal convergence. Global convergence of all positive admissible starting values to the three known terminal cycles remains an open conjecture for this map.
 
 ## Zenodo DOI
 
@@ -874,10 +891,10 @@ They use related ternary, residue-dependent, and valuation-based ideas, but they
 
 ## III. Ternary (4k−1(2))/3 line
 
-6. Base accelerated map with three observed positive attractors up to 10^9 (v1.0), Zenodo `22662980`
+6. Base accelerated map with three observed positive attractors up to 10^9 Version 1.0, Zenodo `22662980`
  Extended Version 2.0 with exhaustive computational verification through `10^11` — Zenodo `228345178.
 7. Its exactly conjugate `4^r-scaled family — Zenodo `22671949`
-8. Extended Version 3.0 with exact 3-adic symbolic dynamics, a density-one first-descent theorem, algebraic cycle analysis, and exhaustive computational verification through (10^{11}) — Zenodo 22922802
+8. Extended Version 3.0 with exact 3-adic symbolic dynamics, a density-one first-descent theorem, algebraic cycle analysis, and exhaustive computational verification through 10^11 — Zenodo 22922802
    
 ## IV. Ternary (5k±1)/4 line
 
