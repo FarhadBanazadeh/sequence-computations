@@ -1,0 +1,2280 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools,amsthm}
+\usepackage{booktabs,array,longtable}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage{siunitx}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{verbatim}
+
+\setlength{\parindent}{1.2em}
+\setlength{\parskip}{0.30em}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{A Ternary $(4k-1(2))/3$ Collatz-Type Map}
+\rhead{\thepage}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\vthree}{\nu_3}
+\newcommand{\Sset}{\mathcal S}
+\newcommand{\Ustar}{U^\ast}
+\newcommand{\Tmap}{T}
+\newcommand{\Mmap}{M}
+\newcommand{\R}{r}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Zthree}{\mathbb Z_3}
+\newcommand{\Prob}{\mathbb P}
+\newcommand{\E}{\mathbb E}
+\newcommand{\ds}{d_{\Sset}}
+
+\title{\textbf{A Ternary $(4k-1(2))/3$ Collatz-Type Map}\\[4pt]
+\large Exact 3-Adic Symbolic Dynamics, a Density-One First-Descent Theorem,\\
+Algebraic Cycle Analysis, and Exhaustive Computational Verification up to $10^{11}$}
+
+\author{\textbf{Farhad Banazadeh}\\
+\href{mailto:fn.bana@hotmail.com}{fn.bana@hotmail.com}\\
+\href{https://orcid.org/0009-0004-7023-0298}{ORCID: 0009-0004-7023-0298}}
+
+\date{23 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}\sloppy
+We study the accelerated ternary Collatz-type map
+\[
+\Sset=\{n\in\Z_{>0}:3\nmid n\},\qquad
+\Tmap(n)=\frac{4n-r(n)}{3^{\vthree(4n-r(n))}},
+\qquad r(n)=n\bmod3\in\{1,2\}.
+\]
+The map has two known positive fixed points, $1$ and $2$, and the known positive four-cycle
+\[
+22\to29\to38\to50\to22.
+\]
+The first part of the paper develops an exact $3$-adic model rather than a heuristic one.  On the full-measure forward-invariant domain
+$\Ustar\subset\Zthree^\times$, the inverse branches
+\[
+\phi_{r,k}(y)=\frac{r+3^ky}{4},
+\qquad r\in\{1,2\},\quad k\ge1,
+\]
+give an exact symbolic decomposition.  With normalized Haar measure on
+$\Zthree^\times$, the successive valuations
+\[
+a_i=\vthree(4T^i(x)-r(T^i(x)))
+\]
+are independent and identically distributed with
+\[
+\Prob(a_i=k)=\frac{2}{3^k},\qquad k\ge1.
+\]
+Thus $\E[a_i]=3/2$, $\operatorname{Var}(a_i)=3/4$, and the typical
+$3$-adic valuation rate lies above the deterministic descent threshold
+$\alpha=\log_3 4$.
+
+For an ordinary positive integer orbit $x_0=n$, define
+$A_j=\sum_{i=0}^{j-1}a_i$.  We prove the exact identity
+\[
+T^j(n)=\frac{4^jn-C_j}{3^{A_j}},
+\qquad
+C_j=\sum_{i=0}^{j-1}r_i4^{j-1-i}3^{A_i}>0,
+\]
+and therefore the sufficient descent criterion
+\[
+A_j\ge j\log_3 4\quad\Longrightarrow\quad T^j(n)<n.
+\]
+Below this barrier we obtain the exact criterion
+\[
+T^j(n)<n
+\iff
+C_j>(4^j-3^{A_j})n.
+\]
+A hypothetical orbit that never falls below its initial value must satisfy substantially stronger restrictions, including
+\[
+\sum_{j\ge0}\frac{3^{A_j}}{4^j}<\infty,
+\qquad
+j\log_3 4-A_j\to+\infty.
+\]
+
+The $3$-adic symbolic theory is then transferred rigorously to ordinary positive integers at every fixed depth.  If
+\[
+F_m=\{n\in\Sset:T^t(n)\ge n\text{ for }1\le t\le m\},
+\]
+and $\mathcal S_m$ is the corresponding $3$-adic valuation-barrier survivor set, then
+\[
+\boxed{\ds(F_m)=\mu(\mathcal S_m)}
+\]
+for every fixed $m$.  An exact-rational dynamic program computes these quantities.  In particular,
+\[
+\mu(\mathcal S_{50})
+=
+\frac{301646097509840481608007680}
+{127173474825648610542883299603}
+\approx0.002371926204921184320282,
+\]
+so the relative natural density of admissible positive integers that achieve a first descent within $50$ reduced steps is approximately
+$99.7628073795\%$.  A Chernoff bound gives
+\[
+\mu(\mathcal S_m)\le\rho^m,\qquad
+\rho\approx0.952392652605812657<1,
+\]
+and yields the main density theorem
+\[
+\boxed{\ds\{n\in\Sset:\exists j\ge1,\ T^j(n)<n\}=1.}
+\]
+This is a density-one first-descent theorem; it is not a theorem of universal first descent or global convergence.
+
+Finally, the archived exhaustive computation through $10^{11}$ contains exactly
+$66,666,666,667$ admissible starts.  All are classified into the three known positive terminal cycles, with zero reported unknown cycles and zero arithmetic overflows.  The basin counts are
+$6,602,925,203$ for $\{1\}$,
+$43,211,124,603$ for $\{2\}$, and
+$16,852,616,861$ for the four-cycle.
+Moreover, every admissible $n$ with
+$50<n\le10^{11}$ has a strict first descent.  The largest observed first-descent time is $355$, attained at
+$n=76,089,719,024$.
+The complete $10^{11}$ archive was independently re-aggregated and structurally audited; a hardened V5.2 scanner was freshly rerun on validation ranges and on a $100$-million-integer production interval containing the $355$-step record.  The full $10^{11}$ domain was not freshly recomputed from zero with V5.2 during that audit.
+
+The global conjecture that every positive admissible integer eventually enters one of the three known positive terminal cycles remains open.
+\end{abstract}
+
+\noindent\textbf{Keywords:}
+Collatz-type map; ternary dynamics; $3$-adic valuation; Haar measure;
+symbolic dynamics; first descent; natural density; dynamic programming;
+Diophantine cycles; exhaustive computation.
+
+\tableofcontents
+
+\section{Introduction}
+
+The classical $3x+1$ problem is a model example of an integer dynamical system whose rule is elementary but whose global behavior is difficult to control.  The main source of difficulty is the interaction between an expanding affine operation and a residue-dependent division.  Generalized Collatz maps retain this interaction while changing the modulus, affine coefficients, or acceleration convention; see, for example, Lagarias~\cite{lagarias1985} and Carnielli~\cite{carnielli2015} for background on the classical problem and related generalizations.
+
+The map studied here is ternary rather than binary.  Its state space consists of positive integers not divisible by $3$.  At each reduced step we multiply by $4$, subtract the current nonzero residue modulo $3$, and then remove \emph{all} factors of $3$.  Thus one reduced iteration combines an affine expansion with a variable amount of $3$-adic compression.
+
+An earlier version of this study established the basic algebra of the map and reported exhaustive finite computations through $10^9$ and later through $10^{11}$~\cite{banazadeh2026base}.  The present version substantially strengthens the theoretical part.  The geometric law for the removed $3$-adic valuation is no longer treated merely as a heuristic: on the natural $3$-adic unit space it follows exactly from the inverse branches and normalized Haar measure.  More importantly, the resulting finite-horizon barrier probabilities can be transferred rigorously to relative natural densities of ordinary positive integers.  This produces an exact finite-horizon density theorem and, after a Chernoff estimate, a density-one first-descent theorem.
+
+The paper deliberately separates four logically different levels of information.
+
+\begin{enumerate}[leftmargin=2.2em]
+\item \textbf{Exact $3$-adic theorems.}  These concern Haar measure on the $3$-adic unit space and establish the exact symbolic law of residues and valuations.
+\item \textbf{Exact deterministic orbit identities.}  These hold for every ordinary positive integer orbit and give the descent barrier and necessary conditions for a hypothetical no-descent orbit.
+\item \textbf{Natural-density theorems.}  These transfer fixed-depth $3$-adic cylinder information to asymptotic relative natural density among ordinary positive integers.
+\item \textbf{Finite exhaustive computation.}  This verifies the behavior of every admissible start through $10^{11}$, but makes no assertion about untested larger integers.
+\end{enumerate}
+
+Keeping these levels separate is essential.  A Haar-almost-everywhere statement on $\Zthree^\times$ does not by itself imply a statement about every positive integer.  A density-one statement does not imply that the exceptional set is empty.  A finite exhaustive computation, no matter how large, does not prove an all-integers conjecture.
+
+The principal rigorous results of this paper are:
+\begin{itemize}[leftmargin=2.2em]
+\item an exact inverse-branch decomposition of $\Zthree^\times$;
+\item the iid valuation law $\Prob(a_i=k)=2/3^k$;
+\item the exact multi-step identity for $T^j(n)$;
+\item the sufficient descent barrier $A_j\ge j\log_3 4$;
+\item exact necessary conditions for any hypothetical orbit that never descends below its start;
+\item the fixed-depth density identity $\ds(F_m)=\mu(\mathcal S_m)$;
+\item the density-one first-descent theorem;
+\item exact-rational finite-depth values through depth $500$;
+\item exhaustive finite verification through $10^{11}$ and an exhaustive first-descent verification for all admissible $50<n\le10^{11}$.
+\end{itemize}
+
+The global convergence conjecture remains open.  In particular, this paper does not prove universal first descent, density-one convergence to the known cycles, absence of all other positive cycles at arbitrary size, or absence of unbounded positive trajectories.
+
+\section{The map, notation, and elementary examples}
+
+\subsection{Positive state space}
+
+Define
+\begin{equation}
+\Sset=\{x\in\Z_{>0}:3\nmid x\}.
+\label{eq:S}
+\end{equation}
+Every $x\in\Sset$ has a unique residue
+\begin{equation}
+r(x)=x\bmod3\in\{1,2\}.
+\label{eq:r}
+\end{equation}
+Define the affine numerator
+\begin{equation}
+M(x)=4x-r(x)
+=
+\begin{cases}
+4x-1,&x\equiv1\pmod3,\\
+4x-2,&x\equiv2\pmod3.
+\end{cases}
+\label{eq:M}
+\end{equation}
+Since $4\equiv1\pmod3$, one always has
+\[
+M(x)\equiv x-r(x)\equiv0\pmod3.
+\]
+Therefore $M(x)$ contains at least one factor of $3$.
+
+For a nonzero integer $m$, write
+\[
+\vthree(m)=\max\{a\ge0:3^a\mid m\}.
+\]
+The accelerated map is
+\begin{equation}
+\boxed{
+T(x)=\frac{4x-r(x)}{3^{\vthree(4x-r(x))}}.
+}
+\label{eq:T}
+\end{equation}
+Because all factors of $3$ are removed, $T(x)\in\Sset$.  Thus $T:\Sset\to\Sset$.
+
+\subsection{Meaning of the title notation}
+
+The compact title notation $(4k-1(2))/3$ is shorthand for the two residue branches:
+subtract $1$ for a state congruent to $1\pmod3$ and subtract $2$ for a state congruent to $2\pmod3$.  The precise map is always \eqref{eq:T}.  In particular, the map divides by the complete power $3^{\vthree(M(x))}$, not merely by one factor of $3$.
+
+\subsection{Residue-form branches}
+
+If $x=3q+1$, then
+\[
+M(x)=4(3q+1)-1=12q+3=3(4q+1),
+\]
+and hence
+\begin{equation}
+T(3q+1)=\frac{4q+1}{3^{\vthree(4q+1)}}.
+\label{eq:branch1}
+\end{equation}
+If $x=3q+2$, then
+\[
+M(x)=4(3q+2)-2=12q+6=3(4q+2),
+\]
+and
+\begin{equation}
+T(3q+2)=\frac{4q+2}{3^{\vthree(4q+2)}}.
+\label{eq:branch2}
+\end{equation}
+
+These formulas make the acceleration transparent: one factor of $3$ is forced by the residue choice, while additional factors depend on the smaller branch quantity.
+
+\subsection{Small numerical examples}
+
+\begin{example}[The fixed point $1$]
+For $x=1$,
+\[
+M(1)=4-1=3,\qquad \vthree(M(1))=1,
+\]
+so
+\[
+T(1)=3/3=1.
+\]
+Thus $\{1\}$ is a fixed point.
+\end{example}
+
+\begin{example}[The fixed point $2$]
+For $x=2$,
+\[
+M(2)=8-2=6,\qquad \vthree(M(2))=1,
+\]
+and
+\[
+T(2)=6/3=2.
+\]
+Thus $\{2\}$ is a second fixed point.
+\end{example}
+
+\begin{example}[A short trajectory]
+Starting at $4$,
+\[
+4\mapsto\frac{16-1}{3}=5,
+\]
+while
+\[
+5\mapsto\frac{20-2}{3^2}=2.
+\]
+Hence
+\[
+4\to5\to2.
+\]
+\end{example}
+
+\begin{example}[A large one-step valuation]
+For $x=7$,
+\[
+M(7)=28-1=27=3^3,
+\]
+so
+\[
+T(7)=1.
+\]
+A valuation $a=3$ overwhelms the factor $4$ and causes a sharp decrease.
+\end{example}
+
+\begin{example}[The positive four-cycle]
+The orbit
+\[
+22\to29\to38\to50\to22
+\]
+is verified step by step:
+\[
+4(22)-1=87=3\cdot29,
+\]
+\[
+4(29)-2=114=3\cdot38,
+\]
+\[
+4(38)-2=150=3\cdot50,
+\]
+and
+\[
+4(50)-2=198=3^2\cdot22.
+\]
+The valuation word is therefore $(1,1,1,2)$ and its total valuation is $5$.
+\end{example}
+
+\section{The \texorpdfstring{$3$}{3}-adic unit space}
+
+The exact probability law used later is most naturally proved on the $3$-adic unit space.
+
+\subsection{Basic \texorpdfstring{$3$}{3}-adic setting}
+
+Let
+\[
+U=\Zthree^\times=\{x\in\Zthree:3\nmid x\}.
+\]
+The same residue map $r(x)\in\{1,2\}$ is defined by reduction modulo $3$.
+Whenever $4x-r(x)\ne0$, put
+\[
+a(x)=\vthree(4x-r(x))\ge1,
+\qquad
+T(x)=\frac{4x-r(x)}{3^{a(x)}}.
+\]
+The quotient is again a $3$-adic unit.
+
+Let $m$ be additive Haar probability measure on $\Zthree$, so $m(\Zthree)=1$.  Since
+\[
+U=(1+3\Zthree)\sqcup(2+3\Zthree),
+\]
+we have $m(U)=2/3$.  We use normalized Haar probability measure on $U$:
+\begin{equation}
+\mu(B)=\frac{m(B)}{m(U)}=\frac32m(B).
+\label{eq:normalized-haar}
+\end{equation}
+
+\subsection{Exceptional zero-numerator points}
+
+The numerator vanishes only when
+\[
+4x-r(x)=0.
+\]
+For $r=1$ this gives $x=1/4$; for $r=2$ it gives $x=1/2$.  Both are $3$-adic units.  Put
+\[
+Z_0=\left\{\frac14,\frac12\right\}.
+\]
+Let
+\begin{equation}
+Z=\bigcup_{j\ge0}T^{-j}(Z_0).
+\label{eq:Z}
+\end{equation}
+Each point has at most countably many one-step preimages, so every finite backward level of $Z_0$ is countable, and therefore $Z$ is countable.  Haar measure is nonatomic, hence
+\[
+\mu(Z)=0.
+\]
+Define the full-measure domain
+\begin{equation}
+\Ustar=U\setminus Z.
+\label{eq:Ustar}
+\end{equation}
+Then $\mu(\Ustar)=1$, every forward iterate is defined on $\Ustar$, and $T(\Ustar)\subseteq\Ustar$.
+
+This removal is a technical $3$-adic issue.  No positive integer in $\Sset$ is removed, because for a positive integer $x$ the numerator $4x-r(x)$ is strictly positive.
+
+\section{Exact inverse branches and Haar scaling}
+
+For $r\in\{1,2\}$ and $k\ge1$, define
+\begin{equation}
+\phi_{r,k}(y)=\frac{r+3^ky}{4}.
+\label{eq:phi}
+\end{equation}
+
+\begin{lemma}[Exact inverse branches]
+For every $r\in\{1,2\}$, $k\ge1$, and $y\in U$,
+\[
+\phi_{r,k}(y)\in U,
+\quad
+r(\phi_{r,k}(y))=r,
+\quad
+a(\phi_{r,k}(y))=k,
+\quad
+T(\phi_{r,k}(y))=y.
+\]
+\end{lemma}
+
+\begin{proof}
+Because $4$ is a unit in $\Zthree$, the quantity $\phi_{r,k}(y)$ belongs to $\Zthree$.  Modulo $3$,
+\[
+4\phi_{r,k}(y)=r+3^ky\equiv r\pmod3.
+\]
+Since $4\equiv1\pmod3$, we obtain
+\[
+\phi_{r,k}(y)\equiv r\pmod3,
+\]
+so $\phi_{r,k}(y)$ is a unit with residue label $r$.  Moreover,
+\[
+4\phi_{r,k}(y)-r=3^ky.
+\]
+Because $y$ is a unit, $\vthree(y)=0$, and therefore the valuation of the numerator is exactly $k$.  Dividing by $3^k$ gives $T(\phi_{r,k}(y))=y$.
+\end{proof}
+
+\begin{lemma}[Branch partition]
+Apart from the two zero-numerator points,
+\begin{equation}
+U\setminus Z_0
+=
+\bigsqcup_{r\in\{1,2\}}
+\bigsqcup_{k\ge1}
+\phi_{r,k}(U).
+\label{eq:branch-partition}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Take $x\in U\setminus Z_0$.  Its residue $r=r(x)$ is unique, and the nonzero numerator $4x-r$ has a unique finite valuation
+\[
+k=\vthree(4x-r)\ge1.
+\]
+Set
+\[
+y=\frac{4x-r}{3^k}\in U.
+\]
+Then $x=\phi_{r,k}(y)$.  This proves completeness.  Uniqueness of the residue and of the exact valuation proves disjointness.
+\end{proof}
+
+\begin{lemma}[Exact Haar scaling]
+For every measurable $B\subseteq U$,
+\begin{equation}
+\boxed{\mu(\phi_{r,k}(B))=3^{-k}\mu(B).}
+\label{eq:haar-scaling}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The affine map can be written
+\[
+\phi_{r,k}(y)=\frac r4+\frac{3^k}{4}y.
+\]
+Translation preserves additive Haar measure.  Multiplication by $3^k/4$ scales it by its $3$-adic absolute value
+\[
+\left|\frac{3^k}{4}\right|_3=3^{-k}.
+\]
+Hence
+\[
+m(\phi_{r,k}(B))=3^{-k}m(B).
+\]
+Normalizing by $m(U)=2/3$ gives \eqref{eq:haar-scaling}.
+\end{proof}
+
+\section{Exact symbolic law and iid valuations}
+
+\begin{theorem}[One-step valuation law]
+For $k\ge1$,
+\begin{equation}
+\boxed{\mu(a=k)=\frac{2}{3^k}.}
+\label{eq:geom-law}
+\end{equation}
+More precisely,
+\begin{equation}
+\boxed{\mu(r=r_0,a=k)=3^{-k}}
+\label{eq:joint-one-step}
+\end{equation}
+for each $r_0\in\{1,2\}$.
+\end{theorem}
+
+\begin{proof}
+For fixed $(r,k)$, the corresponding branch image has measure $3^{-k}$ by \eqref{eq:haar-scaling}.  The two residue branches are disjoint, so
+\[
+\mu(a=k)=2\cdot3^{-k}.
+\]
+The normalization check is
+\[
+\sum_{k=1}^\infty\frac{2}{3^k}=1.
+\]
+\end{proof}
+
+\begin{proposition}[Haar invariance]
+For every measurable $B\subseteq\Ustar$,
+\begin{equation}
+\boxed{\mu(T^{-1}B)=\mu(B).}
+\label{eq:haar-invariance}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Using the disjoint inverse branches,
+\[
+T^{-1}B
+=
+\bigsqcup_{r=1}^2\bigsqcup_{k\ge1}\phi_{r,k}(B).
+\]
+Therefore
+\[
+\mu(T^{-1}B)
+=
+\sum_{r=1}^2\sum_{k\ge1}3^{-k}\mu(B)
+=
+2\left(\sum_{k\ge1}3^{-k}\right)\mu(B)
+=
+\mu(B).
+\]
+\end{proof}
+
+For $i\ge0$, define
+\[
+r_i(x)=r(T^i x),
+\qquad
+a_i(x)=a(T^i x).
+\]
+
+\begin{theorem}[Exact finite cylinders and iid symbolic dynamics]
+Fix $m\ge1$, residues $r_i\in\{1,2\}$, and valuations $k_i\ge1$ for $0\le i<m$.  The corresponding symbol cylinder has measure
+\begin{equation}
+\boxed{
+\mu\{x:(r_i(x),a_i(x))=(r_i,k_i),\ 0\le i<m\}
+=
+3^{-\sum_{i=0}^{m-1}k_i}.
+}
+\label{eq:full-cylinder}
+\end{equation}
+Consequently,
+\begin{equation}
+\boxed{
+\mu(a_0=k_0,\ldots,a_{m-1}=k_{m-1})
+=
+\prod_{i=0}^{m-1}\frac{2}{3^{k_i}}.
+}
+\label{eq:iid-cylinder}
+\end{equation}
+Thus $(a_i)_{i\ge0}$ are iid with law \eqref{eq:geom-law}; indeed the pairs $(r_i,a_i)$ are iid with
+\[
+\Prob(r_i=r,a_i=k)=3^{-k}.
+\]
+\end{theorem}
+
+\begin{proof}
+The full symbol cylinder is the iterated inverse image
+\[
+\phi_{r_0,k_0}\circ\phi_{r_1,k_1}\circ\cdots\circ
+\phi_{r_{m-1},k_{m-1}}(\Ustar).
+\]
+Repeated application of \eqref{eq:haar-scaling} gives
+\[
+3^{-(k_0+\cdots+k_{m-1})}.
+\]
+For a fixed valuation word $(k_0,\ldots,k_{m-1})$, there are $2^m$ disjoint residue words.  Summing their equal measures yields
+\[
+2^m3^{-\sum_i k_i}
+=
+\prod_i\frac{2}{3^{k_i}},
+\]
+which is exactly the product law.
+\end{proof}
+
+\subsection{Moments and the typical valuation rate}
+
+Using the standard geometric sums,
+\[
+\E[a]
+=
+\sum_{k\ge1}k\frac{2}{3^k}
+=
+\frac32,
+\]
+\[
+\E[a^2]
+=
+\sum_{k\ge1}k^2\frac{2}{3^k}
+=
+3,
+\]
+and therefore
+\begin{equation}
+\operatorname{Var}(a)=3-\left(\frac32\right)^2=\frac34.
+\label{eq:moments}
+\end{equation}
+
+Let
+\[
+A_j=\sum_{i=0}^{j-1}a_i.
+\]
+By the Strong Law of Large Numbers,
+\begin{equation}
+\frac{A_j}{j}\longrightarrow\frac32
+\quad\text{for Haar-almost every }x\in\Ustar.
+\label{eq:slln}
+\end{equation}
+The critical deterministic slope introduced below is
+\[
+\alpha=\log_3 4\approx1.261859507142914874.
+\]
+Since $3/2>\alpha$, a Haar-typical symbolic path eventually lies above the deterministic valuation barrier.
+
+\begin{remark}[What this does and does not mean]
+There is no order relation on $\Zthree$ compatible with the ordinary inequality $<$ on positive integers, so \eqref{eq:slln} should not be described as ``$3$-adic descent.''  Moreover, the positive integers form a countable Haar-null subset of $\Zthree$.  Therefore an almost-everywhere statement on $\Ustar$ does not by itself imply anything pointwise about a particular positive integer.  The transfer to ordinary integers is proved separately in Sections~\ref{sec:transfer}--\ref{sec:densityone}.
+\end{remark}
+
+\section{Exact deterministic iteration identity}
+
+Return now to an ordinary positive orbit
+\[
+x_0=n\in\Sset,\qquad x_{i+1}=T(x_i).
+\]
+Write
+\[
+r_i=r(x_i)\in\{1,2\},
+\qquad
+a_i=\vthree(4x_i-r_i)\ge1.
+\]
+Then
+\begin{equation}
+3^{a_i}x_{i+1}=4x_i-r_i.
+\label{eq:one-step}
+\end{equation}
+Define
+\begin{equation}
+A_0=0,\qquad
+A_j=\sum_{i=0}^{j-1}a_i.
+\label{eq:Aj}
+\end{equation}
+
+\begin{theorem}[Exact multi-step identity]
+For every $j\ge0$,
+\begin{equation}
+\boxed{
+x_j=\frac{4^jn-C_j}{3^{A_j}},
+}
+\label{eq:multistep}
+\end{equation}
+where
+\begin{equation}
+C_0=0,\qquad
+\boxed{C_{j+1}=4C_j+r_j3^{A_j},}
+\label{eq:Crec}
+\end{equation}
+and, equivalently,
+\begin{equation}
+\boxed{
+C_j=
+\sum_{i=0}^{j-1}
+r_i4^{j-1-i}3^{A_i}.
+}
+\label{eq:Cclosed}
+\end{equation}
+In particular, $C_j>0$ for every $j\ge1$.
+\end{theorem}
+
+\begin{proof}
+The case $j=0$ is immediate.  Assume
+\[
+3^{A_j}x_j=4^jn-C_j.
+\]
+Multiplying \eqref{eq:one-step} by $3^{A_j}$ gives
+\[
+3^{A_{j+1}}x_{j+1}
+=
+4(3^{A_j}x_j)-r_j3^{A_j}.
+\]
+Substitution of the induction hypothesis yields
+\[
+3^{A_{j+1}}x_{j+1}
+=
+4^{j+1}n-\bigl(4C_j+r_j3^{A_j}\bigr).
+\]
+This proves \eqref{eq:multistep} and \eqref{eq:Crec}.  Expanding the recurrence from $C_0=0$ gives \eqref{eq:Cclosed}; every term in that sum is positive.
+\end{proof}
+
+\begin{example}[Two-step identity for $n=4$]
+The orbit is $4\to5\to2$.  Here
+\[
+(r_0,a_0)=(1,1),\qquad (r_1,a_1)=(2,2),
+\]
+so $A_2=3$.  Also
+\[
+C_2=r_0\,4+r_1\,3^{A_1}=1\cdot4+2\cdot3=10.
+\]
+Hence
+\[
+T^2(4)=\frac{4^2\cdot4-10}{3^3}
+=\frac{54}{27}=2,
+\]
+as required.
+\end{example}
+
+\section{The deterministic descent barrier}
+
+Set
+\begin{equation}
+\alpha=\log_3 4
+=\frac{\log4}{\log3}
+\approx1.261859507142914874.
+\label{eq:alpha}
+\end{equation}
+
+\begin{theorem}[Sufficient descent barrier]
+If for some $j\ge1$,
+\begin{equation}
+3^{A_j}\ge4^j,
+\label{eq:barrier-powers}
+\end{equation}
+equivalently
+\begin{equation}
+A_j\ge\alpha j,
+\label{eq:barrier}
+\end{equation}
+then
+\begin{equation}
+\boxed{T^j(n)<n.}
+\label{eq:descent}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+By \eqref{eq:multistep} and $C_j>0$,
+\[
+T^j(n)
+=
+\frac{4^jn-C_j}{3^{A_j}}
+<
+\frac{4^jn}{3^{A_j}}.
+\]
+Under \eqref{eq:barrier-powers}, the right-hand side is at most $n$.
+Therefore $T^j(n)<n$.
+\end{proof}
+
+The equality $3^{A_j}=4^j$ cannot occur for positive integer $j,A_j$ by unique prime factorization, but even if it could, the positive correction $C_j$ would still make the descent strict.
+
+\subsection{Exact criterion below the barrier}
+
+Suppose
+\[
+3^{A_j}<4^j.
+\]
+Then \eqref{eq:multistep} gives
+\[
+T^j(n)<n
+\iff
+4^jn-C_j<3^{A_j}n.
+\]
+
+\begin{theorem}[Exact below-barrier descent criterion]
+When $3^{A_j}<4^j$,
+\begin{equation}
+\boxed{
+T^j(n)<n
+\iff
+C_j>(4^j-3^{A_j})n.
+}
+\label{eq:below-barrier}
+\end{equation}
+Equivalently, with
+\begin{equation}
+R_j=\frac{C_j}{4^j-3^{A_j}},
+\label{eq:Rj}
+\end{equation}
+one has
+\begin{equation}
+\boxed{T^j(n)<n\iff n<R_j.}
+\label{eq:Rcriterion}
+\end{equation}
+\end{theorem}
+
+Thus crossing the valuation barrier is sufficient, not necessary.  The positive correction term $C_j$ can cause descent even when $A_j<\alpha j$.
+
+\subsection{Excess-valuation form}
+
+Because every $a_i\ge1$, define
+\[
+E_j=A_j-j=\sum_{i=0}^{j-1}(a_i-1)
+\]
+and
+\[
+\beta=\alpha-1\approx0.261859507142914874.
+\]
+The sufficient barrier is equivalently
+\begin{equation}
+E_j\ge\beta j.
+\label{eq:excess-barrier}
+\end{equation}
+A path that never triggers the sufficient barrier must satisfy
+\[
+E_j<\beta j
+\]
+at every prefix.
+
+\section{Necessary structure of a hypothetical no-descent orbit}
+
+Assume, for the rest of this section only, the hypothesis
+\begin{equation}
+\boxed{x_j=T^j(n)\ge n\quad\text{for every }j\ge1.}
+\tag{H}
+\label{eq:H}
+\end{equation}
+This is an \emph{eternal no-descent hypothesis}.  We derive necessary consequences but no contradiction.
+
+\begin{corollary}[Barrier avoidance]
+Under \eqref{eq:H},
+\begin{equation}
+A_j<\alpha j
+\quad\text{for every }j\ge1,
+\label{eq:barrier-avoid}
+\end{equation}
+and
+\begin{equation}
+C_j\le(4^j-3^{A_j})n.
+\label{eq:Cbound}
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+The first statement is the contrapositive of the sufficient descent theorem.  The second follows from
+\[
+4^jn-C_j=3^{A_j}x_j\ge3^{A_j}n.
+\]
+\end{proof}
+
+Define
+\begin{equation}
+q_j=\frac{3^{A_j}}{4^j}=3^{A_j-\alpha j}.
+\label{eq:qj}
+\end{equation}
+Under \eqref{eq:H}, $0<q_j<1$ for $j\ge1$, and $q_0=1$.
+
+Dividing
+\[
+4^jn=C_j+3^{A_j}x_j
+\]
+by $4^j$ and using \eqref{eq:Cclosed} gives the exact normalized identity
+\begin{equation}
+\boxed{
+n=
+\frac14\sum_{i=0}^{j-1}r_iq_i+q_jx_j.
+}
+\label{eq:normalized-identity}
+\end{equation}
+
+\begin{theorem}[Summability under eternal no descent]
+Under \eqref{eq:H},
+\begin{equation}
+\boxed{
+\sum_{i=0}^{\infty}q_i
+=
+\sum_{i=0}^{\infty}\frac{3^{A_i}}{4^i}
+<\infty.
+}
+\label{eq:qsum}
+\end{equation}
+Consequently,
+\begin{equation}
+q_j\to0.
+\label{eq:qzero}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The last term in \eqref{eq:normalized-identity} is positive, so
+\[
+\frac14\sum_{i=0}^{j-1}r_iq_i<n.
+\]
+Since $r_i\ge1$,
+\[
+\sum_{i=0}^{j-1}q_i<4n.
+\]
+The partial sums are increasing and uniformly bounded, proving convergence.  Every term of a convergent positive series tends to zero.
+\end{proof}
+
+Define the deficit from the critical line
+\begin{equation}
+D_j=\alpha j-A_j.
+\label{eq:Dj}
+\end{equation}
+Then
+\[
+q_j=3^{-D_j}.
+\]
+
+\begin{theorem}[Unbounded valuation deficit]
+Under \eqref{eq:H},
+\begin{equation}
+\boxed{D_j=\alpha j-A_j\longrightarrow+\infty.}
+\label{eq:deficit}
+\end{equation}
+Equivalently,
+\begin{equation}
+\boxed{
+\beta j-\sum_{i=0}^{j-1}(a_i-1)\longrightarrow+\infty.
+}
+\label{eq:excess-deficit}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+By \eqref{eq:qzero}, $3^{-D_j}\to0$, which is equivalent to $D_j\to+\infty$.
+\end{proof}
+
+A simple frequency consequence is worth recording.  Let
+\[
+N_{\ge2}(j)=\#\{0\le i<j:a_i\ge2\}.
+\]
+Because each $a_i\ge2$ contributes at least one to $\sum(a_i-1)$,
+\[
+N_{\ge2}(j)
+\le
+\sum_{i<j}(a_i-1)
+<
+\beta j.
+\]
+Thus more than approximately
+\[
+1-\beta\approx0.738140493
+\]
+of the first $j$ valuations must equal $1$ at every prefix of a hypothetical no-descent orbit.  This is a necessary condition, not a contradiction.
+
+\subsection{A decreasing normalized quantity}
+
+Define
+\begin{equation}
+y_j=q_jx_j=\frac{3^{A_j}x_j}{4^j}.
+\label{eq:yj}
+\end{equation}
+Then \eqref{eq:normalized-identity} becomes
+\begin{equation}
+n=\frac14\sum_{i=0}^{j-1}r_iq_i+y_j.
+\label{eq:yidentity}
+\end{equation}
+Subtracting the identity at consecutive indices gives
+\begin{equation}
+\boxed{
+y_{j+1}=y_j-\frac{r_j}{4}q_j.
+}
+\label{eq:ydecrease}
+\end{equation}
+Hence $y_j$ is positive and strictly decreasing.  Therefore
+\begin{equation}
+L=\lim_{j\to\infty}y_j
+\label{eq:L}
+\end{equation}
+exists with $L\ge0$.  Passing to the limit in \eqref{eq:yidentity},
+\begin{equation}
+\boxed{
+n=\frac14\sum_{i=0}^{\infty}r_iq_i+L.
+}
+\label{eq:series-L}
+\end{equation}
+
+\subsection{Product representation and the two limiting regimes}
+
+From the one-step relation,
+\[
+q_{j+1}=q_j\frac{3^{a_j}}4.
+\]
+Therefore
+\[
+y_{j+1}
+=
+q_{j+1}x_{j+1}
+=
+q_jx_j\left(1-\frac{r_j}{4x_j}\right).
+\]
+Thus
+\begin{equation}
+\boxed{
+y_j
+=
+n\prod_{i=0}^{j-1}
+\left(1-\frac{r_i}{4x_i}\right).
+}
+\label{eq:product}
+\end{equation}
+Since the factors lie strictly between $0$ and $1$, standard infinite-product criteria give
+\begin{equation}
+\boxed{
+L>0
+\iff
+\sum_{i=0}^{\infty}\frac{r_i}{x_i}<\infty
+\iff
+\sum_{i=0}^{\infty}\frac1{x_i}<\infty.
+}
+\label{eq:Lcriterion}
+\end{equation}
+
+If $L>0$, then $q_j\to0$ and
+\[
+x_j=\frac{y_j}{q_j}\sim\frac{L}{q_j}=L3^{D_j},
+\]
+so
+\begin{equation}
+\boxed{x_j\to\infty.}
+\label{eq:escape}
+\end{equation}
+Thus the $L>0$ regime would be an escaping no-descent orbit.
+
+If $L=0$, then \eqref{eq:series-L} becomes the exact identity
+\begin{equation}
+\boxed{
+n=\frac14\sum_{i=0}^{\infty}
+r_i\frac{3^{A_i}}{4^i}.
+}
+\label{eq:Lzero-series}
+\end{equation}
+Neither regime is presently contradictory.  In particular, $q_j\to0$ does \emph{not} imply $y_j\to0$, because $x_j$ may grow at a compensating rate.
+
+\subsection{Threshold limit and congruence}
+
+Under \eqref{eq:H},
+\[
+R_j
+=
+\frac{\frac14\sum_{i=0}^{j-1}r_iq_i}{1-q_j},
+\]
+so
+\begin{equation}
+\boxed{R_j\to n-L.}
+\label{eq:Rlimit}
+\end{equation}
+The multi-step identity also gives the exact congruence
+\begin{equation}
+\boxed{
+4^jn\equiv C_j\pmod{3^{A_j}},
+}
+\label{eq:congruence}
+\end{equation}
+or, since $4^j$ is invertible modulo $3^{A_j}$,
+\[
+n\equiv4^{-j}C_j\pmod{3^{A_j}}.
+\]
+These congruences encode finite orbit prefixes but do not by themselves provide an additional obstruction to an infinite orbit.
+
+\begin{remark}[Boundary of the deterministic argument]
+The preceding results do not prove that $L=0$, do not derive a contradiction from either $L=0$ or $L>0$, do not exclude every infinite low-valuation word, and do not prove global convergence.  They characterize what a counterexample would have to satisfy.
+\end{remark}
+
+\section{Algebraic equation for periodic orbits}
+
+Suppose a periodic orbit has length $\ell$:
+\[
+x_0,x_1,\ldots,x_{\ell-1},\qquad x_\ell=x_0.
+\]
+Let
+\[
+r_i=r(x_i),\qquad
+k_i=\vthree(4x_i-r_i),
+\qquad
+K=\sum_{i=0}^{\ell-1}k_i.
+\]
+Applying the multi-step identity at $j=\ell$ gives
+\[
+x_0=\frac{4^\ell x_0-C_\ell}{3^K},
+\]
+and therefore
+\begin{equation}
+\boxed{
+x_0=
+\frac{\displaystyle
+\sum_{j=0}^{\ell-1}
+r_j4^{\ell-1-j}
+3^{\sum_{m=0}^{j-1}k_m}}
+{4^\ell-3^K}.
+}
+\label{eq:cycle}
+\end{equation}
+The empty exponent sum is interpreted as $0$.
+
+This formula gives an exact Diophantine condition.  A proposed residue/valuation word must make the right-hand side an integer, and the resulting orbit must reproduce the assumed residues and valuations.
+
+\subsection{Sign condition}
+
+The numerator in \eqref{eq:cycle} is positive.  Therefore a positive cycle requires
+\begin{equation}
+4^\ell-3^K>0
+\iff
+\frac K\ell<\log_3 4=\alpha.
+\label{eq:positive-cycle}
+\end{equation}
+A negative cycle, when the map is algebraically extended to negative states, requires the opposite sign.  Thus rational approximations $K/\ell$ to $\log_3 4$ are naturally connected to small cycle denominators.
+
+\subsection{Reconstruction of the known positive cycles}
+
+For a fixed point with $k_0=1$, \eqref{eq:cycle} gives
+\[
+x_0=\frac{r_0}{4-3}=r_0,
+\]
+yielding $x_0=1$ and $x_0=2$.
+
+For the four-cycle,
+\[
+(r_0,r_1,r_2,r_3)=(1,2,2,2),
+\]
+\[
+(k_0,k_1,k_2,k_3)=(1,1,1,2),
+\qquad K=5.
+\]
+The denominator is
+\[
+4^4-3^5=256-243=13.
+\]
+The numerator is
+\[
+1\cdot4^3
++2\cdot4^2\cdot3
++2\cdot4\cdot3^2
++2\cdot3^3
+=
+64+96+72+54=286.
+\]
+Hence
+\[
+x_0=\frac{286}{13}=22.
+\]
+The small denominator reflects the near equality
+\[
+4^4=256,\qquad3^5=243.
+\]
+The near equality is arithmetically favorable but is not sufficient by itself; exact divisibility and branch consistency are still required.
+
+\section{Finite-horizon survivor sets and transfer to integers}
+\label{sec:transfer}
+
+The $3$-adic iid law becomes useful for ordinary integers only after a separate density-transfer argument.
+
+\subsection{Relative natural density}
+
+For $A\subseteq\Sset$, define the relative natural density, when it exists, by
+\begin{equation}
+\ds(A)
+=
+\lim_{N\to\infty}
+\frac{\#(A\cap[1,N])}{\#(\Sset\cap[1,N])}.
+\label{eq:reldensity}
+\end{equation}
+This normalizes density relative to the admissible integers rather than to all positive integers.
+
+For $x\in\Ustar$, let
+\[
+A_t(x)=\sum_{i=0}^{t-1}a_i(x).
+\]
+For a fixed horizon $m$, define the $3$-adic barrier-survivor set
+\begin{equation}
+\mathcal S_m
+=
+\{x\in\Ustar:A_t(x)<\alpha t\text{ for every }1\le t\le m\}.
+\label{eq:Smcal}
+\end{equation}
+Let
+\[
+S_m=\mathcal S_m\cap\Sset
+\]
+for ordinary positive admissible integers, and define the actual no-first-descent set
+\begin{equation}
+F_m
+=
+\{n\in\Sset:T^t(n)\ge n\text{ for every }1\le t\le m\}.
+\label{eq:Fm}
+\end{equation}
+By the sufficient barrier theorem,
+\begin{equation}
+F_m\subseteq S_m.
+\label{eq:FsubsetS}
+\end{equation}
+
+\subsection{Full cylinders and clopen representatives}
+
+For a finite symbol word
+\[
+w=((r_0,k_0),\ldots,(r_{m-1},k_{m-1})),
+\]
+define the full cylinder
+\begin{equation}
+\widetilde C_w
+=
+\phi_{r_0,k_0}\circ\cdots\circ
+\phi_{r_{m-1},k_{m-1}}(U),
+\label{eq:full-cylinder-set}
+\end{equation}
+and the symbol cylinder on the invariant domain
+\[
+C_w=\widetilde C_w\cap\Ustar.
+\]
+Each $\widetilde C_w$ is a residue class modulo a finite power of $3$, hence is clopen in $U$.
+
+\begin{theorem}[Finite clopen representative]
+For every fixed $m$, there exists a finite union of full cylinders
+\[
+\widetilde{\mathcal S}_m\subset U
+\]
+such that
+\begin{equation}
+\mathcal S_m=\widetilde{\mathcal S}_m\cap\Ustar,
+\qquad
+\mu(\mathcal S_m)=\mu(\widetilde{\mathcal S}_m).
+\label{eq:clopen-rep}
+\end{equation}
+Moreover,
+\begin{equation}
+\widetilde{\mathcal S}_m\cap\Sset
+=
+\mathcal S_m\cap\Sset.
+\label{eq:integer-clopen}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The condition $A_m<\alpha m$ implies
+\[
+A_m\le\lceil\alpha m\rceil-1.
+\]
+Here $\alpha m$ is never an integer for $m\ge1$.  Indeed, if
+$\alpha m=N\in\mathbb Z$, then $4^m=3^N$, which is impossible by unique
+prime factorization.  Thus the strict real inequality has the exact integer
+cutoff displayed above.  Since every valuation $a_i\ge1$, only finitely many valuation words can satisfy all prefix inequalities through depth $m$, and for each valuation word there are only $2^m$ residue words.  Their full cylinders form a finite clopen union $\widetilde{\mathcal S}_m$.  On $\Ustar$ it represents exactly the survivor condition.  Removing $Z$ does not change Haar measure because $Z$ is null.  Finally, no positive integer belongs to $Z$, so the two sets agree on $\Sset$.
+\end{proof}
+
+\begin{theorem}[Clopen Haar measure equals relative natural density]
+If $C\subseteq U$ is clopen, then
+\begin{equation}
+\boxed{\ds(C\cap\Sset)=\mu(C).}
+\label{eq:clopen-density}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+A clopen subset of $U$ is a finite union of unit residue classes modulo $3^K$ for some $K$.  There are
+\[
+\varphi(3^K)=2\cdot3^{K-1}
+\]
+unit classes modulo $3^K$.  Each has normalized Haar mass
+\[
+\frac{1}{2\cdot3^{K-1}},
+\]
+and by elementary counting the same relative natural density among $\Sset$.  Finite additivity gives the result.
+\end{proof}
+
+\begin{example}[A residue-class density modulo $9$]
+Among the six unit residue classes modulo $9$,
+\[
+1,2,4,5,7,8\pmod 9,
+\]
+each occurs with relative natural density $1/6$ inside $\Sset$.  The same
+number is its normalized Haar mass in $U$.  Finite unions of such classes
+therefore have identical Haar mass and relative natural density.  The general
+modulus $3^K$ argument in the theorem is exactly the same counting principle.
+\end{example}
+
+Consequently,
+\begin{equation}
+\ds(S_m)=\mu(\mathcal S_m).
+\label{eq:Sm-density}
+\end{equation}
+
+\subsection{Finite discrepancy between barrier survival and actual no descent}
+
+The remaining issue is that $S_m$ is defined by the sufficient barrier, whereas $F_m$ records actual descent.  The below-barrier correction term $C_t$ could make a trajectory descend without crossing the barrier.  At fixed depth, however, this difference affects only finitely many starting integers.
+
+\begin{theorem}[Finite discrepancy theorem]
+For every fixed $m\ge1$,
+\begin{equation}
+\boxed{S_m\setminus F_m\text{ is finite}.}
+\label{eq:finite-discrepancy}
+\end{equation}
+Since $F_m\subseteq S_m$, equivalently
+\[
+S_m\triangle F_m
+\]
+is finite.
+\end{theorem}
+
+\begin{proof}
+At fixed depth $m$, only finitely many barrier-surviving full symbol words occur.  Fix such a word $w$.  For each $1\le t\le m$, the barrier inequality gives
+\[
+3^{A_t(w)}<4^t.
+\]
+By the exact below-barrier criterion,
+\[
+T^t(n)<n
+\iff
+n<R_t(w),
+\]
+where
+\[
+R_t(w)=\frac{C_t(w)}{4^t-3^{A_t(w)}}.
+\]
+For the fixed word define
+\[
+R(w)=\max_{1\le t\le m}R_t(w).
+\]
+There are finitely many survivor words, so
+\[
+M_m=\max_w R(w)<\infty.
+\]
+Any $n\in S_m$ with $n\ge M_m$ cannot have an actual descent through time $m$.  Hence every element of $S_m\setminus F_m$ lies below the finite bound $M_m$.
+\end{proof}
+
+\section{Exact finite-horizon first-descent density}
+
+\begin{theorem}[Exact finite-horizon density theorem]
+For every fixed $m\ge1$,
+\begin{equation}
+\boxed{
+\ds(F_m)=\ds(S_m)=\mu(\mathcal S_m).
+}
+\label{eq:finite-density}
+\end{equation}
+If
+\begin{equation}
+D_m=
+\{n\in\Sset:\exists\,1\le t\le m,\ T^t(n)<n\},
+\label{eq:Dm}
+\end{equation}
+then
+\begin{equation}
+\boxed{
+\ds(D_m)=1-\mu(\mathcal S_m).
+}
+\label{eq:Dm-density}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+By \eqref{eq:Sm-density}, $S_m$ has relative density $\mu(\mathcal S_m)$.  By the finite discrepancy theorem, $S_m$ and $F_m$ differ by a finite set, which has relative density zero.  Therefore they have the same relative density.  Since $D_m=\Sset\setminus F_m$, the second identity follows.
+\end{proof}
+
+This theorem is the precise bridge between the $3$-adic symbolic law and ordinary positive integers.  The dynamic program below therefore computes an \emph{exact asymptotic density}, not a sampling estimate.
+
+\section{Exact-rational dynamic programming}
+
+Let
+\begin{equation}
+p_t(s)
+=
+\Prob\left(
+A_t=s,\;
+A_u<\alpha u\text{ for all }1\le u\le t
+\right).
+\label{eq:pts}
+\end{equation}
+Initialize
+\[
+p_0(0)=1.
+\]
+Because the valuations are iid with probability $2/3^k$, the recurrence is
+\begin{equation}
+p_{t+1}(s+k)
+\mathrel{+}=
+p_t(s)\frac{2}{3^k}
+\label{eq:DP}
+\end{equation}
+for every $k\ge1$ satisfying
+\begin{equation}
+s+k<\alpha(t+1).
+\label{eq:DPbarrier}
+\end{equation}
+Since $\alpha=\log_3 4$ is irrational, equality with an integer never occurs, and \eqref{eq:DPbarrier} is exactly equivalent to
+\begin{equation}
+s+k\le\lceil\alpha(t+1)\rceil-1.
+\label{eq:DPinteger}
+\end{equation}
+Finally,
+\begin{equation}
+\boxed{
+\mu(\mathcal S_t)=\sum_s p_t(s).
+}
+\label{eq:DPsum}
+\end{equation}
+
+Every transition probability is rational.  The certification computation used exact rational arithmetic for all state masses through depth $500$; floating-point arithmetic was not used to accumulate probabilities.
+
+\subsection{Certified finite-depth values}
+
+\begin{table}[ht]
+\centering
+\caption{Certified finite-depth barrier-survival probabilities and the corresponding exact finite-horizon first-descent densities.  Exact fractions for the larger depths are displayed separately below to keep the table readable.}
+\label{tab:dp}
+\small
+\begin{tabular}{rcc}
+\toprule
+$m$ & $\mu(\mathcal S_m)$ & $\ds(D_m)=1-\mu(\mathcal S_m)$\\
+\midrule
+6  & $0.175582990397805213$ & $0.824417009602194787$\\
+10 & $0.092488159551107272$ & $0.907511840448892728$\\
+20 & $0.027761091757698629$ & $0.972238908242301371$\\
+25 & $0.017778910915217290$ & $0.982221089084782710$\\
+30 & $0.011001198894873564$ & $0.988998801105126436$\\
+40 & $0.004976589672990874$ & $0.995023410327009126$\\
+50 & $0.002371926204921184$ & $0.997628073795078816$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The exact rational values underlying the first seven rows are
+\begin{align*}
+\mu(\mathcal S_6)&=\frac{128}{729},\\
+\mu(\mathcal S_{10})&=\frac{16384}{177147},\\
+\mu(\mathcal S_{20})&=\frac{23521656832}{847288609443},\\
+\mu(\mathcal S_{25})&=\frac{1220173365248}{68630377364883},\\
+\mu(\mathcal S_{30})&=\frac{4953662807867392}{450283905890997363},\\
+\mu(\mathcal S_{40})&=\frac{3572683711808203128832}{717897987691852588770249},\\
+\mu(\mathcal S_{50})&=
+\frac{301646097509840481608007680}
+{127173474825648610542883299603}.
+\end{align*}
+
+At depth $50$,
+\begin{equation}
+\boxed{
+\mu(\mathcal S_{50})
+=
+\frac{301646097509840481608007680}
+{127173474825648610542883299603}.
+}
+\label{eq:mu50exact}
+\end{equation}
+Numerically,
+\[
+\mu(\mathcal S_{50})
+\approx0.00237192620492118432028189748,
+\]
+and therefore
+\begin{equation}
+\boxed{
+\ds(D_{50})
+\approx0.99762807379507881567971810252.
+}
+\label{eq:D50}
+\end{equation}
+Thus approximately
+\[
+\boxed{99.76280737950788\%}
+\]
+of admissible positive integers, in the sense of relative natural density, achieve a strict first descent within $50$ reduced steps.
+
+The same exact recurrence was continued to larger finite depths:
+\[
+\mu(\mathcal S_{100})
+\approx8.5704175568195754\times10^{-5},
+\]
+\[
+\mu(\mathcal S_{200})
+\approx2.6209977651649500\times10^{-7},
+\]
+and
+\[
+\mu(\mathcal S_{500})
+\approx3.0437604792015829\times10^{-14}.
+\]
+These are exact-rational finite computations reported in decimal form.  They do not, by themselves, prove any specific asymptotic equivalent.
+
+\section{Chernoff bound and the density-one first-descent theorem}
+\label{sec:densityone}
+
+For $t>0$,
+\[
+\E(e^{-ta})
+=
+\sum_{k\ge1}\frac{2e^{-tk}}{3^k}
+=
+\frac{2e^{-t}}{3-e^{-t}}.
+\]
+Put $q=e^{-t}\in(0,1)$.  Then
+\[
+\E(q^a)=\frac{2q}{3-q}.
+\]
+Since $\mathcal S_m\subseteq\{A_m<\alpha m\}$,
+\[
+\mu(\mathcal S_m)
+\le
+\Prob(A_m<\alpha m).
+\]
+For $q\in(0,1)$, the function $q^x$ decreases with $x$, so on the event $A_m<\alpha m$,
+\[
+q^{A_m}>q^{\alpha m}.
+\]
+Markov's inequality therefore gives
+\[
+\Prob(A_m<\alpha m)
+\le
+q^{-\alpha m}\E(q^{A_m}).
+\]
+By independence,
+\[
+\E(q^{A_m})
+=
+\left(\E(q^a)\right)^m
+=
+\left(\frac{2q}{3-q}\right)^m.
+\]
+Hence
+\begin{equation}
+\boxed{
+\mu(\mathcal S_m)
+\le
+\left[
+\frac{2q^{1-\alpha}}{3-q}
+\right]^m.
+}
+\label{eq:chernoff-general}
+\end{equation}
+
+Differentiating the logarithm of the bracket gives the minimizing value
+\begin{equation}
+\boxed{
+q^\ast=\frac{3(\alpha-1)}{\alpha}
+\approx0.622556248918265728.
+}
+\label{eq:qstar}
+\end{equation}
+Define
+\begin{equation}
+\boxed{
+\rho=
+\frac{2(q^\ast)^{1-\alpha}}{3-q^\ast}
+\approx0.952392652605812657<1.
+}
+\label{eq:rho}
+\end{equation}
+Then
+\begin{equation}
+\boxed{\mu(\mathcal S_m)\le\rho^m.}
+\label{eq:rho-bound}
+\end{equation}
+Combining with the exact finite-horizon density theorem,
+\begin{equation}
+\boxed{
+\ds(F_m)\le\rho^m,
+\qquad
+\ds(D_m)\ge1-\rho^m.
+}
+\label{eq:density-bound}
+\end{equation}
+
+Define the eternal no-first-descent set
+\begin{equation}
+F_\infty=\bigcap_{m\ge1}F_m.
+\label{eq:Finfty}
+\end{equation}
+
+\begin{theorem}[Density-one first descent]
+\begin{equation}
+\boxed{
+\ds(F_\infty)=0.
+}
+\label{eq:Finfty-density}
+\end{equation}
+Equivalently,
+\begin{equation}
+\boxed{
+\ds\{n\in\Sset:\exists j\ge1,\ T^j(n)<n\}=1.
+}
+\label{eq:density-one}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+For every $m$,
+\[
+F_\infty\subseteq F_m.
+\]
+Hence the upper relative density satisfies
+\[
+\overline{\ds}(F_\infty)
+\le
+\ds(F_m)
+\le
+\rho^m.
+\]
+Since $0<\rho<1$, letting $m\to\infty$ gives
+\[
+\overline{\ds}(F_\infty)=0.
+\]
+The lower density is nonnegative, so the relative natural density exists and equals zero.  Taking the complement in $\Sset$ proves \eqref{eq:density-one}.
+\end{proof}
+
+\begin{remark}[Critical logical distinction]
+The theorem says that the set of admissible integers that never descend below their starting value has relative density zero.  It does \emph{not} say that this set is empty.  Therefore it does not prove universal first descent.  It also does not prove density-one convergence to the known terminal cycles: a first descent is only one local event in an orbit.
+\end{remark}
+
+\section{Exhaustive computation through \texorpdfstring{$10^{11}$}{10 to the 11}}
+
+The analytic results above are complemented by a finite exhaustive computation.  This section states exactly what was computed and exactly what was later revalidated.
+
+\subsection{Finite domain}
+
+The complete archived domain is
+\[
+1\le n\le10^{11},\qquad3\nmid n.
+\]
+Its exact cardinality is
+\begin{equation}
+10^{11}-\left\lfloor\frac{10^{11}}3\right\rfloor
+=
+66,666,666,667.
+\label{eq:domain-count}
+\end{equation}
+
+The archive is the union of two disjoint computations:
+\[
+1\le n\le10^9
+\]
+and
+\[
+10^9<n\le10^{11}.
+\]
+The extension contains exactly $66,000,000,000$ admissible starts.
+
+\subsection{Known positive terminal cycles}
+
+The classification uses the three known positive terminal cycles
+\[
+\{1\},\qquad
+\{2\},\qquad
+22\to29\to38\to50\to22.
+\]
+The term ``known terminal cycles'' is used deliberately.  The finite computation does not prove that no additional positive cycle exists above the verified range.
+
+\subsection{Extension results}
+
+For $10^9<n\le10^{11}$ the archived totals are
+\[
+\text{tested}=66,000,000,000,
+\]
+\[
+\text{to }\{1\}=6,536,905,587,
+\]
+\[
+\text{to }\{2\}=42,779,024,148,
+\]
+\[
+\text{to four-cycle}=16,684,070,265,
+\]
+with
+\[
+\text{unknown cycles}=0,\qquad
+\text{overflows}=0.
+\]
+The exact count identity is
+\[
+6,536,905,587+
+42,779,024,148+
+16,684,070,265
+=
+66,000,000,000.
+\]
+
+The extension also records
+\[
+5,533,148,453,392
+\]
+reduced-map iterations and total accumulated valuation
+\[
+8,362,466,366,261.
+\]
+Its record reduced transient is
+\[
+574
+\quad\text{at}\quad
+n=97,312,923,676,
+\]
+and its record accumulated valuation is
+\[
+744
+\quad\text{at the same start}.
+\]
+The largest fully reduced state recorded in the extension is
+\[
+580,315,803,007,928,858,285,
+\]
+on the trajectory beginning at
+\[
+n=52,991,345,843.
+\]
+
+\subsection{Combined classification}
+
+Combining the base and extension archives gives Table~\ref{tab:combined}.
+
+\begin{table}[ht]
+\centering
+\caption{Complete archived classification for all $1\le n\le10^{11}$ with $3\nmid n$.}
+\label{tab:combined}
+\begin{tabular}{lrr}
+\toprule
+Terminal cycle & Number of starts & Percentage\\
+\midrule
+$\{1\}$ & 6,602,925,203 & 9.904388\%\\
+$\{2\}$ & 43,211,124,603 & 64.816687\%\\
+$22\to29\to38\to50\to22$ & 16,852,616,861 & 25.278925\%\\
+\midrule
+Total & 66,666,666,667 & 100.000000\%\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The arithmetic check
+\[
+6,602,925,203+
+43,211,124,603+
+16,852,616,861
+=
+66,666,666,667
+\]
+is exact.  Across the two archived component scans, no unknown positive cycle and no arithmetic overflow was reported.
+
+\begin{proposition}[Finite computational statement]
+Within the archived finite domain
+\[
+1\le n\le10^{11},\qquad3\nmid n,
+\]
+every tested start was classified into one of the three known positive terminal cycles, and the archived scans report zero unknown cycles and zero arithmetic overflows.
+\end{proposition}
+
+This is a finite computational statement, not an all-integers theorem.
+
+\section{Exhaustive first-descent verification through \texorpdfstring{$10^{11}$}{10 to the 11}}
+
+Define the first-descent time, when it exists, by
+\begin{equation}
+\tau(n)=\min\{j\ge1:T^j(n)<n\}.
+\label{eq:tau}
+\end{equation}
+
+A dedicated first-lower scan was applied to the archived domain.  For the extension $10^9<n\le10^{11}$,
+\[
+\text{first\_lower\_found}=66,000,000,000,
+\qquad
+\text{no\_lower}=0.
+\]
+In the full range through $10^{11}$, the scanner-semantic no-lower cases are exactly
+\begin{equation}
+1,2,8,10,13,17,22,28,29,37,38,50.
+\label{eq:12exceptions}
+\end{equation}
+These are small starts that enter or lie on a known terminal cycle before ever becoming strictly smaller than their own starting value.  They are not counterexamples to convergence.
+
+\begin{proposition}[Finite first-descent verification]
+For every positive integer $n$ satisfying
+\begin{equation}
+3\nmid n,\qquad50<n\le10^{11},
+\end{equation}
+the exhaustive computation finds a $j\ge1$ such that
+\begin{equation}
+\boxed{T^j(n)<n.}
+\label{eq:finite-first-descent}
+\end{equation}
+\end{proposition}
+
+The largest observed first-descent time is
+\begin{equation}
+\boxed{
+\tau(76,089,719,024)=355.
+}
+\label{eq:record-tau}
+\end{equation}
+
+\section{The \texorpdfstring{$355$}{355}-step record and the descent barrier}
+
+The record orbit is particularly informative because its final first descent coincides with a crossing of the sufficient valuation barrier.
+
+Across the first $355$ transitions of the orbit beginning at
+\[
+n=76,089,719,024,
+\]
+the valuation frequencies are
+\[
+\begin{array}{c|ccccc}
+a&1&2&3&4&5\\
+\hline
+\#&283&54&14&3&1.
+\end{array}
+\]
+Therefore
+\[
+A_{355}
+=
+283+2(54)+3(14)+4(3)+5
+=
+450.
+\]
+Before the final step,
+\[
+A_{354}=445.
+\]
+Numerically,
+\begin{equation}
+354\alpha\approx446.6982655,
+\qquad
+355\alpha\approx447.9601250.
+\label{eq:record-barrier-values}
+\end{equation}
+Thus
+\[
+A_{354}=445<354\alpha,
+\]
+whereas
+\[
+A_{355}=450>355\alpha.
+\]
+The sufficient barrier is therefore not reached at step $354$ but is reached at step $355$.
+
+The final five transitions are
+\[
+1,399,884,236,737
+\xrightarrow{a=2}
+622,170,771,883,
+\]
+\[
+622,170,771,883
+\xrightarrow{a=2}
+276,520,343,059,
+\]
+\[
+276,520,343,059
+\xrightarrow{a=1}
+368,693,790,745,
+\]
+\[
+368,693,790,745
+\xrightarrow{a=1}
+491,591,720,993,
+\]
+and
+\[
+491,591,720,993
+\xrightarrow{a=5}
+8,092,044,790.
+\]
+For the final transition,
+\[
+491,591,720,993\equiv2\pmod3,
+\]
+so the correct residue is
+\[
+r=2.
+\]
+Consequently,
+\[
+4x-r
+=
+4(491,591,720,993)-2
+=
+1,966,366,883,970.
+\]
+Exactly,
+\[
+\vthree(1,966,366,883,970)=5,
+\]
+and
+\[
+\frac{1,966,366,883,970}{3^5}
+=
+8,092,044,790.
+\]
+Finally,
+\[
+8,092,044,790
+<
+76,089,719,024,
+\]
+which is the first strict descent below the initial value.
+
+This example should not be interpreted as saying that every first descent occurs exactly when the sufficient barrier is crossed; the below-barrier criterion shows that descent can occur earlier.  The record is useful because here the two events coincide.
+
+\section{Computational implementation and audit scope}
+
+Reproducibility requires distinguishing the historical exhaustive archive from later validation runs.
+
+\subsection{Scanner semantics}
+
+The audited scanner implements the exact map \eqref{eq:T}.  A first-lower event is recorded only after a successful reduced-map step and only when the new state is strictly below the original start.  Known terminal cycles are detected explicitly.  A constant-memory cycle detector is used for a repeated state outside the known terminal cycles.  Orbit arithmetic uses \texttt{unsigned \_\_int128} with explicit finite-range overflow guards in the audited implementation.
+
+\subsection{V5.1 structural audit}
+
+The V5.1 source passed checks of:
+\begin{itemize}[leftmargin=2em]
+\item map arithmetic;
+\item first-lower semantics;
+\item known-terminal-cycle detection;
+\item unknown-cycle detection;
+\item multithreaded work allocation;
+\item audited finite-range overflow handling.
+\end{itemize}
+
+The audit nevertheless identified reproducibility weaknesses in checkpoint handling: a stale checkpoint could be accepted by filename without sufficiently strict validation of its stored interval identity; numeric parse success and required fields were not uniformly enforced; and a generic no-lower category could, in an abnormal termination path, mix resolved and unresolved cases.
+
+\subsection{V5.2 audit hardening}
+
+V5.2 was created to harden the audit layer without changing the dynamical rule.  It adds:
+\begin{itemize}[leftmargin=2em]
+\item checkpoint format and version checks;
+\item validation of expected checkpoint index and interval endpoints;
+\item strict numeric parsing;
+\item required-field masks;
+\item aggregate consistency checks;
+\item separate known-no-lower and unresolved-no-lower categories;
+\item rejection of malformed or stale checkpoints.
+\end{itemize}
+
+\subsection{Fresh validation runs}
+
+A fresh V5.2 run through $10^6$ reproduced $666,667$ admissible starts with
+\[
+66,382\to\{1\},\qquad
+431,888\to\{2\},\qquad
+168,397\to C_4,
+\]
+and
+\[
+\text{unknown}=0,\qquad
+\text{overflow}=0.
+\]
+It found
+\[
+666,655
+\]
+first-lower cases and the same $12$ known no-lower exceptions.
+
+Through $10^7$, V5.1 and V5.2 agreed on
+\[
+6,666,667
+\]
+admissible starts,
+\[
+659,904\to\{1\},\quad
+4,318,371\to\{2\},\quad
+1,688,392\to C_4,
+\]
+with zero unknowns and zero overflows.
+
+A fresh V5.2 re-execution of the production-scale raw interval
+\[
+76,000,000,001\le n\le76,100,000,000
+\]
+covered
+\[
+66,666,667
+\]
+admissible starts and reproduced the historical checkpoint statistics, including
+\[
+n=76,089,719,024,\qquad\tau(n)=355.
+\]
+
+\subsection{Checkpoint audit}
+
+The available archive contains $990$ extension checkpoints and $10$ base checkpoints.  All
+\[
+\boxed{1000/1000}
+\]
+passed the applied structural checks, and independent aggregation recovered the published totals.
+
+This statement is intentionally limited: it is a structural and aggregate validation of the available archive, not a cryptographic proof of the original historical bytes.
+
+\subsection{What was not rerun}
+
+The complete set of all
+\[
+66,666,666,667
+\]
+admissible starts through $10^{11}$ was \emph{not} freshly recomputed from zero with V5.2 during the final audit.  The full-domain statement relies on the exhaustive archived computation, its complete checkpoint collection, independent re-aggregation, structural auditing, and targeted fresh V5.2 re-executions.
+
+\section{How the analytic and computational results fit together}
+
+There are two independent notions of ``large evidence'' in this work.
+
+First, the density theorem is asymptotic and analytic:
+\[
+\ds\{n:\exists j,\ T^j(n)<n\}=1.
+\]
+It says that the exceptional no-first-descent set has relative natural density zero, but it does not give a finite cutoff after which there are no exceptions.
+
+Second, the exhaustive first-descent scan is finite and pointwise:
+\[
+50<n\le10^{11}
+\quad\Longrightarrow\quad
+\exists j:T^j(n)<n.
+\]
+It covers every admissible integer in a large finite interval, but says nothing directly about integers above $10^{11}$.
+
+Neither statement contains the other.  Their agreement is nevertheless informative: the exact density theory predicts rapidly shrinking fixed-depth survivor density, while the finite scan finds no large exception through $10^{11}$.
+
+Similarly, the archived terminal-cycle classification through $10^{11}$ is much stronger than a sample, because every admissible start in that finite domain was included.  But it is still finite and therefore cannot exclude a new cycle or an unbounded trajectory beginning above the verified range.
+
+\section{Open problems and conjectural directions}
+
+\subsection{Universal first descent}
+
+The density-one theorem leaves open whether
+\[
+F_\infty=\varnothing.
+\]
+Equivalently, it remains open whether every admissible positive integer eventually falls below its starting value.  The finite computation verifies this for every admissible $n$ with $50<n\le10^{11}$, but no proof is known for all $n$.
+
+\subsection{Global convergence}
+
+\begin{conjecture}[Positive three-cycle convergence]
+Every $n\in\Sset$ eventually enters one of
+\[
+\{1\},\qquad
+\{2\},\qquad
+22\to29\to38\to50\to22.
+\]
+\end{conjecture}
+
+The present results do not prove this conjecture.  A complete proof must rule out both additional positive cycles and unbounded positive trajectories.
+
+\subsection{Density-one first descent versus density-one convergence}
+
+It is tempting to iterate the first-descent theorem recursively.  Such an argument requires care.  A density-zero exceptional set at one scale does not automatically remain negligible under the nonlinear preimage structure needed for repeated descent.  No theorem in this paper establishes density-one convergence to the known terminal cycles.
+
+\subsection{Possible persistence asymptotics}
+
+The exact-rational values of $\mu(\mathcal S_m)$ decrease rapidly.  Numerically they are compatible with a possible form
+\begin{equation}
+\mu(\mathcal S_m)
+\stackrel{?}{\sim}
+C\,m^{-3/2}\rho^m
+\label{eq:conjectural-asymptotic}
+\end{equation}
+for a constant $C>0$, with $\rho$ as in \eqref{eq:rho}.  No proof of \eqref{eq:conjectural-asymptotic} is given here.  It should be regarded only as a numerical research direction.
+
+\subsection{Rigidity of low-valuation paths}
+
+A hypothetical no-descent orbit must remain permanently below the critical valuation line and in fact must satisfy the stronger deficit condition
+\[
+\alpha j-A_j\to+\infty.
+\]
+Understanding whether an ordinary integer orbit can realize such an infinite symbolic path is an integer-rigidity problem not resolved by Haar measure alone.
+
+\section{Claim boundaries and interpretation}
+
+For clarity, the status of the main statements is summarized in Table~\ref{tab:claims}.
+
+\begin{longtable}{p{0.53\textwidth}p{0.38\textwidth}}
+\caption{Logical status of the principal claims.}
+\label{tab:claims}\\
+\toprule
+Statement & Status\\
+\midrule
+\endfirsthead
+\toprule
+Statement & Status\\
+\midrule
+\endhead
+Exact inverse branches and Haar scaling & Theorem\\
+Haar invariance & Theorem\\
+$\Prob(a_i=k)=2/3^k$ and iid valuations & Theorem on $\Ustar$\\
+Exact multi-step identity & Deterministic theorem\\
+$A_j\ge j\log_3 4\Rightarrow T^j(n)<n$ & Deterministic theorem\\
+Exact below-barrier descent criterion & Deterministic theorem\\
+Summability and deficit conditions under eternal no descent & Conditional deterministic theorems\\
+Finite clopen representative and Haar-to-integer transfer & Theorem\\
+$S_m\triangle F_m$ finite & Theorem\\
+$\ds(F_m)=\mu(\mathcal S_m)$ & Theorem\\
+Density-one first descent & Main theorem\\
+DP values through depth $500$ & Exact-rational finite computation\\
+$99.7628073795\%$ first descent within $50$ steps & Certified consequence of theorem + exact DP\\
+Classification through $10^{11}$ & Finite exhaustive computational statement\\
+$\tau_{\max}=355$ through $10^{11}$ & Finite computational record\\
+Universal first descent & Open\\
+Density-one convergence to known cycles & Not established\\
+Universal convergence to the three known positive terminal cycles & Conjecture\\
+Absence of unbounded positive trajectories & Open\\
+Asymptotic \eqref{eq:conjectural-asymptotic} & Numerical/conjectural only\\
+\bottomrule
+\end{longtable}
+
+\section{Conclusion}
+
+The map
+\[
+T(x)=\frac{4x-r(x)}{3^{\vthree(4x-r(x))}},
+\qquad
+r(x)=x\bmod3\in\{1,2\},
+\]
+combines a fixed multiplicative expansion by $4$ with a variable exact $3$-adic compression.  The present analysis separates its behavior into an exact symbolic component, an exact deterministic orbit component, an asymptotic density component, and a finite computational component.
+
+On the $3$-adic unit space, the inverse branches are explicit and their Haar scaling is exact.  This proves that the successive valuations are iid with
+\[
+\Prob(a=k)=\frac2{3^k},
+\qquad
+\E[a]=\frac32.
+\]
+For ordinary positive integer orbits, the exact multi-step identity
+\[
+T^j(n)=\frac{4^jn-C_j}{3^{A_j}}
+\]
+produces the deterministic sufficient descent barrier
+\[
+A_j\ge j\log_3 4.
+\]
+If an orbit were never to fall below its start, it would have to satisfy the much stronger restrictions
+\[
+\sum_j\frac{3^{A_j}}{4^j}<\infty,
+\qquad
+j\log_3 4-A_j\to+\infty,
+\]
+together with the additional series, product, and congruence identities derived above.
+
+At fixed depth, the $3$-adic barrier-survivor condition is represented by finitely many clopen cylinders.  Its Haar measure equals the relative natural density of the corresponding integer residue classes, and the difference between barrier survival and actual no descent is finite.  This yields the exact identity
+\[
+\ds(F_m)=\mu(\mathcal S_m).
+\]
+The exact-rational dynamic program then gives concrete certified densities, including approximately $99.7628073795\%$ first descent within $50$ reduced steps.  The optimized Chernoff bound implies
+\[
+\ds(F_\infty)=0,
+\]
+which is the density-one first-descent theorem.
+
+The finite computation provides a complementary pointwise result.  The archived exhaustive domain through $10^{11}$ contains $66,666,666,667$ admissible starts, all classified into the two known fixed points or the known four-cycle, with zero reported unknown cycles and zero overflows.  Every admissible $50<n\le10^{11}$ achieves a strict first descent; the largest observed first-descent time is $355$ at $76,089,719,024$.  The final step of that record has residue $r=2$, valuation $5$, and lands at $8,092,044,790$.
+
+These results substantially narrow the form of any possible counterexample, but they do not eliminate all counterexamples.  Universal first descent, density-one convergence, exclusion of all additional positive cycles, exclusion of unbounded trajectories, and the global three-terminal-cycle convergence conjecture remain open.
+
+\appendix
+
+\section{Exact-rational DP pseudocode}
+
+A minimal exact implementation of the finite-horizon recurrence can be described as follows.
+
+\begin{verbatim}
+p = {0 : 1}                       # exact rational masses
+for t = 1,2,...,m:
+    cap = ceil(alpha*t) - 1
+    new = empty map
+    for each (s, mass) in p:
+        for k = 1,...,cap-s:
+            new[s+k] += mass * (2 / 3^k)
+    p = new
+mu_S_t = sum of all masses in p
+\end{verbatim}
+
+For certification, the masses $2/3^k$ and all accumulated probabilities are stored as exact rational numbers.  The only nonrational quantity is the barrier slope $\alpha=\log_3 4$, and because $\alpha t$ is never an integer for positive integer $t$, the admissible integer threshold is unambiguously
+\[
+\lceil\alpha t\rceil-1.
+\]
+The certification run generated these thresholds at high precision and cross-checked them independently through depth $500$.
+
+\section{Additional finite computational totals}
+
+For the base range $1\le n\le10^9$:
+\[
+\text{admissible starts}=666,666,667,
+\]
+\[
+\text{to }\{1\}=66,019,616,
+\]
+\[
+\text{to }\{2\}=432,100,455,
+\]
+\[
+\text{to four-cycle}=168,546,596.
+\]
+The base record reduced transient is $405$ at
+\[
+n=833,560,375,
+\]
+and the base record accumulated valuation is $529$ at the same start.  The largest fully reduced base state is
+\[
+164,210,561,845,359,809
+\]
+from
+\[
+n=664,934,564.
+\]
+
+For the extension $10^9<n\le10^{11}$:
+\[
+\text{total reduced steps}=5,533,148,453,392,
+\]
+\[
+\text{total accumulated valuation}=8,362,466,366,261.
+\]
+The combined basin counts are exactly the sums of the two disjoint ranges.
+
+\section{Why the twelve small no-lower cases are not counterexamples}
+
+The first-descent scanner asks whether an orbit ever becomes \emph{strictly smaller than its own starting value} before it terminates in a known cycle.  This is different from asking whether the orbit converges.
+
+For example, $1$ and $2$ are fixed points, so they never become strictly smaller than themselves.  Likewise, a start lying on the four-cycle can circulate without visiting a value below its own start before the scanner recognizes the known terminal cycle.  Other small starts in
+\[
+1,2,8,10,13,17,22,28,29,37,38,50
+\]
+enter a known terminal cycle before a strict first-lower event relative to their starting value.  Thus ``no lower'' in this scanner-specific sense is not synonymous with ``nonconvergent.''
+
+\section{Reproducibility notes}
+
+The final computational audit distinguishes three layers:
+
+\begin{enumerate}[leftmargin=2em]
+\item the original exhaustive archived scans;
+\item independent structural checking and re-aggregation of the complete available checkpoint collection;
+\item fresh execution of the audit-hardened V5.2 scanner on validation ranges and on a production-scale interval containing the hardest first-descent record.
+\end{enumerate}
+
+The source-level hardening was designed to improve reproducibility and checkpoint integrity rather than to alter the mathematical map.  Any future full rerun should preserve the exact map, terminal-cycle definitions, first-lower semantics, and integer arithmetic while retaining strict checkpoint identity and parsing checks.
+
+\section{Selected numerical constants}
+
+For reference,
+\[
+\alpha=\log_3 4
+\approx
+1.26185950714291487419905422868552,
+\]
+\[
+\beta=\alpha-1
+\approx
+0.26185950714291487419905422868552,
+\]
+\[
+q^\ast
+=
+\frac{3(\alpha-1)}{\alpha}
+\approx
+0.62255624891826572781939158407828,
+\]
+and
+\[
+\rho
+\approx
+0.95239265260581265703694506264349.
+\]
+
+\begin{thebibliography}{9}\sloppy
+
+\bibitem{lagarias1985}
+J. C. Lagarias,
+``The $3x+1$ Problem and Its Generalizations,''
+\emph{The American Mathematical Monthly},
+92(1), 3--23, 1985.
+doi: 10.1080/00029890.1985.11971528.
+
+\bibitem{carnielli2015}
+W. Carnielli,
+``Some Natural Generalizations of the Collatz Problem,''
+\emph{Applied Mathematics E-Notes},
+15, 207--215, 2015.
+
+\bibitem{banazadeh2026base}
+F. Banazadeh,
+\emph{A Ternary $(4k-1(2))/3$ Collatz-Type Map: Complete 3-Adic Reduction,
+Algebraic Cycle Analysis, and Exhaustive Computational Verification up to $10^9$},
+Zenodo, 2026.
+doi: 10.5281/zenodo.22662980.
+
+\end{thebibliography}
+
+\end{document}
