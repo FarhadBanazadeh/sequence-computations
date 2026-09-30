@@ -48,6 +48,14 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 
 https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22195652_Ternary_4k_pm_1_over_3_Collatz_Type_Map_up_to_1e9_Computational_Pack.zip
 
+### Published OEIS Sequence
+
+OEIS A399797 — Number of iterations of T needed to reach 1, starting with n
+
+Published in The On-Line Encyclopedia of Integer Sequences (OEIS).
+
+Related research: Zenodo DOI 10.5281/zenodo.22685074
+
 ---
 
 ## 2. A Ternary (4k±1)/3 Collatz-Type Map and Its (4n±4^r)/3 Scaled Family
@@ -349,6 +357,13 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 
 https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22685074_Ternary_4k_pm_1_over_3_Collatz-Type_Map_up_to_1e11_Computational_Pack.zip
 
+### Published OEIS Sequence
+
+OEIS A399797 — Number of iterations of T needed to reach 1, starting with n
+
+Published in The On-Line Encyclopedia of Integer Sequences (OEIS).
+
+Related research: Zenodo DOI 10.5281/zenodo.22685074
 
 ## A Ternary (4k±1)/3 Collatz-Type Map: Exact 3-Adic Symbolic Dynamics, Density-One First Descent, Algebraic Cycle Analysis, and Exhaustive Verification up to 10^11 (V3.0)
 
@@ -371,6 +386,14 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 ### Computational package — GitHub
 
 https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22964212_Ternary_4k_pm_1_over_3_Collatz-Type_Map_up_to_1e11_Computational_Pack.zip
+
+### Published OEIS Sequence
+
+OEIS A399797 — Number of iterations of T needed to reach 1, starting with n
+
+Published in The On-Line Encyclopedia of Integer Sequences (OEIS).
+
+Related research: Zenodo DOI 10.5281/zenodo.22685074
 
 ## 8. Ternary (5k±1)/4 Collatz-Type Map with Two Observed Attractors: Exhaustive Computational Verification up to 10^10 and Algebraic Structure
 
@@ -898,11 +921,11 @@ They use related ternary, residue-dependent, and valuation-based ideas, but they
 
 ## I. Ternary (4k±1)/3 line
 
-1. Base computational research — Zenodo `22195652`(v1.0)
-2. Scaled-family research — Zenodo `22228200`
-3. Extended 128-bit exhaustive certification through `10^11` — Zenodo `22685074`(v2.0)
-4. Exact 3-adic symbolic dynamics, density-one first descent, algebraic cycle analysis, and exhaustive verification through 10^11 — Zenodo 22964212 (v3.0)
-
+1. Base computational research — Zenodo `22195652`(v1.0) — OEIS A399797
+2. 2. Scaled-family research — Zenodo `22228200`— OEIS A399797
+3. Extended 128-bit exhaustive certification through `10^11` — Zenodo `22685074`(v2.0) — OEIS A399797
+4. Exact 3-adic symbolic dynamics, density-one first descent, algebraic cycle analysis, and exhaustive verification through 10^11 — Zenodo 22964212 (v3.0) — OEIS A399797
+   
 ## II. Ternary (4k+1(2))/3 line
 
 5. Base compressed map with two observed attracting cycles — verification through 10^11 (v2.0), Zenodo 22823314; previous 10^9 (v1.0), Zenodo 22279137 
