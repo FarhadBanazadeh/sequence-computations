@@ -64,6 +64,7 @@ This work develops a scaled family associated with the ternary `(4k±1)/3` syste
 ### Related base DOI
 
 https://doi.org/10.5281/zenodo.22195652
+https://doi.org/10.5281/zenodo.22685074
 
 ### Zenodo DOI
 
