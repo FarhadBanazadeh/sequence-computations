@@ -49,9 +49,9 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22195652_Ternary_4k_pm_1_over_3_Collatz_Type_Map_up_to_1e9_Computational_Pack.zip
 
 ### Published OEIS Sequence
-Number of iterations of T needed to reach 1, starting with n, where T(k) = k/3 if k == 0 (mod 3), T(k) = (4*k-1)/3 if k == 1 (mod 3), and T(k) = (4*k+1)/3 if k == 2 (mod 3), or -1 if the trajectory never reaches 1.
+Number of steps to reach the number 1 of the map n -> n/3 if x==0 (mod 3), n -> (4n-1)/3 if x==1 (mod 3), n -> (4n+1)/3 if x==2 (mod 3).
 
-https://oeis.org/A399797
+https://oeis.org/A185023
 
 Published in The On-Line Encyclopedia of Integer Sequences (OEIS).
 
@@ -359,9 +359,9 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22685074_Ternary_4k_pm_1_over_3_Collatz-Type_Map_up_to_1e11_Computational_Pack.zip
 
 ### Published OEIS Sequence
-Number of iterations of T needed to reach 1, starting with n, where T(k) = k/3 if k == 0 (mod 3), T(k) = (4*k-1)/3 if k == 1 (mod 3), and T(k) = (4*k+1)/3 if k == 2 (mod 3), or -1 if the trajectory never reaches 1.
+Number of steps to reach the number 1 of the map n -> n/3 if x==0 (mod 3), n -> (4n-1)/3 if x==1 (mod 3), n -> (4n+1)/3 if x==2 (mod 3).
 
-https://oeis.org/A399797
+https://oeis.org/A185023
 
 Published in The On-Line Encyclopedia of Integer Sequences (OEIS).
 
@@ -389,7 +389,7 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 
 ### Published OEIS Sequence
 
-OEIS A399797 — Number of iterations of T needed to reach 1, starting with n
+OEIS A185023 — Number of iterations of T needed to reach 1, starting with n
 
 Published in The On-Line Encyclopedia of Integer Sequences (OEIS).
 
@@ -921,10 +921,10 @@ They use related ternary, residue-dependent, and valuation-based ideas, but they
 
 ## I. Ternary (4k±1)/3 line
 
-1. Base computational research — Zenodo `22195652`(v1.0) — OEIS`A399797`
-3. 2. 2. Scaled-family research — Zenodo `22228200`— OEIS`A399797`
-4. Extended 128-bit exhaustive certification through `10^11` — Zenodo `22685074`(v2.0) — OEIS`A399797`
-5. Exact 3-adic symbolic dynamics, density-one first descent, algebraic cycle analysis, and exhaustive verification through 10^11 — Zenodo 22964212 (v3.0) — OEIS`A399797`
+1. Base computational research — Zenodo `22195652`(v1.0) — OEIS`A185023`
+2. Scaled-family research — Zenodo `22228200`— OEIS `A185023`
+3. Extended 128-bit exhaustive certification through `10^11` — Zenodo `22685074`(v2.0) — OEIS`A185023`
+4. Exact 3-adic symbolic dynamics, density-one first descent, algebraic cycle analysis, and exhaustive verification through 10^11 — Zenodo 22964212 (v3.0) — OEIS`A185023`
    
 ## II. Ternary (4k+1(2))/3 line
 
