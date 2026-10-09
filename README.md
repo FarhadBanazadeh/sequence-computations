@@ -49,13 +49,16 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22195652_Ternary_4k_pm_1_over_3_Collatz_Type_Map_up_to_1e9_Computational_Pack.zip
 
 ### Published OEIS Sequence
+
 Number of steps to reach the number 1 of the map n -> n/3 if x==0 (mod 3), n -> (4n-1)/3 if x==1 (mod 3), n -> (4n+1)/3 if x==2 (mod 3).
+
+A variation of the "3x+1" problem. - T. D. Noe, Feb 06 2012
+Conjecture: Every positive integer reaches 1 (verified up to 10^11). - _Farhad Banazadeh_, Sep 15 2026
 
 https://oeis.org/A185023
 
 Published in The On-Line Encyclopedia of Integer Sequences (OEIS).
 
----
 
 ## 2. A Ternary (4k±1)/3 Collatz-Type Map and Its (4n±4^r)/3 Scaled Family
 
@@ -82,8 +85,6 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 ### Computational package — GitHub
 
 https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22228200_Ternary_4k_pm_1_over_3_Collatz_Type_Map_and_4r_Scaled_Family_Computational_Pack.zip
-
----
 
 ## 3. A Ternary (4k+1(2))/3 Collatz-Type Map with Two Attracting Cycles
 
@@ -359,7 +360,11 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22685074_Ternary_4k_pm_1_over_3_Collatz-Type_Map_up_to_1e11_Computational_Pack.zip
 
 ### Published OEIS Sequence
+
 Number of steps to reach the number 1 of the map n -> n/3 if x==0 (mod 3), n -> (4n-1)/3 if x==1 (mod 3), n -> (4n+1)/3 if x==2 (mod 3).
+
+A variation of the "3x+1" problem. - T. D. Noe, Feb 06 2012
+Conjecture: Every positive integer reaches 1 (verified up to 10^11). - _Farhad Banazadeh_, Sep 15 2026
 
 https://oeis.org/A185023
 
@@ -389,11 +394,14 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 
 ### Published OEIS Sequence
 
-OEIS A185023 — Number of iterations of T needed to reach 1, starting with n
+Number of steps to reach the number 1 of the map n -> n/3 if x==0 (mod 3), n -> (4n-1)/3 if x==1 (mod 3), n -> (4n+1)/3 if x==2 (mod 3).
+
+A variation of the "3x+1" problem. - T. D. Noe, Feb 06 2012
+Conjecture: Every positive integer reaches 1 (verified up to 10^11). - _Farhad Banazadeh_, Sep 15 2026
+
+https://oeis.org/A185023
 
 Published in The On-Line Encyclopedia of Integer Sequences (OEIS).
-
-Related research: Zenodo DOI 10.5281/zenodo.22685074
 
 ## 8. Ternary (5k±1)/4 Collatz-Type Map with Two Observed Attractors: Exhaustive Computational Verification up to 10^10 and Algebraic Structure
 
@@ -428,7 +436,15 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 
 https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22709065_Ternary_5k_pm_1_over_4_Collatz_Type_Map_up_to_1e10_Computational_Pack.zip
 
----
+### Published OEIS Sequence
+
+Number of steps starting from 2*n-1 until the first repeated value under the map k -> (5*k-1)/2^v_2(5*k-1) if k == 1 (mod 4) and k -> (5*k+1)/2^v_2(5*k+1) if k == 3 (mod 4) where v_2(k) = A007814(k); or -1 if no value ever repeats.
+
+Under this map, 1 is a fixed point and 7 -> 9 -> 11 -> 7 is a 3-cycle. Thus a trajectory starting at 1 has first repetition after 1 step, while a trajectory starting at 7, 9, or 11 has first repetition after 3 steps.
+
+https://oeis.org/draft/A400174
+
+Published in The On-Line Encyclopedia of Integer Sequences (OEIS).
 
 ## 9. A 5^r-Scaled Family of the Reduced Ternary (5k±1)/4 Collatz-Type Map: Exact Algebraic Conjugacy, Cycle Preservation, Orbit-Statistic Invariance, and Transfer of the 10^10 Finite Verification
 
@@ -494,7 +510,6 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 
 https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22714150_5%5Er_Scaled_Family_Ternary_5k_pm_1_over_4_Collatz_Type_Map_Computational_Pack.zip
 
----
 
 ## 10. The Reduced (5k+1(3))/4 Collatz-Type Domain with Four Observed Attractors
 
@@ -533,7 +548,6 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 
 https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22726453_Reduced_5k_plus_1_3_over_4_Collatz_Type_Map_up_to_1e10_Computational_Pack.zip
 
----
 
 ## 11. A 5^r-Scaled Family of the Reduced (5k+1(3))/4 Collatz-Type Map: Exact Algebraic Conjugacy, Four-Attractor Preservation, and Transfer of the 10^10 Finite Verification
 
@@ -727,7 +741,17 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banaza
 
 https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo22786203_Reduced_6k_pm_1_2_over_5_Collatz_Type_Map_up_to_1e11_Computational_Pack.zip
 
-The Zenodo record contains the published article and associated reproducibility materials.
+### Published OEIS Sequence
+
+Number of steps starting from the n-th positive integer not divisible by 5 until the first repeated value under the reduced residue-dependent 6k +- {1,2} map, or -1 if no value ever repeats.
+
+The known cycles are the fixed points 1 and 2 and the nine-cycle
+22 -> 26 -> 31 -> 37 -> 44 -> 53 -> 64 -> 77 -> 92 -> 22.
+
+https://oeis.org/draft/A400182
+
+Published in The On-Line Encyclopedia of Integer Sequences (OEIS).
+
 
 ## 15. A 6^r-Scaled Family of the Reduced (6k±{1,2})/5 Collatz-Type Map with Three Observed Attractors
 
