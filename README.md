@@ -964,9 +964,9 @@ They use related ternary, residue-dependent, and valuation-based ideas, but they
    
 ## IV. Ternary (5k±1)/4 line
 
-10. Base map with two observed attractors and exhaustive verification through `10^10` — Zenodo `22709065`
-11. Its exactly conjugate `5^r-scaled family — Zenodo `22714150`
-
+10. Base map with two observed attractors and exhaustive verification through `10^10` — Zenodo `22709065`— OEIS `A400174`
+11. Its exactly conjugate `5^r-scaled family — Zenodo `22714150`— OEIS `A400174`
+    
 ## V. Reduced (5k+1(3))/4 line
 
 12. Base residue-dependent reduced map with four observed attractors and exhaustive verification of all `5,000,000,000` positive odd starting values below `10^10` — Zenodo `22726453`
@@ -979,9 +979,9 @@ They use related ternary, residue-dependent, and valuation-based ideas, but they
 
 ## VII. Reduced (6k±{1,2})/5 line
 
-16. Base residue-dependent reduced map with three observed attractors and exhaustive verification of all 80,000,000,000 positive starting values not divisible by 5 up to `10^11` — Zenodo 22786203
-17. Its exactly conjugate 6^r-scaled family with three-attractor transport, orbit-statistic invariance, and transfer of the 10^11 finite verification — Zenodo 22809470
-18. Floor-based reduced map $T(n)=(\lfloor 6n/5\rfloor+1)/5^{\nu_5(\lfloor 6n/5\rfloor+1)}$ with one observed attractor, complete 5-adic reduction, and exhaustive verification of all positive starting values up to 10^11 — Zenodo 22856438
+16. Base residue-dependent reduced map with three observed attractors and exhaustive verification of all 80,000,000,000 positive starting values not divisible by 5 up to `10^11` — Zenodo 22786203 — OEIS `A400182`
+17. Its exactly conjugate 6^r-scaled family with three-attractor transport, orbit-statistic invariance, and transfer of the 10^11 finite verification — Zenodo 22809470 — OEIS `A400182`
+18. Floor-based reduced map $T(n)=(\lfloor 6n/5\rfloor+1)/5^{\nu_5(\lfloor 6n/5\rfloor+1)}$ with one observed attractor, complete 5-adic reduction, and exhaustive verification of all positive starting values up to 10^11 — Zenodo 22856438 — OEIS `A400182`
     
 ## VIII. Ternary (7k±1)/6 line
 
