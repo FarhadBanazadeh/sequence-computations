@@ -937,7 +937,7 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main//Farhad_Banaz
 https://github.com/FarhadBanazadeh/sequence-computations/blob/main//Farhad_Banazadeh_Zenodo22856438_Reduced_Floor_6k_over_5_plus_1_over_5_Collatz_Type_Map_up_to_1e11_Computational_Pack.zip
 
 
-## 19. A 6ʳ-Scaled Family of the Reduced ⌊6k/5⌋+1 Collatz-Type Map
+## 19. A 6ʳ-Scaled Family of the Reduced (⌊6k/5⌋+1)/5 Collatz-Type Map
 
 This work develops the full 6ʳ-scaled family of the reduced ⌊6k/5⌋+1 Collatz-type map, with complete 5-adic reduction. The scaled dynamics are defined on the corresponding domains Dᵣ = 6ʳD, where D is the closed post-transient domain of the base system.
 
@@ -1016,7 +1016,7 @@ All of these works span numerous distinct research lines, encompassing a broad r
 14. Base residue-dependent reduced map with two observed attractors and exhaustive verification of all 50,000,000,000 positive odd starting values below 10^11 — Zenodo 22752810`
 15.`5^r-scaled family of the reduced `5k−1(3)/4` map with exact algebraic conjugacy, two-attractor transport, orbit-statistic invariance, and transfer of the `10^11` finite verification — Zenodo 22770779
 
-## VII. Reduced (6k±{1,2})/5 and Floor-Based ⌊6k/5⌋+1 Collatz-Type Lines
+## VII. Reduced (6k±{1,2})/5 and Floor-Based (⌊6k/5⌋+1)/5 Collatz-Type Lines
 
 16. Base residue-dependent reduced map with three observed attractors and exhaustive verification of all 80,000,000,000 positive starting values not divisible by 5 up to `10^11` — Zenodo 22786203 — OEIS `A400182`
 17. Its exactly conjugate 6^r-scaled family with three-attractor transport, orbit-statistic invariance, and transfer of the 10^11 finite verification — Zenodo 22809470 — OEIS `A400182`
