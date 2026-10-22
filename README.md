@@ -936,12 +936,51 @@ https://github.com/FarhadBanazadeh/sequence-computations/blob/main//Farhad_Banaz
 
 https://github.com/FarhadBanazadeh/sequence-computations/blob/main//Farhad_Banazadeh_Zenodo22856438_Reduced_Floor_6k_over_5_plus_1_over_5_Collatz_Type_Map_up_to_1e11_Computational_Pack.zip
 
----
+
+## 19. A 6ʳ-Scaled Family of the Reduced ⌊6k/5⌋+1 Collatz-Type Map
+
+This work develops the full 6ʳ-scaled family of the reduced ⌊6k/5⌋+1 Collatz-type map, with complete 5-adic reduction. The scaled dynamics are defined on the corresponding domains Dᵣ = 6ʳD, where D is the closed post-transient domain of the base system.
+
+The main exact algebraic conjugacy is:
+
+**Tᵣ(6ʳn) = 6ʳT₀(n)**
+
+and, for every j ≥ 0,
+
+**Tᵣʲ(6ʳn) = 6ʳT₀ʲ(n).**
+
+Thus the directed functional graphs, periodic cycles, predecessor trees, valuation sequences, first-descent times, elementary-step counts, and normalized orbit ratios are preserved under scaling, while absolute states and orbit peaks are multiplied by 6ʳ.
+
+In particular, the base four-cycle (1, 2, 3, 4) is transported to (6ʳ, 2·6ʳ, 3·6ʳ, 4·6ʳ), preserving its minimal period.
+
+The exhaustive base verification through 10¹¹ transfers exactly to the corresponding scaled starting states for every fixed r, without repeating the full computation at each scale. This is an algebraic transfer of previously established finite results, not an independent exhaustive verification for every scaled family.
+
+The accompanying computational package includes a Python consistency verifier, reproducibility instructions, supporting data, and SHA-256 checksums. The global convergence problem remains unresolved and is equivalent across the scaled domains.
+
+## Related base research
+
+https://doi.org/10.5281/zenodo.22856438
+
+### Zenodo DOI
+
+https://doi.org/10.5281/zenodo.23533046
+
+### PDF — Zenodo
+
+https://zenodo.org/records/23533046
+
+### LaTeX source — GitHub
+
+https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo23533046_6r_Scaled_Family_Floor_6k_over_5_plus_1_Collatz_Type_Map.tex
+
+### Computational package — GitHub
+
+https://github.com/FarhadBanazadeh/sequence-computations/blob/main/Farhad_Banazadeh_Zenodo23533046_6r_Scaled_Family_Floor_6k_over_5_plus_1_Collatz_Type_Map_Computational_Pack.zip
+
 
 ## Research Structure
 
-All of these works belong to eight distinct research lines.
-They use related ternary, residue-dependent, and valuation-based ideas, but they should not be treated as a single dynamical system.
+All of these works span numerous distinct research lines, encompassing a broad range of Collatz-type dynamical systems, their generalized and scaled families, and associated theoretical and computational investigations. They use related ternary, residue-dependent, and valuation-based ideas, but they should not be treated as a single dynamical system.
 
 ## I. Ternary (4k±1)/3 line
 
@@ -977,16 +1016,17 @@ They use related ternary, residue-dependent, and valuation-based ideas, but they
 14. Base residue-dependent reduced map with two observed attractors and exhaustive verification of all 50,000,000,000 positive odd starting values below 10^11 — Zenodo 22752810`
 15.`5^r-scaled family of the reduced `5k−1(3)/4` map with exact algebraic conjugacy, two-attractor transport, orbit-statistic invariance, and transfer of the `10^11` finite verification — Zenodo 22770779
 
-## VII. Reduced (6k±{1,2})/5 line
+## VII. Reduced (6k±{1,2})/5 and Floor-Based ⌊6k/5⌋+1 Collatz-Type Lines
 
 16. Base residue-dependent reduced map with three observed attractors and exhaustive verification of all 80,000,000,000 positive starting values not divisible by 5 up to `10^11` — Zenodo 22786203 — OEIS `A400182`
 17. Its exactly conjugate 6^r-scaled family with three-attractor transport, orbit-statistic invariance, and transfer of the 10^11 finite verification — Zenodo 22809470 — OEIS `A400182`
 18. Floor-based reduced map $T(n)=(\lfloor 6n/5\rfloor+1)/5^{\nu_5(\lfloor 6n/5\rfloor+1)}$ with one observed attractor, complete 5-adic reduction, and exhaustive verification of all positive starting values up to 10^11 — Zenodo 22856438 — OEIS `A400182`
-    
+19. Its exactly conjugate 6^r-scaled family, with complete 5-adic reduction, preservation of cycles, inverse trees, valuation sequences, and normalized orbit statistics, together with exact transfer of the 10^11 finite base verification to the corresponding scaled domains — Zenodo 23533046 — OEIS `A400182`
+   
 ## VIII. Ternary (7k±1)/6 line
 
-19. Base ternary residue-dependent reduced map with a single observed attractor and exhaustive verification of all 33,333,333,333 admissible starting values below `10^11` — Zenodo 22829703
-20. Exact 7^r-scaled family of the ternary (7k±1)/6 map, with algebraic conjugacy, preservation of trajectories, valuations, stopping times and cycle structure, and transfer of the complete base verification below 10^11 to the corresponding scaled domains — Zenodo 22845484
+20. Base ternary residue-dependent reduced map with a single observed attractor and exhaustive verification of all 33,333,333,333 admissible starting values below `10^11` — Zenodo 22829703
+21. Exact 7^r-scaled family of the ternary (7k±1)/6 map, with algebraic conjugacy, preservation of trajectories, valuations, stopping times and cycle structure, and transfer of the complete base verification below 10^11 to the corresponding scaled domains — Zenodo 22845484
 
 ---
 
